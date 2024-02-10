@@ -1,17 +1,26 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
 public class LevelGame extends JFrame {
 
 	private JPanel contentPane;
+	private static final long serialVersionUID = 1L;
+	private JRadioButton EasyRadioButton;
+	private JRadioButton MeduimRadioButton;
+	private JRadioButton HardRadioButton;
+
 
 	/**
 	 * Launch the application.
@@ -48,6 +57,40 @@ public class LevelGame extends JFrame {
 		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.ITALIC, 24));
 		lblNewLabel_2.setBounds(261, 339, 300, 41);
 		contentPane.add(lblNewLabel_2);
+		// combobox for choosing game level
+		final JComboBox comboBox = new JComboBox();
+        for(int i=2;i<=4;i++)
+    {
+        	comboBox.addItem(i);
+    
+    }
+		comboBox.setBounds(565, 231, 94, 21);
+		contentPane.add(comboBox);
+
+		EasyRadioButton = new JRadioButton("Easy");
+		EasyRadioButton.setBounds(294, 386, 113, 21);
+		contentPane.add(EasyRadioButton);
+		EasyRadioButton.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
+		EasyRadioButton.setBackground(new Color(173, 216, 230));
+
+		MeduimRadioButton = new JRadioButton("Medium");
+		MeduimRadioButton.setBounds(438, 386, 123, 21);
+		contentPane.add(MeduimRadioButton);
+		MeduimRadioButton.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
+		MeduimRadioButton.setBackground(new Color(173, 216, 230));
+		
+		HardRadioButton = new JRadioButton("Hard");
+		HardRadioButton.setBounds(611, 386, 103, 21);
+		contentPane.add(HardRadioButton);
+		HardRadioButton.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
+		HardRadioButton.setBackground(new Color(173, 216, 230));
+		
+		// choosing just one radio button , no more!
+		ButtonGroup G = new ButtonGroup();
+		G.add(EasyRadioButton);
+		G.add(MeduimRadioButton);
+		G.add(HardRadioButton);
+
 	}
 
 }
