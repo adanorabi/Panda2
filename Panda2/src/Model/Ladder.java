@@ -2,6 +2,8 @@ package Model;
 
 import java.util.Random;
 
+import Enum.Levels;
+
 public class Ladder {
 
 
