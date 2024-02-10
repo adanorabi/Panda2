@@ -143,5 +143,117 @@ public class Ladder {
 
 			}
 		}
+		else if (level.equals(Levels.Medium)) {
+			if (ladder.Length==1) {
+
+				int Endx = rand.nextInt(10);
+				int Endy = 1+rand.nextInt(9);
+				while(Endy==1 && Endx==0) {
+					Endy = 1+rand.nextInt(9);
+				}
+
+				ladder.setXEnd(Endx);
+				ladder.setYEnd(Endy);
+
+				int y=Endy;
+
+				ladder.setYStart(y-1);
+
+				ladder.setXStart(Endx);
+			}
+			else if (ladder.Length==2) {
+
+				int Endx = rand.nextInt(10);
+				int Endy = 2+rand.nextInt(8);
+				while(Endy==2 && Endx==0) {
+					Endy = 2+rand.nextInt(8);
+				}
+				ladder.setXEnd(Endx);
+				ladder.setYEnd(Endy);
+
+				int y=Endy;
+
+				ladder.setYStart(y-2);
+
+				ladder.setXStart(Endx);
+			}
+			else if (ladder.Length==3) {
+				int Endx = rand.nextInt(8);
+				int Endy = 3+rand.nextInt(7);
+				while(Endy==3 && Endx==0) {
+					Endy = 3+rand.nextInt(7);
+				}
+				ladder.setXEnd(Endx);
+				ladder.setYEnd(Endy);
+
+				int y=Endy;
+
+				ladder.setYStart(y-3);
+				int Startx;
+
+					Startx=Endx+2;
+
+				ladder.setXStart(Startx);
+
+			}
+			else if (ladder.Length==4) {
+
+				int Endx = rand.nextInt(10);
+				int Endy = 4+rand.nextInt(6);
+				while(Endy==4 && Endx==0) {
+					 Endy = 4+rand.nextInt(6);
+				}
+
+				ladder.setXEnd(Endx);
+				ladder.setYEnd(Endy);
+
+				int y=Endy;
+
+				ladder.setYStart(y-4);
+
+				ladder.setXStart(Endx);
+
+
+			}
+			else if(ladder.Length==5) {
+				
+				int Endx = rand.nextInt(9);
+				int Endy = 5+rand.nextInt(5);
+				while(Endy==5 && Endx==0) {
+					Endy = 5+rand.nextInt(5);
+				}
+				ladder.setXEnd(Endx);
+				ladder.setYEnd(Endy);
+
+				int y=Endy;
+
+				ladder.setYStart(y-5);
+				int Startx;
+
+					Startx=Endx+1;
+
+				ladder.setXStart(Startx);
+				
+
+			}
+			else if(ladder.Length==6) {
+				int Endx = rand.nextInt(8);
+				int Endy = 6+rand.nextInt(4);
+				while(Endy==6 && Endx==0) {
+					Endy = 6+rand.nextInt(4);
+				}
+				ladder.setXEnd(Endx);
+				ladder.setYEnd(Endy);
+
+				int y=Endy;
+
+				ladder.setYStart(y-6);
+				int Startx;
+					Startx=Endx+2;
+				
+				ladder.setXStart(Startx);
+			}
+
+		}
 	}
 }
