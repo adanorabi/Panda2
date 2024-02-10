@@ -57,7 +57,7 @@ public class LevelGame extends JFrame {
 		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.ITALIC, 24));
 		lblNewLabel_2.setBounds(261, 339, 300, 41);
 		contentPane.add(lblNewLabel_2);
-		// combobox for choosing game level
+		// combobox for choosing nimber of players
 		final JComboBox comboBox = new JComboBox();
         for(int i=2;i<=4;i++)
     {
