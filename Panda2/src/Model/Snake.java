@@ -2,6 +2,7 @@ package Model;
 
 import java.util.Random;
 
+import Enum.Levels;
 import Enum.SnakeColor;
 
 public class Snake {
@@ -67,6 +68,77 @@ public class Snake {
 		this.rand = rand;
 	}
 	
-	
+	public void SnackRandom (Levels level, Snake snake) {
+
+		if (level.equals(Levels.Easy)) {
+			if (snake.Color.equals(SnakeColor.Blue)) {
+
+				int HBluex = rand.nextInt(7);
+				int HBluey = 3+rand.nextInt(4);
+				while(HBluex==6 && HBluey==6) {
+					HBluey = 3+rand.nextInt(4);
+				}
+				snake.setXHeadNum(HBluex);
+				snake.setYHeadNum(HBluey);
+
+				int y=HBluey;
+
+				snake.setYTailNum(y-3);
+				snake.setXTailNum(HBluex);
+			}
+			else if (snake.Color.equals(SnakeColor.Green)) {
+
+				int HGreenx = rand.nextInt(7);
+				int HGreeny = 2+rand.nextInt(5);
+				while(HGreenx==6 && HGreeny==6 ) {
+					HGreeny = 2+rand.nextInt(5);
+				}
+				snake.setXHeadNum(HGreenx);
+				snake.setYHeadNum(HGreeny);
+
+				int y=HGreeny;
+
+				snake.setYTailNum(y-2);
+				int TGreenx = rand.nextInt(7);
+				while(HGreenx>TGreenx) {
+					TGreenx = rand.nextInt(7);
+				}
+				snake.setXTailNum(TGreenx);
+			}
+			else if (snake.Color.equals(SnakeColor.Red)) {
+				int redx = rand.nextInt(7);
+				int redy = rand.nextInt(7);
+				while((redx==6 && redy==6) || (redx==0 && redy==0)) {
+					redy = rand.nextInt(7);
+				}
+				snake.setXHeadNum(redx);
+				snake.setXTailNum(redx);
+				snake.setYHeadNum(redy);
+				snake.setYTailNum(redy);
+
+			}
+			else if (snake.Color.equals(SnakeColor.Yellow)) {
+
+				int Hyellowx = rand.nextInt(7);
+				int Hyellowy = 1+rand.nextInt(6);
+				while(Hyellowx==6 && Hyellowy==6) {
+					Hyellowy = 1+rand.nextInt(6);
+				}
+				snake.setXHeadNum(Hyellowx);
+				snake.setYHeadNum(Hyellowy);
+
+				int y=Hyellowy;
+
+				snake.setYTailNum(y-1);
+				int Tyellowx = rand.nextInt(7);
+				while(Hyellowx>Tyellowx) {
+					Tyellowx = rand.nextInt(7);
+				}
+				snake.setXTailNum(Tyellowx);
+
+
+			}
+		}
+	}
 
 }
