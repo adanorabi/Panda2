@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import Enum.Levels;
 
@@ -136,4 +137,107 @@ public class Game {
 		}
 
 	}
+	public void PlacespecialSquares(Levels gameLevel) { //should be continueed have to check that snake and ladder not in the same place
+		int randQol;
+		int randRow;
+		Random random = new Random();
+		Boolean flag=true;
+		Levels leverArr[]=new Levels[3];
+		leverArr[0]=Levels.Easy;
+		leverArr[1]=Levels.Medium;
+		leverArr[2]=Levels.Hard;
+		if(gameLevel==Levels.Easy) {
+			for(int i=0;i<3;i++) {//adding a questionSquare to the game board
+				flag=true;
+				while(flag) {
+					randQol = random.nextInt(ColsNum) ;
+					randRow = random.nextInt(RowsNum) ;
+					if(this.Places[randRow][randQol]==0) {
+						while(randQol==0 && randRow==0 || randQol==6 && randRow==6) {
+							randRow = random.nextInt(RowsNum);
+						}
+						this.Places[randRow][randQol]=3;
+						flag=false;
+						Squares.add(new QuestionSquare(randRow,randQol,leverArr[i]));
+					}
+
+				}
+			}
+
+		}
+
+		else if(gameLevel== Levels.Medium) {
+			for(int i=0;i<3;i++) {//adding a questionSquare to the game board
+				flag=true;
+				while(flag) {
+
+					randQol = random.nextInt(ColsNum) ;
+					randRow = random.nextInt(RowsNum) ;
+					if(this.Places[randRow][randQol]==0) {
+						while(randQol==0 && randRow==0 || randQol==9 && randRow==9) {
+							randRow = random.nextInt(RowsNum);
+						}
+						this.Places[randRow][randQol]=3;
+						flag=false;
+						Squares.add(new QuestionSquare(randRow,randQol,leverArr[i]));
+					}
+
+				}
+			}
+			flag=true;
+			while(flag) {
+				randQol = random.nextInt(ColsNum) ;
+				randRow = random.nextInt(RowsNum);
+				if(this.Places[randRow][randQol]==0) {
+					while(randQol==0 && randRow==0 || randQol==9 && randRow==9) {
+						randRow = random.nextInt(RowsNum);
+					}
+					this.Places[randRow][randQol]=2;
+					Squares.add(new SurpriseSquare(randRow,randQol));
+					flag=false;
+				}
+
+			}
+
+
+		}
+		else {
+			for(int i=0;i<3;i++) {//adding a questionSquare to the game board
+				flag=true;
+				while(flag) {
+
+					randQol = random.nextInt(ColsNum) ;
+					randRow = random.nextInt(RowsNum) ;
+					if(this.Places[randRow][randQol]==0) {
+						while(randQol==0 && randRow==0 || randQol==12 && randRow==12) {
+							randRow = random.nextInt(RowsNum);
+						}
+						this.Places[randRow][randQol]=3;
+						flag=false;
+						Squares.add(new QuestionSquare(randRow,randQol,leverArr[i]));
+					}
+
+				}
+			}
+
+			flag=true;
+			for(int i=0;i<2;i++) {
+				flag=true;
+				while(flag) {
+					randQol = random.nextInt(ColsNum) ;
+					randRow = random.nextInt(RowsNum);
+					if(this.Places[randRow][randQol]==0) {
+						while(randQol==0 && randRow==0 || randQol==12 && randRow==12) {
+							randRow = random.nextInt(RowsNum);
+						}
+						this.Places[randRow][randQol]=2;
+						Squares.add(new SurpriseSquare(randRow,randQol));
+						flag=false;
+					}
+
+				}
+			}
+		}
+	}
+
 }
