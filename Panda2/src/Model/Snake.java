@@ -139,6 +139,76 @@ public class Snake {
 
 			}
 		}
+		else if (level.equals(Levels.Medium)) {
+			if (snake.Color.equals(SnakeColor.Blue)) {
+
+				int HBluex = rand.nextInt(10);
+				int HBluey = 3+rand.nextInt(7);
+				while(HBluex==9 && HBluey==9) {
+					HBluey = 3+rand.nextInt(7);
+				}
+				snake.setXHeadNum(HBluex);
+				snake.setYHeadNum(HBluey);
+
+				int y=HBluey;
+
+				snake.setYTailNum(y-3);
+				snake.setXTailNum(HBluex);
+			}
+			else if (snake.Color.equals(SnakeColor.Green)) {
+
+				int HGreenx = rand.nextInt(10);
+				int HGreeny = 2+rand.nextInt(8);
+				while(HGreenx==9 && HGreeny==9) {
+					HGreeny = 2+rand.nextInt(8);
+				}
+				snake.setXHeadNum(HGreenx);
+				snake.setYHeadNum(HGreeny);
+
+				int y=HGreeny;
+
+				snake.setYTailNum(y-2);
+				int TGreenx = rand.nextInt(10);
+				while(HGreenx>TGreenx) {
+					TGreenx = rand.nextInt(10);
+				}
+				snake.setXTailNum(TGreenx);
+			}
+			else if (snake.Color.equals(SnakeColor.Red)) {
+				int redx = rand.nextInt(10);
+				int redy = rand.nextInt(10);
+				while((redx==9 && redy==9) || (redx==0 && redy==0)) {
+					redy = rand.nextInt(10);
+				}
+				snake.setXHeadNum(redx);
+				snake.setXTailNum(redx);
+				snake.setYHeadNum(redy);
+				snake.setYTailNum(redy);
+
+			}
+			else if (snake.Color.equals(SnakeColor.Yellow)) {
+
+				int Hyellowx = rand.nextInt(10);
+				int Hyellowy = 1+rand.nextInt(9);
+				while(Hyellowx==9 && Hyellowy==9) {
+					Hyellowy = 1+rand.nextInt(9);
+				}
+				snake.setXHeadNum(Hyellowx);
+				snake.setYHeadNum(Hyellowy);
+
+				int y=Hyellowy;
+
+				snake.setYTailNum(y-1);
+				int Tyellowx = rand.nextInt(10);
+				while(Hyellowx>Tyellowx) {
+					Tyellowx = rand.nextInt(10);
+				}
+				snake.setXTailNum(Tyellowx);
+
+
+			}
+
+		}
 	}
 
 }
