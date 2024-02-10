@@ -13,7 +13,23 @@ public class Square {
 	}
 
 
-	
+	public int getSquareRow() {
+		return SquareRow;
+	}
+
+	public void setSquareRow(int squareRow) {
+		SquareRow = squareRow;
+	}
+
+	public int getSquareCol() {
+		return SquareCol;
+	}
+
+	public void setSquareCol(int squareCol) {
+		SquareCol = squareCol;
+	}
+
+
 
 
 }
