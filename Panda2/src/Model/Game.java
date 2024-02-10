@@ -19,5 +19,12 @@ public class Game {
 	private Dice dice;
 	private ArrayList<Square> Squares= new ArrayList<Square>() ;
 
-	
+	public Game(int gameId, Levels gameLevel, int rowsNum, int colsNum) {
+		super();
+		GameId = gameId;
+		GameLevel = gameLevel;
+		RowsNum = rowsNum;
+		ColsNum = colsNum;
+		Places=new int[RowsNum][ColsNum];
+	}
 }
