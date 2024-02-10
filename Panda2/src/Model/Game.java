@@ -239,5 +239,18 @@ public class Game {
 			}
 		}
 	}
+	
+	public void placeNormalSquares() {
+
+		int i,j;
+		for(i=0;i<this.RowsNum;i++) {
+			for(j=0;j<this.RowsNum;j++) {
+				if(this.Places[i][j]==0) {
+					Squares.add(new Square(i,j)) ; 
+				}
+			}
+		}
+
+	}
 
 }
