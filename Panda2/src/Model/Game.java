@@ -293,6 +293,49 @@ public class Game {
 			Snakes.add(Bluesnake);
 
 		}
+		else if(this.GameLevel.equals(Levels.Medium)) {
+			for(int i=0;i<2;i++) {
+				Snake redsnake=new Snake(SnakeColor.Red); 
+				redsnake.SnackRandom(Levels.Medium, redsnake);
+				while(this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]!=0) {
+					redsnake.SnackRandom(Levels.Easy, redsnake);
+				}
+				this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=4;
+				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=4;
+				Snakes.add(redsnake);
+			}
+
+			Snake yellowsnake=new Snake(SnakeColor.Yellow); 
+			yellowsnake.SnackRandom(Levels.Medium, yellowsnake);
+			while(this.Places[yellowsnake.getXHeadNum()][yellowsnake.getYHeadNum()]!=0) {
+				yellowsnake.SnackRandom(Levels.Easy, yellowsnake);
+			}
+			this.Places[yellowsnake.getXHeadNum()][yellowsnake.getYHeadNum()]=4;
+			this.Places[yellowsnake.getXTailNum()][yellowsnake.getYTailNum()]=4;
+			Snakes.add(yellowsnake);
+
+			for(int i=0;i<2;i++) {
+				Snake greensnake=new Snake(SnakeColor.Green); 
+				greensnake.SnackRandom(Levels.Medium, greensnake);
+				while(this.Places[greensnake.getXHeadNum()][greensnake.getYHeadNum()]!=0) {
+					greensnake.SnackRandom(Levels.Easy, greensnake);
+				}
+				this.Places[greensnake.getXHeadNum()][greensnake.getYHeadNum()]=4;
+				this.Places[greensnake.getXTailNum()][greensnake.getYTailNum()]=4;
+				Snakes.add(greensnake);
+			}
+
+
+			Snake Bluesnake=new Snake(SnakeColor.Blue); 
+			Bluesnake.SnackRandom(Levels.Medium, Bluesnake);
+			while(this.Places[Bluesnake.getXHeadNum()][Bluesnake.getYHeadNum()]!=0) {
+				Bluesnake.SnackRandom(Levels.Easy, Bluesnake);
+			}
+			this.Places[Bluesnake.getXHeadNum()][Bluesnake.getYHeadNum()]=4;
+			this.Places[Bluesnake.getXTailNum()][Bluesnake.getYTailNum()]=4;
+			Snakes.add(Bluesnake);
+		}
 	}
+	
 
 }
