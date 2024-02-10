@@ -67,7 +67,7 @@ public class Snake {
 	public void setRand(Random rand) {
 		this.rand = rand;
 	}
-	
+
 	public void SnackRandom (Levels level, Snake snake) {
 
 		if (level.equals(Levels.Easy)) {
@@ -208,6 +208,76 @@ public class Snake {
 
 			}
 
+		}
+		else if (level.equals(Levels.Hard)) {
+
+			if (snake.Color.equals(SnakeColor.Blue)) {
+
+				int HBluex = rand.nextInt(13);
+				int HBluey = 3+rand.nextInt(10);
+				while(HBluex==12 && HBluey==12) {
+					HBluey = 3+rand.nextInt(10);
+				}
+				snake.setXHeadNum(HBluex);
+				snake.setYHeadNum(HBluey);
+
+				int y=HBluey;
+
+				snake.setYTailNum(y-3);
+				snake.setXTailNum(HBluex);
+			}
+			else if (snake.Color.equals(SnakeColor.Green)) {
+
+				int HGreenx = rand.nextInt(13);
+				int HGreeny = 2+rand.nextInt(11);
+				while(HGreenx==12 && HGreeny==12) {
+					HGreeny = 2+rand.nextInt(11);
+				}
+				snake.setXHeadNum(HGreenx);
+				snake.setYHeadNum(HGreeny);
+
+				int y=HGreeny;
+
+				snake.setYTailNum(y-2);
+				int TGreenx = rand.nextInt(13);
+				while(HGreenx>TGreenx) {
+					TGreenx = rand.nextInt(13);
+				}
+				snake.setXTailNum(TGreenx);
+			}
+			else if (snake.Color.equals(SnakeColor.Red)) {
+				int redx = rand.nextInt(13);
+				int redy = rand.nextInt(13);
+				while((redx==12 && redy==12) || (redx==0 && redy==0)) {
+					redy = rand.nextInt(13);
+				}
+				snake.setXHeadNum(redx);
+				snake.setXTailNum(redx);
+				snake.setYHeadNum(redy);
+				snake.setYTailNum(redy);
+
+			}
+			else if (snake.Color.equals(SnakeColor.Yellow)) {
+
+				int Hyellowx = rand.nextInt(13);
+				int Hyellowy = 1+rand.nextInt(12);
+				while(Hyellowx==12 && Hyellowy==12) {
+					Hyellowy = 1+rand.nextInt(12);
+				}
+				snake.setXHeadNum(Hyellowx);
+				snake.setYHeadNum(Hyellowy);
+
+				int y=Hyellowy;
+
+				snake.setYTailNum(y-1);
+				int Tyellowx = rand.nextInt(13);
+				while(Hyellowx>Tyellowx) {
+					Tyellowx = rand.nextInt(13);
+				}
+				snake.setXTailNum(Tyellowx);
+
+
+			}
 		}
 	}
 
