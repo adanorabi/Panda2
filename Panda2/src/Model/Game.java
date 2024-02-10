@@ -124,5 +124,16 @@ public class Game {
 		Squares = squares;
 	}
 	
-	
+	public void createGame() {
+
+
+		// Initialize board with empty Places
+		for (int i = 0; i < this.RowsNum; i++) {
+			for (int j = 0; j < this.ColsNum; j++) {
+				this.Places[i][j] = 0; // 0 represents an empty place		
+				//	System.out.println(	this.Places[i][j]);
+			}
+		}
+
+	}
 }
