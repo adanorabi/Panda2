@@ -100,7 +100,21 @@ public class MediumLevel extends JFrame {
 			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
 			setLadders(length,xHead,yHead,xTail,yTail);
 		}
-		
+		for (i=0 ; i<10; i++)
+		{
+			for (j=0 ; j<10; j++ )
+			{
+				if(g.getPlaces()[i][j]==2) {
+					setsurprise(i, j);
+					System.out.println("surprise (" + i + "," + j + "):" );
+				}
+				else if(g.getPlaces()[i][j]==3) {
+					setq(i, j);
+					System.out.println("question (" + i + "," + j + "):" );
+
+				}
+			}
+		}
 
 	}
 
@@ -296,7 +310,71 @@ public class MediumLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	
-	
+	public void setsurprise(int x, int y) {
+		// Load the surprise image
+		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/q.png"));
+
+		// Calculate the position of the surprise
+		int sX = 200 + x * 94; 
+		int sY =639-y*58;
+
+		// Calculate the size of the snake image
+		int width = 50; // Adjusted width based on grid size
+		int height = 50;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledImage = snakeIcon.getImage().getScaledInstance( width, height, Image.SCALE_SMOOTH);
+		ImageIcon scaledSnakeIcon = new ImageIcon(scaledImage);
+
+		// Create a JLabel for the scaled snake image
+		lblsur = new JLabel(scaledSnakeIcon);
+		lblsur.setBounds(sX,sY, width, height);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblsur);
+
+		// Ensure the snake label is visible
+		lblsur.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblsur, 0);
+
+		// Repaint the content pane to ensure the changes
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
+	public void setq(int x, int y) {
+		// Load the surprise image
+		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/surprise.png"));
+
+		// Calculate the position of the surprise
+		int sX = 200 + x * 94; 
+		int sY =650-y*58;
+
+		// Calculate the size of the snake image
+		int width = 30; // Adjusted width based on grid size
+		int height = 30;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledImage = snakeIcon.getImage().getScaledInstance( width, height, Image.SCALE_SMOOTH);
+		ImageIcon scaledSnakeIcon = new ImageIcon(scaledImage);
+
+		// Create a JLabel for the scaled snake image
+		lblq = new JLabel(scaledSnakeIcon);
+		lblq.setBounds(sX,sY, width, height);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblq);
+
+		// Ensure the snake label is visible
+		lblq.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblq, 0);
+
+		// Repaint the content pane to ensure the changes
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
 
 }
