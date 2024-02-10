@@ -1,5 +1,21 @@
 package Model;
 
-public class QuestionSquare {
+import Enum.Levels;
 
-}
+public class QuestionSquare extends Square{
+		private Levels QuesLevel;
+		public QuestionSquare(int squareRow, int squareCol, Levels quesLevel) {
+			super( squareRow, squareCol);
+			QuesLevel = quesLevel;
+		}
+
+		
+
+		
+		 public void ChooseQuestion() {  //should be continued!!!
+				
+			}
+		 
+	 }
+	
+
