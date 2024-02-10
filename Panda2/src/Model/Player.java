@@ -20,5 +20,45 @@ public class Player {
 		PlayerRow = playerRow;
 	}
 
+	public int getPlayerID() {
+		return PlayerID;
+	}
+
+	public void setPlayerID(int playerID) {
+		PlayerID = playerID;
+	}
+
+	public Color getPlayerColor() {
+		return playerColor;
+	}
+
+	public void setPlayerColor(Color playerColor) {
+		this.playerColor = playerColor;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public int getPlayerCol() {
+		return PlayerCol;
+	}
+
+
+
+	public int getPlayerRow() {
+		return PlayerRow;
+	}
 	
+	public void UpdateRow(int playerRow) { //function that update player's row
+		PlayerRow = playerRow;
+	}
+	public void UpdateCol(int playerCol) { //function that update player's column
+		PlayerCol = playerCol;
+	}
+
 }
