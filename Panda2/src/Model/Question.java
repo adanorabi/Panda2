@@ -20,6 +20,47 @@ public class Question {
 		TrueAnswer = trueAnswer;
 	}
 
+	public int getQuestionId() {
+		return QuestionId;
+	}
+
+	public void setQuestionId(int questionId) {
+		QuestionId = questionId;
+	}
+
+	public Levels getQLevel() {
+		return QLevel;
+	}
+
+	public void setQLevel(Levels qLevel) {
+		QLevel = qLevel;
+	}
+
+	public String getContent() {
+		return Content;
+	}
+
+	public void setContent(String content) {
+		Content = content;
+	}
+
+	public ArrayList<String> getAnswer() {
+		return Answer;
+	}
+
+	public void setAnswer(ArrayList<String> answer) {
+		Answer = answer;
+	}
+
+	public String getTrueAnswer() {
+		return TrueAnswer;
+	}
+
+	public void setTrueAnswer(String trueAnswer) {
+		TrueAnswer = trueAnswer;
+	}
+
+	
 	
 	
 }
