@@ -285,7 +285,278 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
 		lblNewLabel_2.setBounds(723, 93, 100, 130);
 		contentPane.add(lblNewLabel_2);
+		//player2 info ************************
+		JLabel lblNewLabel_2 = new JLabel("player2 nickname:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblNewLabel_2.setBounds(580, 96, 350, 20);
+		contentPane.add(lblNewLabel_2);
+
+		textField2 = new JTextField();
+		textField2.setBounds(760, 101, 100, 19);
+		contentPane.add(textField2);
+		textField2.setColumns(10);
+
+		JLabel lblNewLabel_1_2 = new JLabel("player2 color:");
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblNewLabel_1_2.setBounds(580, 140, 400, 20);
+		contentPane.add(lblNewLabel_1_2);
+
+		redRadioButton2 = new JRadioButton("Red");
+		redRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		redRadioButton2.setBackground(new Color(173, 216, 230));
+		redRadioButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (redRadioButton2.isSelected()) {
+					redRadioButton2.setForeground(Color.RED);
+					greenRadioButton2.setForeground(Color.black);
+					blueRadioButton2.setForeground(Color.black);
+					yRadioButton2.setForeground(Color.black);
+					if(NumofPlayers>=3) {
+						disableAndMarkColorButton(redRadioButton3);
+						if(NumofPlayers==4)
+							disableAndMarkColorButton(redRadioButton2_1);
+					}
+					if(greenRadioButton.isSelected()&&NumofPlayers>=3) {//done
+						disableAndMarkColorButton(greenRadioButton3);
+						enableColorButton(blueRadioButton3);
+						enableColorButton(yRadioButton3);
+						greenRadioButton3.setSelected(false);
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(greenRadioButton2_1);
+							enableColorButton(blueRadioButton2_1);
+							enableColorButton(yRadioButton2_1);
+							greenRadioButton2_1.setSelected(false);
+						}
+					}else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(blueRadioButton2_1);
+							enableColorButton(greenRadioButton2_1);
+							enableColorButton(yRadioButton2_1);
+							blueRadioButton2_1.setSelected(false);
+						}
+						disableAndMarkColorButton(blueRadioButton3);
+						enableColorButton(greenRadioButton3);
+						enableColorButton(yRadioButton3);
+						blueRadioButton3.setSelected(false);
+					}else if(yRadioButton.isSelected()&&NumofPlayers>=3) {
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(yRadioButton2_1);
+							enableColorButton(greenRadioButton2_1);
+							enableColorButton(blueRadioButton2_1);
+							yRadioButton2_1.setSelected(false);
+						}
+						disableAndMarkColorButton(yRadioButton3);
+						enableColorButton(greenRadioButton3);
+						enableColorButton(blueRadioButton3);
+						yRadioButton3.setSelected(false);
+					}
+
+				}
+			}
+		});
+		redRadioButton2.setBounds(580, 200, 70, 23);
+		contentPane.add(redRadioButton2);
+		buttonGroup2.add(redRadioButton2);
+
+		greenRadioButton2 = new JRadioButton("Green");
+		greenRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		greenRadioButton2.setBackground(new Color(173, 216, 230));
+		greenRadioButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (greenRadioButton2.isSelected()) {
+					redRadioButton2.setForeground(Color.black);
+					greenRadioButton2.setForeground((new Color(0, 153, 0)));
+					blueRadioButton2.setForeground(Color.black);
+					yRadioButton2.setForeground(Color.black);
+					if(NumofPlayers>=3) {
+						disableAndMarkColorButton(greenRadioButton3);
+						if(NumofPlayers==4)
+							disableAndMarkColorButton(greenRadioButton2_1);
+					}
+					if(redRadioButton.isSelected()&&NumofPlayers>=3) {//done
+						disableAndMarkColorButton(redRadioButton3);
+						enableColorButton(blueRadioButton3);
+						enableColorButton(yRadioButton3);
+						redRadioButton3.setSelected(false);
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(redRadioButton2_1);
+							enableColorButton(blueRadioButton2_1);
+							enableColorButton(yRadioButton2_1);
+							redRadioButton2_1.setSelected(false);
+						}
+					}else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(blueRadioButton2_1);
+							enableColorButton(redRadioButton2_1);
+							enableColorButton(yRadioButton2_1);
+							blueRadioButton2_1.setSelected(false);
+						}
+						disableAndMarkColorButton(blueRadioButton3);
+						enableColorButton(redRadioButton3);
+						enableColorButton(yRadioButton3);
+						blueRadioButton3.setSelected(false);
+					}else if(yRadioButton.isSelected()&&NumofPlayers>=3) {
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(yRadioButton2_1);
+							enableColorButton(redRadioButton2_1);
+							enableColorButton(blueRadioButton2_1);
+							yRadioButton2_1.setSelected(false);
+						}
+						disableAndMarkColorButton(yRadioButton3);
+						enableColorButton(redRadioButton3);
+						enableColorButton(blueRadioButton3);
+						yRadioButton3.setSelected(false);
+					}
+
+				}
+			}
+		});
+		greenRadioButton2.setBounds(660, 200, 90, 23);
+		contentPane.add(greenRadioButton2);
+		buttonGroup2.add(greenRadioButton2);
+
+		blueRadioButton2 = new JRadioButton("Blue");
+		blueRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		blueRadioButton2.setBackground(new Color(173, 216, 230));
+		blueRadioButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (blueRadioButton2.isSelected()) {
+					redRadioButton2.setForeground(Color.BLACK);
+					greenRadioButton2.setForeground(Color.BLACK);
+					blueRadioButton2.setForeground(Color.BLUE);
+					yRadioButton2.setForeground(Color.BLACK);
+
+					// Disable blue for player 3 and player 4
+					if (NumofPlayers >= 3) {
+						disableAndMarkColorButton(blueRadioButton3);
+						if (NumofPlayers == 4) {
+							disableAndMarkColorButton(blueRadioButton2_1);
+						}
+					}
+
+					// Handle color buttons for player 3 and player 4 when NumofPlayers is greater than or equal to 3
+					if (redRadioButton.isSelected() && NumofPlayers >= 3) {
+						disableAndMarkColorButton(redRadioButton3);
+						enableColorButton(greenRadioButton3); // Change to greenRadioButton3
+						enableColorButton(yRadioButton3);
+						redRadioButton3.setSelected(false);
+						if (NumofPlayers == 4) {
+							disableAndMarkColorButton(redRadioButton2_1);
+							enableColorButton(greenRadioButton2_1);
+							enableColorButton(yRadioButton2_1);
+							redRadioButton2_1.setSelected(false);
+						}
+					} else if (greenRadioButton.isSelected() && NumofPlayers >= 3) {
+						if (NumofPlayers == 4) {
+							disableAndMarkColorButton(greenRadioButton2_1);
+							enableColorButton(redRadioButton2_1);
+							enableColorButton(yRadioButton2_1);
+							blueRadioButton2_1.setSelected(false);
+						}
+						disableAndMarkColorButton(greenRadioButton3);
+						enableColorButton(redRadioButton3);
+						enableColorButton(yRadioButton3);
+						blueRadioButton3.setSelected(false);
+					} else if (yRadioButton.isSelected() && NumofPlayers >= 3) {
+						if (NumofPlayers == 4) {
+							disableAndMarkColorButton(yRadioButton2_1);
+							enableColorButton(greenRadioButton2_1);
+							enableColorButton(redRadioButton2_1);
+							yRadioButton2_1.setSelected(false);
+						}
+						disableAndMarkColorButton(yRadioButton3);
+						enableColorButton(greenRadioButton3);
+						enableColorButton(redRadioButton3);
+						blueRadioButton3.setSelected(false);
+					}
+				}
+			}
+
+		});
+
+		blueRadioButton2.setBounds(767, 200, 70, 23);
+		contentPane.add(blueRadioButton2);
+		buttonGroup2.add(blueRadioButton2);
+		yRadioButton2 = new JRadioButton("yellow");
+		yRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
+		yRadioButton2.setBackground(new Color(173, 216, 230));
+		yRadioButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (yRadioButton2.isSelected()) {
+					yRadioButton2.setForeground(Color.YELLOW);
+					greenRadioButton2.setForeground(Color.black);
+					blueRadioButton2.setForeground(Color.black);
+					redRadioButton2.setForeground(Color.black);
+
+					if(NumofPlayers>=3) {
+						disableAndMarkColorButton(yRadioButton3);
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(yRadioButton2_1);
+							System.out.println("yellow");
+						}
+					}
+					if(redRadioButton.isSelected()&&NumofPlayers>=3) {//red
+						disableAndMarkColorButton(redRadioButton3);
+						enableColorButton(blueRadioButton3);
+						enableColorButton(greenRadioButton3);
+						redRadioButton3.setSelected(false);
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(redRadioButton2_1);
+							enableColorButton(blueRadioButton2_1);
+							enableColorButton(greenRadioButton2_1);
+							redRadioButton2_1.setSelected(false);
+						}
+					}
+
+					if(greenRadioButton.isSelected()&&NumofPlayers>=3) {//green
+						disableAndMarkColorButton(greenRadioButton3);
+						enableColorButton(blueRadioButton3);
+						enableColorButton(redRadioButton3);
+						greenRadioButton3.setSelected(false);
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(greenRadioButton2_1);
+							enableColorButton(blueRadioButton2_1);
+							enableColorButton(redRadioButton2_1);
+							greenRadioButton2_1.setSelected(false);
+						}
+					}
+
+					else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {//yellow
+						if(NumofPlayers==4) {
+							disableAndMarkColorButton(blueRadioButton2_1);
+							enableColorButton(greenRadioButton2_1);
+							enableColorButton(redRadioButton2_1);
+							blueRadioButton2_1.setSelected(false);
+						}
+						disableAndMarkColorButton(blueRadioButton3);
+						enableColorButton(greenRadioButton3);
+						enableColorButton(redRadioButton3);
+						blueRadioButton3.setSelected(false);
+					}
+
+				}
+			}
+		});
+		yRadioButton2.setBounds(845, 200, 100, 23);
+		contentPane.add(yRadioButton2);
+		buttonGroup2.add(yRadioButton2);
+
+		lblNewLabel_2 = new JLabel("");
+
+
+		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
+
+		JLabel lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setBounds(363, 242, 900, 13);
+		contentPane.add(lblNewLabel_7);
+
+		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setBounds(613, -14, 100, 130);
+		contentPane.add(lblNewLabel_2_1);
+		lblNewLabel_2.setBounds(199, 93, 100, 130);
+		contentPane.add(lblNewLabel_2);
 		
+
 	//add actionl func
 
 }
