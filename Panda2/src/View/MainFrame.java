@@ -43,6 +43,12 @@ public class MainFrame extends JFrame implements ActionListener{
 		btnNewButton_2.setBounds(584, 418, 125, 130);
 		contentPane.add(btnNewButton_2);
 
+		JButton btnNewButton_3 = new JButton("New button");/*adding q button*/
+		
+		btnNewButton_3.setIcon(new ImageIcon(getClass().getResource("/View/img/question.png")));
+		btnNewButton_3.setBackground(Color.CYAN);
+		btnNewButton_3.setBounds(427, 418, 125, 130);
+		contentPane.add(btnNewButton_3);
 		
 		
 	}//			
