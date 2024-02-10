@@ -36,7 +36,13 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		contentPane.add(btnNewButton);
 
-		
+
+		JButton btnNewButton_2 = new JButton("hist");/*adding history button*/
+		btnNewButton_2.setIcon(new ImageIcon(getClass().getResource("/View/img/history.png")));
+		btnNewButton_2.setBackground(Color.CYAN);
+		btnNewButton_2.setBounds(584, 418, 125, 130);
+		contentPane.add(btnNewButton_2);
+
 		
 		
 	}//			
