@@ -53,5 +53,12 @@ public class Player {
 	public int getPlayerRow() {
 		return PlayerRow;
 	}
+	
+	public void UpdateRow(int playerRow) { //function that update player's row
+		PlayerRow = playerRow;
+	}
+	public void UpdateCol(int playerCol) { //function that update player's column
+		PlayerCol = playerCol;
+	}
 
 }
