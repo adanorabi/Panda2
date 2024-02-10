@@ -381,6 +381,71 @@ public class Game {
 
 		}
 	}
+	public void placeLadders() {
+		Boolean flag=true;
+		if (this.GameLevel==Levels.Easy) {
+			for(int i=0;i<4;i++) {
+				Ladder ladder=new Ladder(i+1);
+				Ladders.add(ladder);
+				while(flag) {
+					ladder.LadderRandom (Levels.Easy, ladder);
+					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
+						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
+						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
+						
+						flag=false;
+					}
+
+
+				}
+				flag=true;
+			}
+			for (int r =0; r<7; r++) {
+				System.out.println("");
+
+				for (int j =0; j<7; j++) {
+				
+					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
+				}
+
+			}
+
+		}
+		else if(this.GameLevel==Levels.Medium)  {
+			for(int i=0;i<6;i++) {
+				Ladder ladder=new Ladder(i+1);
+				Ladders.add(ladder);
+				while(flag) {
+					ladder.LadderRandom (Levels.Medium, ladder);
+					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
+						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
+						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
+						flag=false;
+					}
+
+
+				}
+				flag=true;
+			}
+
+		}
+		else {
+			for(int i=0;i<8;i++) {
+				Ladder ladder=new Ladder(i+1);
+				Ladders.add(ladder);
+				while(flag) {
+					ladder.LadderRandom (Levels.Hard, ladder);
+					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
+						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
+						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
+						flag=false;
+					}
+
+				}
+				flag=true;
+			}
+		}
+	}
 	
 
 }
