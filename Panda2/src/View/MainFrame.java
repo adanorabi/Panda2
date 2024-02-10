@@ -35,6 +35,12 @@ public class MainFrame extends JFrame implements ActionListener{
 		btnNewButton.setBounds(427, 266, 125, 130);
 		
 		contentPane.add(btnNewButton);
+		JButton btnNewButton_1 = new JButton("inst");/*adding instructions button*/
+		
+		btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/View/img/instructions.png")));
+		btnNewButton_1.setBackground(Color.YELLOW);
+		btnNewButton_1.setBounds(584, 266, 125, 130);
+		contentPane.add(btnNewButton_1);
 
 
 		JButton btnNewButton_2 = new JButton("hist");/*adding history button*/
@@ -49,6 +55,11 @@ public class MainFrame extends JFrame implements ActionListener{
 		btnNewButton_3.setBackground(Color.CYAN);
 		btnNewButton_3.setBounds(427, 418, 125, 130);
 		contentPane.add(btnNewButton_3);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(10, 10, 1106, 645);
+		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/MainBG.png")));
+		contentPane.add(lblNewLabel);
+		
 		
 		
 	}//			
