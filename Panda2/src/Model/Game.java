@@ -7,19 +7,19 @@ import Enum.Levels;
 import Enum.SnakeColor;
 
 public class Game {
-	
+
 	private int GameId;
 	private Levels GameLevel;
 	private int RowsNum;
 	private int ColsNum;
 	private int Places[][];
 	private int WinnerId;
-	private ArrayList<Integer> CurentTurn= new ArrayList<Integer>() ;
-	private ArrayList<Player> Players= new ArrayList<Player>() ;
-	private ArrayList<Snake> Snakes= new ArrayList<Snake>() ;
-	private ArrayList<Ladder> Ladders= new ArrayList<Ladder>() ;
+	private ArrayList<Integer> CurentTurn ;
+	private ArrayList<Player> Players;
+	private ArrayList<Snake> Snakes ;
+	private ArrayList<Ladder> Ladders ;
 	private Dice dice;
-	private ArrayList<Square> Squares= new ArrayList<Square>() ;
+	private ArrayList<Square> Squares ;
 
 	public Game(int gameId, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
@@ -28,6 +28,11 @@ public class Game {
 		RowsNum = rowsNum;
 		ColsNum = colsNum;
 		Places=new int[RowsNum][ColsNum];
+		CurentTurn= new ArrayList<Integer>() ;
+		Players= new ArrayList<Player>() ;
+		Snakes= new ArrayList<Snake>() ;
+		Ladders= new ArrayList<Ladder>() ;
+		Squares= new ArrayList<Square>() ;
 	}
 
 	public int getGameId() {
@@ -125,7 +130,7 @@ public class Game {
 	public void setSquares(ArrayList<Square> squares) {
 		Squares = squares;
 	}
-	
+
 	public void createGame() {
 
 
@@ -240,7 +245,7 @@ public class Game {
 			}
 		}
 	}
-	
+
 	public void placeNormalSquares() {
 
 		int i,j;
@@ -253,7 +258,7 @@ public class Game {
 		}
 
 	}
-	
+
 	public void PlaceSnakes() {
 		if(this.GameLevel.equals(Levels.Easy)) {
 			Snake redsnake=new Snake(SnakeColor.Red); 
@@ -392,7 +397,7 @@ public class Game {
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
-						
+
 						flag=false;
 					}
 
@@ -404,7 +409,7 @@ public class Game {
 				System.out.println("");
 
 				for (int j =0; j<7; j++) {
-				
+
 					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
 				}
 
@@ -446,6 +451,6 @@ public class Game {
 			}
 		}
 	}
-	
+
 
 }
