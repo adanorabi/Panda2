@@ -100,7 +100,7 @@ public class MediumLevel extends JFrame {
         contentPane.add(p2Label);
 
         // Ensure player p1 label is visible
-        p1Label.setVisible(true);
+        p2Label.setVisible(true);
 		
 		JLabel p2name = new JLabel(p2.getNickName());
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -109,21 +109,65 @@ public class MediumLevel extends JFrame {
 		System.out.println(p2.getPlayerCol());
 		/******************************p3***************/
 		
-		
-		
 		if(num>2) {
-		JLabel lblNewLabel_5 = new JLabel("p3");
-		lblNewLabel_5.setBounds(73, 310, 45, 13);
-		contentPane.add(lblNewLabel_5);
-		if(num==4) {
+			ImageIcon p3icon;
+			if(p3.getPlayerColor()==PlayerColor.Red)
+				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+			else if(p3.getPlayerColor()==PlayerColor.Green)
+				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+			else if(p3.getPlayerColor()==PlayerColor.Blue)
+				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+			else 
+				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+			Image scaledP3Image = p3icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			ImageIcon scaledP3Icon = new ImageIcon(scaledP3Image);
+			// Create a JLabel for player p2
+			p3Label = new JLabel(scaledP3Icon);
+	        p3Label.setBounds(p1X, 380, 100, 100); // Set bounds for player p1 label
+
+	        // Add player p1 label to the content pane
+	        contentPane.add(p3Label);
+
+	        // Ensure player p1 label is visible
+	        p3Label.setVisible(true);
+			
+			JLabel p3name = new JLabel(p3.getNickName());
+			p3name.setFont(new Font("Times New Roman", Font.BOLD, 16));
+			p3name.setBounds(73, 370, 200, 13);
+			contentPane.add(p3name);
+			System.out.println(p3.getPlayerCol());
 		
-		JLabel lblNewLabel_4_1 = new JLabel("p4");
-		lblNewLabel_4_1.setBounds(73, 372, 45, 13);
-		contentPane.add(lblNewLabel_4_1);
+		if(num==4) {
+			ImageIcon p4icon;
+			if(p4.getPlayerColor()==PlayerColor.Red)
+				p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+			else if(p4.getPlayerColor()==PlayerColor.Green)
+				p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+			else if(p4.getPlayerColor()==PlayerColor.Blue)
+				p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+			else 
+				p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+			Image scaledP4Image = p4icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+			ImageIcon scaledP4Icon = new ImageIcon(scaledP4Image);
+			// Create a JLabel for player p2
+			p3Label = new JLabel(scaledP4Icon);
+	        p3Label.setBounds(p1X, 480, 100, 100); // Set bounds for player p1 label
+
+	        // Add player p1 label to the content pane
+	        contentPane.add(p4Label);
+
+	        // Ensure player p1 label is visible
+	        p4Label.setVisible(true);
+			
+			JLabel p4name = new JLabel(p4.getNickName());
+			p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
+			p4name.setBounds(73, 470, 200, 13);
+			contentPane.add(p4name);
+			System.out.println(p4.getPlayerCol());
 		}
 		}
 
-
+/********************p4***********/
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
