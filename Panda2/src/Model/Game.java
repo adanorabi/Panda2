@@ -401,15 +401,7 @@ public class Game {
 				}
 				flag=true;
 			}
-			for (int r =0; r<7; r++) {
-				System.out.println("");
 
-				for (int j =0; j<7; j++) {
-
-					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
-				}
-
-			}
 
 		}
 		else if(this.GameLevel==Levels.Medium)  {
