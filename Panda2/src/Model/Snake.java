@@ -280,5 +280,19 @@ public class Snake {
 			}
 		}
 	}
+	
+	public int[] MovePlayerDown (int playerX, int playerY){
+		
+		int XYTail[]=new int[2];
+		
+		if(this.getXHeadNum()==playerX && this.getYHeadNum()==playerY) {
+			
+
+			XYTail[0]=this.getXTailNum();
+			XYTail[1]=this.getYTailNum();
+		}
+		return XYTail;
+		
+	}
 
 }

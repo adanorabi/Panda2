@@ -8,7 +8,7 @@ public class Question {
 	private int QuestionId;
 	private Levels QLevel;
 	private String Content;
-	private ArrayList<String> Answer = new ArrayList<String>(); 
+	private ArrayList<String> Answer;
 	private String TrueAnswer;
 	
 	public Question(int questionId, Levels qLevel, String content, ArrayList<String> answer, String trueAnswer) {
@@ -16,7 +16,7 @@ public class Question {
 		QuestionId = questionId;
 		QLevel = qLevel;
 		Content = content;
-		Answer = answer;
+		Answer =  new ArrayList<String>(); 
 		TrueAnswer = trueAnswer;
 	}
 
