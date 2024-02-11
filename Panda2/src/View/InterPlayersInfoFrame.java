@@ -1141,23 +1141,30 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					throw new UnvalidExceptions("you can not enter the same nickname!!");
 				}else {
 					PlayerColor color;
-					ButtonModel colorString1 = buttonGroup.getSelection(); // Assuming this returns the color string
-					String colorString = colorString1.getActionCommand();
-					if (colorString.equals("Red")) {
-					    color = PlayerColor.Red;
-					} else if (colorString.equals("Green")) {
-					    color = PlayerColor.Green;
-					} else if (colorString.equals("Blue")) {
-					    color = PlayerColor.Blue;
+					ButtonModel selectedButtonModel = buttonGroup.getSelection();
+					if (selectedButtonModel != null) {
+					    String colorString = selectedButtonModel.getActionCommand();
+					    if (colorString.equals("Red")) {
+						    color = PlayerColor.Red;
+						} else if (colorString.equals("Green")) {
+						    color = PlayerColor.Green;
+						} else if (colorString.equals("Blue")) {
+						    color = PlayerColor.Blue;
+						} else {
+						    // Handle the case where the color string is not recognized
+						    // For example, you could throw an exception or set a default color
+						    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+						}
+						System.out.println(color);
+						 p1=new Player(1,color,textField.getText(),0,0);
+					
+					  
 					} else {
-					    // Handle the case where the color string is not recognized
-					    // For example, you could throw an exception or set a default color
-					    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+					    // Handle the case where no radio button is selected
 					}
-					System.out.println(color);
-					 p1=new Player(1,color,textField.getText(),0,0);
-					 colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
-					 colorString = colorString1.getActionCommand();
+					
+					 ButtonModel colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
+					 String colorString = colorString1.getActionCommand();
 					if (colorString.equals("Red")) {
 					    color = PlayerColor.Red;
 					} else if (colorString.equals("Green")) {
