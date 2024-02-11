@@ -39,6 +39,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 	private JLabel lblsur;
 	private JLabel lblq;
 	private JLabel lblLadder; 
+	private JButton diceButton;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -68,12 +69,18 @@ public class EasyLevel extends JFrame implements ActionListener {
 		lblEasyTable.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/easytable.png")));
 		lblEasyTable.setBounds(214, 125, 861, 602);
 		contentPane.add(lblEasyTable);
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-1.png")));
-		lblNewLabel_2.setBounds(27, 633, 150, 150);
-		contentPane.add(lblNewLabel_2);
+		int num=(int) ((Math.random() * 4) + 1);
 
-
+		 diceButton = new JButton();
+		    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-1.png")));
+		    diceButton.setBounds(27, 633, 150, 150);
+		    diceButton.addActionListener(new ActionListener() {
+		        @Override
+		        public void actionPerformed(ActionEvent e) {
+		            rollDice(num);
+		        }
+		    });
+		contentPane.add(diceButton);
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200, 900);
@@ -469,5 +476,10 @@ public class EasyLevel extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	private void rollDice(int num) {
+
+	    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-" + num + ".png")));
+	    
 	}
 }
