@@ -13,11 +13,11 @@ public class Player {
 
 	public Player(int playerID, Color playerColor, String nickName, int playerCol, int playerRow) {
 		super();
-		PlayerID = playerID;
+		this.PlayerID = playerID;
 		this.playerColor = playerColor;
 		this.nickName = nickName;
-		PlayerCol = playerCol;
-		PlayerRow = playerRow;
+		this.PlayerCol = playerCol;
+		this.PlayerRow = playerRow;
 	}
 
 	public int getPlayerID() {

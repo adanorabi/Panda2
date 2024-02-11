@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicRadioButtonUI;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import Model.*;
+import Enum.*;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
@@ -1137,6 +1137,22 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				else if(textField.getText().equals(textField2.getText()))
 				{
 					throw new UnvalidExceptions("you can not enter the same nickname!!");
+				}else {
+					Color color;
+					String colorString = buttonGroup.getSelection().toString(); // Assuming this returns the color string
+					if (colorString.equals("Red")) {
+					    color = Color.RED;
+					} else if (colorString.equals("Green")) {
+					    color = Color.GREEN;
+					} else if (colorString.equals("Blue")) {
+					    color = Color.BLUE;
+					} else {
+					    // Handle the case where the color string is not recognized
+					    // For example, you could throw an exception or set a default color
+					    color = Color.YELLOW; // Assuming you have a default color defined in your enum
+					}
+
+					Player p1=new Player(1,Color.color,textField.getText(),0,0);
 				}
 				if(Num==3) {
 					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
