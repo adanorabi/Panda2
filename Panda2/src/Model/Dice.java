@@ -104,7 +104,7 @@ public class Dice {
 
 
 	}
-	public Question CallQuestion(int questionLevel) {
+	//public Question CallQuestion(int questionLevel) {
 		
-	}
+	//}
 }
