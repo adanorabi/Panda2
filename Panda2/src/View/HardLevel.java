@@ -58,6 +58,40 @@ public class HardLevel extends JFrame {
 				g.placeNormalSquares();
 				g.PlaceSnakes();
 				g.placeLadders();
+				int i, j;
+				
+				for(i=0; i<g.getSnakes().size();i++)
+				{
+					SnakeColor color= g.getSnakes().get(i).getColor();
+					int xHead=g.getSnakes().get(i).getXHeadNum();
+					int xTail=g.getSnakes().get(i).getXTailNum();
+					int yHead=g.getSnakes().get(i).getYHeadNum();
+					int yTail=g.getSnakes().get(i).getYTailNum();
+					if(color==SnakeColor.Blue)
+					{
+						setbluesnake(xHead,yHead,xTail,yTail);
+						System.out.println("bluessnake (" +xHead  + "," + yHead+ "," + xTail+ "," + yTail+ "):" );
+
+					}
+					else if(color==SnakeColor.Green)
+					{
+						setgreensnake(xHead,yHead,xTail,yTail);
+						System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+					}
+					else if(color==SnakeColor.Red)
+					{
+						setredsnake(xHead,yHead);
+						System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
+
+					}
+					else if (color==SnakeColor.Yellow)
+					{
+						setyellowsnake(xHead, yHead, xTail, yTail);
+						System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+					}
+				}
 
 	}
 
