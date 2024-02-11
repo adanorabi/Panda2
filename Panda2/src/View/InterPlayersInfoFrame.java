@@ -1,30 +1,7 @@
 package View;
 
-import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.basic.BasicRadioButtonUI;
-
-import Enum.Levels;
-
-import java.awt.EventQueue;
-
+import Controller.*;
 import Enum.Levels;
 
 import javax.swing.JFrame;
@@ -1147,7 +1124,72 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		button.setForeground(Color.BLACK); // Reset color to indicate it's enabled
 		button.setUI(new BasicRadioButtonUI());
 	}
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String s=e.getActionCommand();
+		if(s.equals("next")) {
+			try {
+				if(textField.getText().equals("")||textField2.getText().equals("")||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
+				{
+					throw new FieldIisNull();
+				}
 
+				else if(textField.getText().equals(textField2.getText()))
+				{
+					throw new UnvalidExceptions("you can not enter the same nickname!!");
+				}
+				if(Num==3) {
+					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
+					{
+						throw new FieldIisNull();
+					}
+
+					else if(textField.getText().equals(textField2.getText())||textField.getText().equals(textField3.getText())||textField3.getText().equals(textField2.getText()))
+					{
+						throw new UnvalidExceptions("you can not enter the same nickname!!");
+					}
+					
+				}
+				if(Num==4) {
+					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||textField_1.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup4.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
+					{
+						throw new FieldIisNull();
+					}
+
+					else if(textField.getText().equals(textField2.getText())||textField.getText().equals(textField3.getText())||textField.getText().equals(textField_1.getText())||textField3.getText().equals(textField2.getText())||textField_1.getText().equals(textField2.getText())||textField3.getText().equals(textField_1.getText()))
+					{
+						throw new UnvalidExceptions("you can not enter the same nickname!!");
+					}
+					
+				}
+				if(Levels.Easy==level)
+				{
+					EasyLevel easyBoard= new EasyLevel();
+					setVisible(false);
+					easyBoard.setVisible(true);
+				}
+				else if(Levels.Medium==level)
+				{
+					MediumLevel medBoard= new MediumLevel();
+					setVisible(false);
+					medBoard.setVisible(true);
+				}
+				else if(Levels.Hard==level)
+				{
+					HardLevel hardBoard= new HardLevel();
+					setVisible(false);
+					hardBoard.setVisible(true);
+				}
+			}
+			catch (FieldIisNull ev){
+				JOptionPane.showMessageDialog(contentPane,ev.getMessage());	
+			} catch (UnvalidExceptions ex) {
+				JOptionPane.showMessageDialog(contentPane, ex.getMessage(), "Invalid Input", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+
+	}
+}
 	//add actionl func
 
-}
+
