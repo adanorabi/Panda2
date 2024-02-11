@@ -1,21 +1,33 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.List;
 
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
 import Model.Game;
+import Model.Question;
 import Enum.*;
 
 
-public class MediumLevel extends JFrame {
+public class MediumLevel extends JFrame implements ActionListener{
 	private JPanel contentPane;
 
 	private JLabel lblSnake; 
@@ -375,6 +387,71 @@ public class MediumLevel extends JFrame {
 		// Repaint the content pane to ensure the changes
 		contentPane.revalidate();
 		contentPane.repaint();
+	}
+	public void displayQuestionWindow(Question question) {
+	    // Create a new JDialog to display the question window
+	    JDialog questionDialog = new JDialog(this, "Question", Dialog.ModalityType.MODELESS);
+	    questionDialog.setSize(400, 300);
+	    questionDialog.setLocationRelativeTo(this); // Center the window relative to EasyLevel frame
+
+	    // Create a JPanel to hold the question and answers
+	    JPanel questionPanel = new JPanel();
+	    questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
+
+	    // Create a JLabel to display the question text
+	    JLabel questionLabel = new JLabel(question.getContent());
+	    questionPanel.add(questionLabel);
+
+	    // Shuffle the answers randomly
+	    List<String> answers = question.getAnswer();
+	    Collections.shuffle(answers);
+
+	    // Create JRadioButtons for each answer
+	    ButtonGroup buttonGroup = new ButtonGroup();
+	    for (String answer : answers) {
+	        JRadioButton radioButton = new JRadioButton(answer);
+	        radioButton.setActionCommand(answer);
+	        buttonGroup.add(radioButton);
+	        questionPanel.add(radioButton);
+	    }
+
+	    // Create a JButton to submit the answer
+	    JButton submitButton = new JButton("Submit");
+	    submitButton.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            // Check if any radio button is selected
+	            if (buttonGroup.getSelection() == null) {
+	                JOptionPane.showMessageDialog(questionDialog, "Please select an answer.");
+	                return; // Exit the method without further processing
+	            }
+
+	            // Get the selected answer
+	            String selectedAnswer = buttonGroup.getSelection().getActionCommand();
+
+	            // Check if the selected answer is correct
+	            if (selectedAnswer.equals(question.getTrueAnswer())) {
+	                JOptionPane.showMessageDialog(questionDialog, "Correct!");
+	            } else {
+	                JOptionPane.showMessageDialog(questionDialog, "Incorrect. The correct answer is: " + question.getTrueAnswer());
+	            }
+
+	            // Close the question dialog
+	            questionDialog.dispose();
+	        }
+	    });
+	    questionPanel.add(submitButton);
+
+	    // Add the question panel to the question dialog
+	    questionDialog.add(questionPanel);
+
+	    // Make the question dialog visible
+	    questionDialog.setVisible(true);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

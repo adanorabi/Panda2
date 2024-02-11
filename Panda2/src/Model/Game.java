@@ -14,7 +14,7 @@ public class Game {
 	private int ColsNum;
 	private int Places[][];
 	private int WinnerId;
-	private ArrayList<Integer> CurentTurn ;
+	//private ArrayList<Integer> CurentTurn ;
 	private ArrayList<Player> Players;
 	private ArrayList<Snake> Snakes ;
 	private ArrayList<Ladder> Ladders ;
@@ -23,20 +23,20 @@ public class Game {
 
 	public Game(int gameId, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
-		GameId = gameId;
-		GameLevel = gameLevel;
-		RowsNum = rowsNum;
-		ColsNum = colsNum;
-		Places=new int[RowsNum][ColsNum];
-		CurentTurn= new ArrayList<Integer>() ;
-		Players= new ArrayList<Player>() ;
-		Snakes= new ArrayList<Snake>() ;
-		Ladders= new ArrayList<Ladder>() ;
-		Squares= new ArrayList<Square>() ;
+		this.GameId = gameId;
+		this.GameLevel = gameLevel;
+		this.RowsNum = rowsNum;
+		this.ColsNum = colsNum;
+		this.Places=new int[RowsNum][ColsNum];
+		//this.CurentTurn= new ArrayList<Integer>() ;
+		this.Players= new ArrayList<Player>() ;
+		this.Snakes= new ArrayList<Snake>() ;
+		this.Ladders= new ArrayList<Ladder>() ;
+		this.Squares= new ArrayList<Square>() ;
 	}
 
 	public int getGameId() {
-		return GameId;
+		return this.GameId;
 	}
 
 	public void setGameId(int gameId) {
@@ -44,7 +44,7 @@ public class Game {
 	}
 
 	public Levels getGameLevel() {
-		return GameLevel;
+		return this.GameLevel;
 	}
 
 	public void setGameLevel(Levels gameLevel) {
@@ -52,7 +52,7 @@ public class Game {
 	}
 
 	public int getRowsNum() {
-		return RowsNum;
+		return this.RowsNum;
 	}
 
 	public void setRowsNum(int rowsNum) {
@@ -60,7 +60,7 @@ public class Game {
 	}
 
 	public int getColsNum() {
-		return ColsNum;
+		return this.ColsNum;
 	}
 
 	public void setColsNum(int colsNum) {
@@ -68,7 +68,7 @@ public class Game {
 	}
 
 	public int[][] getPlaces() {
-		return Places;
+		return this.Places;
 	}
 
 	public void setPlaces(int[][] places) {
@@ -76,23 +76,23 @@ public class Game {
 	}
 
 	public int getWinnerId() {
-		return WinnerId;
+		return this.WinnerId;
 	}
 
 	public void setWinnerId(int winnerId) {
 		this.WinnerId = winnerId;
 	}
 
-	public ArrayList<Integer> getCurentTurn() {
-		return CurentTurn;
-	}
-
-	public void setCurentTurn(ArrayList<Integer> curentTurn) {
-		CurentTurn = curentTurn;
-	}
+//	public ArrayList<Integer> getCurentTurn() {
+//		return CurentTurn;
+//	}
+//
+//	public void setCurentTurn(ArrayList<Integer> curentTurn) {
+//		CurentTurn = curentTurn;
+//	}
 
 	public ArrayList<Player> getPlayers() {
-		return Players;
+		return this.Players;
 	}
 
 	public void setPlayers(ArrayList<Player> players) {
@@ -100,7 +100,7 @@ public class Game {
 	}
 
 	public ArrayList<Snake> getSnakes() {
-		return Snakes;
+		return this.Snakes;
 	}
 
 	public void setSnakes(ArrayList<Snake> snakes) {
@@ -108,7 +108,7 @@ public class Game {
 	}
 
 	public ArrayList<Ladder> getLadders() {
-		return Ladders;
+		return this.Ladders;
 	}
 
 	public void setLadders(ArrayList<Ladder> ladders) {
@@ -116,7 +116,7 @@ public class Game {
 	}
 
 	public Dice getDice() {
-		return dice;
+		return this.dice;
 	}
 
 	public void setDice(Dice dice) {
@@ -124,7 +124,7 @@ public class Game {
 	}
 
 	public ArrayList<Square> getSquares() {
-		return Squares;
+		return this.Squares;
 	}
 
 	public void setSquares(ArrayList<Square> squares) {
