@@ -37,7 +37,28 @@ public class HardLevel extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		// Label for the Hardtable image
+				lblHardTable = new JLabel("");
+				lblHardTable.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/hard.jpg")));
+				lblHardTable.setBounds(171,130, 1005, 560);/*43 */
+				contentPane.add(lblHardTable);
+				
+				JLabel lblNewLabel_2 = new JLabel("");
+				lblNewLabel_2.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/dice-1.png")));
+				lblNewLabel_2.setBounds(27, 633, 150, 150);
+				contentPane.add(lblNewLabel_2);
+
+				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/game.png")));
+				lblNewLabel.setBounds(0, 0, 1200, 900);//
+				contentPane.add(lblNewLabel);
+				Game g=new Game(3, Levels.Hard,13, 13);
+				g.createGame();
+				g.PlacespecialSquares(Levels.Hard);
+				g.placeNormalSquares();
+				g.PlaceSnakes();
+				g.placeLadders();
+
 	}
 
 }
