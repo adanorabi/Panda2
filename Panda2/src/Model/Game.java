@@ -56,7 +56,7 @@ public class Game {
 	}
 
 	public void setRowsNum(int rowsNum) {
-		RowsNum = rowsNum;
+		this.RowsNum = rowsNum;
 	}
 
 	public int getColsNum() {
@@ -64,7 +64,7 @@ public class Game {
 	}
 
 	public void setColsNum(int colsNum) {
-		ColsNum = colsNum;
+		this.ColsNum = colsNum;
 	}
 
 	public int[][] getPlaces() {
@@ -80,7 +80,7 @@ public class Game {
 	}
 
 	public void setWinnerId(int winnerId) {
-		WinnerId = winnerId;
+		this.WinnerId = winnerId;
 	}
 
 	public ArrayList<Integer> getCurentTurn() {
@@ -96,7 +96,7 @@ public class Game {
 	}
 
 	public void setPlayers(ArrayList<Player> players) {
-		Players = players;
+		this.Players = players;
 	}
 
 	public ArrayList<Snake> getSnakes() {
@@ -104,7 +104,7 @@ public class Game {
 	}
 
 	public void setSnakes(ArrayList<Snake> snakes) {
-		Snakes = snakes;
+		this.Snakes = snakes;
 	}
 
 	public ArrayList<Ladder> getLadders() {
@@ -112,7 +112,7 @@ public class Game {
 	}
 
 	public void setLadders(ArrayList<Ladder> ladders) {
-		Ladders = ladders;
+		this.Ladders = ladders;
 	}
 
 	public Dice getDice() {
@@ -128,7 +128,7 @@ public class Game {
 	}
 
 	public void setSquares(ArrayList<Square> squares) {
-		Squares = squares;
+		this.Squares = squares;
 	}
 
 	public void createGame() {
