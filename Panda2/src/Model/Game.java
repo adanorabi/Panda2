@@ -32,7 +32,6 @@ public class Game {
 		Players= new ArrayList<Player>() ;
 		Snakes= new ArrayList<Snake>() ;
 		Ladders= new ArrayList<Ladder>() ;
-
 		Squares= new ArrayList<Square>() ;
 	}
 
