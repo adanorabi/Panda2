@@ -102,6 +102,24 @@ public class HardLevel extends JFrame {
 					System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
 					setLadders(length,xHead,yHead,xTail,yTail);
 				}
+				for (i=0 ; i<13; i++)
+				{
+					for (j=0 ; j<13; j++ )
+					{
+						if(g.getPlaces()[i][j]==2) {
+							setsurprise(i, j);
+							System.out.println("surprise (" + i + "," + j + "):" );
+						}
+						else if(g.getPlaces()[i][j]==3) {
+							setq(i, j);
+							System.out.println("question (" + i + "," + j + "):" );
+
+						}
+					}
+				}
+
+			}
+
 
 
 	}
