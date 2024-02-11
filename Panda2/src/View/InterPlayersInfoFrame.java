@@ -1209,7 +1209,9 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						throw new UnvalidExceptions("you can not enter the same nickname!!");
 					}else {
 						PlayerColor color;
-						String colorString2 = buttonGroup.getSelection().toString(); // Assuming this returns the color string
+
+						ButtonModel colorString1 = buttonGroup3.getSelection(); // Assuming this returns the color string
+						String colorString2 =colorString1.getActionCommand(); // Assuming this returns the color string
 						if (colorString2.equals("Red")) {
 						    color = PlayerColor.Red;
 						} else if (colorString2.equals("Green")) {
