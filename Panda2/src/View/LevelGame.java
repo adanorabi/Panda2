@@ -20,30 +20,13 @@ import javax.swing.border.EmptyBorder;
 
 import Enum.Levels;
 
-public class LevelGame extends JFrame {
+public class LevelGame extends JFrame  implements ActionListener {
 
 	private JPanel contentPane;
 	private static final long serialVersionUID = 1L;
 	private JRadioButton EasyRadioButton;
 	private JRadioButton MeduimRadioButton;
 	private JRadioButton HardRadioButton;
-
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LevelGame frame = new LevelGame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
