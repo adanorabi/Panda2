@@ -73,13 +73,31 @@ public class Dice {
 		}
 
 	}
-	public void RollDice() {
+	public Object RollDice() {
 		Random random = new Random();
 		int options=this.getNumOfSides();
 		int RandOption = random.nextInt(options);
-
+		return CheckResult(RandOption); //returning the result of the dice it might be steps number or question
 	}
-	public int CheckResult(int diceResult) {
+	public Object CheckResult(int diceResult) {
+		if(this.diceOptions[diceResult]<7) {
+			return diceOptions[diceResult];
+		}
+		else {
+			if (this.diceOptions[diceResult]==7) { // the result is a random easy question 
+				Question easyQuestion =CallQuestion(1);
+				
+			}
+			else if (this.diceOptions[diceResult]==7) { // the result is a random medium question 
+					Question mediumQuestion=CallQuestion(2);
+			
+			}
+			else {			// the result is a random hard question 
+				Question hardQuestion=CallQuestion(3);
+				
+				
+			}
+		}
 
 
 	}
