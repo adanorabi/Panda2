@@ -1127,6 +1127,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String s=e.getActionCommand();
+		Player p1=null,p2=null,p3=null,p4=null;
 		if(s.equals("next")) {
 			try {
 				if(textField.getText().equals("")||textField2.getText().equals("")||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
@@ -1151,8 +1152,23 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					    // For example, you could throw an exception or set a default color
 					    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
 					}
+					 p1=new Player(1,color,textField.getText(),0,0);
+					String colorString1 = buttonGroup.getSelection().toString(); // Assuming this returns the color string
+					if (colorString1.equals("Red")) {
+					    color = PlayerColor.Red;
+					} else if (colorString1.equals("Green")) {
+					    color = PlayerColor.Green;
+					} else if (colorString1.equals("Blue")) {
+					    color = PlayerColor.Blue;
+					} else {
+					    // Handle the case where the color string is not recognized
+					    // For example, you could throw an exception or set a default color
+					    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+					}
+					
 
-					Player p1=new Player(1,color,textField.getText(),0,0);
+				
+					 p2=new Player(2,color,textField2.getText(),0,0);
 				}
 				if(Num==3) {
 					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
@@ -1163,6 +1179,23 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					else if(textField.getText().equals(textField2.getText())||textField.getText().equals(textField3.getText())||textField3.getText().equals(textField2.getText()))
 					{
 						throw new UnvalidExceptions("you can not enter the same nickname!!");
+					}else {
+						PlayerColor color;
+						String colorString2 = buttonGroup.getSelection().toString(); // Assuming this returns the color string
+						if (colorString2.equals("Red")) {
+						    color = PlayerColor.Red;
+						} else if (colorString2.equals("Green")) {
+						    color = PlayerColor.Green;
+						} else if (colorString2.equals("Blue")) {
+						    color = PlayerColor.Blue;
+						} else {
+						    // Handle the case where the color string is not recognized
+						    // For example, you could throw an exception or set a default color
+						    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+						}
+						
+
+						 p3=new Player(1,color,textField.getText(),0,0);
 					}
 					
 				}
@@ -1176,8 +1209,28 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					{
 						throw new UnvalidExceptions("you can not enter the same nickname!!");
 					}
+					else {
+						PlayerColor color;
+						String colorString3 = buttonGroup.getSelection().toString(); // Assuming this returns the color string
+						if (colorString3.equals("Red")) {
+						    color = PlayerColor.Red;
+						} else if (colorString3.equals("Green")) {
+						    color = PlayerColor.Green;
+						} else if (colorString3.equals("Blue")) {
+						    color = PlayerColor.Blue;
+						} else {
+						    // Handle the case where the color string is not recognized
+						    // For example, you could throw an exception or set a default color
+						    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+						}
+						
+
+						 p4=new Player(1,color,textField.getText(),0,0);
+					}
 					
 				}
+					
+				
 				if(Levels.Easy==level)
 				{
 					EasyLevel easyBoard= new EasyLevel();
@@ -1186,7 +1239,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 				else if(Levels.Medium==level)
 				{
-					MediumLevel medBoard= new MediumLevel();
+					MediumLevel medBoard= new MediumLevel(p1,p2,p3,p4);
 					setVisible(false);
 					medBoard.setVisible(true);
 				}
@@ -1206,6 +1259,6 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 	}
 }
-	//add actionl func
+	
 
 
