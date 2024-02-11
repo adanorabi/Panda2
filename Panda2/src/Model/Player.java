@@ -1,17 +1,17 @@
 package Model;
 
 
-import Enum.Color;
+import Enum.*;
 
 public class Player {
 
 	private int PlayerID;
-	private Color playerColor ;
+	private PlayerColor playerColor ;
 	private String nickName;
 	private int PlayerCol;
 	private int PlayerRow;
 
-	public Player(int playerID, Color playerColor, String nickName, int playerCol, int playerRow) {
+	public Player(int playerID, PlayerColor playerColor, String nickName, int playerCol, int playerRow) {
 		super();
 		this.PlayerID = playerID;
 		this.playerColor = playerColor;
@@ -28,11 +28,11 @@ public class Player {
 		PlayerID = playerID;
 	}
 
-	public Color getPlayerColor() {
+	public PlayerColor getPlayerColor() {
 		return playerColor;
 	}
 
-	public void setPlayerColor(Color playerColor) {
+	public void setPlayerColor(PlayerColor playerColor) {
 		this.playerColor = playerColor;
 	}
 
