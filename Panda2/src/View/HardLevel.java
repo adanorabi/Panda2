@@ -92,6 +92,17 @@ public class HardLevel extends JFrame {
 
 					}
 				}
+				for(i=0; i<g.getLadders().size();i++)
+				{
+					int length= g.getLadders().get(i).getLength();
+					int xHead=g.getLadders().get(i).getXEnd();
+					int xTail=g.getLadders().get(i).getXStart();
+					int yHead=g.getLadders().get(i).getYEnd();
+					int yTail=g.getLadders().get(i).getYStart();
+					System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
+					setLadders(length,xHead,yHead,xTail,yTail);
+				}
+
 
 	}
 
