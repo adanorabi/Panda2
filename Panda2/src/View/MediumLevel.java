@@ -516,7 +516,8 @@ public class MediumLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void movePlayer(int player,int x,int y) {
+
+	public void movePlayer(Player player,int x,int y) {
 		
 		
 	}
