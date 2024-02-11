@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import Enum.Levels;
@@ -77,7 +78,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 		    diceButton.addActionListener(new ActionListener() {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
-		            rollDice(num);
+		            rollDice();
 		        }
 		    });
 		contentPane.add(diceButton);
@@ -477,9 +478,35 @@ public class EasyLevel extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-	private void rollDice(int num) {
+	private void rollDice() {
+	    // Create a timer to update the dice icon every 100 milliseconds
+	    Timer timer = new Timer(100, new ActionListener() {
+	        int rollCount = 0; // Counter to track the number of rolls
+	        int finalNum; // Variable to store the final rolled number
 
-	    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-" + num + ".png")));
-	    
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            // Generate a random number between 1 and 6
+	            finalNum = (int) (Math.random() * 4) + 1;
+
+	            // Update the dice icon to display the current roll
+	            diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-" + finalNum + ".png")));
+
+	            // Increment the roll count
+	            rollCount++;
+
+	            // Stop the timer after 10 rolls (1 second) and display the final result
+	            if (rollCount >= 10) {
+	                ((Timer) e.getSource()).stop(); // Stop the timer
+	                // Update the dice icon with the final rolled number
+	                diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-" + finalNum + ".png")));
+	                
+	                // You can add further logic here based on the final rolled number if needed
+	            }
+	        }
+	    });
+
+	    // Start the timer
+	    timer.start();
 	}
 }
