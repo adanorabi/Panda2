@@ -400,4 +400,18 @@ public class Ladder {
 			}
 		}
 	}
+	
+	public int[] MovePlayerUp (int playerX, int playerY){
+		
+		int XYEnd[]=new int[2];
+		
+		if(this.getXStart()==playerX && this.getYStart()==playerY) {
+			
+
+			XYEnd[0]=this.XEnd;
+			XYEnd[1]=this.YEnd;
+		}
+		return XYEnd;
+		
+	}
 }

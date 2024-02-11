@@ -1,6 +1,6 @@
 package Enum;
 
-public enum Color {
+public enum PlayerColor {
 	Blue,Red,Yellow ,Green;
 
 }
