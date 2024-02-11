@@ -342,6 +342,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		buttonGroup2.add(redRadioButton2);
 
 		greenRadioButton2 = new JRadioButton("Green");
+		greenRadioButton2.setActionCommand("Green");
 		greenRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		greenRadioButton2.setBackground(new Color(173, 216, 230));
 		greenRadioButton2.addActionListener(new ActionListener() {
@@ -1176,8 +1177,6 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						 p1=new Player(1,color,textField.getText(),0,0);
 					
 					  
-					} else {
-					    // Handle the case where no radio button is selected
 					}
 					
 					 ButtonModel colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
