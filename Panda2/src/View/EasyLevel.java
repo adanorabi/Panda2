@@ -234,4 +234,56 @@ public class EasyLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	// set ladders
+	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
+		int ladderHeadX = 230 + xhead * 122; // Adjusted x position based on the board offset and grid size
+		int ladderHeadY = 641 - yhead * 86; // Adjusted y position based on the board offset and grid size
+		int ladderTailX = 230 + xtail * 122; // Adjusted x position based on the board offset and grid size
+		int ladderTailY = 641 - ytail * 86; // Adjusted y position based on the board offset and grid size
+		ImageIcon ladderIcon=null;
+		// Calculate the size of the snake image
+		int ladderWidth = Math.abs(ladderHeadX - ladderTailX) + 80; // Adjusted width based on grid size
+		int ladderHeight = Math.abs(ladderHeadY - ladderTailY) + 70; // Adjusted height based on grid size
+
+
+		// Load the ladder image based on the ladder type
+		switch (typeOfLader) {
+		case 1:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder1.png"));
+			break;
+		case 2:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder2.png"));
+			break;
+		case 3:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder3.png"));
+			break;
+		case 4:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder4.png"));
+			break;
+		default:
+			// Default ladder image
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/default_ladder.png"));
+			break;
+		}
+
+		// Scale down the size of the snake image
+		Image scaledLadderImage = ladderIcon.getImage().getScaledInstance(ladderWidth, ladderHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledLadderIcon = new ImageIcon(scaledLadderImage);
+		// Create a JLabel for the scaled snake image
+		lblLadder = new JLabel(scaledLadderIcon);
+		lblLadder.setBounds(ladderHeadX,ladderHeadY, ladderWidth, ladderHeight);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblLadder);
+
+		// Ensure the snake label is visible
+		lblLadder.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblLadder, 0);
+
+		// Repaint the content pane to ensure the changes are displayed
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
 }
