@@ -262,7 +262,7 @@ public class Game {
 				redsnake.SnackRandom(Levels.Easy, redsnake);
 			}
 			this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=4;
-			this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=4;
+//			this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
 			Snakes.add(redsnake);
 
 			Snake yellowsnake=new Snake(SnakeColor.Yellow); 
@@ -271,7 +271,7 @@ public class Game {
 				yellowsnake.SnackRandom(Levels.Easy, yellowsnake);
 			}
 			this.Places[yellowsnake.getXHeadNum()][yellowsnake.getYHeadNum()]=4;
-			this.Places[yellowsnake.getXTailNum()][yellowsnake.getYTailNum()]=4;
+			this.Places[yellowsnake.getXTailNum()][yellowsnake.getYTailNum()]=5;
 			Snakes.add(yellowsnake);
 
 			Snake greensnake=new Snake(SnakeColor.Green); 
@@ -280,7 +280,7 @@ public class Game {
 				greensnake.SnackRandom(Levels.Easy, greensnake);
 			}
 			this.Places[greensnake.getXHeadNum()][greensnake.getYHeadNum()]=4;
-			this.Places[greensnake.getXTailNum()][greensnake.getYTailNum()]=4;
+			this.Places[greensnake.getXTailNum()][greensnake.getYTailNum()]=5;
 			Snakes.add(greensnake);
 
 			Snake Bluesnake=new Snake(SnakeColor.Blue); 
@@ -289,7 +289,7 @@ public class Game {
 				Bluesnake.SnackRandom(Levels.Easy, Bluesnake);
 			}
 			this.Places[Bluesnake.getXHeadNum()][Bluesnake.getYHeadNum()]=4;
-			this.Places[Bluesnake.getXTailNum()][Bluesnake.getYTailNum()]=4;
+			this.Places[Bluesnake.getXTailNum()][Bluesnake.getYTailNum()]=5;
 			Snakes.add(Bluesnake);
 
 		}
@@ -301,7 +301,7 @@ public class Game {
 					redsnake.SnackRandom(Levels.Easy, redsnake);
 				}
 				this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=4;
-				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=4;
+//				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
 				Snakes.add(redsnake);
 			}
 
@@ -311,7 +311,7 @@ public class Game {
 				yellowsnake.SnackRandom(Levels.Easy, yellowsnake);
 			}
 			this.Places[yellowsnake.getXHeadNum()][yellowsnake.getYHeadNum()]=4;
-			this.Places[yellowsnake.getXTailNum()][yellowsnake.getYTailNum()]=4;
+			this.Places[yellowsnake.getXTailNum()][yellowsnake.getYTailNum()]=5;
 			Snakes.add(yellowsnake);
 
 			for(int i=0;i<2;i++) {
@@ -321,7 +321,7 @@ public class Game {
 					greensnake.SnackRandom(Levels.Easy, greensnake);
 				}
 				this.Places[greensnake.getXHeadNum()][greensnake.getYHeadNum()]=4;
-				this.Places[greensnake.getXTailNum()][greensnake.getYTailNum()]=4;
+				this.Places[greensnake.getXTailNum()][greensnake.getYTailNum()]=5;
 				Snakes.add(greensnake);
 			}
 
@@ -332,7 +332,7 @@ public class Game {
 				Bluesnake.SnackRandom(Levels.Easy, Bluesnake);
 			}
 			this.Places[Bluesnake.getXHeadNum()][Bluesnake.getYHeadNum()]=4;
-			this.Places[Bluesnake.getXTailNum()][Bluesnake.getYTailNum()]=4;
+			this.Places[Bluesnake.getXTailNum()][Bluesnake.getYTailNum()]=5;
 			Snakes.add(Bluesnake);
 		}
 		else if(this.GameLevel.equals(Levels.Hard)) {
@@ -343,7 +343,7 @@ public class Game {
 					redsnake.SnackRandom(Levels.Easy, redsnake);
 				}
 				this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=4;
-				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=4;
+//				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
 				Snakes.add(redsnake);
 			}
 			for(int i=0;i<2;i++) {
@@ -353,7 +353,7 @@ public class Game {
 					yellowsnake.SnackRandom(Levels.Easy, yellowsnake);
 				}	
 				this.Places[yellowsnake.getXHeadNum()][yellowsnake.getYHeadNum()]=4;
-				this.Places[yellowsnake.getXTailNum()][yellowsnake.getYTailNum()]=4;
+				this.Places[yellowsnake.getXTailNum()][yellowsnake.getYTailNum()]=5;
 				Snakes.add(yellowsnake);
 			}
 
@@ -364,7 +364,7 @@ public class Game {
 					greensnake.SnackRandom(Levels.Easy, greensnake);
 				}
 				this.Places[greensnake.getXHeadNum()][greensnake.getYHeadNum()]=4;
-				this.Places[greensnake.getXTailNum()][greensnake.getYTailNum()]=4;
+				this.Places[greensnake.getXTailNum()][greensnake.getYTailNum()]=5;
 				Snakes.add(greensnake);
 			}
 			for(int i=0;i<2;i++) {
@@ -374,12 +374,13 @@ public class Game {
 					Bluesnake.SnackRandom(Levels.Easy, Bluesnake);
 				}
 				this.Places[Bluesnake.getXHeadNum()][Bluesnake.getYHeadNum()]=4;
-				this.Places[Bluesnake.getXTailNum()][Bluesnake.getYTailNum()]=4;
+				this.Places[Bluesnake.getXTailNum()][Bluesnake.getYTailNum()]=5;
 				Snakes.add(Bluesnake);
 			}
 
 
 		}
+
 	}
 	public void placeLadders() {
 		Boolean flag=true;
@@ -390,8 +391,8 @@ public class Game {
 				while(flag) {
 					ladder.LadderRandom (Levels.Easy, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
-						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
-						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
+						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
+						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
 
 						flag=false;
 					}
@@ -418,8 +419,8 @@ public class Game {
 				while(flag) {
 					ladder.LadderRandom (Levels.Medium, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
-						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
-						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
+						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
+						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
 						flag=false;
 					}
 
@@ -436,13 +437,22 @@ public class Game {
 				while(flag) {
 					ladder.LadderRandom (Levels.Hard, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
-						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
-						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
+						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
+						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
 						flag=false;
 					}
 
 				}
 				flag=true;
+			}
+			for (int r =0; r<13; r++) {
+				System.out.println("");
+
+				for (int j =0; j<13; j++) {
+
+					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
+				}
+
 			}
 		}
 	}
