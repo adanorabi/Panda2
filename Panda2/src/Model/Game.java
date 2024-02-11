@@ -387,13 +387,13 @@ public class Game {
 		if (this.GameLevel==Levels.Easy) {
 			for(int i=0;i<4;i++) {
 				Ladder ladder=new Ladder(i+1);
-				Ladders.add(ladder);
+			
 				while(flag) {
 					ladder.LadderRandom (Levels.Easy, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
-
+						Ladders.add(ladder);
 						flag=false;
 					}
 
@@ -415,13 +415,14 @@ public class Game {
 		else if(this.GameLevel==Levels.Medium)  {
 			for(int i=0;i<6;i++) {
 				Ladder ladder=new Ladder(i+1);
-				Ladders.add(ladder);
+			
 				while(flag) {
 					ladder.LadderRandom (Levels.Medium, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
-						flag=false;
+						flag=false;	
+						Ladders.add(ladder);
 					}
 
 
@@ -433,12 +434,13 @@ public class Game {
 		else {
 			for(int i=0;i<8;i++) {
 				Ladder ladder=new Ladder(i+1);
-				Ladders.add(ladder);
+	
 				while(flag) {
 					ladder.LadderRandom (Levels.Hard, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
+						Ladders.add(ladder);
 						flag=false;
 					}
 
