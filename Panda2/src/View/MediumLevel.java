@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Model.Game;
+import Model.Player;
 import Enum.*;
 
 
@@ -29,7 +30,7 @@ public class MediumLevel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MediumLevel() {
+	public MediumLevel(Player p1,Player p2, Player p3,Player p4) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 100, 1200, 900);
 		contentPane = new JPanel();
@@ -375,6 +376,10 @@ public class MediumLevel extends JFrame {
 		// Repaint the content pane to ensure the changes
 		contentPane.revalidate();
 		contentPane.repaint();
+	}
+	public void movePlayer(int player,int x,int y) {
+		
+		
 	}
 
 }
