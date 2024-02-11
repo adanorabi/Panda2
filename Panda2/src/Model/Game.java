@@ -7,7 +7,7 @@ import Enum.Levels;
 import Enum.SnakeColor;
 
 public class Game {
-	
+
 	private int GameId;
 	private Levels GameLevel;
 	private int RowsNum;
@@ -28,12 +28,12 @@ public class Game {
 		RowsNum = rowsNum;
 		ColsNum = colsNum;
 		Places=new int[RowsNum][ColsNum];
-		 CurentTurn= new ArrayList<Integer>() ;
-		 Players= new ArrayList<Player>() ;
-		 Snakes= new ArrayList<Snake>() ;
-		 Ladders= new ArrayList<Ladder>() ;
-		
-	 Squares= new ArrayList<Square>() ;
+		CurentTurn= new ArrayList<Integer>() ;
+		Players= new ArrayList<Player>() ;
+		Snakes= new ArrayList<Snake>() ;
+		Ladders= new ArrayList<Ladder>() ;
+
+		Squares= new ArrayList<Square>() ;
 	}
 
 	public int getGameId() {
@@ -131,7 +131,7 @@ public class Game {
 	public void setSquares(ArrayList<Square> squares) {
 		Squares = squares;
 	}
-	
+
 	public void createGame() {
 
 
@@ -246,7 +246,7 @@ public class Game {
 			}
 		}
 	}
-	
+
 	public void placeNormalSquares() {
 
 		int i,j;
@@ -259,7 +259,7 @@ public class Game {
 		}
 
 	}
-	
+
 	public void PlaceSnakes() {
 		if(this.GameLevel.equals(Levels.Easy)) {
 			Snake redsnake=new Snake(SnakeColor.Red); 
@@ -398,7 +398,7 @@ public class Game {
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=5;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=5;
-						
+
 						flag=false;
 					}
 
@@ -410,7 +410,7 @@ public class Game {
 				System.out.println("");
 
 				for (int j =0; j<7; j++) {
-				
+
 					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
 				}
 
@@ -452,6 +452,6 @@ public class Game {
 			}
 		}
 	}
-	
+
 
 }
