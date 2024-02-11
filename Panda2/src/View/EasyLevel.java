@@ -1,7 +1,9 @@
 package View;
+import Enum.Levels;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,11 +14,19 @@ import javax.swing.border.EmptyBorder;
 import Enum.Levels;
 import Enum.SnakeColor;
 import Model.Game;
+import Model.*;
 
 public class EasyLevel extends JFrame {
 
 	private JPanel contentPane;
-
+	private JLabel lblEasyTable; // Label for the easytable image
+	private JLabel lblSnake; 
+	private JLabel glblSnake;// Label for the snake image
+	private JLabel rlblSnake;
+	private JLabel ylblSnake;
+	private JLabel lblsur;
+	private JLabel lblq;
+	private JLabel lblLadder; 
 	/**
 	 * Launch the application.
 	 */
@@ -121,5 +131,41 @@ public class EasyLevel extends JFrame {
 		}
 
 	}
+	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {
+		// Load the snake image
+		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/bluesnake2.png"));
+
+		// Calculate the position of the snake head and tail
+		int snakeHeadX = 214 + xhead * 122; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY = 641 - yhead * 86; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 214 + xtail * 122; // Adjusted x position based on the board offset and grid size
+		int snakeTailY = 641 - ytail * 86; // Adjusted y position based on the board offset and grid size
+
+		// Calculate the size of the snake image
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 122; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 86; // Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledSnakeIcon = new ImageIcon(scaledSnakeImage);
+
+		// Create a JLabel for the scaled snake image
+		lblSnake = new JLabel(scaledSnakeIcon);
+		lblSnake.setBounds(Math.min(snakeHeadX, snakeTailX), Math.min(snakeHeadY, snakeTailY), snakeWidth, snakeHeight);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblSnake);
+
+		// Ensure the snake label is visible
+		lblSnake.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblSnake, 0);
+
+		// Repaint the content pane to ensure the changes are displayed
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
+	
 
 }
