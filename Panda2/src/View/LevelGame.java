@@ -132,6 +132,29 @@ public class LevelGame extends JFrame {
             }
         });
 		
+		JButton btnNewButton_1 = new JButton("<<home page");
+		btnNewButton_1.setIcon(new ImageIcon(LevelGame.class.getResource("/View/img/hp.png")));
+	//	btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/imgs/MainBG.png")));
+		btnNewButton_1.setBounds(167, 530, 177, 27);
+		contentPane.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	MainFrame frame=new MainFrame(); 
+				setVisible(false);
+				frame.setVisible(true);
+
+            }
+        });
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/gamebg.jpg")));
+		lblNewLabel.setBounds(10, -17, 1106, 645);
+		contentPane.add(lblNewLabel);
 	}
+
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 }
