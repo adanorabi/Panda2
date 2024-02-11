@@ -74,7 +74,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 
 		 diceButton = new JButton();
 		    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-1.png")));
-		    diceButton.setBounds(27, 633, 150, 150);
+		    diceButton.setBounds(42, 662, 117, 121);
 		    diceButton.addActionListener(new ActionListener() {
 		        @Override
 		        public void actionPerformed(ActionEvent e) {
@@ -416,9 +416,9 @@ public class EasyLevel extends JFrame implements ActionListener {
 	public void displayQuestionWindow(Question question) {
 	    // Create a new JDialog to display the question window
 	    JDialog questionDialog = new JDialog(this, "Question", Dialog.ModalityType.MODELESS);
-	    questionDialog.setSize(400, 300);
+	    questionDialog.setSize(650, 300);
 	    questionDialog.setLocationRelativeTo(this); // Center the window relative to EasyLevel frame
-
+	    
 	    // Create a JPanel to hold the question and answers
 	    JPanel questionPanel = new JPanel();
 	    questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
@@ -458,7 +458,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 	            if (selectedAnswer.equals(question.getTrueAnswer())) {
 	                JOptionPane.showMessageDialog(questionDialog, "Correct!");
 	            } else {
-	                JOptionPane.showMessageDialog(questionDialog, "Incorrect. The correct answer is: " + question.getTrueAnswer());
+	                JOptionPane.showMessageDialog(questionDialog, "Incorrect Answer!");
 	            }
 
 	            // Close the question dialog
@@ -468,7 +468,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 	    questionPanel.add(submitButton);
 
 	    // Add the question panel to the question dialog
-	    questionDialog.add(questionPanel);
+	    questionDialog.getContentPane().add(questionPanel);
 
 	    // Make the question dialog visible
 	    questionDialog.setVisible(true);
@@ -487,10 +487,19 @@ public class EasyLevel extends JFrame implements ActionListener {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	            // Generate a random number between 1 and 6
-	            finalNum = (int) (Math.random() * 4) + 1;
+	            finalNum = (int) (Math.random() * 6) + 1;
 
-	            // Update the dice icon to display the current roll
-	            diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-" + finalNum + ".png")));
+	            // Load the dice side image based on the final rolled number
+	            ImageIcon diceSideIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/" + finalNum + ".png"));
+
+	            // Scale the dice side image to match the size of the diceButton
+	            Image scaledDiceSideImage = diceSideIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+
+	            // Create an ImageIcon for the scaled dice side image
+	            ImageIcon scaledDiceSideIcon = new ImageIcon(scaledDiceSideImage);
+
+	            // Update the diceButton icon with the scaled dice side image
+	            diceButton.setIcon(scaledDiceSideIcon);
 
 	            // Increment the roll count
 	            rollCount++;
@@ -498,9 +507,19 @@ public class EasyLevel extends JFrame implements ActionListener {
 	            // Stop the timer after 10 rolls (1 second) and display the final result
 	            if (rollCount >= 10) {
 	                ((Timer) e.getSource()).stop(); // Stop the timer
-	                // Update the dice icon with the final rolled number
-	                diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-" + finalNum + ".png")));
-	                
+
+	                // Load the final dice side image based on the final rolled number
+	                ImageIcon finalDiceSideIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/" + finalNum + ".png"));
+
+	                // Scale the final dice side image to match the size of the diceButton
+	                Image finalScaledDiceSideImage = finalDiceSideIcon.getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH);
+
+	                // Create an ImageIcon for the scaled final dice side image
+	                ImageIcon finalScaledDiceSideIcon = new ImageIcon(finalScaledDiceSideImage);
+
+	                // Update the diceButton icon with the final scaled dice side image
+	                diceButton.setIcon(finalScaledDiceSideIcon);
+
 	                // You can add further logic here based on the final rolled number if needed
 	            }
 	        }
