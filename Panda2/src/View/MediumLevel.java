@@ -30,7 +30,7 @@ public class MediumLevel extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MediumLevel(Player p1,Player p2, Player p3,Player p4) {
+	public MediumLevel(Player p1,Player p2, Player p3,Player p4,int num) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 100, 1200, 900);
 		contentPane = new JPanel();
@@ -47,11 +47,34 @@ public class MediumLevel extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/dice-1.png")));
 		lblNewLabel_2.setBounds(0, 532, 175, 230);
 		contentPane.add(lblNewLabel_2);
+		JLabel lblNewLabel_3 = new JLabel("p1");
+		lblNewLabel_3.setBounds(73, 144, 45, 13);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("p2");
+		lblNewLabel_4.setBounds(73, 226, 45, 13);
+		contentPane.add(lblNewLabel_4);
+		
+		if(num>2) {
+		JLabel lblNewLabel_5 = new JLabel("p3");
+		lblNewLabel_5.setBounds(73, 310, 45, 13);
+		contentPane.add(lblNewLabel_5);
+		if(num==4) {
+		
+		JLabel lblNewLabel_4_1 = new JLabel("p4");
+		lblNewLabel_4_1.setBounds(73, 372, 45, 13);
+		contentPane.add(lblNewLabel_4_1);
+		}
+		}
+
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200,900);
 		contentPane.add(lblNewLabel);
+
 		Game g=new Game(3, Levels.Medium,10, 10);
+		
 		g.createGame();
 		g.PlacespecialSquares(Levels.Medium);
 		g.placeNormalSquares();
