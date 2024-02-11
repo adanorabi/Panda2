@@ -316,7 +316,39 @@ public class HardLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	public void setsurprise(int x, int y) {
+		// Load the surprise image
+		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/q.png"));
 
+		// Calculate the position of the surprise
+		int sX = 190 + x * 77; 
+		int sY =660-y*43;
+
+		// Calculate the size of the snake image
+		int width = 35; // Adjusted width based on grid size
+		int height = 35;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledImage = snakeIcon.getImage().getScaledInstance( width, height, Image.SCALE_SMOOTH);
+		ImageIcon scaledSnakeIcon = new ImageIcon(scaledImage);
+
+		// Create a JLabel for the scaled snake image
+		lblsur = new JLabel(scaledSnakeIcon);
+		lblsur.setBounds(sX,sY, width, height);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblsur);
+
+		// Ensure the snake label is visible
+		lblsur.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblsur, 0);
+
+		// Repaint the content pane to ensure the changes
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
 
 	}
 
