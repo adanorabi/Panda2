@@ -26,6 +26,7 @@ import java.awt.Rectangle;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 
 import Model.*;
 public class InterPlayersInfoFrame extends JFrame implements ActionListener{
@@ -1140,7 +1141,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					throw new UnvalidExceptions("you can not enter the same nickname!!");
 				}else {
 					PlayerColor color;
-					String colorString = buttonGroup.getSelection().toString(); // Assuming this returns the color string
+					ButtonModel colorString1 = buttonGroup.getSelection(); // Assuming this returns the color string
+					String colorString = colorString1.getActionCommand();
 					if (colorString.equals("Red")) {
 					    color = PlayerColor.Red;
 					} else if (colorString.equals("Green")) {
@@ -1152,13 +1154,15 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					    // For example, you could throw an exception or set a default color
 					    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
 					}
+					System.out.println(color);
 					 p1=new Player(1,color,textField.getText(),0,0);
-					String colorString1 = buttonGroup.getSelection().toString(); // Assuming this returns the color string
-					if (colorString1.equals("Red")) {
+					 colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
+					 colorString = colorString1.getActionCommand();
+					if (colorString.equals("Red")) {
 					    color = PlayerColor.Red;
-					} else if (colorString1.equals("Green")) {
+					} else if (colorString.equals("Green")) {
 					    color = PlayerColor.Green;
-					} else if (colorString1.equals("Blue")) {
+					} else if (colorString.equals("Blue")) {
 					    color = PlayerColor.Blue;
 					} else {
 					    // Handle the case where the color string is not recognized
@@ -1167,7 +1171,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					}
 					
 
-				
+					System.out.println(color);
 					 p2=new Player(2,color,textField2.getText(),0,0);
 				}
 				if(Num==3) {
