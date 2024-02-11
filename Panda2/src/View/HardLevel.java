@@ -255,6 +255,67 @@ public class HardLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
+		int ladderHeadX = 171 + xhead * 77; // Adjusted x position based on the board offset and grid size
+		int ladderHeadY = 647 - yhead * 43; // Adjusted y position based on the board offset and grid size
+		int ladderTailX = 171 + xtail * 77; // Adjusted x position based on the board offset and grid size
+		int ladderTailY = 647 - ytail * 43; // Adjusted y position based on the board offset and grid size
+		ImageIcon ladderIcon=null;
+		// Calculate the size of the ladder image
+		int ladderWidth = Math.abs(ladderHeadX - ladderTailX) + 70; // Adjusted width based on grid size
+		int ladderHeight = Math.abs(ladderHeadY - ladderTailY) + 37; // Adjusted height based on grid size
+
+
+		// Load the ladder image based on the ladder type
+		switch (typeOfLader) {
+		case 1:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder1.png"));
+			break;
+		case 2:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder2.png"));
+			break;
+		case 3:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder3.png"));
+			break;
+		case 4:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder4.png"));
+			break;
+		case 5:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder5.png"));
+			break;
+		case 6:
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder6.png"));
+			break;
+		case 7: 
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder7.png"));
+			break;
+		case 8: 
+			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder8.png"));
+			break;
+		default:
+			// Default ladder image
+			break;
+		}
+		// Scale down the size of the snake image
+		Image scaledLadderImage = ladderIcon.getImage().getScaledInstance(ladderWidth, ladderHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledLadderIcon = new ImageIcon(scaledLadderImage);
+		// Create a JLabel for the scaled snake image
+		lblLadder = new JLabel(scaledLadderIcon);
+		lblLadder.setBounds(ladderHeadX,ladderHeadY, ladderWidth, ladderHeight);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblLadder);
+
+		// Ensure the snake label is visible
+		lblLadder.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblLadder, 0);
+
+		// Repaint the content pane to ensure the changes are displayed
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
 
 
 	}
