@@ -1223,7 +1223,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						}
 						
 
-						 p3=new Player(1,color,textField.getText(),0,0);
+						 p3=new Player(3,color,textField3.getText(),0,0);
 					}
 					
 				}
@@ -1253,7 +1253,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						}
 						
 
-						 p4=new Player(1,color,textField.getText(),0,0);
+						 p4=new Player(4,color,textField_1.getText(),0,0);//
 					}
 					
 				}
