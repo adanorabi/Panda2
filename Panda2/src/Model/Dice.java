@@ -83,5 +83,7 @@ public class Dice {
 
 
 	}
-
+	public Question CallQuestion(int questionLevel) {
+		
+	}
 }
