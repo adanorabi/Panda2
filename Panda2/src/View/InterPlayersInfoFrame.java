@@ -1239,7 +1239,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 				else if(Levels.Medium==level)
 				{
-					MediumLevel medBoard= new MediumLevel(p1,p2,p3,p4);
+					MediumLevel medBoard= new MediumLevel(p1,p2,p3,p4,Num);
 					setVisible(false);
 					medBoard.setVisible(true);
 				}
