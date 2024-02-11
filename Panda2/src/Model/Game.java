@@ -460,6 +460,14 @@ public class Game {
 		return this.getPlayers().get(PlayerTurn++);
 		
 	}
+	
+	public void UpdatePlayerPlace() {
+		if(this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()]==4) {
+			
+			
+			
+		}
+	}
 
 
 }
