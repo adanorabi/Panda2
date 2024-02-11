@@ -86,14 +86,17 @@ public class Dice {
 		else {
 			if (this.diceOptions[diceResult]==7) { // the result is a random easy question 
 				Question easyQuestion =CallQuestion(1);
+				return easyQuestion;
 				
 			}
 			else if (this.diceOptions[diceResult]==7) { // the result is a random medium question 
 					Question mediumQuestion=CallQuestion(2);
+					return mediumQuestion;
 			
 			}
 			else {			// the result is a random hard question 
 				Question hardQuestion=CallQuestion(3);
+				return hardQuestion;
 				
 				
 			}
