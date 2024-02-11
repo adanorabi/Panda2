@@ -437,6 +437,12 @@ public class EasyLevel extends JFrame implements ActionListener {
 	    submitButton.addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
+	            // Check if any radio button is selected
+	            if (buttonGroup.getSelection() == null) {
+	                JOptionPane.showMessageDialog(questionDialog, "Please select an answer.");
+	                return; // Exit the method without further processing
+	            }
+
 	            // Get the selected answer
 	            String selectedAnswer = buttonGroup.getSelection().getActionCommand();
 
