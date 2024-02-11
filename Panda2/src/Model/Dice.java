@@ -1,5 +1,7 @@
 package Model;
 
+import Enum.Levels;
+
 public class Dice {
 	private int NumOfSides;
 
@@ -11,8 +13,19 @@ public class Dice {
 		NumOfSides = numOfSides;
 	}
 
-	public Dice(int numOfSides) {
+	public Dice(Levels GameLevel) {
 		super();
-		NumOfSides = numOfSides;
+		if (GameLevel==Levels.Easy) {
+			this.NumOfSides = 8;
+		}
+		else if(GameLevel==Levels.Medium) {
+					this.NumOfSides =13 ;
+		}
+		else {
+			this.NumOfSides =15 ;
+			
+		}
+
 	}
+	
 }
