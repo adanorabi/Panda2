@@ -119,9 +119,43 @@ public class HardLevel extends JFrame {
 				}
 
 			}
+	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {
+		// Load the snake image
+		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/bluesnake2.png"));
 
+		// Calculate the position of the snake head and tail
+		int snakeHeadX = 171 + xhead * 76; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY = 647 - yhead * 43; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 171 + xtail * 76; // Adjusted x position based on the board offset and grid size
+		int snakeTailY = 647 - ytail * 43; // Adjusted y position based on the board offset and grid size
+
+		// Calculate the size of the snake image
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 75; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 35; // Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledSnakeIcon = new ImageIcon(scaledSnakeImage);
+
+		// Create a JLabel for the scaled snake image
+		lblSnake = new JLabel(scaledSnakeIcon);
+		lblSnake.setBounds(Math.min(snakeHeadX, snakeTailX), Math.min(snakeHeadY, snakeTailY), snakeWidth, snakeHeight);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblSnake);
+
+		// Ensure the snake label is visible
+		lblSnake.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblSnake, 0);
+
+		// Repaint the content pane to ensure the changes are displayed
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
 
 
 	}
 
-}
+
