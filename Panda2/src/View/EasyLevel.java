@@ -319,4 +319,37 @@ public class EasyLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	public void setq(int x, int y) {
+		// Load the surprise image
+		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/surprise.png"));
+
+		// Calculate the position of the surprise
+		int sX = 260 + x * 122; 
+		int sY =660-y*86;
+
+		// Calculate the size of the snake image
+		int width = 30; // Adjusted width based on grid size
+		int height = 30;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledImage = snakeIcon.getImage().getScaledInstance( width, height, Image.SCALE_SMOOTH);
+		ImageIcon scaledSnakeIcon = new ImageIcon(scaledImage);
+
+		// Create a JLabel for the scaled snake image
+		lblq = new JLabel(scaledSnakeIcon);
+		lblq.setBounds(sX,sY, width, height);
+
+		// Add the snake label to the content pane
+		contentPane.add(lblq);
+
+		// Ensure the snake label is visible
+		lblq.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(lblq, 0);
+
+		// Repaint the content pane to ensure the changes
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
 }
