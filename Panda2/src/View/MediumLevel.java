@@ -26,6 +26,7 @@ public class MediumLevel extends JFrame {
 	private JLabel lblsur;
 	private JLabel lblq;
 	private JLabel lblLadder; 
+	  private JLabel p1Label;
 
 	/**
 	 * Create the frame.
@@ -46,10 +47,29 @@ public class MediumLevel extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/dice-1.png")));
 		lblNewLabel_2.setBounds(0, 532, 175, 230);
-		contentPane.add(lblNewLabel_2);
-		JLabel lblNewLabel_3 = new JLabel("p1");
-		lblNewLabel_3.setBounds(73, 144, 45, 13);
-		contentPane.add(lblNewLabel_3);
+	
+		ImageIcon p1icon;
+		if(p1.getPlayerColor()==PlayerColor.Red)
+			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+		else if(p1.getPlayerColor()==PlayerColor.Green)
+			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+		else if(p1.getPlayerColor()==PlayerColor.Blue)
+			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+		else 
+			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+	    Image scaledP1Image = p1icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        ImageIcon scaledP1Icon = new ImageIcon(scaledP1Image);
+        // Create a JLabel for player p1
+        p1Label = new JLabel(scaledP1Icon);
+        int p1X = 185 + p1.getX() * 94; // Adjusted x position based on the board offset and grid size
+        int p1Y = 630 - p1.getY() * 59; // Adjusted y position based on the board offset and grid size
+        p1Label.setBounds(p1X, p1Y, 50, 50); // Set bounds for player p1 label
+
+        // Add player p1 label to the content pane
+        contentPane.add(p1Label);
+
+        // Ensure player p1 label is visible
+        p1Label.setVisible(true);
 		
 		JLabel lblNewLabel_4 = new JLabel("p2");
 		lblNewLabel_4.setBounds(73, 226, 45, 13);
@@ -66,6 +86,7 @@ public class MediumLevel extends JFrame {
 		contentPane.add(lblNewLabel_4_1);
 		}
 		}
+		
 
 
 		JLabel lblNewLabel = new JLabel("");
@@ -74,7 +95,22 @@ public class MediumLevel extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		Game g=new Game(3, Levels.Medium,10, 10);
+		g.getPlayers().add(p1);
+		g.getPlayers().add(p2);
 		
+		if(num>2) {
+		JLabel lblNewLabel_5 = new JLabel("p3");
+		lblNewLabel_5.setBounds(73, 310, 45, 13);
+		contentPane.add(lblNewLabel_5);
+		g.getPlayers().add(p3);
+		if(num==4) {
+		
+		JLabel lblNewLabel_4_1 = new JLabel("p4");
+		lblNewLabel_4_1.setBounds(73, 372, 45, 13);
+		contentPane.add(lblNewLabel_4_1);
+		g.getPlayers().add(p4);
+		}
+		}
 		g.createGame();
 		g.PlacespecialSquares(Levels.Medium);
 		g.placeNormalSquares();
