@@ -32,4 +32,5 @@ public class SurpriseSquare extends Square {
 		
 	}
 
+	
 }
