@@ -95,6 +95,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel_1_1);
 
 		redRadioButton = new JRadioButton("Red");
+		redRadioButton.setActionCommand("Red");
 		redRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		redRadioButton.setBackground(new Color(173, 216, 230));
 		redRadioButton.addActionListener(new ActionListener() {
@@ -138,6 +139,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		buttonGroup.add(redRadioButton);
 
 		greenRadioButton = new JRadioButton("Green");
+		greenRadioButton.setActionCommand("Green");
 		greenRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		greenRadioButton.setBackground(new Color(173, 216, 230));
 		greenRadioButton.addActionListener(new ActionListener() {
@@ -181,6 +183,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		buttonGroup.add(greenRadioButton);
 
 		blueRadioButton = new JRadioButton("Blue");
+		blueRadioButton.setActionCommand("Blue");
 		blueRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		blueRadioButton.setBackground(new Color(173, 216, 230));
 		blueRadioButton.addActionListener(new ActionListener() {
@@ -218,6 +221,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(blueRadioButton);
 		buttonGroup.add(blueRadioButton);
 		yRadioButton = new JRadioButton("yellow");
+		yRadioButton.setActionCommand("Yellow");
 		yRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		yRadioButton.setBackground(new Color(173, 216, 230));
 		yRadioButton.addActionListener(new ActionListener() {
@@ -280,6 +284,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel_1_2);
 
 		redRadioButton2 = new JRadioButton("Red");
+		redRadioButton2.setActionCommand("Red");
 		redRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		redRadioButton2.setBackground(new Color(173, 216, 230));
 		redRadioButton2.addActionListener(new ActionListener() {
@@ -394,6 +399,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		buttonGroup2.add(greenRadioButton2);
 
 		blueRadioButton2 = new JRadioButton("Blue");
+		blueRadioButton.setActionCommand("Blue");
 		blueRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		blueRadioButton2.setBackground(new Color(173, 216, 230));
 		blueRadioButton2.addActionListener(new ActionListener() {
@@ -456,6 +462,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(blueRadioButton2);
 		buttonGroup2.add(blueRadioButton2);
 		yRadioButton2 = new JRadioButton("yellow");
+		yRadioButton2.setActionCommand("Yellow");
 		yRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		yRadioButton2.setBackground(new Color(173, 216, 230));
 		yRadioButton2.addActionListener(new ActionListener() {
@@ -551,6 +558,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			contentPane.add(lblNewLabel_1_3);
 
 			redRadioButton3 = new JRadioButton("Red");
+			redRadioButton3.setActionCommand("Red");
 			redRadioButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 			redRadioButton3.setBackground(new Color(173, 216, 230));
 			redRadioButton3.addActionListener(new ActionListener() {
@@ -664,6 +672,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			buttonGroup3.add(redRadioButton3);
 
 			greenRadioButton3 = new JRadioButton("Green");
+			greenRadioButton3.setActionCommand("Green");
 			greenRadioButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 			greenRadioButton3.setBackground(new Color(173, 216, 230));
 			greenRadioButton3.addActionListener(new ActionListener() {
@@ -771,6 +780,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			buttonGroup3.add(greenRadioButton3);
 
 			blueRadioButton3 = new JRadioButton("Blue");
+			blueRadioButton3.setActionCommand("Blue");
 			blueRadioButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 			blueRadioButton3.setBackground(new Color(173, 216, 230));
 			blueRadioButton3.addActionListener(new ActionListener() {
@@ -877,6 +887,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			contentPane.add(blueRadioButton3);
 			buttonGroup3.add(blueRadioButton3);
 			yRadioButton3 = new JRadioButton("yellow");
+			yRadioButton3.setActionCommand("Yellow");
 			yRadioButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 			yRadioButton3.setBackground(new Color(173, 216, 230));
 			yRadioButton3.addActionListener(new ActionListener() {
@@ -1005,6 +1016,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			lblNewLabel_10.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
 			contentPane.add(lblNewLabel_10);
 			redRadioButton2_1 = new JRadioButton("Red");
+			redRadioButton2_1.setActionCommand("Red");
 			redRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			redRadioButton2_1.setBackground(new Color(173, 216, 230));
 			redRadioButton2_1.setBounds(580, 400, 70, 23);
@@ -1021,6 +1033,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			});
 			greenRadioButton2_1 = new JRadioButton("Green");
+			greenRadioButton2_1.setActionCommand("Green");
 			greenRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			greenRadioButton2_1.setBackground(new Color(173, 216, 230));
 			greenRadioButton2_1.setBounds(660, 400, 90, 23);
@@ -1037,6 +1050,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			});
 			blueRadioButton2_1 = new JRadioButton("Blue");
+			blueRadioButton2_1.setActionCommand("Blue");
 			blueRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			blueRadioButton2_1.setBackground(new Color(173, 216, 230));
 			blueRadioButton2_1.setBounds(767, 400, 70, 23);
@@ -1053,6 +1067,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			});
 			yRadioButton2_1 = new JRadioButton("yellow");
+			yRadioButton2_1.setActionCommand("Yellow");
 			yRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			yRadioButton2_1.setBackground(new Color(173, 216, 230));
 			yRadioButton2_1.setBounds(845, 400, 100, 23);
@@ -1141,23 +1156,32 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					throw new UnvalidExceptions("you can not enter the same nickname!!");
 				}else {
 					PlayerColor color;
-					ButtonModel colorString1 = buttonGroup.getSelection(); // Assuming this returns the color string
-					String colorString = colorString1.getActionCommand();
-					if (colorString.equals("Red")) {
-					    color = PlayerColor.Red;
-					} else if (colorString.equals("Green")) {
-					    color = PlayerColor.Green;
-					} else if (colorString.equals("Blue")) {
-					    color = PlayerColor.Blue;
+					ButtonModel selectedButtonModel = buttonGroup.getSelection();
+					System.out.println(selectedButtonModel);
+					if (selectedButtonModel != null) {
+					    String colorString = selectedButtonModel.getActionCommand();
+					    System.out.println(colorString);
+					    if (colorString.equals("Red")) {
+						    color = PlayerColor.Red;
+						} else if (colorString.equals("Green")) {
+						    color = PlayerColor.Green;
+						} else if (colorString.equals("Blue")) {
+						    color = PlayerColor.Blue;
+						} else {
+						    // Handle the case where the color string is not recognized
+						    // For example, you could throw an exception or set a default color
+						    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+						}
+						System.out.println(color);
+						 p1=new Player(1,color,textField.getText(),0,0);
+					
+					  
 					} else {
-					    // Handle the case where the color string is not recognized
-					    // For example, you could throw an exception or set a default color
-					    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+					    // Handle the case where no radio button is selected
 					}
-					System.out.println(color);
-					 p1=new Player(1,color,textField.getText(),0,0);
-					 colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
-					 colorString = colorString1.getActionCommand();
+					
+					 ButtonModel colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
+					 String colorString = colorString1.getActionCommand();
 					if (colorString.equals("Red")) {
 					    color = PlayerColor.Red;
 					} else if (colorString.equals("Green")) {
