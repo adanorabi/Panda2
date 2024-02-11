@@ -390,7 +390,7 @@ public class Game {
 			
 				while(flag) {
 					ladder.LadderRandom (Levels.Easy, ladder);
-					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
+					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
 						Ladders.add(ladder);
@@ -410,7 +410,7 @@ public class Game {
 			
 				while(flag) {
 					ladder.LadderRandom (Levels.Medium, ladder);
-					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
+					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
 						flag=false;	
@@ -429,7 +429,7 @@ public class Game {
 	
 				while(flag) {
 					ladder.LadderRandom (Levels.Hard, ladder);
-					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0) {
+					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=6;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=7;
 						Ladders.add(ladder);
