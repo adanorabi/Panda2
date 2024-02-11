@@ -234,6 +234,41 @@ public class EasyLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	public void setgreensnake(int xhead, int yhead, int xtail, int ytail) {
+		// Load the snake image
+		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/greensnake.png"));
+
+		// Calculate the position of the snake head and tail
+		int snakeHeadX = 214 + xhead * 122; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY = 641 - yhead * 86; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 214 + xtail * 122; // Adjusted x position based on the board offset and grid size
+		int snakeTailY = 641 - ytail * 86; // Adjusted y position based on the board offset and grid size
+
+		// Calculate the size of the snake image
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 122; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 86; // Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledSnakeIcon = new ImageIcon(scaledSnakeImage);
+
+		// Create a JLabel for the scaled snake image
+		glblSnake = new JLabel(scaledSnakeIcon);
+		glblSnake.setBounds(snakeHeadX,snakeHeadY, snakeWidth, snakeHeight);
+
+		// Add the snake label to the content pane
+		contentPane.add(glblSnake);
+
+		// Ensure the snake label is visible
+		glblSnake.setVisible(true);
+
+		// Move the snake label to the front
+		contentPane.setComponentZOrder(glblSnake, 0);
+
+		// Repaint the content pane to ensure the changes are displayed
+		contentPane.revalidate();
+		contentPane.repaint();
+	}
 	// set ladders
 	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
 		int ladderHeadX = 230 + xhead * 122; // Adjusted x position based on the board offset and grid size
