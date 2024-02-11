@@ -52,10 +52,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 	private JRadioButton yRadioButton3;
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
 	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
+
 	private JButton btnNewButton_1;
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
@@ -1286,6 +1283,9 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			}
 		}
 
+	}
+	public void movePlayersToGame() {
+		
 	}
 }
 	
