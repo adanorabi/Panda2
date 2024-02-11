@@ -14,11 +14,11 @@ public class Game {
 	private int ColsNum;
 	private int Places[][];
 	private int WinnerId;
-	private ArrayList<Integer> PlyersTurn ;
 	private ArrayList<Player> Players;
 	private ArrayList<Snake> Snakes ;
 	private ArrayList<Ladder> Ladders ;
 	private ArrayList<Square> Squares ;
+	public static int PlayerTurn=0;
 
 	public Game(int gameId, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
@@ -82,13 +82,6 @@ public class Game {
 		this.WinnerId = winnerId;
 	}
 
-		public ArrayList<Integer> getPlyersTurn() {
-			return PlyersTurn;
-		}
-	
-		public void setPlyersTurn(ArrayList<Integer> plyersTurn) {
-			PlyersTurn = plyersTurn;
-		}
 
 	public ArrayList<Player> getPlayers() {
 		return this.Players;
@@ -121,6 +114,15 @@ public class Game {
 	public void setSquares(ArrayList<Square> squares) {
 		this.Squares = squares;
 	}
+	
+
+	public static int getPlayerTurn() {
+		return PlayerTurn;
+	}
+
+	public static void setPlayerTurn(int playerTurn) {
+		PlayerTurn = playerTurn;
+	}
 
 	public void createGame() {
 
@@ -134,6 +136,7 @@ public class Game {
 		}
 
 	}
+	
 	
 	public void PlacespecialSquares(Levels gameLevel) { //should be continueed have to check that snake and ladder not in the same place
 		int randQol;
@@ -445,6 +448,14 @@ public class Game {
 	}
 
 
+	public Player CurrentTurn() {
+		
+		if(PlayerTurn==this.getPlayers().size()) {
+			PlayerTurn=0;
+		}
+		return this.getPlayers().get(PlayerTurn++);
+		
+	}
 
 
 }
