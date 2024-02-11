@@ -45,11 +45,11 @@ public class Question {
 	}
 
 	public ArrayList<String> getAnswer() {
-		return Answer;
+		return this.Answer;
 	}
 
 	public void setAnswer(ArrayList<String> answer) {
-		Answer = answer;
+		this.Answer = answer;
 	}
 
 	public String getTrueAnswer() {

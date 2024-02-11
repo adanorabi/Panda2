@@ -2,6 +2,7 @@ package View;
 import Enum.Levels;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,7 +40,18 @@ public class EasyLevel extends JFrame implements ActionListener {
 	private JLabel lblq;
 	private JLabel lblLadder; 
 
-
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EasyLevel frame = new EasyLevel();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -66,11 +79,14 @@ public class EasyLevel extends JFrame implements ActionListener {
 		lblNewLabel.setBounds(0, 0, 1200, 900);
 		contentPane.add(lblNewLabel);
 		ArrayList<String> answers= new ArrayList<String>();
-		answers.add("1");
-		answers.add("2");
-		answers.add("3");
-		answers.add("4");
-		Question q= new Question(1, Levels.Easy,"what is scrum master>", answers,"3");
+		answers.add("qq");
+		answers.add("bb");
+		answers.add("cc");
+		answers.add("dd");
+		Question q= new Question(1, Levels.Easy,"what is scrum master?", answers,"cc");
+		q.setAnswer(answers);
+		System.out.println(q.getAnswer());
+		displayQuestionWindow(q);
 //		Game g=new Game(3, Levels.Easy, 7, 7);
 //		g.createGame();
 //		g.PlacespecialSquares(Levels.Easy);
@@ -390,61 +406,59 @@ public class EasyLevel extends JFrame implements ActionListener {
 		contentPane.repaint();
 	}
 	public void displayQuestionWindow(Question question) {
-        // Create a new JFrame to display the question window
-        JFrame questionFrame = new JFrame("Question");
-        questionFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        questionFrame.setSize(400, 300);
-        questionFrame.setLocationRelativeTo(null); // Center the window on the screen
+	    // Create a new JDialog to display the question window
+	    JDialog questionDialog = new JDialog(this, "Question", Dialog.ModalityType.MODELESS);
+	    questionDialog.setSize(400, 300);
+	    questionDialog.setLocationRelativeTo(this); // Center the window relative to EasyLevel frame
 
-        // Create a JPanel to hold the question and answers
-        JPanel questionPanel = new JPanel();
-        questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
+	    // Create a JPanel to hold the question and answers
+	    JPanel questionPanel = new JPanel();
+	    questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
 
-        // Create a JLabel to display the question text
-        JLabel questionLabel = new JLabel(question.getContent());
-        questionPanel.add(questionLabel);
+	    // Create a JLabel to display the question text
+	    JLabel questionLabel = new JLabel(question.getContent());
+	    questionPanel.add(questionLabel);
 
-        // Shuffle the answers randomly
-        List<String> answers = question.getAnswer();
-        Collections.shuffle(answers);
+	    // Shuffle the answers randomly
+	    List<String> answers = question.getAnswer();
+	    Collections.shuffle(answers);
 
-        // Create JRadioButtons for each answer
-        ButtonGroup buttonGroup = new ButtonGroup();
-        for (String answer : answers) {
-            JRadioButton radioButton = new JRadioButton(answer);
-            radioButton.setActionCommand(answer);
-            buttonGroup.add(radioButton);
-            questionPanel.add(radioButton);
-        }
+	    // Create JRadioButtons for each answer
+	    ButtonGroup buttonGroup = new ButtonGroup();
+	    for (String answer : answers) {
+	        JRadioButton radioButton = new JRadioButton(answer);
+	        radioButton.setActionCommand(answer);
+	        buttonGroup.add(radioButton);
+	        questionPanel.add(radioButton);
+	    }
 
-        // Create a JButton to submit the answer
-        JButton submitButton = new JButton("Submit");
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Get the selected answer
-                String selectedAnswer = buttonGroup.getSelection().getActionCommand();
+	    // Create a JButton to submit the answer
+	    JButton submitButton = new JButton("Submit");
+	    submitButton.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            // Get the selected answer
+	            String selectedAnswer = buttonGroup.getSelection().getActionCommand();
 
-                // Check if the selected answer is correct
-                if (selectedAnswer.equals(question.getTrueAnswer())) {
-                    JOptionPane.showMessageDialog(questionFrame, "Correct!");
-                } else {
-                    JOptionPane.showMessageDialog(questionFrame, "Incorrect. The correct answer is: " + question.getTrueAnswer());
-                }
+	            // Check if the selected answer is correct
+	            if (selectedAnswer.equals(question.getTrueAnswer())) {
+	                JOptionPane.showMessageDialog(questionDialog, "Correct!");
+	            } else {
+	                JOptionPane.showMessageDialog(questionDialog, "Incorrect. The correct answer is: " + question.getTrueAnswer());
+	            }
 
-                // Close the question window
-                questionFrame.dispose();
-            }
-        });
-        questionPanel.add(submitButton);
+	            // Close the question dialog
+	            questionDialog.dispose();
+	        }
+	    });
+	    questionPanel.add(submitButton);
 
-        // Add the question panel to the question frame
-        questionFrame.add(questionPanel);
+	    // Add the question panel to the question dialog
+	    questionDialog.add(questionPanel);
 
-        // Make the question frame visible
-        questionFrame.setVisible(true);
-    }
-
+	    // Make the question dialog visible
+	    questionDialog.setVisible(true);
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
