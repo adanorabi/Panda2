@@ -1,5 +1,5 @@
 package Model;
-
+import java.util.Random;
 import Enum.Levels;
 
 public class Dice {
@@ -12,6 +12,15 @@ public class Dice {
 
 	public void setNumOfSides(int numOfSides) {
 		this.NumOfSides = numOfSides;
+	}
+
+
+	public int[] getDiceOptions() {
+		return diceOptions;
+	}
+
+	public void setDiceOptions(int[] diceOptions) {
+		this.diceOptions = diceOptions;
 	}
 
 	public Dice(Levels GameLevel) {
@@ -41,8 +50,8 @@ public class Dice {
 			this.diceOptions[10]=8;
 			this.diceOptions[11]=9;//filling the option of hard  question
 			this.diceOptions[12]=9;
-			
-			
+
+
 
 		}
 		else {
@@ -60,16 +69,18 @@ public class Dice {
 			this.diceOptions[12]=9;
 			this.diceOptions[13]=9;
 			this.diceOptions[14]=9;
-			
-
 
 		}
 
-
+	}
+	public void RollDice() {
+		Random random = new Random();
+		int options=this.getNumOfSides();
+		int RandOption = random.nextInt(options);
 
 	}
-	public int CheckResultEasy(int diceResult) {
-		;
+	public int CheckResult(int diceResult) {
+
 
 	}
 
