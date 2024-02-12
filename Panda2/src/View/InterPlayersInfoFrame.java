@@ -33,13 +33,13 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	public JTextField textField;
 	private JRadioButton redRadioButton;
 	private JRadioButton greenRadioButton;
 	private JRadioButton blueRadioButton;
 	private JRadioButton yRadioButton;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField2;
+	public JTextField textField2;
 	private JRadioButton redRadioButton2;
 	private JRadioButton greenRadioButton2;
 	private JRadioButton blueRadioButton2;
@@ -459,7 +459,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		blueRadioButton2.setBounds(767, 200, 70, 23);
 		contentPane.add(blueRadioButton2);
 		buttonGroup2.add(blueRadioButton2);
-		yRadioButton2 = new JRadioButton("yellow");
+		yRadioButton2 = new JRadioButton("Yellow");
 		yRadioButton2.setActionCommand("Yellow");
 		yRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		yRadioButton2.setBackground(new Color(173, 216, 230));
@@ -681,8 +681,9 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						blueRadioButton3.setForeground(Color.black);
 						yRadioButton3.setForeground(Color.black);
 						
-						disableAndMarkColorButton(greenRadioButton2_1);
+						
 						if(NumofPlayers==4) {
+							disableAndMarkColorButton(greenRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							enableColorButton(redRadioButton2_1);
@@ -691,7 +692,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							disableAndMarkColorButton(redRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
-							redRadioButton2_1.setSelected(false);
+							
 							if(blueRadioButton.isSelected()) {
 
 								disableAndMarkColorButton(blueRadioButton2_1);
@@ -1284,9 +1285,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		}
 
 	}
-	public void movePlayersToGame() {
-		
-	}
+
 }
 	
 
