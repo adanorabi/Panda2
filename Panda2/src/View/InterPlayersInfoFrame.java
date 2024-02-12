@@ -1294,6 +1294,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		}
 
 	}
+	
 
 }
 	

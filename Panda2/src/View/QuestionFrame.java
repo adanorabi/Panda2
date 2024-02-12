@@ -1,67 +1,164 @@
 package View;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import Model.Question;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
+import java.awt.Color;
 
 public class QuestionFrame extends JFrame {
-    private JLabel questionLabel;
-    private JButton[] answerButtons;
 
-    private Question currentQuestion;
-    private String userAnswer;
+	private JPanel contentPane;
+	private JLabel questionFrame;
+	/**
+	 * Launch the application.
+	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					QuestionFrame frame = new QuestionFrame(null);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
-    public QuestionFrame(Question question) {
-        currentQuestion = question;
-
-        setTitle("Question");
-        setSize(700, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-        getContentPane().setLayout(new BorderLayout());
-
-        questionLabel = new JLabel("<html><span style='font-size:16px; font-weight:bold;'>" + currentQuestion.getContent() + "</span></html>");
-        getContentPane().add(questionLabel, BorderLayout.NORTH);
-
-        JPanel answersPanel = new JPanel(new GridLayout(2, 2));
-        getContentPane().add(answersPanel, BorderLayout.CENTER);
-
-        answerButtons = new JButton[4];
-
-        ArrayList<String> shuffledAnswers = new ArrayList<>(currentQuestion.getAnswer());
+	/**
+	 * Create the frame.
+	 */
+	public QuestionFrame(Question question) {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(500, 200, 854, 500);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
+		JButton submitButton = new JButton("Submit");
+		submitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		submitButton.setBounds(646, 385, 141, 53);
+		contentPane.add(submitButton);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(194, 62, 549, 66);
+		contentPane.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblNewLabel.setText(question.getContent());
+		
+	    ArrayList<String> shuffledAnswers = new ArrayList<>(question.getAnswer());
         Collections.shuffle(shuffledAnswers);
+        
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
+		rdbtnNewRadioButton.setBackground(Color.WHITE);
+		rdbtnNewRadioButton.setBounds(103, 153, 322, 66);
+        rdbtnNewRadioButton.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
+		contentPane.add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
+		rdbtnNewRadioButton_1.setBackground(Color.WHITE);
+		rdbtnNewRadioButton_1.setBounds(491, 153, 311, 66);
+		rdbtnNewRadioButton_1.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
 
-        Color[] buttonColors = {Color.RED, Color.GREEN, Color.YELLOW, Color.BLUE};
+		contentPane.add(rdbtnNewRadioButton_1);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
+		rdbtnNewRadioButton_2.setBackground(Color.WHITE);
+		rdbtnNewRadioButton_2.setBounds(103, 286, 322, 66);
+		rdbtnNewRadioButton_2.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
+		contentPane.add(rdbtnNewRadioButton_2);
+		
+		
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("New radio button");
+		rdbtnNewRadioButton_3.setBackground(Color.WHITE);
+		rdbtnNewRadioButton_3.setBounds(491, 296, 311, 59);
+		rdbtnNewRadioButton_3.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
+		contentPane.add(rdbtnNewRadioButton_3);
+		
+		ButtonGroup G = new ButtonGroup();
+		G.add(rdbtnNewRadioButton);
+		G.add(rdbtnNewRadioButton_1);
+		G.add(rdbtnNewRadioButton_2);
+		G.add(rdbtnNewRadioButton_3);
+		for(int i=0 ; i<4; i++)
+		{
+			if (i==0)
+			{
+				rdbtnNewRadioButton.setText(shuffledAnswers.get(i));
+			}
+			if(i==1) {
+				rdbtnNewRadioButton_1.setText(shuffledAnswers.get(i));
 
-        for (int i = 0; i < 4; i++) {
-            JButton button = new JButton(shuffledAnswers.get(i));
-            button.setPreferredSize(new Dimension(120, 40)); // Reduced button size
-            button.addActionListener(new AnswerButtonListener());
-            answerButtons[i] = button;
-            button.setBackground(buttonColors[i]); // Set button background color
-            answersPanel.add(button);
-        }
-    }
+			}
+			if(i==2)
+			{
+				rdbtnNewRadioButton_2.setText(shuffledAnswers.get(i));
+			}
+			if(i==3)
+			{
+				rdbtnNewRadioButton_3.setText(shuffledAnswers.get(i));
+			}
+		}
+		submitButton.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        // Find out which radio button is selected
+		        JRadioButton selectedRadioButton = null;
+		        if (rdbtnNewRadioButton.isSelected()) {
+		            selectedRadioButton = rdbtnNewRadioButton;
+		        } else if (rdbtnNewRadioButton_1.isSelected()) {
+		            selectedRadioButton = rdbtnNewRadioButton_1;
+		        } else if (rdbtnNewRadioButton_2.isSelected()) {
+		            selectedRadioButton = rdbtnNewRadioButton_2;
+		        } else if (rdbtnNewRadioButton_3.isSelected()) {
+		            selectedRadioButton = rdbtnNewRadioButton_3;
+		        }
+		        
+		        if (selectedRadioButton != null) {
+		            // Get the text of the selected radio button
+		            String selectedAnswer = selectedRadioButton.getText();
+		            
+		            // Compare the selected answer with the correct answer
+		            if (selectedAnswer.equals(question.getTrueAnswer())) {
+		                // If the selected answer is correct
+		                JOptionPane.showMessageDialog(contentPane, "Correct answer!");
+		            } else {
+		                // If the selected answer is incorrect
+		                JOptionPane.showMessageDialog(contentPane, "Incorrect answer. Try again!");
+		            }
+		        } else {
+		            // If no answer is selected
+		            JOptionPane.showMessageDialog(contentPane, "Please select an answer.");
+		        }
+		    }
+		});
+		questionFrame = new JLabel("");
+		questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/questionFrame.jpg")));
+		questionFrame.setBounds(5, 5, 830, 453);
+		contentPane.add(questionFrame);
+		
 
-    private class AnswerButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton button = (JButton) e.getSource();
-            userAnswer = button.getText();
-
-            if (userAnswer.equals(currentQuestion.getTrueAnswer())) {
-                JOptionPane.showMessageDialog(null, "Correct!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Incorrect!");
-            }
-        }
-    }
-
+	}
 }
