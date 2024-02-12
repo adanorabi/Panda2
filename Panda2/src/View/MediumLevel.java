@@ -150,8 +150,8 @@ public class MediumLevel extends JFrame {
 			Image scaledP4Image = p4icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			ImageIcon scaledP4Icon = new ImageIcon(scaledP4Image);
 			// Create a JLabel for player p2
-			p3Label = new JLabel(scaledP4Icon);
-	        p3Label.setBounds(p1X, 480, 100, 100); // Set bounds for player p1 label
+			p4Label = new JLabel(scaledP4Icon);
+	        p4Label.setBounds(p1X, 480, 100, 100); // Set bounds for player p1 label
 
 	        // Add player p1 label to the content pane
 	        contentPane.add(p4Label);
