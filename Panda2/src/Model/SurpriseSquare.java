@@ -9,28 +9,28 @@ public class SurpriseSquare extends Square {
 		// TODO Auto-generated constructor stub
 	}
 	public int RandSurprise() { //should be continued!!!
-		
-		   double randomNum = Math.random(); // Generates a random double between 0.0 (inclusive) and 1.0 (exclusive)
-		  
-		   
-		   Random random = new Random();
 
-	        // Generate a random integer between 0 and 1
-	        int randomNumber = random.nextInt(2); // Generates a random integer between 0 (inclusive) and 2 (exclusive)
+		double randomNum = Math.random(); // Generates a random double between 0.0 (inclusive) and 1.0 (exclusive)
 
-	        // Map 0 to option 1 and 1 to option 2
-	        int option = randomNumber == 0 ? 1 : 0;
 
-	        if (option == 0) {
-	        	return -10;
-	        }
-	        else {
-	        	return 10;
-	        }
-		
-		         
-		
+		Random random = new Random();
+
+		// Generate a random integer between 0 and 1
+		int randomNumber = random.nextInt(2); // Generates a random integer between 0 (inclusive) and 2 (exclusive)
+
+		// Map 0 to option 1 and 1 to option 2
+		int option = randomNumber == 0 ? 1 : 0;
+
+		if (option == 0) {
+			return -10;
+		}
+		else {
+			return 10;
+		}
+
+
+
 	}
 
-	
+
 }
