@@ -41,6 +41,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 	private JLabel lblq;
 	private JLabel lblLadder; 
 	private JButton diceButton;
+    private JButton submitButton;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -94,67 +95,68 @@ public class EasyLevel extends JFrame implements ActionListener {
 		Question q= new Question(1, Levels.Easy,"what is scrum master?", answers,"cc");
 		q.setAnswer(answers);
 		System.out.println(q.getAnswer());
-		displayQuestionWindow(q);
-//		Game g=new Game(3, Levels.Easy, 7, 7);
-//		g.createGame();
-//		g.PlacespecialSquares(Levels.Easy);
-//		g.placeNormalSquares();
-//		g.PlaceSnakes();
-//		g.placeLadders();
-//		int i, j;
-//		for(i=0; i<g.getSnakes().size();i++)
-//		{
-//			SnakeColor color= g.getSnakes().get(i).getColor();
-//			int xHead=g.getSnakes().get(i).getXHeadNum();
-//			int xTail=g.getSnakes().get(i).getXTailNum();
-//			int yHead=g.getSnakes().get(i).getYHeadNum();
-//			int yTail=g.getSnakes().get(i).getYTailNum();
-//			if(color==SnakeColor.Blue)
-//			{
-//				setbluesnake(xHead,yHead,xTail,yTail);
-//				System.out.println("bluessnake (" +xHead  + "," + yHead+ "," + xTail+ "," + yTail+ "):" );
-//
-//			}
-//			else if(color==SnakeColor.Green)
-//			{
-//				setgreensnake(xHead,yHead,xTail,yTail);
-//				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
-//
-//			}
-//			else if(color==SnakeColor.Red)
-//			{
-//				setredsnake(xHead,yHead);
-//				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
-//
-//			}
-//			else if (color==SnakeColor.Yellow)
-//			{
-//				setyellowsnake(xHead, yHead, xTail, yTail);
-//				System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
-//
-//			}
-//		}
-//		for(i=0; i<g.getLadders().size();i++)
-//		{
-//			int length= g.getLadders().get(i).getLength();
-//			int xHead=g.getLadders().get(i).getXEnd();
-//			int xTail=g.getLadders().get(i).getXStart();
-//			int yHead=g.getLadders().get(i).getYEnd();
-//			int yTail=g.getLadders().get(i).getYStart();
-//			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
-//			setLadders(length,xHead,yHead,xTail,yTail);
-//		}
-//		for (i=0 ; i<7; i++)
-//		{
-//			for (j=0 ; j<7; j++ )
-//			{
-//				if(g.getPlaces()[i][j]==3) {
-//					setq(i, j);
-//					System.out.println("question (" + i + "," + j + "):" );
-//
-//				}
-//			}
-//		}
+		QuestionFrame fQ=new QuestionFrame(q);
+		fQ.setVisible(true);
+		Game g=new Game(3, Levels.Easy, 7, 7);
+		g.createGame();
+		g.PlacespecialSquares(Levels.Easy);
+		g.placeNormalSquares();
+		g.PlaceSnakes();
+		g.placeLadders();
+		int i, j;
+		for(i=0; i<g.getSnakes().size();i++)
+		{
+			SnakeColor color= g.getSnakes().get(i).getColor();
+			int xHead=g.getSnakes().get(i).getXHeadNum();
+			int xTail=g.getSnakes().get(i).getXTailNum();
+			int yHead=g.getSnakes().get(i).getYHeadNum();
+			int yTail=g.getSnakes().get(i).getYTailNum();
+			if(color==SnakeColor.Blue)
+			{
+				setbluesnake(xHead,yHead,xTail,yTail);
+				System.out.println("bluessnake (" +xHead  + "," + yHead+ "," + xTail+ "," + yTail+ "):" );
+
+			}
+			else if(color==SnakeColor.Green)
+			{
+				setgreensnake(xHead,yHead,xTail,yTail);
+				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+			}
+			else if(color==SnakeColor.Red)
+			{
+				setredsnake(xHead,yHead);
+				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
+
+			}
+			else if (color==SnakeColor.Yellow)
+			{
+				setyellowsnake(xHead, yHead, xTail, yTail);
+				System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+			}
+		}
+		for(i=0; i<g.getLadders().size();i++)
+		{
+			int length= g.getLadders().get(i).getLength();
+			int xHead=g.getLadders().get(i).getXEnd();
+			int xTail=g.getLadders().get(i).getXStart();
+			int yHead=g.getLadders().get(i).getYEnd();
+			int yTail=g.getLadders().get(i).getYStart();
+			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
+			setLadders(length,xHead,yHead,xTail,yTail);
+		}
+		for (i=0 ; i<7; i++)
+		{
+			for (j=0 ; j<7; j++ )
+			{
+				if(g.getPlaces()[i][j]==3) {
+					setq(i, j);
+					System.out.println("question (" + i + "," + j + "):" );
+
+				}
+			}
+		}
 
 	}
 	// blue snakes function
@@ -413,66 +415,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void displayQuestionWindow(Question question) {
-	    // Create a new JDialog to display the question window
-	    JDialog questionDialog = new JDialog(this, "Question", Dialog.ModalityType.MODELESS);
-	    questionDialog.setSize(650, 300);
-	    questionDialog.setLocationRelativeTo(this); // Center the window relative to EasyLevel frame
-	    
-	    // Create a JPanel to hold the question and answers
-	    JPanel questionPanel = new JPanel();
-	    questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
 
-	    // Create a JLabel to display the question text
-	    JLabel questionLabel = new JLabel(question.getContent());
-	    questionPanel.add(questionLabel);
-
-	    // Shuffle the answers randomly
-	    List<String> answers = question.getAnswer();
-	    Collections.shuffle(answers);
-
-	    // Create JRadioButtons for each answer
-	    ButtonGroup buttonGroup = new ButtonGroup();
-	    for (String answer : answers) {
-	        JRadioButton radioButton = new JRadioButton(answer);
-	        radioButton.setActionCommand(answer);
-	        buttonGroup.add(radioButton);
-	        questionPanel.add(radioButton);
-	    }
-
-	    // Create a JButton to submit the answer
-	    JButton submitButton = new JButton("Submit");
-	    submitButton.addActionListener(new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            // Check if any radio button is selected
-	            if (buttonGroup.getSelection() == null) {
-	                JOptionPane.showMessageDialog(questionDialog, "Please select an answer.");
-	                return; // Exit the method without further processing
-	            }
-
-	            // Get the selected answer
-	            String selectedAnswer = buttonGroup.getSelection().getActionCommand();
-
-	            // Check if the selected answer is correct
-	            if (selectedAnswer.equals(question.getTrueAnswer())) {
-	                JOptionPane.showMessageDialog(questionDialog, "Correct!");
-	            } else {
-	                JOptionPane.showMessageDialog(questionDialog, "Incorrect Answer!");
-	            }
-
-	            // Close the question dialog
-	            questionDialog.dispose();
-	        }
-	    });
-	    questionPanel.add(submitButton);
-
-	    // Add the question panel to the question dialog
-	    questionDialog.getContentPane().add(questionPanel);
-
-	    // Make the question dialog visible
-	    questionDialog.setVisible(true);
-	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
