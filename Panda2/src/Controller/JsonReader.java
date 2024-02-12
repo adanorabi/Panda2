@@ -1,5 +1,5 @@
 // Java program to read JSON from a file 
-
+/*
 import java.io.FileReader; 
 import java.util.Iterator; 
 import java.util.Map; 
@@ -55,3 +55,4 @@ public class JSONReader
 		} 
 	} 
 } 
+*/
