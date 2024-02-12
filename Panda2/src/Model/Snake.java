@@ -14,25 +14,11 @@ public class Snake {
 	private int XTailNum;
 	private int YTailNum;
 	Random rand = new Random();
-	public static int counter=1;
-	private int SnakeId;
 
 	public Snake(SnakeColor color) {
 		super();
-		this.SnakeId=this.counter++;
 		Color = color;
 	}
-
-	
-	public int getSnakeId() {
-		return SnakeId;
-	}
-
-
-	public void setSnakeId(int snakeId) {
-		SnakeId = snakeId;
-	}
-
 
 	public SnakeColor getColor() {
 		return Color;
