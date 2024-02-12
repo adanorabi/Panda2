@@ -79,7 +79,39 @@ class SnakeRandomTest {
 		assertTrue(snake.getYHeadNum() >= 1 && snake.getYHeadNum() <= 9);
 	}
 
+	@Test
+	public void testSnackRandom_Hard_Blue() {
+		Snake snake = new Snake(SnakeColor.Blue);
+		snake.SnackRandom(Levels.Hard, snake);
+		assertTrue(snake.getXHeadNum() >= 0 && snake.getXHeadNum() <= 12);
+		assertTrue(snake.getYHeadNum() >= 3 && snake.getYHeadNum() <= 12);
 
+	}
+	@Test
+	public void testSnackRandom_Hard_Green() {
+		Snake snake = new Snake(SnakeColor.Green);
+		snake.SnackRandom(Levels.Hard, snake);
+		assertTrue(snake.getXHeadNum() >= 0 && snake.getXHeadNum() <= 12);
+		assertTrue(snake.getYHeadNum() >= 2 && snake.getYHeadNum() <= 12);
+	}
+	
+	@Test
+	public void testSnackRandom_Hard_Red() {
+		Snake snake = new Snake(SnakeColor.Red);
+		snake.SnackRandom(Levels.Hard, snake);
+		assertTrue(snake.getXHeadNum() >= 0 && snake.getXHeadNum() <= 12);
+		assertTrue(snake.getYHeadNum() >= 0 && snake.getYHeadNum() <= 12);
+		assertEquals(snake.getXHeadNum(), snake.getXTailNum());
+		assertEquals(snake.getYHeadNum(), snake.getYTailNum());
+	}
+	
+	@Test
+	public void testSnackRandom_Hard_Yellow() {
+		Snake snake = new Snake(SnakeColor.Yellow);
+		snake.SnackRandom(Levels.Hard, snake);
+		assertTrue(snake.getXHeadNum() >= 0 && snake.getXHeadNum() <= 12);
+		assertTrue(snake.getYHeadNum() >= 1 && snake.getYHeadNum() <= 12);
+	}
 }
 
 
