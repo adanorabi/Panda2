@@ -112,9 +112,9 @@ public class Snake {
 					redy = rand.nextInt(7);
 				}
 				snake.setXHeadNum(redx);
-				snake.setXTailNum(redx);
+				snake.setXTailNum(0);
 				snake.setYHeadNum(redy);
-				snake.setYTailNum(redy);
+				snake.setYTailNum(0);
 
 			}
 			else if (snake.Color.equals(SnakeColor.Yellow)) {
@@ -181,9 +181,9 @@ public class Snake {
 					redy = rand.nextInt(10);
 				}
 				snake.setXHeadNum(redx);
-				snake.setXTailNum(redx);
+				snake.setXTailNum(0);
 				snake.setYHeadNum(redy);
-				snake.setYTailNum(redy);
+				snake.setYTailNum(0);
 
 			}
 			else if (snake.Color.equals(SnakeColor.Yellow)) {
@@ -252,9 +252,9 @@ public class Snake {
 					redy = rand.nextInt(13);
 				}
 				snake.setXHeadNum(redx);
-				snake.setXTailNum(redx);
+				snake.setXTailNum(0);
 				snake.setYHeadNum(redy);
-				snake.setYTailNum(redy);
+				snake.setYTailNum(0);
 
 			}
 			else if (snake.Color.equals(SnakeColor.Yellow)) {

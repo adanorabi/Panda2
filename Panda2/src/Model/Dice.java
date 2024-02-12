@@ -105,6 +105,9 @@ public class Dice {
 
 	}
 	public Question CallQuestion(int questionLevel) {
-		
+		if(questionLevel==1) {} //Easy question 
+		else if(questionLevel==2) {} //Medium Question
+		else {} //Hard Question 
+		return null;
 	}
 }
