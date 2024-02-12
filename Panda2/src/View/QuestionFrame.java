@@ -27,7 +27,7 @@ public class QuestionFrame extends JFrame {
 
         getContentPane().setLayout(new BorderLayout());
 
-        questionLabel = new JLabel("<html><span style='font-size:16px; font-weight:bold;'>" + currentQuestion.getContent() + "</span></html>");
+        questionLabel = new JLabel(currentQuestion.getContent());
         getContentPane().add(questionLabel, BorderLayout.NORTH);
 
         JPanel answersPanel = new JPanel(new GridLayout(2, 2));
@@ -38,14 +38,12 @@ public class QuestionFrame extends JFrame {
         ArrayList<String> shuffledAnswers = new ArrayList<>(currentQuestion.getAnswer());
         Collections.shuffle(shuffledAnswers);
 
-        Color[] buttonColors = {Color.RED, Color.GREEN, Color.YELLOW, Color.BLUE};
 
         for (int i = 0; i < 4; i++) {
             JButton button = new JButton(shuffledAnswers.get(i));
             button.setPreferredSize(new Dimension(120, 40)); // Reduced button size
             button.addActionListener(new AnswerButtonListener());
             answerButtons[i] = button;
-            button.setBackground(buttonColors[i]); // Set button background color
             answersPanel.add(button);
         }
     }
