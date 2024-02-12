@@ -31,6 +31,10 @@ public class MediumLevel extends JFrame {
 	private JLabel p2Label;
 	private JLabel p3Label;
 	private JLabel p4Label;
+	private JLabel p1OnGame;
+	private JLabel p2OnGame;
+	private JLabel p3OnGame;
+	private JLabel p4OnGame;
 
 	/**
 	 * Create the frame.
@@ -517,7 +521,7 @@ public class MediumLevel extends JFrame {
 		contentPane.repaint();
 	}
 
-	public void movePlayer(Player player,int x,int y) {
+	public void movePlayer(Player player) {
 		
 		
 	}
