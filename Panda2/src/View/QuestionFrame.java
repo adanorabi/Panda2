@@ -64,7 +64,6 @@ public class QuestionFrame extends JFrame {
 		contentPane.add(submitButton);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setBounds(177, 38, 549, 66);
 		contentPane.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
@@ -90,7 +89,7 @@ public class QuestionFrame extends JFrame {
 			contentPane.add(lblNewLabel_1);
 			
 			JLabel lblNewLabel_2 = new JLabel("Hard Question!!!");
-			lblNewLabel_2.setForeground(new Color(255, 0, 0));
+			lblNewLabel_2.setForeground(new Color(0, 100, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 			lblNewLabel_2.setBounds(688, 107, 114, 29);
 			contentPane.add(lblNewLabel_2);
@@ -103,7 +102,7 @@ public class QuestionFrame extends JFrame {
 			contentPane.add(lblNewLabel_1);
 			
 			JLabel lblNewLabel_2 = new JLabel("Medium Question!!");
-			lblNewLabel_2.setForeground(new Color(255, 165, 0));
+			lblNewLabel_2.setForeground(new Color(0, 100, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 			lblNewLabel_2.setBounds(688, 107, 114, 29);
 			contentPane.add(lblNewLabel_2);
