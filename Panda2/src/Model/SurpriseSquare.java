@@ -3,10 +3,14 @@ package Model;
 import java.util.Random;
 
 public class SurpriseSquare extends Square {
+	
+	public static int counter=1;
+	private int SurpSquareId;
 
 	public SurpriseSquare( int squareRow, int squareCol) {
 		super(squareRow, squareCol);
 		// TODO Auto-generated constructor stub
+		this.SurpSquareId=this.counter++;
 	}
 	public int RandSurprise() { //should be continued!!!
 
