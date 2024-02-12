@@ -396,6 +396,9 @@ public class Game {
 						Ladders.add(ladder);
 						flag=false;
 					}
+					
+					
+					
 
 
 				}
