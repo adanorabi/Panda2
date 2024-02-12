@@ -53,8 +53,9 @@ public class QuestionFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
+        setAlwaysOnTop(true); // Make sure the frame stays on top
+
+
 		JButton submitButton = new JButton("Submit");
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,7 +80,7 @@ public class QuestionFrame extends JFrame {
 			JLabel lblNewLabel_2 = new JLabel("Easy Question!");
 			lblNewLabel_2.setForeground(new Color(0, 100, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			lblNewLabel_2.setBounds(661, 107, 169, 29);
 			contentPane.add(lblNewLabel_2);
 		}else if(question.getQLevel().equals(Levels.Hard))
 		{
@@ -91,7 +92,7 @@ public class QuestionFrame extends JFrame {
 			JLabel lblNewLabel_2 = new JLabel("Hard Question!!!");
 			lblNewLabel_2.setForeground(new Color(255, 0, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			lblNewLabel_2.setBounds(661, 107, 169, 29);
 			contentPane.add(lblNewLabel_2);
 		}
 		else if(question.getQLevel().equals(Levels.Medium))
@@ -104,7 +105,7 @@ public class QuestionFrame extends JFrame {
 			JLabel lblNewLabel_2 = new JLabel("Medium Question!!");
 			lblNewLabel_2.setForeground(new Color(255, 165, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			lblNewLabel_2.setBounds(661, 107, 169, 29);
 			contentPane.add(lblNewLabel_2);
 		}
 

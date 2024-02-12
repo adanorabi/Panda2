@@ -92,7 +92,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 		answers.add("bb");
 		answers.add("cc");
 		answers.add("dd");
-		Question q= new Question(1, Levels.Easy,"what is scrum master?", answers,"cc");
+		Question q= new Question(1, Levels.Medium,"what is scrum master?", answers,"cc");
 		q.setAnswer(answers);
 		System.out.println(q.getAnswer());
 		QuestionFrame fQ=new QuestionFrame(q);
