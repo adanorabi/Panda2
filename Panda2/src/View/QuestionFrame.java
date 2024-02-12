@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Enum.Levels;
 import Model.Question;
 
 import javax.swing.JButton;
@@ -68,6 +69,45 @@ public class QuestionFrame extends JFrame {
 		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		lblNewLabel.setText(question.getContent());
 		
+		if(question.getQLevel().equals(Levels.Easy))
+		{
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setBounds(627, 10, 203, 106);
+			lblNewLabel_1.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/easyq.png")));
+			contentPane.add(lblNewLabel_1);
+			
+			JLabel lblNewLabel_2 = new JLabel("Easy Question!");
+			lblNewLabel_2.setForeground(new Color(0, 100, 0));
+			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			contentPane.add(lblNewLabel_2);
+		}else if(question.getQLevel().equals(Levels.Hard))
+		{
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setBounds(627, 10, 203, 106);
+			lblNewLabel_1.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/hardq.png")));
+			contentPane.add(lblNewLabel_1);
+			
+			JLabel lblNewLabel_2 = new JLabel("Hard Question!!!");
+			lblNewLabel_2.setForeground(new Color(255, 0, 0));
+			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			contentPane.add(lblNewLabel_2);
+		}
+		else if(question.getQLevel().equals(Levels.Medium))
+		{
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setBounds(627, 10, 203, 106);
+			lblNewLabel_1.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/medq.png")));
+			contentPane.add(lblNewLabel_1);
+			
+			JLabel lblNewLabel_2 = new JLabel("Medium Question!!");
+			lblNewLabel_2.setForeground(new Color(255, 165, 0));
+			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			contentPane.add(lblNewLabel_2);
+		}
+
 	    ArrayList<String> shuffledAnswers = new ArrayList<>(question.getAnswer());
         Collections.shuffle(shuffledAnswers);
         
