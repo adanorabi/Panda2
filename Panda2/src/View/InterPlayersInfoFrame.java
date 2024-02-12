@@ -33,13 +33,13 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	public JTextField textField;
 	private JRadioButton redRadioButton;
 	private JRadioButton greenRadioButton;
 	private JRadioButton blueRadioButton;
 	private JRadioButton yRadioButton;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField2;
+	public JTextField textField2;
 	private JRadioButton redRadioButton2;
 	private JRadioButton greenRadioButton2;
 	private JRadioButton blueRadioButton2;
@@ -52,10 +52,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 	private JRadioButton yRadioButton3;
 	private final ButtonGroup buttonGroup3 = new ButtonGroup();
 	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
+
 	private JButton btnNewButton_1;
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
@@ -220,7 +217,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		blueRadioButton.setBounds(246, 200, 70, 23);
 		contentPane.add(blueRadioButton);
 		buttonGroup.add(blueRadioButton);
-		yRadioButton = new JRadioButton("yellow");
+		yRadioButton = new JRadioButton("Yellow");
 		yRadioButton.setActionCommand("Yellow");
 		yRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		yRadioButton.setBackground(new Color(173, 216, 230));
@@ -342,6 +339,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		buttonGroup2.add(redRadioButton2);
 
 		greenRadioButton2 = new JRadioButton("Green");
+		greenRadioButton2.setActionCommand("Green");
 		greenRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		greenRadioButton2.setBackground(new Color(173, 216, 230));
 		greenRadioButton2.addActionListener(new ActionListener() {
@@ -399,7 +397,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		buttonGroup2.add(greenRadioButton2);
 
 		blueRadioButton2 = new JRadioButton("Blue");
-		blueRadioButton.setActionCommand("Blue");
+		blueRadioButton2.setActionCommand("Blue");
 		blueRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		blueRadioButton2.setBackground(new Color(173, 216, 230));
 		blueRadioButton2.addActionListener(new ActionListener() {
@@ -461,7 +459,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		blueRadioButton2.setBounds(767, 200, 70, 23);
 		contentPane.add(blueRadioButton2);
 		buttonGroup2.add(blueRadioButton2);
-		yRadioButton2 = new JRadioButton("yellow");
+		yRadioButton2 = new JRadioButton("Yellow");
 		yRadioButton2.setActionCommand("Yellow");
 		yRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		yRadioButton2.setBackground(new Color(173, 216, 230));
@@ -683,8 +681,9 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						blueRadioButton3.setForeground(Color.black);
 						yRadioButton3.setForeground(Color.black);
 						
-						disableAndMarkColorButton(greenRadioButton2_1);
+						
 						if(NumofPlayers==4) {
+							disableAndMarkColorButton(greenRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							enableColorButton(redRadioButton2_1);
@@ -693,7 +692,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							disableAndMarkColorButton(redRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
-							redRadioButton2_1.setSelected(false);
+							
 							if(blueRadioButton.isSelected()) {
 
 								disableAndMarkColorButton(blueRadioButton2_1);
@@ -886,7 +885,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			blueRadioButton3.setBounds(246, 400, 70, 23);
 			contentPane.add(blueRadioButton3);
 			buttonGroup3.add(blueRadioButton3);
-			yRadioButton3 = new JRadioButton("yellow");
+			yRadioButton3 = new JRadioButton("Yellow");
 			yRadioButton3.setActionCommand("Yellow");
 			yRadioButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 			yRadioButton3.setBackground(new Color(173, 216, 230));
@@ -1066,7 +1065,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					}
 				}
 			});
-			yRadioButton2_1 = new JRadioButton("yellow");
+			yRadioButton2_1 = new JRadioButton("Yellow");
 			yRadioButton2_1.setActionCommand("Yellow");
 			yRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			yRadioButton2_1.setBackground(new Color(173, 216, 230));
@@ -1176,11 +1175,11 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						 p1=new Player(1,color,textField.getText(),0,0);
 					
 					  
-					} else {
-					    // Handle the case where no radio button is selected
 					}
 					
 					 ButtonModel colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
+					 System.out.println(colorString1);
+					 
 					 String colorString = colorString1.getActionCommand();
 					if (colorString.equals("Red")) {
 					    color = PlayerColor.Red;
@@ -1198,7 +1197,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					System.out.println(color);
 					 p2=new Player(2,color,textField2.getText(),0,0);
 				}
-				if(Num==3) {
+				if(Num>=3) {
 					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
 					{
 						throw new FieldIisNull();
@@ -1227,38 +1226,40 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 						 p3=new Player(3,color,textField3.getText(),0,0);
 					}
-					
-				}
-				if(Num==4) {
-					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||textField_1.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup4.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
-					{
-						throw new FieldIisNull();
-					}
+					if(Num==4) {
+						if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||textField_1.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup4.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
+						{
+							throw new FieldIisNull();
+						}
 
-					else if(textField.getText().equals(textField2.getText())||textField.getText().equals(textField3.getText())||textField.getText().equals(textField_1.getText())||textField3.getText().equals(textField2.getText())||textField_1.getText().equals(textField2.getText())||textField3.getText().equals(textField_1.getText()))
-					{
-						throw new UnvalidExceptions("you can not enter the same nickname!!");
-					}
-					else {
-						PlayerColor color;
-						String colorString3 = buttonGroup.getSelection().toString(); // Assuming this returns the color string
-						if (colorString3.equals("Red")) {
-						    color = PlayerColor.Red;
-						} else if (colorString3.equals("Green")) {
-						    color = PlayerColor.Green;
-						} else if (colorString3.equals("Blue")) {
-						    color = PlayerColor.Blue;
-						} else {
-						    // Handle the case where the color string is not recognized
-						    // For example, you could throw an exception or set a default color
-						    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+						else if(textField.getText().equals(textField2.getText())||textField.getText().equals(textField3.getText())||textField.getText().equals(textField_1.getText())||textField3.getText().equals(textField2.getText())||textField_1.getText().equals(textField2.getText())||textField3.getText().equals(textField_1.getText()))
+						{
+							throw new UnvalidExceptions("you can not enter the same nickname!!");
+						}
+						else {
+							System.out.println("player 4 opject");
+							PlayerColor color;
+							String colorString3 = buttonGroup4.getSelection().toString(); // Assuming this returns the color string
+							if (colorString3.equals("Red")) {
+							    color = PlayerColor.Red;
+							} else if (colorString3.equals("Green")) {
+							    color = PlayerColor.Green;
+							} else if (colorString3.equals("Blue")) {
+							    color = PlayerColor.Blue;
+							} else {
+							    // Handle the case where the color string is not recognized
+							    // For example, you could throw an exception or set a default color
+							    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
+							}
+							
+
+							 p4=new Player(4,color,textField_1.getText(),0,0);//
 						}
 						
-
-						 p4=new Player(4,color,textField_1.getText(),0,0);//
 					}
 					
 				}
+			
 					
 				
 				if(Levels.Easy==level)
@@ -1282,12 +1283,18 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			}
 			catch (FieldIisNull ev){
 				JOptionPane.showMessageDialog(contentPane,ev.getMessage());	
+				System.out.println("throw ex");
 			} catch (UnvalidExceptions ex) {
 				JOptionPane.showMessageDialog(contentPane, ex.getMessage(), "Invalid Input", JOptionPane.ERROR_MESSAGE);
-			}
+			}catch (Exception ex) {
+	            // Handle any unexpected exceptions
+	            ex.printStackTrace(); // Or log the exception
+	            JOptionPane.showMessageDialog(contentPane, "An unexpected error occurred.", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
 		}
 
 	}
+
 }
 	
 
