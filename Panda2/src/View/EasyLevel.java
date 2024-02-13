@@ -150,7 +150,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 		{
 			for (j=0 ; j<7; j++ )
 			{
-				if(g.getPlaces()[i][j]==3) {
+				if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
 					setq(i, j);
 					System.out.println("question (" + i + "," + j + "):" );
 
