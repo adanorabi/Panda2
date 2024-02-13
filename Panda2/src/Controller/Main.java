@@ -9,6 +9,7 @@ public class Main {
 		MainFrame mainF= new MainFrame();
 		mainF.setVisible(true);
 		SysData.UploadQuestions() ;   // uploading the questions 
+		System.out.println(SysData.EasyQues);
 		
 	}
 

@@ -11,13 +11,14 @@ public class Question {
 	private ArrayList<String> Answers;
 	private String TrueAnswer;
 	
-	public Question(int questionId, Levels qLevel, String content, ArrayList<String> answer, String trueAnswer) {
+	public Question(int questionId, Levels qLevel, String content, ArrayList<String> Answers, String trueAnswer) {
 		super();
-		QuestionId = questionId;
-		QLevel = qLevel;
-		Content = content;
-		Answers =  new ArrayList<String>(); 
-		TrueAnswer = trueAnswer;
+		this.QuestionId = questionId;
+		this.QLevel = qLevel;
+		this.Content = content;
+		this.Answers =  new ArrayList<String>(); 
+		this.TrueAnswer = trueAnswer;
+		this.Answers=Answers;
 	}
 
 	public int getQuestionId() {
@@ -58,6 +59,12 @@ public class Question {
 
 	public void setTrueAnswer(String trueAnswer) {
 		TrueAnswer = trueAnswer;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [QuestionId=" + QuestionId + ", QLevel=" + QLevel + ", Content=" + Content + ", Answers="
+				+ Answers + ", TrueAnswer=" + TrueAnswer + "]";
 	}
 
 	

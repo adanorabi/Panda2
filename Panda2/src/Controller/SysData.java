@@ -18,6 +18,7 @@ public class SysData {
 	static public  ArrayList<Question> HardQues= new ArrayList<Question>();
 	static public  ArrayList<Question> MidQues= new ArrayList<Question>();
 	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
+	static public int QuestionId=0; // a counter for question id
 	public void UploadGames() {  //should be continued!!!
 		
 	}
@@ -42,20 +43,36 @@ public class SysData {
 	                JSONObject questionObject = questionsArray.getJSONObject(i);
 
 	                // Extract values from the question object
-	                String question = questionObject.getString("question");
+	                String content = questionObject.getString("question");
 	                JSONArray answersArray = questionObject.getJSONArray("answers");
-	                String correctAnswer = questionObject.getString("correct_ans");
+	                String TrueAnswer = questionObject.getString("correct_ans");
 	                String difficulty = questionObject.getString("difficulty");
 
 	                // Print question details (or process them as needed)
-	                System.out.println("Question: " + question);
+	                System.out.println("Content: " + content);
 	                System.out.println("Answers:");
+	                ArrayList <String> Answers=new   ArrayList <String>();
 	                for (int j = 0; j < answersArray.length(); j++) {
 	                    System.out.println((j + 1) + ". " + answersArray.getString(j));
+	                    Answers.add(answersArray.getString(j)); // adding the answers into ArrayList
+	          
+	                	System.out.println( Answers); 
 	                }
-	                System.out.println("Correct Answer: " + correctAnswer);
+	                System.out.println("Correct Answer: " + TrueAnswer);
 	                System.out.println("Difficulty: " + difficulty);
 	                System.out.println("--------------------");
+	                Levels QLevel;
+	                if(difficulty.equals("1")) { //easy question
+	                	QLevel=Levels.Easy;
+	                	
+	                EasyQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
+	
+	                } else if(difficulty.equals("e")) { //medium question
+	                  	QLevel=Levels.Medium;
+	                }
+	                else { //hard question
+	                  	QLevel=Levels.Hard;
+	                }
 	            }
 	        } else {
 	            System.out.println("JSON does not contain 'questions' array.");
