@@ -12,6 +12,18 @@ public class SurpriseSquare extends Square {
 		// TODO Auto-generated constructor stub
 		this.SurpSquareId=this.counter++;
 	}
+	
+	
+	public int getSurpSquareId() {
+		return SurpSquareId;
+	}
+
+	public void setSurpSquareId(int surpSquareId) {
+		SurpSquareId = surpSquareId;
+	}
+
+
+
 	public int RandSurprise() { //should be continued!!!
 
 		double randomNum = Math.random(); // Generates a random double between 0.0 (inclusive) and 1.0 (exclusive)

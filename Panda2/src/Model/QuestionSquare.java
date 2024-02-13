@@ -12,10 +12,17 @@ public class QuestionSquare extends Square{
 			this.QuesSquareId=this.counter++;
 		}
 
-		
+				
+		 public int getQuesSquareId() {
+			return QuesSquareId;
+		}
 
-		
-		 public void ChooseQuestion() {  //should be continued!!!
+		public void setQuesSquareId(int quesSquareId) {
+			QuesSquareId = quesSquareId;
+		}
+
+
+		public void ChooseQuestion() {  //should be continued!!!
 				
 			}
 		 

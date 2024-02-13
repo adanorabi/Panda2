@@ -23,6 +23,20 @@ public class Snake {
 		this.SnakeId=this.counter++;
 	}
 
+	
+	
+	public int getSnakeId() {
+		return SnakeId;
+	}
+
+
+
+	public void setSnakeId(int snakeId) {
+		SnakeId = snakeId;
+	}
+
+
+
 	public SnakeColor getColor() {
 		return Color;
 	}

@@ -22,6 +22,17 @@ public class Ladder {
 		this.LadderId=this.counter++;
 	}
 
+	
+	public int getLadderId() {
+		return LadderId;
+	}
+
+
+	public void setLadderId(int ladderId) {
+		LadderId = ladderId;
+	}
+
+
 	public int getLength() {
 		return Length;
 	}
