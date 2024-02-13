@@ -158,6 +158,7 @@ public class Game {
 							randRow = random.nextInt(RowsNum);
 						}
 						QuestionSquare QS=new QuestionSquare(randRow,randQol,leverArr[i]);
+						System.out.println(QS.getQuesSquareId());
 						this.Places[randRow][randQol]=QS.getQuesSquareId();
 						flag=false;
 						Squares.add(QS);
@@ -167,6 +168,7 @@ public class Game {
 			}
 
 		}
+
 
 		else if(gameLevel== Levels.Medium) {
 			for(int i=0;i<3;i++) {//adding a questionSquare to the game board
@@ -388,25 +390,15 @@ public class Game {
 		}
 
 	}
+	
 	public void placeLadders() {
 		Boolean flag=true;
-		Boolean flag1=true;
 		if (this.GameLevel==Levels.Easy) {
 			for(int i=0;i<4;i++) {
 				Ladder ladder=new Ladder(i+1);
 			
 				while(flag) {
 					ladder.LadderRandom (Levels.Easy, ladder);
-					for(int j=0;j<7;j++) {
-						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
-							flag1=false;
-
-						}
-					
-				}
-				if(flag1==false) {
-					break;
-				}
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
@@ -414,9 +406,11 @@ public class Game {
 						flag=false;
 					}
 					
-					
-					
-
+//					for(int j=0;j<7;j++) {
+//						if(this.Places[ladder.getXStart()][j]!=7) {
+//							flag=true;
+//						}
+//					}
 
 				}
 				flag=true;
@@ -430,16 +424,6 @@ public class Game {
 			
 				while(flag) {
 					ladder.LadderRandom (Levels.Medium, ladder);
-					for(int j=0;j<10;j++) {
-						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
-							flag1=false;
-
-						}
-					
-				}
-				if(flag1==false) {
-					break;
-				}
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
@@ -459,16 +443,6 @@ public class Game {
 	
 				while(flag) {
 					ladder.LadderRandom (Levels.Hard, ladder);
-					for(int j=0;j<13;j++) {
-						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
-							flag1=false;
-
-						}
-					
-				}
-				if(flag1==false) {
-					break;
-				}
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
 						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
 						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
@@ -490,6 +464,128 @@ public class Game {
 			}
 		}
 	}
+//	public void placeLadders() {
+//		Boolean flag=true;
+//		Boolean flag1=true;
+//		int count=0;
+//		if (this.GameLevel==Levels.Easy) {
+//			for(int i=0;i<4;i++) {
+//				Ladder ladder=new Ladder(i+1);
+//		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+//				while(flag) {
+//					System.out.println("this is while");
+//					ladder.LadderRandom (Levels.Easy, ladder);
+//					for(int j=0;j<7;j++) {
+//						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
+//							flag1=false;
+//
+//						}
+//					
+//				}
+//					
+//				if(flag1==false) {
+//					System.out.println("now break");
+//					break;
+//				}
+//					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
+//						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
+//						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
+//						Ladders.add(ladder);
+//						flag=false;
+//						count++;
+//						
+//					}
+//					System.out.println(flag+"this is flag");
+//				}
+//				if(flag1=false) {
+//					i--;
+//				}
+//				
+//				flag=true;
+//				flag1=true;
+//				if(count==4) {
+//					i=4;
+//				}
+//				
+//			}
+//			for (int r =0; r<7; r++) {
+//				System.out.println("");
+//
+//				for (int j =0; j<7; j++) {
+//
+//					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
+//				}
+//
+//			}
+//
+//
+//		}
+//		else if(this.GameLevel==Levels.Medium)  {
+//			for(int i=0;i<6;i++) {
+//				Ladder ladder=new Ladder(i+1);
+//			
+//				while(flag) {
+//					ladder.LadderRandom (Levels.Medium, ladder);
+//					for(int j=0;j<10;j++) {
+//						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
+//							flag1=false;
+//
+//						}
+//					
+//				}
+//				if(flag1==false) {
+//					break;
+//				}
+//					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
+//						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
+//						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
+//						flag=false;	
+//						Ladders.add(ladder);
+//					}
+//
+//
+//				}
+//				flag=true;
+//			}
+//
+//		}
+//		else {
+//			for(int i=0;i<8;i++) {
+//				Ladder ladder=new Ladder(i+1);
+//	
+//				while(flag) {
+//					ladder.LadderRandom (Levels.Hard, ladder);
+//					for(int j=0;j<13;j++) {
+//						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
+//							flag1=false;
+//
+//						}
+//					
+//				}
+//				if(flag1==false) {
+//					break;
+//				}
+//					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
+//						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
+//						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
+//						Ladders.add(ladder);
+//						flag=false;
+//					}
+//
+//				}
+//				flag=true;
+//			}
+//			for (int r =0; r<13; r++) {
+//				System.out.println("");
+//
+//				for (int j =0; j<13; j++) {
+//
+//					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
+//				}
+//
+//			}
+//		}
+//	}
 
 
 	public Player CurrentTurn() {
@@ -502,9 +598,26 @@ public class Game {
 	}
 	
 	public void UpdatePlayerPlace() {
-		if(this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()]==4) {
+		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
+
+		if(num>=6 || num<=13) {
+			for(int i=0;i<Snakes.size();i++) {
+				if(Snakes.get(i).getSnakeId()==num) {
+					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(Snakes.get(i).getXTailNum());
+					this.getPlayers().get(this.getPlayerTurn()).UpdateCol(Snakes.get(i).getYTailNum());
+					
+				}
+			}
 			
-			
+		}
+		if(num>=14 || num<=21) {
+			for(int i=0;i<Ladders.size();i++) {
+				if(Ladders.get(i).getLadderId()==num) {
+					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(Ladders.get(i).getXEnd());
+					this.getPlayers().get(this.getPlayerTurn()).UpdateCol(Ladders.get(i).getYEnd());
+					
+				}
+			}
 			
 		}
 	}
