@@ -391,8 +391,9 @@ public class EasyLevel extends JFrame implements ActionListener {
 		int sY =660-y*86;
 
 		// Calculate the size of the snake image
-		int width = 30; // Adjusted width based on grid size
-		int height = 30;//Adjusted height based on grid size
+
+		int width = 50; // Adjusted width based on grid size
+		int height = 50;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledImage = snakeIcon.getImage().getScaledInstance( width, height, Image.SCALE_SMOOTH);
