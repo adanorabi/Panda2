@@ -10,6 +10,8 @@ public class Main {
 		mainF.setVisible(true);
 		SysData.UploadQuestions() ;   // uploading the questions 
 		System.out.println(SysData.EasyQues);
+		System.out.println(SysData.MidQues);
+		System.out.println(SysData.HardQues);
 		
 	}
 
