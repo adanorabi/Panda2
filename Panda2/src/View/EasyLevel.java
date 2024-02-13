@@ -88,11 +88,11 @@ public class EasyLevel extends JFrame implements ActionListener {
 		lblNewLabel.setBounds(0, 0, 1200, 900);
 		contentPane.add(lblNewLabel);
 		ArrayList<String> answers= new ArrayList<String>();
-		answers.add("qq");
-		answers.add("bb");
-		answers.add("cc");
-		answers.add("dd");
-		Question q= new Question(1, Levels.Easy,"what is scrum master?", answers,"cc");
+		answers.add("No one");
+		answers.add("the manager of the project");
+		answers.add("who leads the team using agile");
+		answers.add("QA ");
+		Question q= new Question(1, Levels.Hard,"what is scrum master?", answers,"who leads the team using agile");
 		q.setAnswer(answers);
 		System.out.println(q.getAnswer());
 		QuestionFrame fQ=new QuestionFrame(q);
@@ -150,7 +150,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 		{
 			for (j=0 ; j<7; j++ )
 			{
-				if(g.getPlaces()[i][j]==3) {
+				if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
 					setq(i, j);
 					System.out.println("question (" + i + "," + j + "):" );
 

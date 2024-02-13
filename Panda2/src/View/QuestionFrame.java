@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -22,6 +23,7 @@ import java.util.Collections;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class QuestionFrame extends JFrame {
 
@@ -53,20 +55,28 @@ public class QuestionFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
-		JButton submitButton = new JButton("Submit");
+        setAlwaysOnTop(true); // Make sure the frame stays on top
+
+
+		JButton submitButton = new JButton("");
+		//submitButton.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/submit.jpg")));
+		ImageIcon icon = new ImageIcon(QuestionFrame.class.getResource("/View/img/submit.jpg"));
+		Image image = icon.getImage(); // Transform it 
+		Image newImage = image.getScaledInstance(120, 100, Image.SCALE_SMOOTH); // Resize it
+		icon = new ImageIcon(newImage); // Convert back to ImageIcon
+		submitButton.setIcon(icon);
+
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		submitButton.setBounds(646, 385, 141, 53);
+		submitButton.setBounds(635, 373, 115, 69);
 		contentPane.add(submitButton);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(194, 62, 549, 66);
 		contentPane.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 24));
 		lblNewLabel.setText(question.getContent());
 		
 		if(question.getQLevel().equals(Levels.Easy))
@@ -79,7 +89,7 @@ public class QuestionFrame extends JFrame {
 			JLabel lblNewLabel_2 = new JLabel("Easy Question!");
 			lblNewLabel_2.setForeground(new Color(0, 100, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			lblNewLabel_2.setBounds(661, 107, 169, 29);
 			contentPane.add(lblNewLabel_2);
 		}else if(question.getQLevel().equals(Levels.Hard))
 		{
@@ -91,7 +101,7 @@ public class QuestionFrame extends JFrame {
 			JLabel lblNewLabel_2 = new JLabel("Hard Question!!!");
 			lblNewLabel_2.setForeground(new Color(255, 0, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			lblNewLabel_2.setBounds(661, 107, 169, 29);
 			contentPane.add(lblNewLabel_2);
 		}
 		else if(question.getQLevel().equals(Levels.Medium))
@@ -104,7 +114,7 @@ public class QuestionFrame extends JFrame {
 			JLabel lblNewLabel_2 = new JLabel("Medium Question!!");
 			lblNewLabel_2.setForeground(new Color(255, 165, 0));
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-			lblNewLabel_2.setBounds(688, 107, 114, 29);
+			lblNewLabel_2.setBounds(661, 107, 169, 29);
 			contentPane.add(lblNewLabel_2);
 		}
 
@@ -114,27 +124,27 @@ public class QuestionFrame extends JFrame {
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
 		rdbtnNewRadioButton.setBackground(Color.WHITE);
 		rdbtnNewRadioButton.setBounds(103, 153, 322, 66);
-        rdbtnNewRadioButton.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
+        rdbtnNewRadioButton.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
 		contentPane.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
 		rdbtnNewRadioButton_1.setBackground(Color.WHITE);
 		rdbtnNewRadioButton_1.setBounds(491, 153, 311, 66);
-		rdbtnNewRadioButton_1.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
+		rdbtnNewRadioButton_1.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
 
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
 		rdbtnNewRadioButton_2.setBackground(Color.WHITE);
 		rdbtnNewRadioButton_2.setBounds(103, 286, 322, 66);
-		rdbtnNewRadioButton_2.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
+		rdbtnNewRadioButton_2.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
 		contentPane.add(rdbtnNewRadioButton_2);
 		
 		
 		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("New radio button");
 		rdbtnNewRadioButton_3.setBackground(Color.WHITE);
 		rdbtnNewRadioButton_3.setBounds(491, 296, 311, 59);
-		rdbtnNewRadioButton_3.setFont(new Font("Trebuchet MS", Font.BOLD, 14)); // Set font size here
+		rdbtnNewRadioButton_3.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
 		contentPane.add(rdbtnNewRadioButton_3);
 		
 		ButtonGroup G = new ButtonGroup();
