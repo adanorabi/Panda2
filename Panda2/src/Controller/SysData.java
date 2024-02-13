@@ -69,9 +69,13 @@ public class SysData {
 	
 	                } else if(difficulty.equals("e")) { //medium question
 	                  	QLevel=Levels.Medium;
+	                    MidQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
+	                	
 	                }
 	                else { //hard question
 	                  	QLevel=Levels.Hard;
+	                    HardQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
+	                	
 	                }
 	            }
 	        } else {
