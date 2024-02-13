@@ -10,10 +10,10 @@ public class Player {
 	private String nickName;
 	private int PlayerCol;
 	private int PlayerRow;
-
-	public Player(int playerID, PlayerColor playerColor, String nickName, int playerCol, int playerRow) {
+	public static int counter=1;
+	public Player( PlayerColor playerColor, String nickName, int playerCol, int playerRow) {
 		super();
-		this.PlayerID = playerID;
+		this.PlayerID = this.counter++;
 		this.playerColor = playerColor;
 		this.nickName = nickName;
 		this.PlayerCol = playerCol;
