@@ -8,17 +8,16 @@ public class Question {
 	private int QuestionId;
 	private Levels QLevel;
 	private String Content;
-	private ArrayList<String> Answers;
+	private ArrayList<String> Answer;
 	private String TrueAnswer;
 	
-	public Question(int questionId, Levels qLevel, String content, ArrayList<String> Answers, String trueAnswer) {
+	public Question(int questionId, Levels qLevel, String content, ArrayList<String> answer, String trueAnswer) {
 		super();
-		this.QuestionId = questionId;
-		this.QLevel = qLevel;
-		this.Content = content;
-		this.Answers =  new ArrayList<String>(); 
-		this.TrueAnswer = trueAnswer;
-		this.Answers=Answers;
+		QuestionId = questionId;
+		QLevel = qLevel;
+		Content = content;
+		Answer =  new ArrayList<String>(); 
+		TrueAnswer = trueAnswer;
 	}
 
 	public int getQuestionId() {
@@ -46,11 +45,11 @@ public class Question {
 	}
 
 	public ArrayList<String> getAnswer() {
-		return this.Answers;
+		return this.Answer;
 	}
 
 	public void setAnswer(ArrayList<String> answer) {
-		this.Answers = answer;
+		this.Answer = answer;
 	}
 
 	public String getTrueAnswer() {
@@ -59,12 +58,6 @@ public class Question {
 
 	public void setTrueAnswer(String trueAnswer) {
 		TrueAnswer = trueAnswer;
-	}
-
-	@Override
-	public String toString() {
-		return "Question [QuestionId=" + QuestionId + ", QLevel=" + QLevel + ", Content=" + Content + ", Answers="
-				+ Answers + ", TrueAnswer=" + TrueAnswer + "]";
 	}
 
 	
