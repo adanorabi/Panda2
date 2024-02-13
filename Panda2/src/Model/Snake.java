@@ -14,7 +14,7 @@ public class Snake {
 	private int XTailNum;
 	private int YTailNum;
 	Random rand = new Random();
-	public static int counter=1;
+	public static int counter=6;
 	private int SnakeId;
 
 	public Snake(SnakeColor color) {
