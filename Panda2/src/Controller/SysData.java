@@ -29,7 +29,42 @@ public class SysData {
 	 ArrayList<String> Answer;
 	 String TrueAnswer;*/
 	public static void UploadQuestions() {  //A function that pulling out the questions from json file
-		
+		try {
+	        // Parse the JSON file
+	        JSONObject obj = new JSONObject(new JSONTokener(new FileReader("questions_scheme.json")));
+
+	        // Check if the top-level JSON structure contains the "questions" array
+	        if (obj.has("questions")) {
+	            JSONArray questionsArray = obj.getJSONArray("questions");
+	            
+	            // Iterate over each question object in the array
+	            for (int i = 0; i < questionsArray.length(); i++) {
+	                JSONObject questionObject = questionsArray.getJSONObject(i);
+
+	                // Extract values from the question object
+	                String question = questionObject.getString("question");
+	                JSONArray answersArray = questionObject.getJSONArray("answers");
+	                String correctAnswer = questionObject.getString("correct_ans");
+	                String difficulty = questionObject.getString("difficulty");
+
+	                // Print question details (or process them as needed)
+	                System.out.println("Question: " + question);
+	                System.out.println("Answers:");
+	                for (int j = 0; j < answersArray.length(); j++) {
+	                    System.out.println((j + 1) + ". " + answersArray.getString(j));
+	                }
+	                System.out.println("Correct Answer: " + correctAnswer);
+	                System.out.println("Difficulty: " + difficulty);
+	                System.out.println("--------------------");
+	            }
+	        } else {
+	            System.out.println("JSON does not contain 'questions' array.");
+	        }
+	    } catch (FileNotFoundException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 		
 	}
 }
