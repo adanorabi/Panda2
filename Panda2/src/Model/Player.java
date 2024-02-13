@@ -1,6 +1,5 @@
 package Model;
 
-
 import Enum.*;
 
 public class Player {
