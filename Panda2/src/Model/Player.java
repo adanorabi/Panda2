@@ -10,14 +10,16 @@ public class Player {
 	private String nickName;
 	private int PlayerCol;
 	private int PlayerRow;
+	private int playeringame;
 
-	public Player(int playerID, PlayerColor playerColor, String nickName, int playerCol, int playerRow) {
+	public Player(int playerID, PlayerColor playerColor, String nickName, int playerCol, int playerRow,int playeringame) {
 		super();
 		this.PlayerID = playerID;
 		this.playerColor = playerColor;
 		this.nickName = nickName;
 		this.PlayerCol = playerCol;
 		this.PlayerRow = playerRow;
+		this.playeringame=playeringame;
 	}
 
 	public int getPlayerID() {
@@ -60,5 +62,14 @@ public class Player {
 	public void UpdateCol(int playerCol) { //function that update player's column
 		PlayerCol = playerCol;
 	}
+
+	public int getPlayeringame() {
+		return playeringame;
+	}
+
+	public void setPlayeringame(int playeringame) {
+		this.playeringame = playeringame;
+	}
+	
 
 }

@@ -18,6 +18,7 @@ import java.awt.Font;
 
 
 public class MediumLevel extends JFrame {
+	static int N=30;
 	private JPanel contentPane;
 
 	private JLabel lblSnake; 
@@ -89,8 +90,16 @@ public class MediumLevel extends JFrame {
 		}
 	    Image scaledP1Image = p1icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon scaledP1Icon = new ImageIcon(scaledP1Image);
+        //setting icon on game
+        img1=imgIcn1.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+        finalIcon1= new ImageIcon(img1);
+        contentPane.add(p1Label);
+        p1OnGame=new JLabel(finalIcon1);//finish putting the icon only setbound and set visible left
+        movePlayer(p1);
         // Create a JLabel for player p1
         p1Label = new JLabel(scaledP1Icon);
+        
+      
         int p1X = 35; // Adjusted x position based on the board offset and grid size
         int p1Y = 180; // Adjusted y position based on the board offset and grid size
         p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
@@ -547,8 +556,19 @@ public class MediumLevel extends JFrame {
 	}
 
 	public void movePlayer(Player player) {
+		int p1X = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+		int p1Y =650-player.getPlayerCol()*59;
+
+		  p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
+
+	        
+	        
+	        
+	        // Add player p1 label to the content pane
+	        contentPane.add(p1Label);
+
 		
-		
+		 
 	}
 
 }
