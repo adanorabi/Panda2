@@ -67,7 +67,7 @@ public class SysData {
 
 						EasyQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
 
-					} else if(difficulty.equals("e")) { //medium question
+					} else if(difficulty.equals("2")) { //medium question
 						QLevel=Levels.Medium;
 						MidQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
 
