@@ -18,6 +18,7 @@ import java.awt.Font;
 
 
 public class MediumLevel extends JFrame {
+	static int N=30;
 	private JPanel contentPane;
 
 	private JLabel lblSnake; 
@@ -31,11 +32,22 @@ public class MediumLevel extends JFrame {
 	private JLabel p2Label;
 	private JLabel p3Label;
 	private JLabel p4Label;
-	private JLabel p1OnGame;
-	private JLabel p2OnGame;
-	private JLabel p3OnGame;
-	private JLabel p4OnGame;
-
+	private JLabel p1OnGame=null;
+	private JLabel p2OnGame=null;
+	private JLabel p3OnGame=null;
+	private JLabel p4OnGame=null;
+	private Image img1;
+	private ImageIcon imgIcn1;
+	private ImageIcon finalIcon1;
+	private Image img2;
+	private ImageIcon imgIcn2;
+	private ImageIcon finalIcon2;
+	private Image img3;
+	private ImageIcon imgIcn3;
+	private ImageIcon finalIcon3;
+	private Image img4;
+	private ImageIcon imgIcn4;
+	private ImageIcon finalIcon4;
 	/**
 	 * Create the frame.
 	 */
@@ -58,21 +70,43 @@ public class MediumLevel extends JFrame {
 	
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
+		{
 			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+			imgIcn1=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+		}
 		else if(p1.getPlayerColor()==PlayerColor.Green)
+		{
 			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+			imgIcn1=new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+		}
 		else if(p1.getPlayerColor()==PlayerColor.Blue)
+		{
 			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
-		else 
+			imgIcn1=new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+		}
+		else {
 			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+			imgIcn1=new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+		}
 	    Image scaledP1Image = p1icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon scaledP1Icon = new ImageIcon(scaledP1Image);
+        //setting icon on game
+        img1=imgIcn1.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+        finalIcon1= new ImageIcon(img1);
+        contentPane.add(p1Label);
+        p1OnGame=new JLabel(finalIcon1);//finish putting the icon only setbound and set visible left
+        movePlayer(p1);
         // Create a JLabel for player p1
         p1Label = new JLabel(scaledP1Icon);
+        
+      
         int p1X = 35; // Adjusted x position based on the board offset and grid size
         int p1Y = 180; // Adjusted y position based on the board offset and grid size
         p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
 
+        
+        
+        
         // Add player p1 label to the content pane
         contentPane.add(p1Label);
 
@@ -83,7 +117,7 @@ public class MediumLevel extends JFrame {
 		p1name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p1name.setBounds(73, 171, 200, 13);
 		contentPane.add(p1name);
-		System.out.println(p1.getPlayerCol());
+		
 		/******************************p2**********************/
 		ImageIcon p2icon;
 		if(p2.getPlayerColor()==PlayerColor.Red)
@@ -110,7 +144,7 @@ public class MediumLevel extends JFrame {
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p2name.setBounds(73, 270, 200, 13);
 		contentPane.add(p2name);
-		System.out.println(p2.getPlayerCol());
+		
 		/******************************p3***************/
 		
 		if(num>2) {
@@ -139,7 +173,7 @@ public class MediumLevel extends JFrame {
 			p3name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			p3name.setBounds(73, 370, 200, 13);
 			contentPane.add(p3name);
-			System.out.println(p3.getPlayerCol());
+			
 		
 		if(num==4) {
 			ImageIcon p4icon;
@@ -167,7 +201,7 @@ public class MediumLevel extends JFrame {
 			p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			p4name.setBounds(73, 470, 200, 13);
 			contentPane.add(p4name);
-			System.out.println(p4.getPlayerCol());
+			
 		}
 		}
 
@@ -522,8 +556,19 @@ public class MediumLevel extends JFrame {
 	}
 
 	public void movePlayer(Player player) {
+		int p1X = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+		int p1Y =650-player.getPlayerCol()*59;
+
+		  p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
+
+	        
+	        
+	        
+	        // Add player p1 label to the content pane
+	        contentPane.add(p1Label);
+
 		
-		
+		 
 	}
 
 }

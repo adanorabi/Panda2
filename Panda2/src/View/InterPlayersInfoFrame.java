@@ -1172,7 +1172,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						    color = PlayerColor.Yellow; // Assuming you have a default color defined in your enum
 						}
 						System.out.println(color);
-						 p1=new Player(color,textField.getText(),0,0);
+						 p1=new Player(1,color,textField.getText(),0,0,1);
 					
 					  
 					}
@@ -1195,7 +1195,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					
 
 					System.out.println(color);
-					 p2=new Player(color,textField2.getText(),0,0);
+					 p2=new Player(2,color,textField2.getText(),0,0,2);
 				}
 				if(Num>=3) {
 					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
@@ -1224,7 +1224,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						}
 						
 
-						 p3=new Player(color,textField3.getText(),0,0);
+						 p3=new Player(3,color,textField3.getText(),0,0,3);
 					}
 					if(Num==4) {
 						if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||textField_1.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup4.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
@@ -1253,7 +1253,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							}
 							
 
-							 p4=new Player(color,textField_1.getText(),0,0);//
+							 p4=new Player(4,color,textField_1.getText(),0,0,4);//
 						}
 						
 					}
