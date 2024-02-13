@@ -8,7 +8,7 @@ public class Question {
 	private int QuestionId;
 	private Levels QLevel;
 	private String Content;
-	private ArrayList<String> Answer;
+	private ArrayList<String> Answers;
 	private String TrueAnswer;
 	
 	public Question(int questionId, Levels qLevel, String content, ArrayList<String> answer, String trueAnswer) {
@@ -16,7 +16,7 @@ public class Question {
 		QuestionId = questionId;
 		QLevel = qLevel;
 		Content = content;
-		Answer =  new ArrayList<String>(); 
+		Answers =  new ArrayList<String>(); 
 		TrueAnswer = trueAnswer;
 	}
 
@@ -45,11 +45,11 @@ public class Question {
 	}
 
 	public ArrayList<String> getAnswer() {
-		return this.Answer;
+		return this.Answers;
 	}
 
 	public void setAnswer(ArrayList<String> answer) {
-		this.Answer = answer;
+		this.Answers = answer;
 	}
 
 	public String getTrueAnswer() {

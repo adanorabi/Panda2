@@ -8,7 +8,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		MainFrame mainF= new MainFrame();
 		mainF.setVisible(true);
-		//String strJson = getJSONFromFile("example.json");
+		SysData.UploadQuestions() ;   // uploading the questions 
+		
 	}
 
 }
