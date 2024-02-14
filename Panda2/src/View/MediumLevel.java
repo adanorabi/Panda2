@@ -230,19 +230,7 @@ public class MediumLevel extends JFrame {
 
 		/********************p4***********/
 
-		JButton btnNewButton = new JButton("move player");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int beforx=p1.getPlayerRow();
-				int befory=p1.getPlayerCol();
-				p1.UpdateRow(4);
-				//call for change cordenation
-				movePlayer(p1,beforx,befory);
-			}
-		});
-		/****************************************************************************************************/
-		btnNewButton.setBounds(50, 641, 85, 21);
-		contentPane.add(btnNewButton);
+
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
@@ -267,6 +255,22 @@ public class MediumLevel extends JFrame {
 			}
 		}
 		g.createGame();
+		JButton btnNewButton = new JButton("move player");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int current=g.CurrentTurn().getPlayeringame();
+				int beforx=p1.getPlayerRow();
+				int befory=p1.getPlayerCol();
+				p1.UpdateRow(4);
+				
+				//call for change cordenation
+				movePlayer(p1,beforx,befory);
+				
+			}
+		});
+		/****************************************************************************************************/
+		btnNewButton.setBounds(50, 641, 85, 21);
+		contentPane.add(btnNewButton);
 		g.PlacespecialSquares(Levels.Medium);
 		g.placeNormalSquares();
 		g.PlaceSnakes();
