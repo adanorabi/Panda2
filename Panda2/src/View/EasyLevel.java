@@ -422,54 +422,5 @@ public class EasyLevel extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-	private void rollDice() {
-	    // Create a timer to update the dice icon every 100 milliseconds
-	    Timer timer = new Timer(100, new ActionListener() {
-	        int rollCount = 0; // Counter to track the number of rolls
-	        int finalNum; // Variable to store the final rolled number
 
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            // Generate a random number between 1 and 6
-	            finalNum = (int) (Math.random() * 6) + 1;
-
-	            // Load the dice side image based on the final rolled number
-	            ImageIcon diceSideIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/" + finalNum + ".png"));
-
-	            // Scale the dice side image to match the size of the diceButton
-	            Image scaledDiceSideImage = diceSideIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-
-	            // Create an ImageIcon for the scaled dice side image
-	            ImageIcon scaledDiceSideIcon = new ImageIcon(scaledDiceSideImage);
-
-	            // Update the diceButton icon with the scaled dice side image
-	            diceButton.setIcon(scaledDiceSideIcon);
-
-	            // Increment the roll count
-	            rollCount++;
-
-	            // Stop the timer after 10 rolls (1 second) and display the final result
-	            if (rollCount >= 10) {
-	                ((Timer) e.getSource()).stop(); // Stop the timer
-
-	                // Load the final dice side image based on the final rolled number
-	                ImageIcon finalDiceSideIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/" + finalNum + ".png"));
-
-	                // Scale the final dice side image to match the size of the diceButton
-	                Image finalScaledDiceSideImage = finalDiceSideIcon.getImage().getScaledInstance(150,150, Image.SCALE_SMOOTH);
-
-	                // Create an ImageIcon for the scaled final dice side image
-	                ImageIcon finalScaledDiceSideIcon = new ImageIcon(finalScaledDiceSideImage);
-
-	                // Update the diceButton icon with the final scaled dice side image
-	                diceButton.setIcon(finalScaledDiceSideIcon);
-
-	                // You can add further logic here based on the final rolled number if needed
-	            }
-	        }
-	    });
-
-	    // Start the timer
-	    timer.start();
-	}
 }
