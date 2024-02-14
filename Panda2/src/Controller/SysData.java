@@ -18,6 +18,7 @@ public class SysData {
 	static public  ArrayList<Question> HardQues= new ArrayList<Question>();
 	static public  ArrayList<Question> MidQues= new ArrayList<Question>();
 	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
+	static public int QuestionId=0;
 	public void UploadGames() {  //should be continued!!!
 		
 	}
@@ -63,7 +64,7 @@ public class SysData {
 					System.out.println("Difficulty: " + difficulty);
 					System.out.println("--------------------");
 					Levels QLevel;
-					public static int QuestionId=0;
+				
 					if(difficulty.equals("1")) { //easy question
 						QLevel=Levels.Easy;
 
