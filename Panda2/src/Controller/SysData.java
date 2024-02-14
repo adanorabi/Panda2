@@ -1,8 +1,15 @@
 package Controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
+import Enum.Levels;
 import Model.*;
 
 public class SysData {
@@ -14,13 +21,9 @@ public class SysData {
 	public void UploadGames() {  //should be continued!!!
 		
 	}
-<<<<<<< Updated upstream
-	public void UploadQuestions() {  //should be continued!!!
-		
-=======
-<<<<<<< HEAD
 
 
+	
 	/* int QuestionId;
 	 Levels QLevel;
 	 String Content;
@@ -60,6 +63,7 @@ public class SysData {
 					System.out.println("Difficulty: " + difficulty);
 					System.out.println("--------------------");
 					Levels QLevel;
+					public static int QuestionId=0;
 					if(difficulty.equals("1")) { //easy question
 						QLevel=Levels.Easy;
 
@@ -85,11 +89,8 @@ public class SysData {
 			e.printStackTrace();
 		}
 
-=======
-	public void UploadQuestions() {  //should be continued!!!
-		
->>>>>>> f3b3024f1fbf4c812230c99927b8b15e2a027b9e
->>>>>>> Stashed changes
-	}
+
+
+}
 }
  

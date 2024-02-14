@@ -60,6 +60,12 @@ public class Question {
 		TrueAnswer = trueAnswer;
 	}
 
+	@Override
+	public String toString() {
+		return "Question [QuestionId=" + QuestionId + ", QLevel=" + QLevel + ", Content=" + Content + ", Answer="
+				+ Answer + ", TrueAnswer=" + TrueAnswer + "]";
+	}
+
 	
 	
 	
