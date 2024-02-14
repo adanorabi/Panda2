@@ -1,5 +1,7 @@
 package View;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.EventQueue;
@@ -18,7 +20,7 @@ public class MainFrame extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	private JButton btnNewButton;
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 700);
@@ -28,12 +30,34 @@ public class MainFrame extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton btnNewButton = new JButton("start");/*adding start button*/
+		btnNewButton = new JButton("start");/*adding start button*/
 		btnNewButton.addActionListener(this);
 		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/start.png")));
 		btnNewButton.setBackground(Color.CYAN);
 		btnNewButton.setBounds(427, 266, 125, 130);
-		
+		 btnNewButton.addMouseListener(new MouseListener() {
+	            @Override
+	            public void mouseClicked(MouseEvent e) {}
+
+	            @Override
+	            public void mousePressed(MouseEvent e) {}
+
+	            @Override
+	            public void mouseReleased(MouseEvent e) {}
+
+	            @Override
+	            public void mouseEntered(MouseEvent e) {
+	                // Scale up the button when mouse enters
+	                btnNewButton.setBounds(417, 256, 145, 150);
+	            }
+
+	            @Override
+	            public void mouseExited(MouseEvent e) {
+	                // Scale back to original size when mouse exits
+	                btnNewButton.setBounds(427, 266, 125, 130);
+	            }
+	        });
+
 		contentPane.add(btnNewButton);
 		JButton btnNewButton_1 = new JButton("inst");/*adding instructions button*/
 		
@@ -62,7 +86,8 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		
 		
-	}//			
+	}//		
+
 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

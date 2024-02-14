@@ -13,11 +13,25 @@ public class Ladder {
 	private int XEnd;
 	private int YEnd;
 	Random rand = new Random();
+	public static int counter=14;
+	private int LadderId;
 
 	public Ladder(int length) {
 		super();
 		Length = length;
+		this.LadderId=this.counter++;
 	}
+
+	
+	public int getLadderId() {
+		return LadderId;
+	}
+
+
+	public void setLadderId(int ladderId) {
+		LadderId = ladderId;
+	}
+
 
 	public int getLength() {
 		return Length;

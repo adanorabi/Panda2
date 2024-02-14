@@ -117,11 +117,11 @@ public class HardLevel extends JFrame implements ActionListener {
 		{
 			for (j=0 ; j<13; j++ )
 			{
-				if(g.getPlaces()[i][j]==2) {
+				if(g.getPlaces()[i][j]==2||g.getPlaces()[i][j]==1) {
 					setsurprise(i, j);
 					System.out.println("surprise (" + i + "," + j + "):" );
 				}
-				else if(g.getPlaces()[i][j]==3) {
+				else if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
 					setq(i, j);
 					System.out.println("question (" + i + "," + j + "):" );
 
