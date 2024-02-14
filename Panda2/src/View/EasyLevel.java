@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -42,7 +43,9 @@ public class EasyLevel extends JFrame implements ActionListener {
 	private JLabel lblLadder; 
 	private JButton diceButton;
     private JButton submitButton;
-
+    private JPanel dicePanel;
+    private ImageIcon[] diceIcons;
+    
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -73,6 +76,15 @@ public class EasyLevel extends JFrame implements ActionListener {
 		contentPane.add(lblEasyTable);
 		int num=(int) ((Math.random() * 4) + 1);
 
+        diceButton = new JButton("Roll Dice");
+        diceButton.addActionListener(this);
+        contentPane.add(diceButton, BorderLayout.SOUTH);
+        diceIcons = new ImageIcon[6];
+        for (int i = 0; i < diceIcons.length; i++) {
+            ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
+            Image resizedImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            diceIcons[i] = new ImageIcon(resizedImage);
+        }
 //		 diceButton = new JButton();
 //		    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-1.png")));
 //		    diceButton.setBounds(42, 662, 117, 121);
@@ -82,21 +94,43 @@ public class EasyLevel extends JFrame implements ActionListener {
 //		            rollDice();
 //		        }
 //		    });
-		contentPane.add(diceButton);
+//		contentPane.add(diceButton);
+        diceButton = new JButton("Roll Dice");
+        diceButton.setBounds(43, 702, 134, 49);
+        diceButton.addActionListener(this);
+        contentPane.add(diceButton); 
+        dicePanel = new JPanel();
+        dicePanel.setBounds(54, 550, 100, 100);
+
+        contentPane.add(dicePanel);
+        diceIcons = new ImageIcon[6];
+        for (int i = 0; i < diceIcons.length; i++) {
+            ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
+            Image resizedImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            diceIcons[i] = new ImageIcon(resizedImage);
+        }
+        
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200, 900);
 		contentPane.add(lblNewLabel);
-		ArrayList<String> answers= new ArrayList<String>();
-		answers.add("No one");
-		answers.add("the manager of the project");
-		answers.add("who leads the team using agile");
-		answers.add("QA ");
-		Question q= new Question(1, Levels.Hard,"what is scrum master?", answers,"who leads the team using agile");
-		q.setAnswer(answers);
-		System.out.println(q.getAnswer());
-		QuestionFrame fQ=new QuestionFrame(q);
-		fQ.setVisible(true);
+		// question example
+//		ArrayList<String> answers= new ArrayList<String>();
+//		answers.add("No one");
+//		answers.add("the manager of the project");
+//		answers.add("who leads the team using agile");
+//		answers.add("QA ");
+//		Question q= new Question(1, Levels.Hard,"what is scrum master?", answers,"who leads the team using agile");
+//		q.setAnswer(answers);
+//		System.out.println(q.getAnswer());
+//		QuestionFrame fQ=new QuestionFrame(q);
+//		fQ.setVisible(true);
+		// Button for rolling the dice
+        
+//        JButton btnNewButton = new JButton("New button");
+//        btnNewButton.setBounds(54, 712, 125, 56);
+//        contentPane.add(btnNewButton);
+        
 		Game g=new Game(3, Levels.Easy, 7, 7);
 		g.createGame();
 		g.PlacespecialSquares(Levels.Easy);
@@ -416,11 +450,47 @@ public class EasyLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	private void rollDiceAnimation() {
+	    final int NUM_FRAMES = 10; // Number of frames for the dice animation
+	    final int DELAY = 50; // Delay between each frame in milliseconds
+
+	    Random random = new Random();
+
+	    Timer timer = new Timer(DELAY, new ActionListener() {
+	        int frameCount = 0;
+
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            // Change dice image randomly for animation
+	            int randomIndex = random.nextInt(diceIcons.length);
+	            dicePanel.removeAll(); // Clear previous dice images
+	            
+	            // Create a new JLabel with the dice image and add it to the dicePanel
+	            JLabel diceLabel = new JLabel(diceIcons[randomIndex]);
+	            dicePanel.add(diceLabel);
+	            
+	            // Revalidate and repaint the dicePanel
+	            dicePanel.revalidate();
+	            dicePanel.repaint();
+
+	            frameCount++;
+	            if (frameCount >= NUM_FRAMES) {
+	                ((Timer) e.getSource()).stop();
+	                // Simulate rolling and display the final result
+	                int result = randomIndex + 1; // Get the result from the index
+	                JOptionPane.showMessageDialog(null, "You rolled: " + result, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
+	            }
+	        }
+	    });
+
+	    timer.start();
+	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+        if (e.getSource() == diceButton) {
+            rollDiceAnimation();
+        }
+    }
 }
