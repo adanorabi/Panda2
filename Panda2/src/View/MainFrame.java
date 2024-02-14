@@ -35,7 +35,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/start.png")));
 		btnNewButton.setBackground(Color.CYAN);
 		btnNewButton.setBounds(427, 266, 125, 130);
-		 btnNewButton.addMouseListener(new MouseListener() {
+		 /*btnNewButton.addMouseListener(new MouseListener() {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {}
 
@@ -56,7 +56,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	                // Scale back to original size when mouse exits
 	                btnNewButton.setBounds(427, 266, 125, 130);
 	            }
-	        });
+	        });*/
 
 		contentPane.add(btnNewButton);
 		JButton btnNewButton_1 = new JButton("inst");/*adding instructions button*/
