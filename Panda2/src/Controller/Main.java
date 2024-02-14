@@ -8,10 +8,10 @@ public class Main {
 		// TODO Auto-generated method stub
 		MainFrame mainF= new MainFrame();
 		mainF.setVisible(true);
-		SysData.UploadQuestions(); 
-		System.out.println(SysData.EasyQues);
-		System.out.println(SysData.MidQues);
-		System.out.println(SysData.HardQues);
+//		SysData.UploadQuestions(); 
+//		System.out.println(SysData.EasyQues);
+//		System.out.println(SysData.MidQues);
+//		System.out.println(SysData.HardQues);
 		
 	}
 
