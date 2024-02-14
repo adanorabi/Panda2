@@ -73,15 +73,15 @@ public class EasyLevel extends JFrame implements ActionListener {
 		contentPane.add(lblEasyTable);
 		int num=(int) ((Math.random() * 4) + 1);
 
-		 diceButton = new JButton();
-		    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-1.png")));
-		    diceButton.setBounds(42, 662, 117, 121);
-		    diceButton.addActionListener(new ActionListener() {
-		        @Override
-		        public void actionPerformed(ActionEvent e) {
-		            rollDice();
-		        }
-		    });
+//		 diceButton = new JButton();
+//		    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-1.png")));
+//		    diceButton.setBounds(42, 662, 117, 121);
+//		    diceButton.addActionListener(new ActionListener() {
+//		        @Override
+//		        public void actionPerformed(ActionEvent e) {
+//		            rollDice();
+//		        }
+//		    });
 		contentPane.add(diceButton);
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
