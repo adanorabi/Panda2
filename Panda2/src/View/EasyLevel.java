@@ -42,9 +42,8 @@ public class EasyLevel extends JFrame implements ActionListener {
 	private JLabel lblq;
 	private JLabel lblLadder; 
 	private JButton diceButton;
-    private JButton submitButton;
-    private JPanel dicePanel;
     private ImageIcon[] diceIcons;
+    private JLabel diceLabel ;
     
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -82,38 +81,29 @@ public class EasyLevel extends JFrame implements ActionListener {
         diceIcons = new ImageIcon[6];
         for (int i = 0; i < diceIcons.length; i++) {
             ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
-            Image resizedImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            Image resizedImage = originalIcon.getImage().getScaledInstance(134, 49, Image.SCALE_SMOOTH);
             diceIcons[i] = new ImageIcon(resizedImage);
         }
-//		 diceButton = new JButton();
-//		    diceButton.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/dice-1.png")));
-//		    diceButton.setBounds(42, 662, 117, 121);
-//		    diceButton.addActionListener(new ActionListener() {
-//		        @Override
-//		        public void actionPerformed(ActionEvent e) {
-//		            rollDice();
-//		        }
-//		    });
-//		contentPane.add(diceButton);
+
         diceButton = new JButton("Roll Dice");
         diceButton.setBounds(43, 702, 134, 49);
         diceButton.addActionListener(this);
         contentPane.add(diceButton); 
-        dicePanel = new JPanel();
-        dicePanel.setBounds(54, 550, 100, 100);
-
-        contentPane.add(dicePanel);
+        
+        diceLabel = new JLabel("");
+        diceLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/1.png")));
+        diceLabel.setBounds(40, 520, 150, 150);
+        
+        contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
+        diceLabel.setVisible(true);
+        
         diceIcons = new ImageIcon[6];
         for (int i = 0; i < diceIcons.length; i++) {
             ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
-            Image resizedImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
             diceIcons[i] = new ImageIcon(resizedImage);
         }
-        
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
-		lblNewLabel.setBounds(0, 0, 1200, 900);
-		contentPane.add(lblNewLabel);
+   
 		// question example
 //		ArrayList<String> answers= new ArrayList<String>();
 //		answers.add("No one");
@@ -131,6 +121,11 @@ public class EasyLevel extends JFrame implements ActionListener {
 //        btnNewButton.setBounds(54, 712, 125, 56);
 //        contentPane.add(btnNewButton);
         
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
+		lblNewLabel.setBounds(0, 0, 1200, 900);
+		contentPane.add(lblNewLabel);
+		
 		Game g=new Game(3, Levels.Easy, 7, 7);
 		g.createGame();
 		g.PlacespecialSquares(Levels.Easy);
@@ -463,16 +458,10 @@ public class EasyLevel extends JFrame implements ActionListener {
 	        public void actionPerformed(ActionEvent e) {
 	            // Change dice image randomly for animation
 	            int randomIndex = random.nextInt(diceIcons.length);
-	            dicePanel.removeAll(); // Clear previous dice images
 	            
-	            // Create a new JLabel with the dice image and add it to the dicePanel
-	            JLabel diceLabel = new JLabel(diceIcons[randomIndex]);
-	            dicePanel.add(diceLabel);
-	            
-	            // Revalidate and repaint the dicePanel
-	            dicePanel.revalidate();
-	            dicePanel.repaint();
-
+	            // Create a new JLabel with the dice image and add it to the lblEasyTable panel
+	            diceLabel.setIcon(diceIcons[randomIndex]);
+	            diceLabel.setBounds(40, 520, 150, 150);
 	            frameCount++;
 	            if (frameCount >= NUM_FRAMES) {
 	                ((Timer) e.getSource()).stop();
@@ -485,7 +474,6 @@ public class EasyLevel extends JFrame implements ActionListener {
 
 	    timer.start();
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
