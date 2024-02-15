@@ -20,6 +20,7 @@ public class Game {
 	private ArrayList<Ladder> Ladders ;
 	private ArrayList<Square> Squares ;
 	public static int PlayerTurn=0;
+	public static Board GameBoard;  //yara!
 
 	public Game(int gameId, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
@@ -33,6 +34,7 @@ public class Game {
 		this.Snakes= new ArrayList<Snake>() ;
 		this.Ladders= new ArrayList<Ladder>() ;
 		this.Squares= new ArrayList<Square>() ;
+		this.GameBoard= new Board(colsNum);  //yara!
 	}
 
 	public int getGameId() {
