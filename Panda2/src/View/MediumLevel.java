@@ -235,7 +235,7 @@ public class MediumLevel extends JFrame {
 			}
 		}
 
-		/********************p4***********/
+		/********************p4*******************************************************************88*/
 
 
 
@@ -269,7 +269,7 @@ public class MediumLevel extends JFrame {
 				int current=1;
 				int beforx=0;
 				int befory=0;
-				 
+				boolean result=true;
 				/*beforx=g.getPlayers().get(current).getPlayerRow();	 
 				g.getPlayers().get(current).UpdateRow(4);
 				movePlayer(g.getPlayers().get(current).UpdateRow(4),beforx,befory);
@@ -278,9 +278,12 @@ public class MediumLevel extends JFrame {
 				beforx=p1.getPlayerRow();	 
 				befory=p1.getPlayerCol();	
 				p1.UpdateRow(4);//update player func
-				
+				int aftery=beforx=p1.getPlayerRow();	
+				if(result==false&&(befory!=aftery)) {
 				//call for change cordenation
 				movePlayer(p1,beforx,befory);
+				
+				}
 				
 				lineMangment(next,num);
 				
@@ -653,21 +656,23 @@ public class MediumLevel extends JFrame {
 
 
 	}
-	public void movePlayer(Player player,int beforx,int befory) {
+	public void movePlayer(Player player,int beforx,int befory,int aftery,int afterx) {
 		int pX=0,pY=0,bx=0,by=0;
 		
 
 		switch(player.getPlayeringame()) {
 		case 1:
-			pX = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = 185 + afterx * 94; // Adjusted x position based on the board offset and grid size//170
+			
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
-			pX = N+185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = N+185 +afterx * 94; // Adjusted x position based on the board offset and grid size//170
 			break;
 
 		}
-		pY =630-player.getPlayerCol()*59;
+		
+		pY =630-aftery*59;
 		bx= 185 + beforx * 94;
 		by=630-befory*59;
 		 final int finalBx = bx; // Declare effectively final variables
@@ -689,6 +694,8 @@ public class MediumLevel extends JFrame {
 	                timer.stop(); // Stop the timer when the movement is complete
 	            }
 	        });
+	        
+		
 
 
 	}
