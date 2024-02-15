@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class MediumLevel extends JFrame {
 	static int N=50;
 	private JPanel contentPane;
-
+	private JLabel mytext;
 	private JLabel lblSnake; 
 	private JLabel glblSnake;// Label for the snake image
 	private JLabel rlblSnake;
@@ -52,6 +52,10 @@ public class MediumLevel extends JFrame {
 	private Image img4;
 	private ImageIcon imgIcn4;
 	private ImageIcon finalIcon4;
+	private JLabel p1name;
+	private JLabel p2name;
+	private JLabel p3name;
+	private JLabel p4name;
 	/**
 	 * Create the frame.
 	 */
@@ -63,7 +67,10 @@ public class MediumLevel extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		mytext = new JLabel("");
+		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		 mytext.setBounds(200, 29, 900, 50);
+		contentPane.add( mytext);
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/mid.jpg")));
 		lblNewLabel_1.setBounds(185, 110, 940,585);//94,59
@@ -118,7 +125,7 @@ public class MediumLevel extends JFrame {
 		// Ensure player p1 label is visible
 		p1Label.setVisible(true);
 
-		JLabel p1name = new JLabel(p1.getNickName());
+		p1name = new JLabel(p1.getNickName());
 		p1name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p1name.setBounds(73, 171, 200, 13);
 		contentPane.add(p1name);
@@ -163,7 +170,7 @@ public class MediumLevel extends JFrame {
 
 
 
-		JLabel p2name = new JLabel(p2.getNickName());
+	    p2name = new JLabel(p2.getNickName());
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p2name.setBounds(73, 270, 200, 13);
 		contentPane.add(p2name);
@@ -192,7 +199,7 @@ public class MediumLevel extends JFrame {
 			// Ensure player p1 label is visible
 			p3Label.setVisible(true);
 
-			JLabel p3name = new JLabel(p3.getNickName());
+			p3name = new JLabel(p3.getNickName());
 			p3name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			p3name.setBounds(73, 370, 200, 13);
 			contentPane.add(p3name);
@@ -220,7 +227,7 @@ public class MediumLevel extends JFrame {
 				// Ensure player p1 label is visible
 				p4Label.setVisible(true);
 
-				JLabel p4name = new JLabel(p4.getNickName());
+				p4name = new JLabel(p4.getNickName());
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 				p4name.setBounds(73, 470, 200, 13);
 				contentPane.add(p4name);
@@ -258,19 +265,33 @@ public class MediumLevel extends JFrame {
 		JButton btnNewButton = new JButton("move player");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int current=g.CurrentTurn().getPlayeringame();
-				int beforx=p1.getPlayerRow();
-				int befory=p1.getPlayerCol();
-				p1.UpdateRow(4);
+				int next=g.CurrentTurn().getPlayeringame()+1;
+				int current=1;
+				int beforx=0;
+				int befory=0;
+				 
+				/*beforx=g.getPlayers().get(current).getPlayerRow();	 
+				g.getPlayers().get(current).UpdateRow(4);
+				movePlayer(g.getPlayers().get(current).UpdateRow(4),beforx,befory);
+				*/
+				
+				beforx=p1.getPlayerRow();	 
+				befory=p1.getPlayerCol();	
+				p1.UpdateRow(4);//update player func
 				
 				//call for change cordenation
 				movePlayer(p1,beforx,befory);
+				
+				lineMangment(next,num);
+				
 				
 			}
 		});
 		/****************************************************************************************************/
 		btnNewButton.setBounds(50, 641, 85, 21);
 		contentPane.add(btnNewButton);
+		
+	
 		g.PlacespecialSquares(Levels.Medium);
 		g.placeNormalSquares();
 		g.PlaceSnakes();
@@ -671,22 +692,108 @@ public class MediumLevel extends JFrame {
 
 
 	}
-	public void lineMangment(int turn) {
-		switch(turn) {
-		case 1:
-			
-			
-			break;
+	public void setPlayerText(Player p,String text) {
+		mytext.setText(p.getNickName()+" "+text);
+	}
+	public void lineMangment(int turn,int num) {
+		switch(num) {
 		case 2:
-			
-			break;
-		case 3:
-			
-			break;
-		case 4:
+			switch(turn) {
+			case 1:
+				p1Label.setLocation(35, 180);
+				p1name.setLocation(73,170);
+				p2Label.setLocation(35, 280);
+				p1name.setLocation(73,270);
+				break;
+			case 2:
+				p1Label.setLocation(35, 280);
+				p1name.setLocation(73,270);
+				p2Label.setLocation(35, 180);
+				p2name.setLocation(73,170);
+				break;	
+			}
 			break;
 		
-		}
+		
+		case 3:
+			switch(turn) {
+			case 1:
+				p1Label.setLocation(35, 180);
+				p1name.setLocation(73,170);
+				p2Label.setLocation(35, 280);
+				p2name.setLocation(73,270);
+				p3Label.setLocation(35, 380);
+				p3name.setLocation(73,370);
+				break;
+			case 2:
+
+				p2Label.setLocation(35, 180);
+				p2name.setLocation(73,170);
+				p3Label.setLocation(35, 280);
+				p3name.setLocation(73,270);
+				p1Label.setLocation(35, 380);
+				p1name.setLocation(73,370);
+				break;
+			case 3:
+				p3Label.setLocation(35, 180);
+				p3name.setLocation(73,170);
+				p1Label.setLocation(35, 280);
+				p1name.setLocation(73,270);
+				p2Label.setLocation(35, 380);
+				p2name.setLocation(73,370);
+				
+			}
+			break;
+		case 4:
+			switch(turn) {
+			case 1:
+				p1Label.setLocation(35, 180);
+				p1name.setLocation(73,170);
+				p2Label.setLocation(35, 280);
+				p2name.setLocation(73,270);
+				p3Label.setLocation(35, 380);
+				p3name.setLocation(73,370);
+				p4Label.setLocation(35, 480);
+				p4name.setLocation(73,470);
+				break;
+			case 2:
+				p2Label.setLocation(35, 180);
+				p2name.setLocation(73,170);
+				p3Label.setLocation(35, 280);
+				p3name.setLocation(73,270);
+				p4Label.setLocation(35, 380);
+				p4name.setLocation(73,370);
+				p1Label.setLocation(35, 480);
+				p1name.setLocation(73,470);
+			
+				break;
+			case 3:
+				p3Label.setLocation(35, 180);
+				p3name.setLocation(73,170);
+				p4Label.setLocation(35, 280);
+				p4name.setLocation(73,270);
+				p1Label.setLocation(35, 380);
+				p1name.setLocation(73,370);
+				p2Label.setLocation(35, 480);
+				p2name.setLocation(73,470);
+				break;
+			case 4:
+				p4Label.setLocation(35, 180);
+				p4name.setLocation(73,170);
+				p1Label.setLocation(35, 280);
+				p1name.setLocation(73,270);
+				p2Label.setLocation(35, 380);
+				p2name.setLocation(73,370);
+				p3Label.setLocation(35, 480);
+				p3name.setLocation(73,470);
+				break;
+				
+			
+				
+			}
+			break;
+		
+	}
 		
 		
 	}
