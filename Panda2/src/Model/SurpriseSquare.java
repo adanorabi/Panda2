@@ -24,7 +24,7 @@ public class SurpriseSquare extends Square {
 
 
 
-	public int RandSurprise() { //should be continued!!!
+	public int RandSurprise(int x,int y) { //should be continued!!!
 
 		double randomNum = Math.random(); // Generates a random double between 0.0 (inclusive) and 1.0 (exclusive)
 

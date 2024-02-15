@@ -14,6 +14,7 @@ public class Game {
 	private int ColsNum;
 	private int Places[][];
 	private int WinnerId;
+	
 	private ArrayList<Player> Players;
 	private ArrayList<Snake> Snakes ;
 	private ArrayList<Ladder> Ladders ;
