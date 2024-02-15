@@ -9,16 +9,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import Model.Game;
 import Model.Player;
 import Enum.*;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class MediumLevel extends JFrame {
-	static int N=30;
+	static int N=50;
 	private JPanel contentPane;
 
 	private JLabel lblSnake; 
@@ -67,7 +71,7 @@ public class MediumLevel extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/dice-1.png")));
 		lblNewLabel_2.setBounds(0, 532, 175, 230);
-
+/*********************************************************************************************************************************/
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
 		{
@@ -93,9 +97,10 @@ public class MediumLevel extends JFrame {
 		//setting icon on game
 		img1=imgIcn1.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
 		finalIcon1= new ImageIcon(img1);
-	
+
 		p1OnGame=new JLabel(finalIcon1);//finish putting the icon only setbound and set visible left
-		movePlayer(p1);
+
+
 		// Create a JLabel for player p1
 		p1Label = new JLabel(scaledP1Icon);
 
@@ -120,14 +125,22 @@ public class MediumLevel extends JFrame {
 
 		/******************************p2**********************/
 		ImageIcon p2icon;
-		if(p2.getPlayerColor()==PlayerColor.Red)
+		if(p2.getPlayerColor()==PlayerColor.Red) {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
-		else if(p2.getPlayerColor()==PlayerColor.Green)
+			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+		}
+		else if(p2.getPlayerColor()==PlayerColor.Green) {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
-		else if(p2.getPlayerColor()==PlayerColor.Blue)
+			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+		}
+		else if(p2.getPlayerColor()==PlayerColor.Blue) {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
-		else 
+			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+		}
+		else {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+		}
 		Image scaledP2Image = p2icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon scaledP2Icon = new ImageIcon(scaledP2Image);
 		// Create a JLabel for player p2
@@ -139,6 +152,16 @@ public class MediumLevel extends JFrame {
 
 		// Ensure player p1 label is visible
 		p2Label.setVisible(true);
+
+		img2=imgIcn2.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+		finalIcon2= new ImageIcon(img2);
+
+		p2OnGame=new JLabel(finalIcon2);//finish putting the icon only setbound and set visible left
+
+		setPlayer(p1);//
+		setPlayer(p2);//		
+
+
 
 		JLabel p2name = new JLabel(p2.getNickName());
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -207,6 +230,8 @@ public class MediumLevel extends JFrame {
 
 		/********************p4***********/
 
+
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200,900);
@@ -230,6 +255,22 @@ public class MediumLevel extends JFrame {
 			}
 		}
 		g.createGame();
+		JButton btnNewButton = new JButton("move player");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int current=g.CurrentTurn().getPlayeringame();
+				int beforx=p1.getPlayerRow();
+				int befory=p1.getPlayerCol();
+				p1.UpdateRow(4);
+				
+				//call for change cordenation
+				movePlayer(p1,beforx,befory);
+				
+			}
+		});
+		/****************************************************************************************************/
+		btnNewButton.setBounds(50, 641, 85, 21);
+		contentPane.add(btnNewButton);
 		g.PlacespecialSquares(Levels.Medium);
 		g.placeNormalSquares();
 		g.PlaceSnakes();
@@ -555,19 +596,98 @@ public class MediumLevel extends JFrame {
 		contentPane.repaint();
 	}
 
-	public void movePlayer(Player player) {
-		if(player.getPlayeringame()==1) {
-			int p1X = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
-			int p1Y =650-player.getPlayerCol()*59;
-			
-			p1OnGame.setBounds(p1X, p1Y, N, N); // Set bounds for player p1 label
+	public void setPlayer(Player player) {
+		int pX,pY;
+		switch(player.getPlayeringame()) {
+		case 1:
+			pX = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pY =630-player.getPlayerCol()*59;
+			System.out.println("setting player 1");
+			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
 
 			// Add player p1 label to the content pane
 			contentPane.add(p1OnGame);
+			p1OnGame.setVisible(true);
+			contentPane.setComponentZOrder(p1OnGame, 0);
+			contentPane.revalidate();
+			contentPane.repaint();
+
+			break;
+		case 2://+N
+			pX = N+185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pY =630-player.getPlayerCol()*59;
+			System.out.println("setting player 2");
+			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
+
+			// Add player p1 label to the content pane
+			contentPane.add(p2OnGame);
+			p2OnGame.setVisible(true);
+			contentPane.setComponentZOrder(p2OnGame, 0);
+			contentPane.revalidate();
+			contentPane.repaint();
+			break;
 
 		}
 
 
-	}
 
+	}
+	public void movePlayer(Player player,int beforx,int befory) {
+		int pX=0,pY=0,bx=0,by=0;
+		
+
+		switch(player.getPlayeringame()) {
+		case 1:
+			pX = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			//p1OnGame.setLocation(pX, pY);
+			break;
+		case 2://+N
+			pX = N+185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			break;
+
+		}
+		pY =630-player.getPlayerCol()*59;
+		bx= 185 + beforx * 94;
+		by=630-befory*59;
+		 final int finalBx = bx; // Declare effectively final variables
+		 final int finalBy = by;
+
+		int steps = 50; // Number of steps for the movement
+		double deltaX = (pX-bx) / (double) steps;
+		double deltaY = (pY-by) / (double) steps;
+		 Timer timer = new Timer(20, null); // Create a timer without ActionListener
+	        timer.start(); // Start the timer
+	        final int[] count = {0};
+	        timer.addActionListener(e -> {
+	            if (count[0] < steps) {
+	                int newX = (int) (finalBx + deltaX * count[0]);
+	                int newY = (int) (finalBy+ deltaY * count[0]);
+	                p1OnGame.setLocation(newX, newY);
+	                count[0]++;
+	            } else {
+	                timer.stop(); // Stop the timer when the movement is complete
+	            }
+	        });
+
+
+	}
+	public void lineMangment(int turn) {
+		switch(turn) {
+		case 1:
+			
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			break;
+		
+		}
+		
+		
+	}
 }

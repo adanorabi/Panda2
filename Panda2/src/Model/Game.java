@@ -598,10 +598,10 @@ public class Game {
 		
 	}
 	
-	public void UpdatePlayerPlace() {
+	public boolean UpdatePlayerPlace() {
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
 
-		if(num>=6 || num<=13) {
+		if(num>=6 && num<=13) {
 			for(int i=0;i<Snakes.size();i++) {
 				if(Snakes.get(i).getSnakeId()==num) {
 					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(Snakes.get(i).getXTailNum());
@@ -609,9 +609,10 @@ public class Game {
 					
 				}
 			}
+			return true;
 			
 		}
-		if(num>=14 || num<=21) {
+		if(num>=14 && num<=21) {
 			for(int i=0;i<Ladders.size();i++) {
 				if(Ladders.get(i).getLadderId()==num) {
 					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(Ladders.get(i).getXEnd());
@@ -619,8 +620,10 @@ public class Game {
 					
 				}
 			}
+			return true;
 			
 		}
+		return false;
 	}
 
 
