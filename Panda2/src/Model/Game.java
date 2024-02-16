@@ -14,7 +14,7 @@ public class Game {
 	private int ColsNum;
 	private int Places[][];
 	private int WinnerId;
-	
+	private Dice gameDice; //yara!
 	private ArrayList<Player> Players;
 	private ArrayList<Snake> Snakes ;
 	private ArrayList<Ladder> Ladders ;
@@ -34,6 +34,7 @@ public class Game {
 		this.Snakes= new ArrayList<Snake>() ;
 		this.Ladders= new ArrayList<Ladder>() ;
 		this.Squares= new ArrayList<Square>() ;
+		this.gameDice=new Dice(Levels.Easy); //yara!
 		this.GameBoard= new Board(colsNum);  //yara!
 	}
 
