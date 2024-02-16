@@ -15,11 +15,11 @@ public class Main {
 		System.out.println(SysData.EasyQues);
 		System.out.println(SysData.MidQues);
 		System.out.println(SysData.HardQues);
-		Board board=new Board(7);  //yara!
+		Board board=new Board(10);  //yara!
 		System.out.println(board);
 		//System.out.println("The position of the second coordinate is : "+board.getPosition(1, 0));
 		//System.out.println("The coordinates of the last is : "+board.getCoordinates(49));
-		int size=7;
+		int size=10;
 		 System.out.println("Testing getPosition method:");
 	        for (int row = 0; row < size; row++) {
 	            for (int col = 0; col < size; col++) {
