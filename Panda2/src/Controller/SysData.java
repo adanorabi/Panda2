@@ -16,7 +16,8 @@ public class SysData {
 	static public  ArrayList<Game> gamesList= new ArrayList<Game>(); // array list that contains the games
 	static public  ArrayList<Question> questionList= new ArrayList<Question>();
 	static public  ArrayList<Question> HardQues= new ArrayList<Question>();
-	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
+	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	
+	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
 	static public int QuestionId=0;
 	public void UploadGames() {  
 

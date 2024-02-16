@@ -70,23 +70,23 @@ public class Question {
 	}
 
 	public static Question CallQuestion(Levels questionLevel)  {
-	    // Check if the list corresponding to the question level is empty
-	    if (questionLevel.equals(Levels.Easy) && !SysData.EasyQues.isEmpty()) {
-	        int index = (int)(Math.random() * SysData.EasyQues.size()); 
-	        System.out.println("Random Question is: " + SysData.EasyQues.get(index));
-	        return SysData.EasyQues.get(index); // returning a random easy question
-	    } else if (questionLevel.equals(Levels.Medium) && !SysData.MidQues.isEmpty()) {
-	        int index = (int)(Math.random() * SysData.MidQues.size()); 
-	        System.out.println("Random Question is: " + SysData.MidQues.get(index));
-	        return SysData.MidQues.get(index); // returning a random medium question
-	    } else if (!SysData.HardQues.isEmpty()) {
-	        int index = (int)(Math.random() * SysData.HardQues.size()); 
-	        System.out.println("Random Question is: " + SysData.HardQues.get(index));
-	        return SysData.HardQues.get(index); // returning a random Hard question
-	    } else {
-	        // Throw an exception indicating no questions available
-	     return null; //yara!
-	    }
+		// Check if the list corresponding to the question level is empty
+		if (questionLevel.equals(Levels.Easy) && !SysData.EasyQues.isEmpty()) {
+			int index = (int)(Math.random() * SysData.EasyQues.size()); 
+			System.out.println("Random Question is: " + SysData.EasyQues.get(index));
+			return SysData.EasyQues.get(index); // returning a random easy question
+		} else if (questionLevel.equals(Levels.Medium) && !SysData.MidQues.isEmpty()) {
+			int index = (int)(Math.random() * SysData.MidQues.size()); 
+			System.out.println("Random Question is: " + SysData.MidQues.get(index));
+			return SysData.MidQues.get(index); // returning a random medium question
+		} else if (!SysData.HardQues.isEmpty()) {
+			int index = (int)(Math.random() * SysData.HardQues.size()); 
+			System.out.println("Random Question is: " + SysData.HardQues.get(index));
+			return SysData.HardQues.get(index); // returning a random Hard question
+		} else {
+			// Throw an exception indicating no questions available
+			return null; //yara!
+		}
 	}
 
 	public static  int answerFeedback(Question question,boolean Answer ) // Function that decide the player movement according to his answers of questions 
