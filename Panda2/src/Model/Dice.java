@@ -81,7 +81,7 @@ public class Dice {
 	}
 	public Object CheckResult(int diceResult) {
 		if(this.diceOptions[diceResult]<7) {
-			return (Integer)diceOptions[diceResult];
+			return diceOptions[diceResult];
 		}
 		else {
 			if (this.diceOptions[diceResult]==7) { // the result is a random easy question 

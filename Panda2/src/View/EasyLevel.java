@@ -43,9 +43,9 @@ public class EasyLevel extends JFrame {
 	private JLabel lblq;
 	private JLabel lblLadder; 
 	private JButton diceButton;
-    private ImageIcon[] diceIcons;
-    private JLabel diceLabel ;
-    /***/
+	private ImageIcon[] diceIcons;
+	private JLabel diceLabel ;
+	/***/
 	private JLabel p1Label;
 	private JLabel p2Label;
 	private JLabel p3Label;
@@ -71,13 +71,13 @@ public class EasyLevel extends JFrame {
 	private JLabel p3name;
 	private JLabel p4name;
 	private JLabel mytext;
-    
+
 
 	/**
 	 * Create the frame.
 	 */
 	public EasyLevel(Player p1,Player p2, Player p3,Player p4,int num) {
-	
+
 		Game g=new Game(3, Levels.Easy, 7, 7);
 		g.createGame();
 		g.getPlayers().add(p1);
@@ -101,9 +101,9 @@ public class EasyLevel extends JFrame {
 		g.placeNormalSquares();
 		g.PlaceSnakes();
 		g.placeLadders();
-	//	Player turn=g.CurrentTurn();//call the turn
-	//	System.out.println("the player is "+turn.getNickName());
-	//	setPlayerText(turn,"it is you turn to roll a dice");/**********************turn***********************/
+		//	Player turn=g.CurrentTurn();//call the turn
+		//	System.out.println("the player is "+turn.getNickName());
+		//	setPlayerText(turn,"it is you turn to roll a dice");/**********************turn***********************/
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 100, 1200, 900);
 		contentPane = new JPanel();
@@ -112,7 +112,7 @@ public class EasyLevel extends JFrame {
 		contentPane.setLayout(null);
 		mytext = new JLabel("");
 		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
-		 mytext.setBounds(200, 29, 900, 50);
+		mytext.setBounds(200, 29, 900, 50);
 		contentPane.add( mytext);
 
 		// Label for the easytable image
@@ -120,64 +120,64 @@ public class EasyLevel extends JFrame {
 		lblEasyTable.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/easytable.png")));
 		lblEasyTable.setBounds(214, 125, 861, 602);
 		contentPane.add(lblEasyTable);
-	
 
-        diceButton = new JButton("Roll Dice");
-        diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.png")));
-        diceButton.setBounds(43, 702, 134, 49);
-        diceButton.addActionListener(new ActionListener() {
-        	
 
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-               System.out.println("in dice btn");
-                    rollDiceAnimation(g);
-                
-            
-		}});
-        contentPane.add(diceButton); 
-        
-        diceLabel = new JLabel("");
-        diceLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/1.png")));
-        diceLabel.setBounds(40, 520, 150, 150);
-        
-        contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
-        diceLabel.setVisible(true);
-        
-        diceIcons = new ImageIcon[8];
-        for (int i = 0; i < 5; i++) {
-            ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + i  + ".png"));
-            Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-            diceIcons[i] = new ImageIcon(resizedImage);
-        }
-        ImageIcon originalIcon1 = new ImageIcon(getClass().getResource("/View/img/EasyD.png"));
-        Image resizedImage1 = originalIcon1.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-        diceIcons[5] = new ImageIcon(resizedImage1);
-        ImageIcon originalIcon2 = new ImageIcon(getClass().getResource("/View/img/HardD.png"));
-        Image resizedImage2 = originalIcon2.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-        diceIcons[6] = new ImageIcon(resizedImage2);
-        ImageIcon originalIcon3 = new ImageIcon(getClass().getResource("/View/img/MedD.png"));
-        Image resizedImage3 = originalIcon3.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-        diceIcons[7] = new ImageIcon(resizedImage3);
-        
-   
+		diceButton = new JButton("Roll Dice");
+		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.png")));
+		diceButton.setBounds(43, 702, 134, 49);
+		diceButton.addActionListener(new ActionListener() {
+
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("in dice btn");
+				rollDiceAnimation(g);
+
+
+			}});
+		contentPane.add(diceButton); 
+
+		diceLabel = new JLabel("");
+		diceLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/1.png")));
+		diceLabel.setBounds(40, 520, 150, 150);
+
+		contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
+		diceLabel.setVisible(true);
+
+		diceIcons = new ImageIcon[8];
+		for (int i = 0; i < 5; i++) {
+			ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + i  + ".png"));
+			Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+			diceIcons[i] = new ImageIcon(resizedImage);
+		}
+		ImageIcon originalIcon1 = new ImageIcon(getClass().getResource("/View/img/EasyD.png"));
+		Image resizedImage1 = originalIcon1.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		diceIcons[5] = new ImageIcon(resizedImage1);
+		ImageIcon originalIcon2 = new ImageIcon(getClass().getResource("/View/img/HardD.png"));
+		Image resizedImage2 = originalIcon2.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		diceIcons[6] = new ImageIcon(resizedImage2);
+		ImageIcon originalIcon3 = new ImageIcon(getClass().getResource("/View/img/MedD.png"));
+		Image resizedImage3 = originalIcon3.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		diceIcons[7] = new ImageIcon(resizedImage3);
+
+
 		// question example
-//		ArrayList<String> answers= new ArrayList<String>();
-//		answers.add("No one");
-//		answers.add("the manager of the project");
-//		answers.add("who leads the team using agile");
-//		answers.add("QA ");
-//		Question q= new Question(1, Levels.Hard,"what is scrum master?", answers,"who leads the team using agile");
-//		q.setAnswer(answers);
-//		System.out.println(q.getAnswer());
-//		QuestionFrame fQ=new QuestionFrame(q);
-//		fQ.setVisible(true);
+		//		ArrayList<String> answers= new ArrayList<String>();
+		//		answers.add("No one");
+		//		answers.add("the manager of the project");
+		//		answers.add("who leads the team using agile");
+		//		answers.add("QA ");
+		//		Question q= new Question(1, Levels.Hard,"what is scrum master?", answers,"who leads the team using agile");
+		//		q.setAnswer(answers);
+		//		System.out.println(q.getAnswer());
+		//		QuestionFrame fQ=new QuestionFrame(q);
+		//		fQ.setVisible(true);
 		// Button for rolling the dice
-        
-//        JButton btnNewButton = new JButton("New button");
-//        btnNewButton.setBounds(54, 712, 125, 56);
-//        contentPane.add(btnNewButton);
-        /*********************************************************************************************************************************/
+
+		//        JButton btnNewButton = new JButton("New button");
+		//        btnNewButton.setBounds(54, 712, 125, 56);
+		//        contentPane.add(btnNewButton);
+		/*********************************************************************************************************************************/
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
 		{
@@ -267,7 +267,7 @@ public class EasyLevel extends JFrame {
 
 
 
-	    p2name = new JLabel(p2.getNickName());
+		p2name = new JLabel(p2.getNickName());
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p2name.setBounds(73, 170, 200, 13);
 		contentPane.add(p2name);
@@ -363,12 +363,12 @@ public class EasyLevel extends JFrame {
 
 
 
-        
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200, 900);
 		contentPane.add(lblNewLabel);
-	
+
 		int i, j;
 		for(i=0; i<g.getSnakes().size();i++)
 		{
@@ -684,105 +684,126 @@ public class EasyLevel extends JFrame {
 	}
 	private void rollDiceAnimation(Game g) {
 		System.out.println("im in the roll dice func");
-	    final int NUM_FRAMES = 15; // Number of frames for the dice animation
-	    final int DELAY = 50; // Delay between each frame in milliseconds
+		final int NUM_FRAMES = 15; // Number of frames for the dice animation
+		final int DELAY = 50; // Delay between each frame in milliseconds
+	    Random random = new Random();
 
-	
+		Timer timer = new Timer(DELAY, new ActionListener() {
+			int frameCount = 0;
 
-	    Timer timer = new Timer(DELAY, new ActionListener() {
-	        int frameCount = 0;
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Change dice image randomly for animation
+				
 
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            // Change dice image randomly for animation
-	        	
-	        	Player p=g.CurrentTurn();
-	        	int bx=p.getPlayerRow();
-	        	int by=p.getPlayerCol();
-	            Object  CHECK = g.Roll();
-	            Question q;
-	            String answer="";
-	           
-	            if(CHECK instanceof Integer) {/*msg*/
-	            	 diceLabel.setIcon(diceIcons[(Integer)CHECK]);
-	            	 answer=Integer.toString((Integer)CHECK);
-	            	 int ax=p.getPlayerRow();
-	            	int ay=p.getPlayerCol();
-	            	  
-	            movePlayer(p, bx, by,ax, ay);
-
-	            }
+				// Create a new JLabel with the dice image and add it to the lblEasyTable panel
+				  // Change dice image randomly for animation
+	            int randomIndex = random.nextInt(diceIcons.length);
 	            
-	            else {
-	            	q=(Question)CHECK;
-	            	if(q.getQLevel().equals(Levels.Easy)) {
-	            		 diceLabel.setIcon(diceIcons[5]);
-	            		 answer="easy question";
-	            	}else if(q.getQLevel().equals(Levels.Medium)) {
-	            		 diceLabel.setIcon(diceIcons[7]);
-	            		 answer="medium question";
-	            	}else {
-	            		 diceLabel.setIcon(diceIcons[6]);
-	            		 answer="hard question";
-	            	}
-	   		
-	            	
-	            }
 	            // Create a new JLabel with the dice image and add it to the lblEasyTable panel
-	           
-	            diceLabel.setBounds(40, 520, 150, 150);
-	            frameCount++;
-	            if (frameCount >= NUM_FRAMES) {
-	                ((Timer) e.getSource()).stop();
-	                // Simulate rolling and display the final result
-	                JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
-	            }
-	        
-	        }
-	    });
+	            diceLabel.setIcon(diceIcons[randomIndex]);
+				diceLabel.setBounds(40, 520, 150, 150);
+				frameCount++;
+				if (frameCount >= NUM_FRAMES) {
+					Player p=g.CurrentTurn();
+					int bx=p.getPlayerRow();
+					int by=p.getPlayerCol();
+				
+					
+					int squareResult;
+					Object  CHECK = g.Roll();
+					System.out.println("the dice rolled"+CHECK);
+					Question q;
+					String answer="";
 
-	    timer.start();
+					if(CHECK instanceof Integer) {
+						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
+						answer=Integer.toString((Integer)CHECK);
+						int ax=p.getPlayerRow();
+						int ay=p.getPlayerCol();
+
+						movePlayer(p, bx, by,ax, ay);
+						System.out.println("("+bx+","+by+")"+" to ("+ax+","+ay+")");
+						if(g.checkQuestionSquare()==null) {
+							 squareResult=g.UpdatePlayerPlace();
+							 if(squareResult!=0) {
+								 
+							// movePlayer(p,bx,by,p.getPlayerRow(),p.getPlayerCol());
+							
+							 }
+						}else {
+							
+						}
+
+					}
+
+					else {
+						q=(Question)CHECK;
+						if(q.getQLevel().equals(Levels.Easy)) {
+							diceLabel.setIcon(diceIcons[5]);
+							answer="easy question";
+						}else if(q.getQLevel().equals(Levels.Medium)) {
+							diceLabel.setIcon(diceIcons[7]);
+							answer="medium question";
+						}else {
+							diceLabel.setIcon(diceIcons[6]);
+							answer="hard question";
+						}
+
+
+					}
+					((Timer) e.getSource()).stop();
+					// Simulate rolling and display the final result
+					JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
+				}
+
+			}
+		});
+
+		
+
+		timer.start();
 	}
 
 
-	public void movePlayer(Player player,int beforx,int befory,int aftery,int afterx) {
+	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery) {
 		int pX=0,pY=0,bx=0,by=0;
-		
+
 
 		switch(player.getPlayeringame()) {
 		case 1:
-			pX = 185 + afterx * 94; // Adjusted x position based on the board offset and grid size//170
-			
+			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
+
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
-			pX = N+185 +afterx * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
 			break;
 
 		}
-		
-		pY =630-aftery*59;
-		bx= 185 + beforx * 94;
-		by=630-befory*59;
-		 final int finalBx = bx; // Declare effectively final variables
-		 final int finalBy = by;
+
+		pY =641-aftery*86;
+		bx= 214 + beforx * 122;
+		by=641-befory*86;
+		final int finalBx = bx; // Declare effectively final variables
+		final int finalBy = by;
 
 		int steps = 50; // Number of steps for the movement
 		double deltaX = (pX-bx) / (double) steps;
 		double deltaY = (pY-by) / (double) steps;
-		 Timer timer = new Timer(20, null); // Create a timer without ActionListener
-	        timer.start(); // Start the timer
-	        final int[] count = {0};
-	        timer.addActionListener(e -> {
-	            if (count[0] < steps) {
-	                int newX = (int) (finalBx + deltaX * count[0]);
-	                int newY = (int) (finalBy+ deltaY * count[0]);
-	                p1OnGame.setLocation(newX, newY);
-	                count[0]++;
-	            } else {
-	                timer.stop(); // Stop the timer when the movement is complete
-	            }
-	        });
+		Timer timer = new Timer(20, null); // Create a timer without ActionListener
+		timer.start(); // Start the timer
+		final int[] count = {0};
+		timer.addActionListener(e -> {
+			if (count[0] < steps) {
+				int newX = (int) (finalBx + deltaX * count[0]);
+				int newY = (int) (finalBy+ deltaY * count[0]);
+				p1OnGame.setLocation(newX, newY);
+				count[0]++;
+			} else {
+				timer.stop(); // Stop the timer when the movement is complete
+			}
+		});
 
 	}
 	public void setPlayerText(Player p,String text) {
@@ -808,8 +829,8 @@ public class EasyLevel extends JFrame {
 				break;	
 			}
 			break;
-		
-		
+
+
 		case 3:
 			switch(turn) {
 			case 1:
@@ -836,7 +857,7 @@ public class EasyLevel extends JFrame {
 				p1name.setLocation(73,170);
 				p2Label.setLocation(35, 280);
 				p2name.setLocation(73,270);
-				
+
 			}
 			break;
 		case 4:
@@ -860,7 +881,7 @@ public class EasyLevel extends JFrame {
 				p4name.setLocation(73,270);
 				p1Label.setLocation(35, 380);
 				p1name.setLocation(73,370);
-			
+
 				break;
 			case 3:
 				p3Label.setLocation(35, 80);
@@ -882,21 +903,21 @@ public class EasyLevel extends JFrame {
 				p3Label.setLocation(35, 380);
 				p3name.setLocation(73,370);
 				break;
-				
-			
-				
+
+
+
 			}
 			break;
-		
-	}
-		
-		
+
+		}
+
+
 	}
 	public void setPlayer(Player player) {
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
-			
+
 			pX = 214 + player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
 			pY =630-player.getPlayerCol()*59;
 			System.out.println("setting player 1");
@@ -911,7 +932,7 @@ public class EasyLevel extends JFrame {
 
 			break;
 		case 2://+N
-			pX = N+214+ player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = N+214+ player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
 			pY =630-player.getPlayerCol()*59;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
@@ -924,7 +945,7 @@ public class EasyLevel extends JFrame {
 			contentPane.repaint();
 			break;
 		case 3://+N
-			pX = 214+ player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = 214+ player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
 			pY =N-15+630-player.getPlayerCol()*59;
 			System.out.println("setting player 3");
 			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
@@ -937,7 +958,7 @@ public class EasyLevel extends JFrame {
 			contentPane.repaint();
 			break;
 		case 4://+N
-			pX = N+214+ player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = N+214+ player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
 			pY =N-15+630-player.getPlayerCol()*59;
 			System.out.println("setting player 4");
 			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label

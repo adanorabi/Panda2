@@ -477,12 +477,13 @@ public class Game {
 	}
 
 	public Object Roll() {
-
-		if(this.gameDice.RollDice() instanceof Integer) {
+		
+		Object roll=this.gameDice.RollDice();
+		if(roll instanceof Integer) {
 			int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
 			int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
 			int pos=this.GameBoard.getPosition(x, y);
-			int newpos=pos+ (Integer)this.gameDice.RollDice();
+			int newpos=pos+ (Integer)roll;
 			int afterRoll[]=new int[2];
 			afterRoll=this.GameBoard.getCoordinates(newpos);
 			this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterRoll[0]);
@@ -490,7 +491,7 @@ public class Game {
 
 		}
 
-		return this.gameDice.RollDice();
+		return roll;
 	}
 
 
