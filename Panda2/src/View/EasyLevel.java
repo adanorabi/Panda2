@@ -78,14 +78,9 @@ public class EasyLevel extends JFrame implements ActionListener {
         diceButton = new JButton("Roll Dice");
         diceButton.addActionListener(this);
         contentPane.add(diceButton, BorderLayout.SOUTH);
-        diceIcons = new ImageIcon[6];
-        for (int i = 0; i < diceIcons.length; i++) {
-            ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
-            Image resizedImage = originalIcon.getImage().getScaledInstance(134, 49, Image.SCALE_SMOOTH);
-            diceIcons[i] = new ImageIcon(resizedImage);
-        }
 
         diceButton = new JButton("Roll Dice");
+        diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.png")));
         diceButton.setBounds(43, 702, 134, 49);
         diceButton.addActionListener(this);
         contentPane.add(diceButton); 
@@ -97,12 +92,22 @@ public class EasyLevel extends JFrame implements ActionListener {
         contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
         diceLabel.setVisible(true);
         
-        diceIcons = new ImageIcon[6];
-        for (int i = 0; i < diceIcons.length; i++) {
+        diceIcons = new ImageIcon[8];
+        for (int i = 0; i < 4; i++) {
             ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
             Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-            diceIcons[i] = new ImageIcon(resizedImage);
+            diceIcons[i+1] = new ImageIcon(resizedImage);
         }
+        ImageIcon originalIcon1 = new ImageIcon(getClass().getResource("/View/img/EasyD.png"));
+        Image resizedImage1 = originalIcon1.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        diceIcons[5] = new ImageIcon(resizedImage1);
+        ImageIcon originalIcon2 = new ImageIcon(getClass().getResource("/View/img/HardD.png"));
+        Image resizedImage2 = originalIcon2.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        diceIcons[6] = new ImageIcon(resizedImage2);
+        ImageIcon originalIcon3 = new ImageIcon(getClass().getResource("/View/img/MedD.png"));
+        Image resizedImage3 = originalIcon3.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        diceIcons[7] = new ImageIcon(resizedImage3);
+        
    
 		// question example
 //		ArrayList<String> answers= new ArrayList<String>();

@@ -1,7 +1,7 @@
 package Model;
 import java.util.Random;
 
-import Controller.SysData;
+//import Controller.SysData;
 import Enum.Levels;
 
 public class Dice {
