@@ -1,5 +1,7 @@
 package Model;
 import java.util.Random;
+
+import Controller.SysData;
 import Enum.Levels;
 
 public class Dice {
@@ -25,6 +27,7 @@ public class Dice {
 
 	public Dice(Levels GameLevel) {
 		super();
+	
 		if (GameLevel==Levels.Easy) {
 			this.NumOfSides = 8;
 			this.diceOptions=new int[NumOfSides];
@@ -50,9 +53,6 @@ public class Dice {
 			this.diceOptions[10]=8;
 			this.diceOptions[11]=9;//filling the option of hard  question
 			this.diceOptions[12]=9;
-
-
-
 		}
 		else {
 			this.NumOfSides =15 ;
@@ -85,29 +85,53 @@ public class Dice {
 		}
 		else {
 			if (this.diceOptions[diceResult]==7) { // the result is a random easy question 
-				Question easyQuestion =CallQuestion(1);
+				Question easyQuestion =Question.CallQuestion(Levels.Easy);
 				return easyQuestion;
-				
+
 			}
 			else if (this.diceOptions[diceResult]==7) { // the result is a random medium question 
-					Question mediumQuestion=CallQuestion(2);
-					return mediumQuestion;
-			
+				Question mediumQuestion=Question.CallQuestion(Levels.Medium);
+				return mediumQuestion;
+
 			}
 			else {			// the result is a random hard question 
-				Question hardQuestion=CallQuestion(3);
+				Question hardQuestion=Question.CallQuestion(Levels.Hard);
 				return hardQuestion;
-				
-				
+
+
 			}
 		}
 
 
 	}
-	public Question CallQuestion(int questionLevel) {
-		if(questionLevel==1) {} //Easy question 
-		else if(questionLevel==2) {} //Medium Question
-		else {} //Hard Question 
-		return null;
-	}
+	/*public Question CallQuestion(int questionLevel) {
+		if(questionLevel==1) { //Easy question 
+
+
+			// generating the index using Math.random() 
+			int index = (int)(Math.random() * SysData.EasyQues.size()); 
+
+			System.out.println("Random Question is :"+ SysData.EasyQues.get(index)); //yara!
+			return SysData.EasyQues.get(index); // returning a random easy question
+
+
+		}
+		else if(questionLevel==2) {//Medium Question
+
+			int index = (int)(Math.random() * SysData.MidQues.size()); 
+
+
+			return SysData.MidQues.get(index); // returning a random medium question
+		} 
+		else {//Hard Question 
+
+			// generating the index using Math.random() 
+			int index = (int)(Math.random() * SysData.HardQues.size()); 
+
+
+			return SysData.HardQues.get(index); // returning a random Hard question
+
+		}
+
+	}*/
 }

@@ -22,7 +22,7 @@ public class QuestionSquare extends Square{
 		}
 
 
-		public void ChooseQuestion() {  //should be continued!!!
+		public void ChooseQuestion() {  //yara!
 				
 			}
 		 
