@@ -66,7 +66,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	 */
 	public MediumLevel(Player p1,Player p2, Player p3,Player p4,int num) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(400, 100, 1200, 900);
+		setBounds(400, 10, 1300, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -78,7 +78,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.add( mytext);
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/mid.jpg")));
-		lblNewLabel_1.setBounds(185, 110, 940,585);//94,59
+		lblNewLabel_1.setBounds(185, 90, 1005,790);//94,59
 		contentPane.add(lblNewLabel_1);
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/dice-1.png")));
@@ -278,7 +278,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
-		lblNewLabel.setBounds(0, 0, 1200,900);
+		lblNewLabel.setBounds(0, 0, 1200,1000);
 		contentPane.add(lblNewLabel);
 
 		Game g=new Game(3, Levels.Medium,10, 10);
@@ -406,14 +406,14 @@ public class MediumLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/bluesnake2.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 122; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY = 630- yhead * 58; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 185 + xtail * 122; // Adjusted x position based on the board offset and grid size
-		int snakeTailY =  630- ytail * 58; // Adjusted y position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY = 801- yhead * 79; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 185 + xtail * 101; // Adjusted x position based on the board offset and grid size
+		int snakeTailY =  801- ytail * 79; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 122; // Adjusted width based on grid size
-		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 59; // Adjusted height based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 101; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 79; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -441,14 +441,14 @@ public class MediumLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/greensnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 94; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY =  630  - yhead * 58; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 188 + xtail * 94; // Adjusted x position based on the board offset and grid size
-		int snakeTailY =  630  - ytail * 58; // Adjusted y position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY =  801  - yhead * 79; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 188 + xtail * 101; // Adjusted x position based on the board offset and grid size
+		int snakeTailY =  801  - ytail * 79; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 94; // Adjusted width based on grid size
-		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 59; // Adjusted height based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 101; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 79; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -476,12 +476,12 @@ public class MediumLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/redsnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 94; // Adjusted x position based on the board offset and grid size//170
-		int snakeHeadY =650-yhead*59;
+		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size//170
+		int snakeHeadY =820-yhead*79;
 
 		// Calculate the size of the snake image
 		int snakeWidth = 60; // Adjusted width based on grid size
-		int snakeHeight = 40;//Adjusted height based on grid size
+		int snakeHeight = 60;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -508,13 +508,13 @@ public class MediumLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/yellosnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 94; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY = 630 - yhead * 59; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 185 + xtail * 94; // Adjusted x position based on the board offset and grid size
-		int snakeTailY = 630 - ytail * 59; // Adjusted y position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY = 801 - yhead * 79; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 185 + xtail * 101; // Adjusted x position based on the board offset and grid size
+		int snakeTailY = 801 - ytail * 79; // Adjusted y position based on the board offset and grid size
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 94; // Adjusted width based on grid size
-		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 59; // Adjusted height based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 101; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 79; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -538,10 +538,10 @@ public class MediumLevel extends JFrame implements ActionListener {
 	}
 
 	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
-		int ladderHeadX = 190 + xhead * 94; // Adjusted x position based on the board offset and grid size
-		int ladderHeadY = 620 - yhead * 59; // Adjusted y position based on the board offset and grid size
-		int ladderTailX = 190 + xtail * 94; // Adjusted x position based on the board offset and grid size
-		int ladderTailY = 620 - ytail * 59; // Adjusted y position based on the board offset and grid size
+		int ladderHeadX = 190 + xhead * 101; // Adjusted x position based on the board offset and grid size
+		int ladderHeadY = 801 - yhead * 79; // Adjusted y position based on the board offset and grid size
+		int ladderTailX = 190 + xtail * 101; // Adjusted x position based on the board offset and grid size
+		int ladderTailY = 801 - ytail * 79; // Adjusted y position based on the board offset and grid size
 		ImageIcon ladderIcon=null;
 		// Calculate the size of the snake image
 		int ladderWidth = Math.abs(ladderHeadX - ladderTailX) + 80; // Adjusted width based on grid size
@@ -597,8 +597,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/q.png"));
 
 		// Calculate the position of the surprise
-		int sX = 200 + x * 94; 
-		int sY =639-y*58;
+		int sX = 200 + x * 101; 
+		int sY =810-y*79;
 
 		// Calculate the size of the snake image
 		int width = 50; // Adjusted width based on grid size
@@ -630,8 +630,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/surprise.png"));
 
 		// Calculate the position of the surprise
-		int sX = 200 + x * 94; 
-		int sY =650-y*58;
+		int sX = 200 + x * 101; 
+		int sY =820-y*79;
 
 		// Calculate the size of the snake image
 		int width = 30; // Adjusted width based on grid size
@@ -663,8 +663,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
-			pX = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
-			pY =630-player.getPlayerCol()*59;
+			pX = 185 + player.getPlayerRow() * 101; // Adjusted x position based on the board offset and grid size//170
+			pY =801-player.getPlayerCol()*79;
 			System.out.println("setting player 1");
 			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
 
@@ -677,8 +677,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 			break;
 		case 2://+N
-			pX = N+185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
-			pY =630-player.getPlayerCol()*59;
+			pX = N+185 + player.getPlayerRow() * 101; // Adjusted x position based on the board offset and grid size//170
+			pY =801-player.getPlayerCol()*79;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -701,19 +701,19 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 		switch(player.getPlayeringame()) {
 		case 1:
-			pX = 185 + afterx * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = 185 + afterx * 101; // Adjusted x position based on the board offset and grid size//170
 			
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
-			pX = N+185 +afterx * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = N+185 +afterx * 101; // Adjusted x position based on the board offset and grid size//170
 			break;
 
 		}
 		
-		pY =630-aftery*59;
-		bx= 185 + beforx * 94;
-		by=630-befory*59;
+		pY =801-aftery*79;
+		bx= 185 + beforx * 101;
+		by=801-befory*79;
 		 final int finalBx = bx; // Declare effectively final variables
 		 final int finalBy = by;
 
@@ -856,7 +856,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	            // Change dice image randomly for animation
-	            int randomIndex = random.nextInt(diceIcons.length+1);
+	            int randomIndex = random.nextInt(diceIcons.length);
 	            
 	            // Create a new JLabel with the dice image and add it to the lblEasyTable panel
 	            diceLabel.setIcon(diceIcons[randomIndex]);
