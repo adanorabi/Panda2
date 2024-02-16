@@ -34,7 +34,7 @@ public class Game {
 		this.Snakes= new ArrayList<Snake>() ;
 		this.Ladders= new ArrayList<Ladder>() ;
 		this.Squares= new ArrayList<Square>() ;
-		this.gameDice=new Dice(Levels.Easy); //yara!
+		this.gameDice=new Dice(gameLevel); //yara!
 		this.GameBoard= new Board(colsNum);  //yara!
 	}
 
