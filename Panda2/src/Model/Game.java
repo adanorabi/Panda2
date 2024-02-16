@@ -20,6 +20,7 @@ public class Game {
 	private ArrayList<Ladder> Ladders ;
 	private ArrayList<Square> Squares ;
 	public static int PlayerTurn=0;
+	public static Board GameBoard;  //yara!
 
 	public Game(int gameId, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
@@ -33,6 +34,7 @@ public class Game {
 		this.Snakes= new ArrayList<Snake>() ;
 		this.Ladders= new ArrayList<Ladder>() ;
 		this.Squares= new ArrayList<Square>() ;
+		this.GameBoard= new Board(colsNum);  //yara!
 	}
 
 	public int getGameId() {
@@ -407,11 +409,7 @@ public class Game {
 						flag=false;
 					}
 					
-//					for(int j=0;j<7;j++) {
-//						if(this.Places[ladder.getXStart()][j]!=7) {
-//							flag=true;
-//						}
-//					}
+
 
 				}
 				flag=true;
@@ -465,128 +463,7 @@ public class Game {
 			}
 		}
 	}
-//	public void placeLadders() {
-//		Boolean flag=true;
-//		Boolean flag1=true;
-//		int count=0;
-//		if (this.GameLevel==Levels.Easy) {
-//			for(int i=0;i<4;i++) {
-//				Ladder ladder=new Ladder(i+1);
-//		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-//				while(flag) {
-//					System.out.println("this is while");
-//					ladder.LadderRandom (Levels.Easy, ladder);
-//					for(int j=0;j<7;j++) {
-//						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
-//							flag1=false;
-//
-//						}
-//					
-//				}
-//					
-//				if(flag1==false) {
-//					System.out.println("now break");
-//					break;
-//				}
-//					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
-//						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
-//						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
-//						Ladders.add(ladder);
-//						flag=false;
-//						count++;
-//						
-//					}
-//					System.out.println(flag+"this is flag");
-//				}
-//				if(flag1=false) {
-//					i--;
-//				}
-//				
-//				flag=true;
-//				flag1=true;
-//				if(count==4) {
-//					i=4;
-//				}
-//				
-//			}
-//			for (int r =0; r<7; r++) {
-//				System.out.println("");
-//
-//				for (int j =0; j<7; j++) {
-//
-//					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
-//				}
-//
-//			}
-//
-//
-//		}
-//		else if(this.GameLevel==Levels.Medium)  {
-//			for(int i=0;i<6;i++) {
-//				Ladder ladder=new Ladder(i+1);
-//			
-//				while(flag) {
-//					ladder.LadderRandom (Levels.Medium, ladder);
-//					for(int j=0;j<10;j++) {
-//						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
-//							flag1=false;
-//
-//						}
-//					
-//				}
-//				if(flag1==false) {
-//					break;
-//				}
-//					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
-//						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
-//						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
-//						flag=false;	
-//						Ladders.add(ladder);
-//					}
-//
-//
-//				}
-//				flag=true;
-//			}
-//
-//		}
-//		else {
-//			for(int i=0;i<8;i++) {
-//				Ladder ladder=new Ladder(i+1);
-//	
-//				while(flag) {
-//					ladder.LadderRandom (Levels.Hard, ladder);
-//					for(int j=0;j<13;j++) {
-//						if(this.Places[ladder.getXStart()][j]>=14 || this.Places[ladder.getXStart()][j]<=21) {
-//							flag1=false;
-//
-//						}
-//					
-//				}
-//				if(flag1==false) {
-//					break;
-//				}
-//					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
-//						this.Places[ladder.getXEnd()][ladder.getYEnd()]=60;
-//						this.Places[ladder.getXStart()][ladder.getYStart()]=ladder.getLadderId();
-//						Ladders.add(ladder);
-//						flag=false;
-//					}
-//
-//				}
-//				flag=true;
-//			}
-//			for (int r =0; r<13; r++) {
-//				System.out.println("");
-//
-//				for (int j =0; j<13; j++) {
-//
-//					System.out.print("(" + r + "," + j + "):" + this.Places[r][j] +" ");
-//				}
-//
-//			}
-//		}
-//	}
+
 
 
 	public Player CurrentTurn() {
