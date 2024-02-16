@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-import Controller.SysData;
+//import Controller.SysData;
 import Enum.Levels;
 
 public class Question {

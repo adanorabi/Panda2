@@ -9,120 +9,104 @@ import org.junit.Test;
 
 import Enum.Levels;
 import Model.Game;
+import Model.Question;
+import Model.QuestionSquare;
+import Model.Square;
+import Model.SurpriseSquare;
 
 public class ObjectsInBoardTest {
 
-	Game easy=new Game(1, Levels.Easy, 7, 7);
-	Game medium=new Game(2, Levels.Medium, 10, 10);
-	Game hard=new Game(2, Levels.Hard, 13, 13);
+	private Game easy;
+	private Game medium;
+	private Game hard;
 
 	@Test
-	void EasyLevelObjectstest() {
+	public void testEasyLevelObjects() {
+		easy = new Game(1, Levels.Easy, 7, 7);
 		easy.createGame();
 		easy.PlacespecialSquares(Levels.Easy);
 		easy.placeNormalSquares();
 		easy.PlaceSnakes();
 		easy.placeLadders();
-		HashMap<Integer, Integer> obj = new HashMap<Integer, Integer>();
-		for (int i=0 ; i<7;i++)
+		if(easy.getLadders().size()!=4 || easy.getSnakes().size()!=4)
 		{
-			for(int j=0; j<7; j++)
-			{
-				obj.put(easy.getPlaces()[i][j], 1);
-			}
+			fail("Object placement failed at position ");
 
 		}
-		for(int i = 3;i<=5;i++)
+		int numOfQ=0;
+		for (Square s : easy.getSquares())
 		{
-			if(obj.get(i)!=1)
+			if (s instanceof QuestionSquare)
 			{
-				fail("Object placement failed at position " + i);
+				numOfQ++;
 			}
 		}
-		for(int i=6; i<=9;i++)
+		if(numOfQ !=3)
 		{
-			if(obj.get(i)!=1)
-			{
-				fail("Object placement failed at position " + i);
-			}
+			fail("Object placement failed at position ");
 		}
-		for(int i=14; i<=17;i++)
-		{
-			if(obj.get(i)!=1)
-			{
-				fail("Object placement failed at position " + i);
-			}
-		}
-
+		
 	}
 
 	@Test
-	void MeduimLevelObjectstest() {
+	public void testMediumLevelObjects() {
+		medium = new Game(2, Levels.Medium, 10, 10);
 		medium.createGame();
 		medium.PlacespecialSquares(Levels.Medium);
 		medium.placeNormalSquares();
 		medium.PlaceSnakes();
 		medium.placeLadders();
-		HashMap<Integer, Integer> obj = new HashMap<Integer, Integer>();
-		for (int i=0 ; i<10;i++)
-		{
-			for(int j=0; j<10; j++)
-			{
-				obj.put(medium.getPlaces()[i][j], 1);
-			}
+		if(medium.getLadders().size()!=6 || medium.getSnakes().size()!=6) {
+			fail("Object placement failed at position ");
 
 		}
-		for(int i = 1;i<=5;i++)
+		int numOfQ=0;
+		int numOfS=0;
+		for (Square s : medium.getSquares())
 		{
-			if(i!=2) {
-				if(obj.get(i)!=1)
-				{
-					fail("Object placement failed at position " + i);
-				}
-			}
-
-		}
-		for(int i=6; i<=11;i++)
-		{
-			if(obj.get(i)!=1)
+			if (s instanceof QuestionSquare)
 			{
-				fail("Object placement failed at position " + i);
+				numOfQ++;
 			}
-		}
-		for(int i=14; i<=19;i++)
-		{
-			if(obj.get(i)!=1)
+			else if (s instanceof SurpriseSquare)
 			{
-				fail("Object placement failed at position " + i);
+				numOfS++;
 			}
 		}
-
+		if(numOfQ !=3 || numOfS!=1 )
+		{
+			fail("Object placement failed at position ");
+		}
 	}
 
 	@Test
-	void HarrdLevelObjectstest() {
+	public void testHardLevelObjects() {
+		hard = new Game(3, Levels.Hard, 13, 13);
 		hard.createGame();
-		hard.PlacespecialSquares(Levels.Medium);
+		hard.PlacespecialSquares(Levels.Hard);
 		hard.placeNormalSquares();
 		hard.PlaceSnakes();
 		hard.placeLadders();
-		HashMap<Integer, Integer> obj = new HashMap<Integer, Integer>();
-		for (int i=0 ; i<13;i++)
-		{
-			for(int j=0; j<13; j++)
-			{
-				obj.put(hard.getPlaces()[i][j], 1);
-			}
+		if(hard.getLadders().size()!=8 || hard.getSnakes().size()!=8) {
+			fail("Object placement failed at position ");
 
 		}
-		for(int i = 1;i<=21;i++)
+		int numOfQ=0;
+		int numOfS=0;
+		for (Square s : hard.getSquares())
 		{
-			if(obj.get(i)!=1)
+			if (s instanceof QuestionSquare)
 			{
-				fail("Object placement failed at position " + i);
+				numOfQ++;
+			}
+			else if (s instanceof SurpriseSquare)
+			{
+				numOfS++;
 			}
 		}
-
-
+		if(numOfQ !=3 || numOfS!=2 )
+		{
+			fail("Object placement failed at position ");
+		}
 	}
 }
