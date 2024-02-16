@@ -695,16 +695,21 @@ public class EasyLevel extends JFrame {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	            // Change dice image randomly for animation
+	        	
+	        	Player p=g.CurrentTurn();
+	        	int bx=p.getPlayerRow();
+	        	int by=p.getPlayerCol();
 	            Object  CHECK = g.Roll();
 	            Question q;
 	            String answer="";
-	            Player p=g.CurrentTurn();
+	           
 	            if(CHECK instanceof Integer) {/*msg*/
 	            	 diceLabel.setIcon(diceIcons[(Integer)CHECK]);
 	            	 answer=Integer.toString((Integer)CHECK);
-	            	  int bx=p.getPlayerRow();
-	            	  int by=p.getPlayerCol();
+	            	 int ax=p.getPlayerRow();
+	            	int ay=p.getPlayerCol();
 	            	  
+	            movePlayer(p, bx, by,ax, ay);
 
 	            }
 	            
