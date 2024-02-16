@@ -100,10 +100,10 @@ public class MediumLevel extends JFrame implements ActionListener {
         diceLabel.setVisible(true);
         
         diceIcons = new ImageIcon[10];
-        for (int i = 0; i < 6; i++) {
-            ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
+        for (int i = 0; i < 7; i++) {
+            ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + i+ ".png"));
             Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-            diceIcons[i+1] = new ImageIcon(resizedImage);
+            diceIcons[i] = new ImageIcon(resizedImage);
         }
         ImageIcon originalIcon1 = new ImageIcon(getClass().getResource("/View/img/EasyD.png"));
         Image resizedImage1 = originalIcon1.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
@@ -845,8 +845,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 	}
 
 	private void rollDiceAnimation() {
-	    final int NUM_FRAMES = 10; // Number of frames for the dice animation
-	    final int DELAY = 50; // Delay between each frame in milliseconds
+	    final int NUM_FRAMES = 15; // Number of frames for the dice animation
+	    final int DELAY = 60; // Delay between each frame in milliseconds
 
 	    Random random = new Random();
 
@@ -856,7 +856,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	            // Change dice image randomly for animation
-	            int randomIndex = random.nextInt(diceIcons.length);
+	            int randomIndex = random.nextInt(diceIcons.length+1);
 	            
 	            // Create a new JLabel with the dice image and add it to the lblEasyTable panel
 	            diceLabel.setIcon(diceIcons[randomIndex]);
@@ -865,7 +865,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	            if (frameCount >= NUM_FRAMES) {
 	                ((Timer) e.getSource()).stop();
 	                // Simulate rolling and display the final result
-	                int result = randomIndex + 1; // Get the result from the index
+	                int result = randomIndex; // Get the result from the index
 	                JOptionPane.showMessageDialog(null, "You rolled: " + result, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
 	            }
 	        }
