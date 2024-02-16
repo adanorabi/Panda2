@@ -526,7 +526,7 @@ public class Game {
 	}
 
 
-	public boolean UpdatePlayerPlace() {
+	public int UpdatePlayerPlace() {
 
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
 		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
@@ -544,6 +544,7 @@ public class Game {
 
 				}
 			}
+			return num;
 		}
 
 		if(num>=6 && num<=13) {
@@ -554,7 +555,7 @@ public class Game {
 
 				}
 			}
-			return true;
+			return num;
 
 		}
 		if(num>=14 && num<=21) {
@@ -565,10 +566,11 @@ public class Game {
 
 				}
 			}
-			return true;
+			return num;
 
 		}
-		return false;
+		this.PlayerTurn++;
+		return 0;
 	}
 
 
