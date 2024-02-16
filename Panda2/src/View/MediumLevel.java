@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
@@ -18,10 +19,11 @@ import Enum.*;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 
-public class MediumLevel extends JFrame {
+public class MediumLevel extends JFrame implements ActionListener {
 	static int N=50;
 	private JPanel contentPane;
 	private JLabel mytext;
@@ -31,6 +33,9 @@ public class MediumLevel extends JFrame {
 	private JLabel ylblSnake;
 	private JLabel lblsur;
 	private JLabel lblq;
+	private JButton diceButton;
+    private ImageIcon[] diceIcons;
+    private JLabel diceLabel ;
 	private JLabel lblLadder; 
 	private JLabel p1Label;
 	private JLabel p2Label;
@@ -78,6 +83,38 @@ public class MediumLevel extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/dice-1.png")));
 		lblNewLabel_2.setBounds(0, 532, 175, 230);
+		
+		diceButton = new JButton("Roll Dice");
+        diceButton.addActionListener(this);
+        contentPane.add(diceButton, BorderLayout.SOUTH);
+        diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.png")));
+        diceButton.setBounds(43, 702, 134, 49);
+        diceButton.addActionListener(this);
+        contentPane.add(diceButton); 
+        
+        diceLabel = new JLabel("");
+        diceLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/1.png")));
+        diceLabel.setBounds(40, 520, 150, 150);
+        
+        contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
+        diceLabel.setVisible(true);
+        
+        diceIcons = new ImageIcon[10];
+        for (int i = 0; i < 6; i++) {
+            ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + (i + 1) + ".png"));
+            Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+            diceIcons[i+1] = new ImageIcon(resizedImage);
+        }
+        ImageIcon originalIcon1 = new ImageIcon(getClass().getResource("/View/img/EasyD.png"));
+        Image resizedImage1 = originalIcon1.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        diceIcons[7] = new ImageIcon(resizedImage1);
+        ImageIcon originalIcon2 = new ImageIcon(getClass().getResource("/View/img/HardD.png"));
+        Image resizedImage2 = originalIcon2.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        diceIcons[8] = new ImageIcon(resizedImage2);
+        ImageIcon originalIcon3 = new ImageIcon(getClass().getResource("/View/img/MedD.png"));
+        Image resizedImage3 = originalIcon3.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        diceIcons[9] = new ImageIcon(resizedImage3);
+        
 /*********************************************************************************************************************************/
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
@@ -806,4 +843,41 @@ public class MediumLevel extends JFrame {
 		
 		
 	}
+
+	private void rollDiceAnimation() {
+	    final int NUM_FRAMES = 10; // Number of frames for the dice animation
+	    final int DELAY = 50; // Delay between each frame in milliseconds
+
+	    Random random = new Random();
+
+	    Timer timer = new Timer(DELAY, new ActionListener() {
+	        int frameCount = 0;
+
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            // Change dice image randomly for animation
+	            int randomIndex = random.nextInt(diceIcons.length);
+	            
+	            // Create a new JLabel with the dice image and add it to the lblEasyTable panel
+	            diceLabel.setIcon(diceIcons[randomIndex]);
+	            diceLabel.setBounds(40, 520, 150, 150);
+	            frameCount++;
+	            if (frameCount >= NUM_FRAMES) {
+	                ((Timer) e.getSource()).stop();
+	                // Simulate rolling and display the final result
+	                int result = randomIndex + 1; // Get the result from the index
+	                JOptionPane.showMessageDialog(null, "You rolled: " + result, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
+	            }
+	        }
+	    });
+
+	    timer.start();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == diceButton) {
+            rollDiceAnimation();
+        }
+    }
 }
