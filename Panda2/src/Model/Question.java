@@ -68,35 +68,24 @@ public class Question {
 				+ Answers + ", TrueAnswer=" + TrueAnswer + "]";
 	}
 
-	public static Question CallQuestion(Levels questionLevel) { // a function that choose a random question according to rh level
-		if(questionLevel.equals(Levels.Easy)) { //Easy question 
-
-
-			// generating the index using Math.random() 
-			int index = (int)(Math.random() * SysData.EasyQues.size()); 
-
-			System.out.println("Random Question is :"+ SysData.EasyQues.get(index)); //yara!
-			return SysData.EasyQues.get(index); // returning a random easy question
-
-
-		}
-		else if(questionLevel.equals(Levels.Medium)) {//Medium Question
-
-			int index = (int)(Math.random() * SysData.MidQues.size()); 
-
-
-			return SysData.MidQues.get(index); // returning a random medium question
-		} 
-		else {//Hard Question 
-
-			// generating the index using Math.random() 
-			int index = (int)(Math.random() * SysData.HardQues.size()); 
-
-
-			return SysData.HardQues.get(index); // returning a random Hard question
-
-		}
-
+	public static Question CallQuestion(Levels questionLevel)  {
+	    // Check if the list corresponding to the question level is empty
+	    if (questionLevel.equals(Levels.Easy) && !SysData.EasyQues.isEmpty()) {
+	        int index = (int)(Math.random() * SysData.EasyQues.size()); 
+	        System.out.println("Random Question is: " + SysData.EasyQues.get(index));
+	        return SysData.EasyQues.get(index); // returning a random easy question
+	    } else if (questionLevel.equals(Levels.Medium) && !SysData.MidQues.isEmpty()) {
+	        int index = (int)(Math.random() * SysData.MidQues.size()); 
+	        System.out.println("Random Question is: " + SysData.MidQues.get(index));
+	        return SysData.MidQues.get(index); // returning a random medium question
+	    } else if (!SysData.HardQues.isEmpty()) {
+	        int index = (int)(Math.random() * SysData.HardQues.size()); 
+	        System.out.println("Random Question is: " + SysData.HardQues.get(index));
+	        return SysData.HardQues.get(index); // returning a random Hard question
+	    } else {
+	        // Throw an exception indicating no questions available
+	     return null; //yara!
+	    }
 	}
 
 	public static  int answerFeedback(Question question,boolean Answer ) // Function that decide the player movement according to his answers of questions 
