@@ -278,10 +278,12 @@ public class MediumLevel extends JFrame {
 				beforx=p1.getPlayerRow();	 
 				befory=p1.getPlayerCol();	
 				p1.UpdateRow(4);//update player func
+				
 				int aftery=beforx=p1.getPlayerRow();	
+				int afterx=p1.getPlayerRow();	
 				if(result==false&&(befory!=aftery)) {
 				//call for change cordenation
-				movePlayer(p1,beforx,befory);
+				//movePlayer(p1,beforx,befory,aftery);
 				
 				}
 				
