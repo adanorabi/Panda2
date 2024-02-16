@@ -51,7 +51,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		// Label for the Hardtable image
 		lblHardTable = new JLabel("");
 		lblHardTable.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/hard.jpg")));
-		lblHardTable.setBounds(171,130, 1005, 560);/*43 */
+		lblHardTable.setBounds(171,50, 1005, 876);/*43 */
 		contentPane.add(lblHardTable);
 
 		JLabel lblNewLabel_2 = new JLabel("");
