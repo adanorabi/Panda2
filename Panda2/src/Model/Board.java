@@ -1,6 +1,6 @@
 package Model;
 
-
+import java.util.Arrays;
 
 public class Board {
     private int[] board;
@@ -11,18 +11,26 @@ public class Board {
         board = new int[size * size];
         populateBoard();
     }
+    
+
+    @Override
+	public String toString() {
+		return "Board [board=" + Arrays.toString(board) + ", size=" + size + "]";
+	}
 
     private void populateBoard() {
         int cellValue = 1;
         int index = 0;
-        for (int i = size - 1; i >= 0; i--) {
-            if ((size - i) % 2 == 0) {
-                // If the row number is even, fill the cells from left to right
+        for (int i = 0; i < size; i++) {
+            // Determine the direction based on whether the row is even or odd
+            boolean leftToRight = i % 2 == 0;
+            if (leftToRight) {
+                // If the row is even, fill the cells from left to right
                 for (int j = 0; j < size; j++) {
                     board[index++] = cellValue++;
                 }
             } else {
-                // If the row number is odd, fill the cells from right to left
+                // If the row is odd, fill the cells from right to left
                 for (int j = size - 1; j >= 0; j--) {
                     board[index++] = cellValue++;
                 }
@@ -30,18 +38,20 @@ public class Board {
         }
     }
 
-    public int getPosition(int row, int col) {
-        // Convert 2D coordinates to 1D position
+
+    public int getPosition(int col, int row) {
+        // Calculate the index of the given row and column coordinates
         int index;
-        if ((size - row - 1) % 2 == 0) {
-            // Even rows (0-based) start from the left
-            index = (size - row - 1) * size + col;
+        if (row % 2 == 0) {
+            // Even rows start from the left
+            index = row * size + col;
         } else {
             // Odd rows start from the right
-            index = (size - row - 1) * size + (size - col - 1);
+            index = row * size + (size - col - 1);
         }
         return board[index];
     }
+    
 
     public int[] getCoordinates(int value) {
         // Find the index of the given value in the board array
@@ -58,27 +68,19 @@ public class Board {
             return new int[]{-1, -1};
         }
 
-        // Convert 1D index to 2D coordinates
-        int row, col;
-        if ((size - index / size - 1) % 2 == 0) {
-            // Even rows (0-based) start from the left
-            row = size - 1 - index / size;
+        // Calculate row and column coordinates
+        int row = index / size;  // Integer division to get the row
+        int col;
+        if (row % 2 == 0) {
+            // Even row, count left to right
             col = index % size;
         } else {
-            // Odd rows start from the right
-            row = size - 1 - index / size;
+            // Odd row, count right to left
             col = size - 1 - (index % size);
         }
 
-        return new int[]{row, col};
+        return new int[]{col, row};
     }
 
-    public static void main(String[] args) {
-        int size = 4; // Change the size of the board as needed
-        Board board = new Board(size);
-        for (int i = 0; i < size * size; i++) {
-            int[] coordinates = board.getCoordinates(board.getPosition(i / size, i % size));
-            System.out.println("Value: " + board.getPosition(i / size, i % size) + ", Coordinates: (" + coordinates[0] + ", " + coordinates[1] + ")");
-        }
-    }
+   
 }
