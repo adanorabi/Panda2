@@ -725,13 +725,14 @@ public class EasyLevel extends JFrame {
 						movePlayer(p, bx, by,ax, ay);
 						System.out.println("("+bx+","+by+")"+" to ("+ax+","+ay+")");
 						if(g.checkQuestionSquare()==null) {
-							 squareResult=g.UpdatePlayerPlace();
+							 squareResult=g.UpdatePlayerPlace();/*make a while if the result is not 0 */
 							 if(squareResult!=0) {
 								 
 							// movePlayer(p,bx,by,p.getPlayerRow(),p.getPlayerCol());
 							
 							 }
-						}else {
+						}else {/*ghaidaa you have to represent the question you have the question here from yara function*/
+	
 							
 						}
 

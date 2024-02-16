@@ -511,7 +511,7 @@ public class Game {
 		return null;
 
 	}
-	public boolean updateByQuestion(Question q,boolean Answer) {
+	public boolean updateByQuestion(Question q,boolean Answer) {/*to move the player if he answered right or wrong, send if the player has answered true*/
 
 		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
 		int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
