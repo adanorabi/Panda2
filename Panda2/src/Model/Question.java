@@ -95,30 +95,30 @@ public class Question {
 		}
 	}
 
-	public static  int answerFeedback(Question question,boolean Answer ) // Function that decide the player movement according to his answers of questions 
+	public static  int answerFeedback(Question question,boolean Answer,int Position ) // Function that decide the player movement according to his answers of questions 
 	{
 		if(question.getQLevel().equals(Levels.Easy)) {
 			if( Answer== true) {
-				return 0;
+				return 0+Position;
 			}
 			else {
-				return -1;
+				return Position-1;
 			}
 		}
 		else if(question.getQLevel().equals(Levels.Medium)) {
 			if( Answer== true) {
-				return 0;
+				return Position+0;
 			}
 			else {
-				return -2;
+				return Position-2;
 			}
 		}
 		else {
 			if( Answer== true) {   // true answer for Hard question
-				return 1;
+				return Position+1;
 			}
 			else {
-				return -3;
+				return Position-3;
 			}
 		}
 	}
