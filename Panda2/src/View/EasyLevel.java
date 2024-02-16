@@ -32,7 +32,7 @@ import Enum.SnakeColor;
 import Model.*;
 
 public class EasyLevel extends JFrame implements ActionListener {
-	static int N=50;
+	static int N=60;
 	private JPanel contentPane;
 	private JLabel lblEasyTable; // Label for the easytable image
 	private JLabel lblSnake; 
@@ -833,7 +833,8 @@ public class EasyLevel extends JFrame implements ActionListener {
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
-			pX = 185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			
+			pX = 214 + player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
 			pY =630-player.getPlayerCol()*59;
 			System.out.println("setting player 1");
 			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
@@ -847,7 +848,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 
 			break;
 		case 2://+N
-			pX = N+185 + player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pX = N+214+ player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
 			pY =630-player.getPlayerCol()*59;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
