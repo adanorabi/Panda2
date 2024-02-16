@@ -513,7 +513,7 @@ public class Game {
 		
 	}
 	
-
+	
 	public boolean UpdatePlayerPlace() {
 		
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];

@@ -31,7 +31,7 @@ import Enum.Levels;
 import Enum.SnakeColor;
 import Model.*;
 
-public class EasyLevel extends JFrame implements ActionListener {
+public class EasyLevel extends JFrame {
 	static int N=60;
 	private JPanel contentPane;
 	private JLabel lblEasyTable; // Label for the easytable image
@@ -77,12 +77,43 @@ public class EasyLevel extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public EasyLevel(Player p1,Player p2, Player p3,Player p4,int num) {
+	
+		Game g=new Game(3, Levels.Easy, 7, 7);
+		g.createGame();
+		g.getPlayers().add(p1);
+		g.getPlayers().add(p2);
+
+		if(num>2) {
+			JLabel lblNewLabel_5 = new JLabel("p3");
+			lblNewLabel_5.setBounds(73, 310, 45, 13);
+			contentPane.add(lblNewLabel_5);
+			g.getPlayers().add(p3);
+			if(num==4) {
+
+				JLabel lblNewLabel_4_1 = new JLabel("p4");
+				lblNewLabel_4_1.setBounds(73, 372, 45, 13);
+				contentPane.add(lblNewLabel_4_1);
+				g.getPlayers().add(p4);
+			}
+		}
+		/**************************************************************************************************/
+		g.PlacespecialSquares(Levels.Easy);
+		g.placeNormalSquares();
+		g.PlaceSnakes();
+		g.placeLadders();
+	//	Player turn=g.CurrentTurn();//call the turn
+	//	System.out.println("the player is "+turn.getNickName());
+	//	setPlayerText(turn,"it is you turn to roll a dice");/**********************turn***********************/
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 100, 1200, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		mytext = new JLabel("");
+		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		 mytext.setBounds(200, 29, 900, 50);
+		contentPane.add( mytext);
 
 		// Label for the easytable image
 		lblEasyTable = new JLabel("");
@@ -92,13 +123,18 @@ public class EasyLevel extends JFrame implements ActionListener {
 	
 
         diceButton = new JButton("Roll Dice");
-        diceButton.addActionListener(this);
-        contentPane.add(diceButton, BorderLayout.SOUTH);
-
-        diceButton = new JButton("Roll Dice");
         diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.png")));
         diceButton.setBounds(43, 702, 134, 49);
-        diceButton.addActionListener(this);
+        diceButton.addActionListener(new ActionListener() {
+        	
+
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+               System.out.println("in dice btn");
+                    rollDiceAnimation(g);
+                
+            
+		}});
         contentPane.add(diceButton); 
         
         diceLabel = new JLabel("");
@@ -332,30 +368,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200, 900);
 		contentPane.add(lblNewLabel);
-		
-		Game g=new Game(3, Levels.Easy, 7, 7);
-		g.createGame();
-		g.getPlayers().add(p1);
-		g.getPlayers().add(p2);
-
-		if(num>2) {
-			JLabel lblNewLabel_5 = new JLabel("p3");
-			lblNewLabel_5.setBounds(73, 310, 45, 13);
-			contentPane.add(lblNewLabel_5);
-			g.getPlayers().add(p3);
-			if(num==4) {
-
-				JLabel lblNewLabel_4_1 = new JLabel("p4");
-				lblNewLabel_4_1.setBounds(73, 372, 45, 13);
-				contentPane.add(lblNewLabel_4_1);
-				g.getPlayers().add(p4);
-			}
-		}
-		/**************************************************************************************************/
-		g.PlacespecialSquares(Levels.Easy);
-		g.placeNormalSquares();
-		g.PlaceSnakes();
-		g.placeLadders();
+	
 		int i, j;
 		for(i=0; i<g.getSnakes().size();i++)
 		{
@@ -669,11 +682,12 @@ public class EasyLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	private void rollDiceAnimation() {
-	    final int NUM_FRAMES = 10; // Number of frames for the dice animation
+	private void rollDiceAnimation(Game g) {
+		System.out.println("im in the roll dice func");
+	    final int NUM_FRAMES = 15; // Number of frames for the dice animation
 	    final int DELAY = 50; // Delay between each frame in milliseconds
 
-	    Random random = new Random();
+	
 
 	    Timer timer = new Timer(DELAY, new ActionListener() {
 	        int frameCount = 0;
@@ -681,30 +695,50 @@ public class EasyLevel extends JFrame implements ActionListener {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	            // Change dice image randomly for animation
-	            int randomIndex = random.nextInt(diceIcons.length);
+	            Object  CHECK = g.Roll();
+	            Question q;
+	            String answer="";
+	            Player p=g.CurrentTurn();
+	            if(CHECK instanceof Integer) {/*msg*/
+	            	 diceLabel.setIcon(diceIcons[(Integer)CHECK]);
+	            	 answer=Integer.toString((Integer)CHECK);
+	            	  int bx=p.getPlayerRow();
+	            	  int by=p.getPlayerCol();
+	            	  
+
+	            }
 	            
+	            else {
+	            	q=(Question)CHECK;
+	            	if(q.getQLevel().equals(Levels.Easy)) {
+	            		 diceLabel.setIcon(diceIcons[5]);
+	            		 answer="easy question";
+	            	}else if(q.getQLevel().equals(Levels.Medium)) {
+	            		 diceLabel.setIcon(diceIcons[7]);
+	            		 answer="medium question";
+	            	}else {
+	            		 diceLabel.setIcon(diceIcons[6]);
+	            		 answer="hard question";
+	            	}
+	   		
+	            	
+	            }
 	            // Create a new JLabel with the dice image and add it to the lblEasyTable panel
-	            diceLabel.setIcon(diceIcons[randomIndex]);
+	           
 	            diceLabel.setBounds(40, 520, 150, 150);
 	            frameCount++;
 	            if (frameCount >= NUM_FRAMES) {
 	                ((Timer) e.getSource()).stop();
 	                // Simulate rolling and display the final result
-	                int result = randomIndex ; // Get the result from the index
-	                JOptionPane.showMessageDialog(null, "You rolled: " + result, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
+	                JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
 	            }
+	        
 	        }
 	    });
 
 	    timer.start();
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == diceButton) {
-            rollDiceAnimation();
-        }
-    }
 
 	public void movePlayer(Player player,int beforx,int befory,int aftery,int afterx) {
 		int pX=0,pY=0,bx=0,by=0;
@@ -744,13 +778,12 @@ public class EasyLevel extends JFrame implements ActionListener {
 	                timer.stop(); // Stop the timer when the movement is complete
 	            }
 	        });
-	        
-		
-
 
 	}
 	public void setPlayerText(Player p,String text) {
-		mytext.setText(p.getNickName()+" "+text);
+		System.out.println(p.getNickName());
+		System.out.println(text);
+		mytext.setText(p+" "+text);
 	}
 	public void lineMangment(int turn,int num) {
 		switch(num) {
@@ -917,5 +950,4 @@ public class EasyLevel extends JFrame implements ActionListener {
 
 
 	}
-
 }
