@@ -118,7 +118,7 @@ public class Game {
 	public void setSquares(ArrayList<Square> squares) {
 		this.Squares = squares;
 	}
-	
+
 
 	public static int getPlayerTurn() {
 		return PlayerTurn;
@@ -140,8 +140,8 @@ public class Game {
 		}
 
 	}
-	
-	
+
+
 	public void PlacespecialSquares(Levels gameLevel) { //should be continueed have to check that snake and ladder not in the same place
 		int randQol;
 		int randRow;
@@ -274,7 +274,7 @@ public class Game {
 				redsnake.SnackRandom(Levels.Easy, redsnake);
 			}
 			this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=redsnake.getSnakeId();
-//			this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
+			//			this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
 			Snakes.add(redsnake);
 
 			Snake yellowsnake=new Snake(SnakeColor.Yellow); 
@@ -313,7 +313,7 @@ public class Game {
 					redsnake.SnackRandom(Levels.Easy, redsnake);
 				}
 				this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=redsnake.getSnakeId();
-//				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
+				//				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
 				Snakes.add(redsnake);
 			}
 
@@ -355,7 +355,7 @@ public class Game {
 					redsnake.SnackRandom(Levels.Easy, redsnake);
 				}
 				this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=redsnake.getSnakeId();
-//				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
+				//				this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
 				Snakes.add(redsnake);
 			}
 			for(int i=0;i<2;i++) {
@@ -394,13 +394,13 @@ public class Game {
 		}
 
 	}
-	
+
 	public void placeLadders() {
 		Boolean flag=true;
 		if (this.GameLevel==Levels.Easy) {
 			for(int i=0;i<4;i++) {
 				Ladder ladder=new Ladder(i+1);
-			
+
 				while(flag) {
 					ladder.LadderRandom (Levels.Easy, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
@@ -409,7 +409,7 @@ public class Game {
 						Ladders.add(ladder);
 						flag=false;
 					}
-					
+
 
 
 				}
@@ -421,7 +421,7 @@ public class Game {
 		else if(this.GameLevel==Levels.Medium)  {
 			for(int i=0;i<6;i++) {
 				Ladder ladder=new Ladder(i+1);
-			
+
 				while(flag) {
 					ladder.LadderRandom (Levels.Medium, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
@@ -440,7 +440,7 @@ public class Game {
 		else {
 			for(int i=0;i<8;i++) {
 				Ladder ladder=new Ladder(i+1);
-	
+
 				while(flag) {
 					ladder.LadderRandom (Levels.Hard, ladder);
 					if(this.Places[ladder.getXEnd()][ladder.getYEnd()]==0&&this.Places[ladder.getXStart()][ladder.getYStart()]==0) {
@@ -468,38 +468,55 @@ public class Game {
 
 
 	public Player CurrentTurn() {
-		
+
 		if(PlayerTurn==this.getPlayers().size()) {
 			PlayerTurn=0;
 		}
 		return this.getPlayers().get(PlayerTurn++);
-		
-	}
-	
-	public boolean UpdatePlayerPlace() {
-		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
 
+	}
+
+	public boolean UpdatePlayerPlace() {
+		
+		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
+		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
+		int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
+		
+		if(num==1 || num ==2) {
+			int pos=this.GameBoard.getPosition(x, y);
+			for(int i=0;i<this.Squares.size();i++) {
+				if(this.Squares.get(i) instanceof SurpriseSquare) {
+					int newpos=((SurpriseSquare)this.Squares.get(i)).RandSurprise(pos);
+					int afterSurprise[]=new int[2];
+					afterSurprise=this.GameBoard.getCoordinates(newpos);
+					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterSurprise[0]);
+					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterSurprise[1]);
+
+				}
+			}
+		}
+		
 		if(num>=6 && num<=13) {
 			for(int i=0;i<Snakes.size();i++) {
 				if(Snakes.get(i).getSnakeId()==num) {
 					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(Snakes.get(i).getXTailNum());
 					this.getPlayers().get(this.getPlayerTurn()).UpdateCol(Snakes.get(i).getYTailNum());
-					
+
 				}
 			}
 			return true;
-			
+
 		}
 		if(num>=14 && num<=21) {
 			for(int i=0;i<Ladders.size();i++) {
 				if(Ladders.get(i).getLadderId()==num) {
 					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(Ladders.get(i).getXEnd());
 					this.getPlayers().get(this.getPlayerTurn()).UpdateCol(Ladders.get(i).getYEnd());
-					
+
 				}
 			}
 			return true;
-			
+
 		}
 		return false;
 	}
