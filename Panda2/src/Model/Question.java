@@ -22,6 +22,12 @@ public class Question {
 		this.TrueAnswer = trueAnswer;
 		this.Answers=answer;
 	}
+	
+
+	public Question() {
+		super();
+	}
+
 
 	public int getQuestionId() {
 		return QuestionId;
