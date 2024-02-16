@@ -116,7 +116,7 @@ public class MediumLevel extends JFrame {
 		int p1Y = 180; // Adjusted y position based on the board offset and grid size
 		p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
 
-		contentPane.add(p1Label);
+		
 
 
 		// Add player p1 label to the content pane
