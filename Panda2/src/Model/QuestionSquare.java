@@ -13,7 +13,17 @@ public class QuestionSquare extends Square{
 		}
 
 				
-		 public int getQuesSquareId() {
+		 public Levels getQuesLevel() {
+			return QuesLevel;
+		}
+
+
+		public void setQuesLevel(Levels quesLevel) {
+			QuesLevel = quesLevel;
+		}
+
+
+		public int getQuesSquareId() {
 			return QuesSquareId;
 		}
 

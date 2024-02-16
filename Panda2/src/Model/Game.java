@@ -34,7 +34,7 @@ public class Game {
 		this.Snakes= new ArrayList<Snake>() ;
 		this.Ladders= new ArrayList<Ladder>() ;
 		this.Squares= new ArrayList<Square>() ;
-		this.gameDice=new Dice(Levels.Easy); //yara!
+		this.gameDice=new Dice(gameLevel); //yara!
 		this.GameBoard= new Board(colsNum);  //yara!
 	}
 
@@ -475,6 +475,44 @@ public class Game {
 		return this.getPlayers().get(PlayerTurn++);
 
 	}
+	
+	public Object Roll() {
+		
+		return this.gameDice.RollDice();
+	}
+	
+	
+	public Question checkQuestionSquare() {
+		
+		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
+		if(num==3|| num==4||num==5) {
+			for(int i=0;i<this.Squares.size();i++) {
+				if(this.Squares.get(i) instanceof QuestionSquare) {
+					Question Q = new Question();
+					Q.CallQuestion(((QuestionSquare)this.Squares.get(i)).getQuesLevel());
+					return Q.CallQuestion(((QuestionSquare)this.Squares.get(i)).getQuesLevel());
+
+				}
+			}
+		}
+		return null;
+
+	}
+	public boolean updateByQuestion(Question q,boolean Answer) {
+		
+		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
+		int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
+		int pos=this.GameBoard.getPosition(x, y);
+		Question Q = new Question();
+		int newpos=Q.answerFeedback(q, Answer, pos);
+		int afterQuestion[]=new int[2];
+		afterQuestion=this.GameBoard.getCoordinates(newpos);
+		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[0]);
+		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[1]);
+		return false;
+		
+	}
+	
 
 	public boolean UpdatePlayerPlace() {
 		
