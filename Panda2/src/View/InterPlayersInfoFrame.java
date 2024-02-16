@@ -1264,7 +1264,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				
 				if(Levels.Easy==level)
 				{
-					EasyLevel easyBoard= new EasyLevel();
+					EasyLevel easyBoard= new EasyLevel(p1,p2,p3,p4,Num);
 					setVisible(false);
 					easyBoard.setVisible(true);
 				}
