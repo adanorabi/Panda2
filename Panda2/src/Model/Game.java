@@ -569,8 +569,10 @@ public class Game {
 			return num;
 
 		}
-		this.PlayerTurn++;
 		return 0;
+	}
+	public int NextPlayer() {
+		return ++this.PlayerTurn;
 	}
 
 
