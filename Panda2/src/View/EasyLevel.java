@@ -176,10 +176,8 @@ public class EasyLevel extends JFrame implements ActionListener {
 
 
 		int p1X = 35; // Adjusted x position based on the board offset and grid size
-		int p1Y = 180; // Adjusted y position based on the board offset and grid size
+		int p1Y = 80; // Adjusted y position based on the board offset and grid size
 		p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
-
-		
 
 
 		// Add player p1 label to the content pane
@@ -190,7 +188,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 
 		p1name = new JLabel(p1.getNickName());
 		p1name.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		p1name.setBounds(73, 171, 200, 13);
+		p1name.setBounds(73, 70, 200, 13);
 		contentPane.add(p1name);
 
 		/******************************p2**********************/
@@ -205,17 +203,17 @@ public class EasyLevel extends JFrame implements ActionListener {
 		}
 		else if(p2.getPlayerColor()==PlayerColor.Blue) {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
-			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
 		}
 		else {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
-			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
 		}
 		Image scaledP2Image = p2icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon scaledP2Icon = new ImageIcon(scaledP2Image);
 		// Create a JLabel for player p2
 		p2Label = new JLabel(scaledP2Icon);
-		p2Label.setBounds(p1X, 280, 100, 100); // Set bounds for player p1 label
+		p2Label.setBounds(p1X, 180, 100, 100); // Set bounds for player p1 label
 
 		// Add player p1 label to the content pane
 		contentPane.add(p2Label);
@@ -235,26 +233,34 @@ public class EasyLevel extends JFrame implements ActionListener {
 
 	    p2name = new JLabel(p2.getNickName());
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		p2name.setBounds(73, 270, 200, 13);
+		p2name.setBounds(73, 170, 200, 13);
 		contentPane.add(p2name);
 
 		/******************************p3***************/
 
 		if(num>2) {
 			ImageIcon p3icon;
-			if(p3.getPlayerColor()==PlayerColor.Red)
+			if(p3.getPlayerColor()==PlayerColor.Red) {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
-			else if(p3.getPlayerColor()==PlayerColor.Green)
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+			}
+			else if(p3.getPlayerColor()==PlayerColor.Green) {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
-			else if(p3.getPlayerColor()==PlayerColor.Blue)
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+			}
+			else if(p3.getPlayerColor()==PlayerColor.Blue) {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
-			else 
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+			}
+			else {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+			}
 			Image scaledP3Image = p3icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			ImageIcon scaledP3Icon = new ImageIcon(scaledP3Image);
 			// Create a JLabel for player p2
 			p3Label = new JLabel(scaledP3Icon);
-			p3Label.setBounds(p1X, 380, 100, 100); // Set bounds for player p1 label
+			p3Label.setBounds(p1X, 280, 100, 100); // Set bounds for player p1 label
 
 			// Add player p1 label to the content pane
 			contentPane.add(p3Label);
@@ -262,37 +268,56 @@ public class EasyLevel extends JFrame implements ActionListener {
 			// Ensure player p1 label is visible
 			p3Label.setVisible(true);
 
+			img3=imgIcn3.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+			finalIcon3= new ImageIcon(img3);
+
+			p3OnGame=new JLabel(finalIcon3);//finish putting the icon only setbound and set visible left
+
+			setPlayer(p3);//
 			p3name = new JLabel(p3.getNickName());
 			p3name.setFont(new Font("Times New Roman", Font.BOLD, 16));
-			p3name.setBounds(73, 370, 200, 13);
+			p3name.setBounds(73, 270, 200, 13);
 			contentPane.add(p3name);
 
 
 			if(num==4) {
 				ImageIcon p4icon;
-				if(p4.getPlayerColor()==PlayerColor.Red)
+				if(p4.getPlayerColor()==PlayerColor.Red) {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
-				else if(p4.getPlayerColor()==PlayerColor.Green)
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+				}
+				else if(p4.getPlayerColor()==PlayerColor.Green) {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
-				else if(p4.getPlayerColor()==PlayerColor.Blue)
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+				}
+				else if(p4.getPlayerColor()==PlayerColor.Blue) {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
-				else 
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+				}
+				else {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+				}
 				Image scaledP4Image = p4icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 				ImageIcon scaledP4Icon = new ImageIcon(scaledP4Image);
 				// Create a JLabel for player p2
 				p4Label = new JLabel(scaledP4Icon);
-				p4Label.setBounds(p1X, 480, 100, 100); // Set bounds for player p1 label
+				p4Label.setBounds(p1X, 380, 100, 100); // Set bounds for player p1 label
 
 				// Add player p1 label to the content pane
 				contentPane.add(p4Label);
 
 				// Ensure player p1 label is visible
 				p4Label.setVisible(true);
+				img4=imgIcn4.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+				finalIcon4= new ImageIcon(img4);
 
+				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left
+
+				setPlayer(p4);//
 				p4name = new JLabel(p4.getNickName());
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
-				p4name.setBounds(73, 470, 200, 13);
+				p4name.setBounds(73, 370, 200, 13);
 				contentPane.add(p4name);
 
 			}
@@ -656,7 +681,7 @@ public class EasyLevel extends JFrame implements ActionListener {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	            // Change dice image randomly for animation
-	            int randomIndex = random.nextInt(diceIcons.length+1);
+	            int randomIndex = random.nextInt(diceIcons.length);
 	            
 	            // Create a new JLabel with the dice image and add it to the lblEasyTable panel
 	            diceLabel.setIcon(diceIcons[randomIndex]);
@@ -732,16 +757,16 @@ public class EasyLevel extends JFrame implements ActionListener {
 		case 2:
 			switch(turn) {
 			case 1:
-				p1Label.setLocation(35, 180);
+				p1Label.setLocation(35, 80);
+				p1name.setLocation(73,70);
+				p2Label.setLocation(35, 180);
 				p1name.setLocation(73,170);
-				p2Label.setLocation(35, 280);
-				p1name.setLocation(73,270);
 				break;
 			case 2:
-				p1Label.setLocation(35, 280);
-				p1name.setLocation(73,270);
-				p2Label.setLocation(35, 180);
-				p2name.setLocation(73,170);
+				p1Label.setLocation(35, 180);
+				p1name.setLocation(73,170);
+				p2Label.setLocation(35, 80);
+				p2name.setLocation(73,70);
 				break;	
 			}
 			break;
@@ -750,74 +775,74 @@ public class EasyLevel extends JFrame implements ActionListener {
 		case 3:
 			switch(turn) {
 			case 1:
-				p1Label.setLocation(35, 180);
-				p1name.setLocation(73,170);
-				p2Label.setLocation(35, 280);
-				p2name.setLocation(73,270);
-				p3Label.setLocation(35, 380);
-				p3name.setLocation(73,370);
-				break;
-			case 2:
-
+				p1Label.setLocation(35, 80);
+				p1name.setLocation(73,70);
 				p2Label.setLocation(35, 180);
 				p2name.setLocation(73,170);
 				p3Label.setLocation(35, 280);
 				p3name.setLocation(73,270);
-				p1Label.setLocation(35, 380);
-				p1name.setLocation(73,370);
 				break;
-			case 3:
+			case 2:
+
+				p2Label.setLocation(35, 80);
+				p2name.setLocation(73,70);
 				p3Label.setLocation(35, 180);
 				p3name.setLocation(73,170);
 				p1Label.setLocation(35, 280);
 				p1name.setLocation(73,270);
-				p2Label.setLocation(35, 380);
-				p2name.setLocation(73,370);
+				break;
+			case 3:
+				p3Label.setLocation(35, 80);
+				p3name.setLocation(73,70);
+				p1Label.setLocation(35, 180);
+				p1name.setLocation(73,170);
+				p2Label.setLocation(35, 280);
+				p2name.setLocation(73,270);
 				
 			}
 			break;
 		case 4:
 			switch(turn) {
 			case 1:
-				p1Label.setLocation(35, 180);
-				p1name.setLocation(73,170);
-				p2Label.setLocation(35, 280);
-				p2name.setLocation(73,270);
-				p3Label.setLocation(35, 380);
-				p3name.setLocation(73,370);
-				p4Label.setLocation(35, 480);
-				p4name.setLocation(73,470);
-				break;
-			case 2:
+				p1Label.setLocation(35, 80);
+				p1name.setLocation(73,70);
 				p2Label.setLocation(35, 180);
 				p2name.setLocation(73,170);
 				p3Label.setLocation(35, 280);
 				p3name.setLocation(73,270);
 				p4Label.setLocation(35, 380);
 				p4name.setLocation(73,370);
-				p1Label.setLocation(35, 480);
-				p1name.setLocation(73,470);
-			
 				break;
-			case 3:
+			case 2:
+				p2Label.setLocation(35, 80);
+				p2name.setLocation(73,70);
 				p3Label.setLocation(35, 180);
 				p3name.setLocation(73,170);
 				p4Label.setLocation(35, 280);
 				p4name.setLocation(73,270);
 				p1Label.setLocation(35, 380);
 				p1name.setLocation(73,370);
-				p2Label.setLocation(35, 480);
-				p2name.setLocation(73,470);
+			
 				break;
-			case 4:
+			case 3:
+				p3Label.setLocation(35, 80);
+				p3name.setLocation(73,70);
 				p4Label.setLocation(35, 180);
 				p4name.setLocation(73,170);
 				p1Label.setLocation(35, 280);
 				p1name.setLocation(73,270);
 				p2Label.setLocation(35, 380);
 				p2name.setLocation(73,370);
-				p3Label.setLocation(35, 480);
-				p3name.setLocation(73,470);
+				break;
+			case 4:
+				p4Label.setLocation(35, 80);
+				p4name.setLocation(73,70);
+				p1Label.setLocation(35, 180);
+				p1name.setLocation(73,170);
+				p2Label.setLocation(35, 280);
+				p2name.setLocation(73,270);
+				p3Label.setLocation(35, 380);
+				p3name.setLocation(73,370);
 				break;
 				
 			
@@ -857,6 +882,32 @@ public class EasyLevel extends JFrame implements ActionListener {
 			contentPane.add(p2OnGame);
 			p2OnGame.setVisible(true);
 			contentPane.setComponentZOrder(p2OnGame, 0);
+			contentPane.revalidate();
+			contentPane.repaint();
+			break;
+		case 3://+N
+			pX = 214+ player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pY =N-15+630-player.getPlayerCol()*59;
+			System.out.println("setting player 3");
+			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
+
+			// Add player p1 label to the content pane
+			contentPane.add(p3OnGame);
+			p3OnGame.setVisible(true);
+			contentPane.setComponentZOrder(p3OnGame, 0);
+			contentPane.revalidate();
+			contentPane.repaint();
+			break;
+		case 4://+N
+			pX = N+214+ player.getPlayerRow() * 94; // Adjusted x position based on the board offset and grid size//170
+			pY =N-15+630-player.getPlayerCol()*59;
+			System.out.println("setting player 4");
+			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
+
+			// Add player p1 label to the content pane
+			contentPane.add(p4OnGame);
+			p4OnGame.setVisible(true);
+			contentPane.setComponentZOrder(p4OnGame, 0);
 			contentPane.revalidate();
 			contentPane.repaint();
 			break;
