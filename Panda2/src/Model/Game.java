@@ -472,18 +472,30 @@ public class Game {
 		if(PlayerTurn==this.getPlayers().size()) {
 			PlayerTurn=0;
 		}
-		return this.getPlayers().get(PlayerTurn++);
+		return this.getPlayers().get(PlayerTurn);
 
 	}
-	
+
 	public Object Roll() {
-		
+
+		if(this.gameDice.RollDice() instanceof Integer) {
+			int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
+			int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
+			int pos=this.GameBoard.getPosition(x, y);
+			int newpos=pos+ (Integer)this.gameDice.RollDice();
+			int afterRoll[]=new int[2];
+			afterRoll=this.GameBoard.getCoordinates(newpos);
+			this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterRoll[0]);
+			this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterRoll[1]);
+
+		}
+
 		return this.gameDice.RollDice();
 	}
-	
-	
+
+
 	public Question checkQuestionSquare() {
-		
+
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
 		if(num==3|| num==4||num==5) {
 			for(int i=0;i<this.Squares.size();i++) {
@@ -499,7 +511,7 @@ public class Game {
 
 	}
 	public boolean updateByQuestion(Question q,boolean Answer) {
-		
+
 		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
 		int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
 		int pos=this.GameBoard.getPosition(x, y);
@@ -508,18 +520,18 @@ public class Game {
 		int afterQuestion[]=new int[2];
 		afterQuestion=this.GameBoard.getCoordinates(newpos);
 		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[0]);
-		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[1]);
+		this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterQuestion[1]);
 		return false;
-		
+
 	}
-	
-	
+
+
 	public boolean UpdatePlayerPlace() {
-		
+
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
 		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
 		int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
-		
+
 		if(num==1 || num ==2) {
 			int pos=this.GameBoard.getPosition(x, y);
 			for(int i=0;i<this.Squares.size();i++) {
@@ -528,12 +540,12 @@ public class Game {
 					int afterSurprise[]=new int[2];
 					afterSurprise=this.GameBoard.getCoordinates(newpos);
 					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterSurprise[0]);
-					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterSurprise[1]);
+					this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterSurprise[0]);
 
 				}
 			}
 		}
-		
+
 		if(num>=6 && num<=13) {
 			for(int i=0;i<Snakes.size();i++) {
 				if(Snakes.get(i).getSnakeId()==num) {
