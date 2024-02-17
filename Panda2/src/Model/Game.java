@@ -511,6 +511,20 @@ public class Game {
 		return null;
 
 	}
+
+	public Boolean checkQuestionSquare2() {
+
+		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
+		if(num==3|| num==4||num==5) {
+			for(int i=0;i<this.Squares.size();i++) {
+				if(this.Squares.get(i) instanceof QuestionSquare) {
+				return true;
+				}
+			}
+		}
+		return false;
+
+	}
 	public boolean updateByQuestion(Question q,boolean Answer) {/*to move the player if he answered right or wrong, send if the player has answered true*/
 
 		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
