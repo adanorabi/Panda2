@@ -216,15 +216,24 @@ public class MediumLevel extends JFrame implements ActionListener {
 		/******************************p3***************/
 
 		if(num>2) {
+
 			ImageIcon p3icon;
-			if(p3.getPlayerColor()==PlayerColor.Red)
+			if(p3.getPlayerColor()==PlayerColor.Red) {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
-			else if(p3.getPlayerColor()==PlayerColor.Green)
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+			}
+			else if(p3.getPlayerColor()==PlayerColor.Green) {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
-			else if(p3.getPlayerColor()==PlayerColor.Blue)
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+			}
+			else if(p3.getPlayerColor()==PlayerColor.Blue) {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
-			else 
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+			}
+			else {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+			}
 			Image scaledP3Image = p3icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			ImageIcon scaledP3Icon = new ImageIcon(scaledP3Image);
 			// Create a JLabel for player p2
@@ -237,6 +246,12 @@ public class MediumLevel extends JFrame implements ActionListener {
 			// Ensure player p1 label is visible
 			p3Label.setVisible(true);
 
+			img3=imgIcn3.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+			finalIcon3= new ImageIcon(img3);
+
+			p3OnGame=new JLabel(finalIcon3);//finish putting the icon only setbound and set visible left
+
+
 			p3name = new JLabel(p3.getNickName());
 			p3name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			p3name.setBounds(73, 370, 200, 13);
@@ -245,14 +260,22 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 			if(num==4) {
 				ImageIcon p4icon;
-				if(p4.getPlayerColor()==PlayerColor.Red)
+				if(p4.getPlayerColor()==PlayerColor.Red) {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
-				else if(p4.getPlayerColor()==PlayerColor.Green)
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
+				}
+				else if(p4.getPlayerColor()==PlayerColor.Green) {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
-				else if(p4.getPlayerColor()==PlayerColor.Blue)
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/g.png"));
+				}
+				else if(p4.getPlayerColor()==PlayerColor.Blue) {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
-				else 
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/b.png"));
+				}
+				else {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
+				}
 				Image scaledP4Image = p4icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 				ImageIcon scaledP4Icon = new ImageIcon(scaledP4Image);
 				// Create a JLabel for player p2
@@ -264,7 +287,14 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 				// Ensure player p1 label is visible
 				p4Label.setVisible(true);
+				img4=imgIcn4.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+				finalIcon4= new ImageIcon(img4);
 
+				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left
+
+			
+				
+				
 				p4name = new JLabel(p4.getNickName());
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 				p4name.setBounds(73, 470, 200, 13);
@@ -290,13 +320,17 @@ public class MediumLevel extends JFrame implements ActionListener {
 			JLabel lblNewLabel_5 = new JLabel("p3");
 			lblNewLabel_5.setBounds(73, 310, 45, 13);
 			contentPane.add(lblNewLabel_5);
+		
 			g.getPlayers().add(p3);
+			setPlayer(p3);//
+			
 			if(num==4) {
 
 				JLabel lblNewLabel_4_1 = new JLabel("p4");
 				lblNewLabel_4_1.setBounds(73, 372, 45, 13);
 				contentPane.add(lblNewLabel_4_1);
 				g.getPlayers().add(p4);
+				setPlayer(p4);//
 			}
 		}
 		g.createGame();
@@ -687,6 +721,32 @@ public class MediumLevel extends JFrame implements ActionListener {
 			contentPane.add(p2OnGame);
 			p2OnGame.setVisible(true);
 			contentPane.setComponentZOrder(p2OnGame, 0);
+			contentPane.revalidate();
+			contentPane.repaint();
+			break;
+		case 3://+N
+			pX = 185 + player.getPlayerRow() * 101;// Adjusted x position based on the board offset and grid size//170
+			pY =N-15+801-player.getPlayerCol()*79;
+			System.out.println("setting player 3");
+			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
+
+			// Add player p1 label to the content pane
+			contentPane.add(p3OnGame);
+			p3OnGame.setVisible(true);
+			contentPane.setComponentZOrder(p3OnGame, 0);
+			contentPane.revalidate();
+			contentPane.repaint();
+			break;
+		case 4://+N
+			pX = N+185+ player.getPlayerRow() *  101; // Adjusted x position based on the board offset and grid size//170
+			pY =N-15+801-player.getPlayerCol()*79;
+			System.out.println("setting player 4");
+			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
+
+			// Add player p1 label to the content pane
+			contentPane.add(p4OnGame);
+			p4OnGame.setVisible(true);
+			contentPane.setComponentZOrder(p4OnGame, 0);
 			contentPane.revalidate();
 			contentPane.repaint();
 			break;
