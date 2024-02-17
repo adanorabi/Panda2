@@ -1178,9 +1178,11 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					}
 					
 					 ButtonModel colorString1 = buttonGroup2.getSelection(); // Assuming this returns the color string
-					 System.out.println(colorString1);
+					 
 					 
 					 String colorString = colorString1.getActionCommand();
+						System.out.println("*************inter info**********the player 2 color: "+colorString);
+						
 					if (colorString.equals("Red")) {
 					    color = PlayerColor.Red;
 					} else if (colorString.equals("Green")) {
@@ -1207,10 +1209,13 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					{
 						throw new UnvalidExceptions("you can not enter the same nickname!!");
 					}else {
+						
 						PlayerColor color;
 
 						ButtonModel colorString1 = buttonGroup3.getSelection(); // Assuming this returns the color string
 						String colorString2 =colorString1.getActionCommand(); // Assuming this returns the color string
+						System.out.println("*************inter info**********the player 3 color: "+colorString2);
+						
 						if (colorString2.equals("Red")) {
 						    color = PlayerColor.Red;
 						} else if (colorString2.equals("Green")) {
@@ -1239,7 +1244,10 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						else {
 							System.out.println("player 4 opject");
 							PlayerColor color;
-							String colorString3 = buttonGroup4.getSelection().toString(); // Assuming this returns the color string
+							ButtonModel colorString1 = buttonGroup4.getSelection(); // Assuming this returns the color string
+							String colorString3 =colorString1.getActionCommand(); // Assuming this returns the color string
+							System.out.println("*************inter info**********the player 4 color: "+colorString3);
+							System.out.println("player 4 name: "+textField_1.getText());
 							if (colorString3.equals("Red")) {
 							    color = PlayerColor.Red;
 							} else if (colorString3.equals("Green")) {

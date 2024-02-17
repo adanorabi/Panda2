@@ -1,7 +1,6 @@
 package View;
 import Enum.Levels;
 import Enum.PlayerColor;
-
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.EventQueue;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
+/**/
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -77,25 +76,13 @@ public class EasyLevel extends JFrame {
 	 * Create the frame.
 	 */
 	public EasyLevel(Player p1,Player p2, Player p3,Player p4,int num) {
+		
 
 		Game g=new Game(3, Levels.Easy, 7, 7);
 		g.createGame();
 		g.getPlayers().add(p1);
 		g.getPlayers().add(p2);
 
-		if(num>2) {
-			JLabel lblNewLabel_5 = new JLabel("p3");
-			lblNewLabel_5.setBounds(73, 310, 45, 13);
-			contentPane.add(lblNewLabel_5);
-			g.getPlayers().add(p3);
-			if(num==4) {
-
-				JLabel lblNewLabel_4_1 = new JLabel("p4");
-				lblNewLabel_4_1.setBounds(73, 372, 45, 13);
-				contentPane.add(lblNewLabel_4_1);
-				g.getPlayers().add(p4);
-			}
-		}
 		/**************************************************************************************************/
 		g.PlacespecialSquares(Levels.Easy);
 		g.placeNormalSquares();
@@ -362,6 +349,14 @@ public class EasyLevel extends JFrame {
 		/********************p4*******************************************************************88*/
 
 
+		if(num>2) {
+			g.getPlayers().add(p3);
+			if(num==4) {
+
+				
+				g.getPlayers().add(p4);
+			}
+		}
 
 
 		JLabel lblNewLabel = new JLabel("");
@@ -722,8 +717,9 @@ public class EasyLevel extends JFrame {
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
 
-						movePlayer(p, bx, by,ax, ay);
+						movePlayer(p, bx, by,ax, ay);//moved player once
 						System.out.println("("+bx+","+by+")"+" to ("+ax+","+ay+")");
+						
 						if(g.checkQuestionSquare()==null) {
 							 squareResult=g.UpdatePlayerPlace();/*make a while if the result is not 0 */
 							 if(squareResult!=0) {

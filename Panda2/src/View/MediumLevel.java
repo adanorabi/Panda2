@@ -65,6 +65,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public MediumLevel(Player p1,Player p2, Player p3,Player p4,int num) {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 10, 1300, 1000);
 		contentPane = new JPanel();
