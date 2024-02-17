@@ -1,18 +1,14 @@
 package Tests;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.Before;
 import org.junit.Test;
-
 import Controller.SysData;
 import Enum.Levels;
 import Model.Question;
