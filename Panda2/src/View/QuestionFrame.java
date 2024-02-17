@@ -29,6 +29,8 @@ public class QuestionFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel questionFrame;
+	private boolean answer;
+	public boolean answered;
 	/**
 	 * Launch the application.
 	 */
@@ -49,6 +51,8 @@ public class QuestionFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public QuestionFrame(Question question) {
+		answer=false;
+		answered=false;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 854, 500);
 		contentPane = new JPanel();
@@ -188,14 +192,17 @@ public class QuestionFrame extends JFrame {
 		        
 		        if (selectedRadioButton != null) {
 		            // Get the text of the selected radio button
+		        	answered=true;
 		            String selectedAnswer = selectedRadioButton.getText();
 		            
 		            // Compare the selected answer with the correct answer
 		            if (selectedAnswer.equals(question.getTrueAnswer())) {
 		                // If the selected answer is correct
+		            	answer=true;
 		                JOptionPane.showMessageDialog(contentPane, "Correct answer!");
 		            } else {
 		                // If the selected answer is incorrect
+		            	answer=false;
 		                JOptionPane.showMessageDialog(contentPane, "Incorrect answer. Try again!");
 		            }
 		        } else {
@@ -210,5 +217,8 @@ public class QuestionFrame extends JFrame {
 		contentPane.add(questionFrame);
 		
 
+	}
+	public boolean retAnswer() {
+		return answer;
 	}
 }
