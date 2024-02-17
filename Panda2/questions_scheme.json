@@ -7,7 +7,7 @@
                 "answer3",
                 "answer4"
             ],
-            "correct_ans": "2",
+            "correct_ans": "answer2",
             "difficulty": "1"
         }, {
             "question": "q2",
@@ -17,7 +17,7 @@
                 "answer3",
                 "answer4"
             ],
-            "correct_ans": "1",
+            "correct_ans": "answer1",
             "difficulty": "2"
         }, {
             "question": "q3",
@@ -27,7 +27,7 @@
                 "answer3",
                 "answer4"
             ],
-            "correct_ans": "4",
+            "correct_ans": "answer4",
             "difficulty": "3"
         }
     ]
