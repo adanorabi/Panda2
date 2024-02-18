@@ -743,6 +743,7 @@ public class EasyLevel extends JFrame {
 							if (qu.answered==true)
 							{
 								g.updateByQuestion( myQ,qu.retAnswer());
+								qu.setVisible(false);
 								System.out.println(qu.retAnswer());
 								System.out.println(qu.answered);
 							}
@@ -777,6 +778,7 @@ public class EasyLevel extends JFrame {
 						if (qu.answered==true)
 						{
 							g.updateByQuestion(q,qu.retAnswer());
+							qu.setVisible(false);
 							System.out.println(qu.retAnswer());
 							System.out.println(qu.answered);
 						}
@@ -807,6 +809,7 @@ public class EasyLevel extends JFrame {
 							if (c.answered==true)
 							{
 								g.updateByQuestion( myQ,c.retAnswer());
+								c.setVisible(false);
 								System.out.println(c.retAnswer());
 								System.out.println(c.answered);
 							}
