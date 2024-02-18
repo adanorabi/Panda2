@@ -97,28 +97,89 @@ public class Question {
 
 	public static  int answerFeedback(Question question,boolean Answer,int Position ) // Function that decide the player movement according to his answers of questions 
 	{
+		int newpos;
 		if(question.getQLevel().equals(Levels.Easy)) {
 			if( Answer== true) {
-				return 0+Position;
+				newpos= 0+Position;
+				if(newpos<1) {      //error!
+					return 1;
+				}
+				else if(newpos>49) {
+					return 49;
+				}
+				else {
+					return newpos;
+				}
 			}
 			else {
-				return Position-1;
+				newpos= Position-1;
+				if(newpos<1) {      //error!
+					return 1;
+				}
+				else if(newpos>49) {
+					return 49;
+				}
+				else {
+					return newpos;
+				}
+		
 			}
 		}
 		else if(question.getQLevel().equals(Levels.Medium)) {
 			if( Answer== true) {
-				return Position+0;
+				
+				newpos= Position;
+				if(newpos<1) {      //error!
+					return 1;
+				}
+				else if(newpos>100) {
+					return 100;
+				}
+				else {
+					return newpos;
+				}
 			}
 			else {
-				return Position-2;
+				newpos= Position-2;
+				if(newpos<1) {      //error!
+					return 1;
+				}
+				else if(newpos>100) {
+					return 100;
+				}
+				else {
+					return newpos;
+				}
+			
 			}
 		}
+		
+		
 		else {
 			if( Answer== true) {   // true answer for Hard question
-				return Position+1;
+		
+				newpos= Position+1;
+				if(newpos<1) {      //error!
+					return 1;
+				}
+				else if(newpos>169) {
+					return 169;
+				}
+				else {
+					return newpos;
+				}
 			}
 			else {
-				return Position-3;
+				newpos= Position-3;
+				if(newpos<1) {      //error!
+					return 1;
+				}
+				else if(newpos>169) {
+					return 169;
+				}
+				else {
+					return newpos;
+				}
 			}
 		}
 	}
