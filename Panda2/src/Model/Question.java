@@ -22,7 +22,7 @@ public class Question {
 		this.TrueAnswer = trueAnswer;
 		this.Answers=answer;
 	}
-	
+
 
 	public Question() {
 		super();
@@ -87,7 +87,7 @@ public class Question {
 			return SysData.MidQues.get(index); // returning a random medium question
 		} else if (!SysData.HardQues.isEmpty()) {
 			int index = (int)(Math.random() * SysData.HardQues.size()); 
-		//	System.out.println("Random Question is: " + SysData.HardQues.get(index));
+			//	System.out.println("Random Question is: " + SysData.HardQues.get(index));
 			return SysData.HardQues.get(index); // returning a random Hard question
 		} else {
 			// Throw an exception indicating no questions available
@@ -101,87 +101,51 @@ public class Question {
 		if(question.getQLevel().equals(Levels.Easy)) {
 			if( Answer== true) {
 				newpos= 0+Position;
-				if(newpos<1) {      //error!
-					return 1;
-				}
-				else if(newpos>49) {
-					return 49;
-				}
-				else {
-					return newpos;
-				}
+
+				return newpos;
+
 			}
 			else {
 				newpos= Position-1;
-				if(newpos<1) {      //error!
-					return 1;
-				}
-				else if(newpos>49) {
-					return 49;
-				}
-				else {
-					return newpos;
-				}
-		
+
+				return newpos;
+
+
 			}
 		}
 		else if(question.getQLevel().equals(Levels.Medium)) {
 			if( Answer== true) {
-				
+
 				newpos= Position;
-				if(newpos<1) {      //error!
-					return 1;
-				}
-				else if(newpos>100) {
-					return 100;
-				}
-				else {
-					return newpos;
-				}
+
+				return newpos;
 			}
+
 			else {
 				newpos= Position-2;
-				if(newpos<1) {      //error!
-					return 1;
-				}
-				else if(newpos>100) {
-					return 100;
-				}
-				else {
-					return newpos;
-				}
-			
+
+				return newpos;
+
+
 			}
 		}
-		
-		
+
+
 		else {
 			if( Answer== true) {   // true answer for Hard question
-		
+
 				newpos= Position+1;
-				if(newpos<1) {      //error!
-					return 1;
-				}
-				else if(newpos>169) {
-					return 169;
-				}
-				else {
-					return newpos;
-				}
+
+				return newpos;
+
 			}
 			else {
 				newpos= Position-3;
-				if(newpos<1) {      //error!
-					return 1;
-				}
-				else if(newpos>169) {
-					return 169;
-				}
-				else {
-					return newpos;
-				}
+
+				return newpos;
 			}
 		}
 	}
-
 }
+
+
