@@ -31,7 +31,7 @@ import Enum.Levels;
 import Enum.SnakeColor;
 import Model.*;
 
-public class EasyLevel extends JFrame {
+public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredListener {
 	static int N=60;
 	private JPanel contentPane;
 	private JLabel lblEasyTable; // Label for the easytable image
@@ -71,6 +71,7 @@ public class EasyLevel extends JFrame {
 	private JLabel p3name;
 	private JLabel p4name;
 	private JLabel mytext;
+    private QuestionFrame questionFrame;
 
 
 	/**
@@ -725,39 +726,32 @@ public class EasyLevel extends JFrame {
 						
 						while( g.UpdatePlayerPlace()!=0) {//
 							
-							if(g.checkQuestionSquare2()==true) {
-							Question myQ=g.checkQuestionSquare();
-							System.out.println("questionnnnnnn type from question square!!");
-							
-							if(myQ.getQLevel().equals(Levels.Easy)) {//check
-							
-								answer="easy question";
-							}else if(myQ.getQLevel().equals(Levels.Medium)) {
-						
-								answer="medium question";
-							}else {
-						
-								answer="hard question";
-							}
-							System.out.println("questionnnn frame");
-							QuestionFrame qu=new QuestionFrame( myQ);
-							qu.setVisible(true);
-							System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
-						
-							if (Service.answered==true)
-							{
-								g.updateByQuestion( myQ,Service.answered);
-						
+							if (g.checkQuestionSquare2() == true) {
+							    Question myQ = g.checkQuestionSquare();
+							    System.out.println("questionnnnnnn type from question square!!");
 
-								System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
-								System.out.println(Service.answer);
-								
-							}else {
-								  JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
-							}
-							
+							    if (myQ.getQLevel().equals(Levels.Easy)) {
+							        answer = "easy question";
+							    } else if (myQ.getQLevel().equals(Levels.Medium)) {
+							        answer = "medium question";
+							    } else {
+							        answer = "hard question";
+							    }
+							    System.out.println("questionnnn frame");
 
-						}
+							    // Create the QuestionFrame
+							    QuestionFrame qu = new QuestionFrame(myQ, new QuestionFrame.QuestionAnsweredListener() {
+							        @Override
+							        public void onQuestionAnswered(boolean isCorrect) {
+							            // This method will be called when the player answers the question
+							            g.updateByQuestion(myQ, isCorrect);
+							            System.out.println("Answered: " + isCorrect);
+							            // Continue with your logic here
+							        }
+							    });
+							    qu.setVisible(true);
+							}
+
 							 int awx=p.getPlayerRow();//new x
 							 int awy=p.getPlayerCol();// new y
 
@@ -768,84 +762,86 @@ public class EasyLevel extends JFrame {
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
 					}/**************************question dice*************************8*/
 					else {
-						System.out.println("the current player is:"+p.getPlayerColor());
-						System.out.println("questionnnnnnn type!!");
-						q=(Question)CHECK;
-						if(q.getQLevel().equals(Levels.Easy)) {
-							diceLabel.setIcon(diceIcons[5]);
-							answer="easy question";
-						}else if(q.getQLevel().equals(Levels.Medium)) {
-							diceLabel.setIcon(diceIcons[7]);
-							answer="medium question";
-						}else {
-							diceLabel.setIcon(diceIcons[6]);
-							answer="hard question";
-						}
-						System.out.println("questionnnn frame");
-						QuestionFrame qu=new QuestionFrame(q);
-						qu.setVisible(true);
-						System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
-					
-						if (Service.answered==true)
-						{
-							g.updateByQuestion( q,Service.answered);
-					
-							System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
-							System.out.println(Service.answer);
-							
-						}else {
-							  JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
-						}
-						int ax=p.getPlayerRow();
-						int ay=p.getPlayerCol();
+						
+					    System.out.println("the current player is:" + p.getPlayerColor());
+					    System.out.println("questionnnnnnn type!!");
+					    q = (Question) CHECK;
+					    if (q.getQLevel().equals(Levels.Easy)) {
+					        diceLabel.setIcon(diceIcons[5]);
+					        answer = "easy question";
+					    } else if (q.getQLevel().equals(Levels.Medium)) {
+					        diceLabel.setIcon(diceIcons[7]);
+					        answer = "medium question";
+					    } else {
+					        diceLabel.setIcon(diceIcons[6]);
+					        answer = "hard question";
+					    }
+					    System.out.println("questionnnn frame");
+					    QuestionFrame qu = new QuestionFrame(q, new QuestionFrame.QuestionAnsweredListener() {
+					        @Override
+					        public void onQuestionAnswered(boolean isCorrect) {
+					            // This method will be called when the player answers the question
+					            g.updateByQuestion(q, isCorrect);
+					            System.out.println("Answered: " + isCorrect);
+					            // Continue with your logic here
+					            int ax = p.getPlayerRow();
+					            int ay = p.getPlayerCol();
 
-						movePlayer(p, bx, by,ax, ay);	//move player by answer
-						
-						while( g.UpdatePlayerPlace()!=0) {//
-							
-							if(g.checkQuestionSquare2()==true) {
-							Question myQ=g.checkQuestionSquare();
-							System.out.println("questionnnnnnn type from question square!!");
-							
-							if(myQ.getQLevel().equals(Levels.Easy)) {//check
-							
-								answer="easy question";
-							}else if(myQ.getQLevel().equals(Levels.Medium)) {
-						
-								answer="medium question";
-							}else {
-						
-								answer="hard question";
-							}
-							System.out.println("questionnnn frame");
-							QuestionFrame c=new QuestionFrame( myQ);
-							c.setVisible(true);
-							System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
-					
-							if (Service.answered==true)
-							{
-								g.updateByQuestion( myQ,Service.answered);
+					            movePlayer(p, bx, by, ax, ay);    //move player by answer
 
-								System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
-								System.out.println(Service.answer);
-								
-							}else {
-								  JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
-							}
-							
+					            while (g.UpdatePlayerPlace() != 0) {//
+									String answer="";
+					                if (g.checkQuestionSquare2() == true) {
+					                    Question myQ = g.checkQuestionSquare();
+					                    System.out.println("questionnnnnnn type from question square!!");
 
-						}
-							int awx=p.getPlayerRow();
-							int awy=p.getPlayerCol();
+					                    if (myQ.getQLevel().equals(Levels.Easy)) {//check
 
-							movePlayer(p, ax, ay,awx, awy);	
-							System.out.println("("+ax+","+ay+")"+" to ("+awx+","+awy+")");
-						}
-						g.NextPlayer();
-						lineMangment(g.CurrentTurn().getPlayeringame(), num);
-						
-						
+					                        answer = "easy question";
+					                    } else if (myQ.getQLevel().equals(Levels.Medium)) {
+
+					                        answer = "medium question";
+					                    } else {
+
+					                        answer = "hard question";
+					                    }
+					                    System.out.println("questionnnn frame");
+					                    QuestionFrame c = new QuestionFrame(myQ, new QuestionFrame.QuestionAnsweredListener() {
+					                        @Override
+					                        public void onQuestionAnswered(boolean isCorrect) {
+					                            // This method will be called when the player answers the question
+					                            g.updateByQuestion(myQ, isCorrect);
+					                            System.out.println("Answered: " + isCorrect);
+					                            // Continue with your logic here
+					                        }
+					                    });
+					                    c.setVisible(true);
+					                    System.out.println(Service.answered + "answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
+
+					                    if (Service.answered == true) {
+					                        g.updateByQuestion(myQ, Service.answered);
+
+					                        System.out.println(Service.answered + "answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
+					                        System.out.println(Service.answer);
+
+					                    } else {
+					                        JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
+					                    }
+
+					                }
+					                int awx = p.getPlayerRow();
+					                int awy = p.getPlayerCol();
+
+					                movePlayer(p, ax, ay, awx, awy);
+					                System.out.println("(" + ax + "," + ay + ")" + " to (" + awx + "," + awy + ")");
+					            }
+					            g.NextPlayer();
+					            lineMangment(g.CurrentTurn().getPlayeringame(), num);
+					        }
+					    });
+					    qu.setVisible(true);
 					}
+
 					
 					((Timer) e.getSource()).stop();
 					// Simulate rolling and display the final result
@@ -1094,4 +1090,9 @@ public class EasyLevel extends JFrame {
 		});
       
     }*/
+	@Override
+	public void onQuestionAnswered(boolean isCorrect) {
+		// TODO Auto-generated method stub
+		
+	}
 }
