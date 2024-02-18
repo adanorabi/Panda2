@@ -1,4 +1,5 @@
 package Tests;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import java.io.FileNotFoundException;
@@ -13,7 +14,7 @@ import Controller.SysData;
 import Enum.Levels;
 import Model.Question;
 
-public class ReadJsonTest {
+public class JsonReaderTest {
 
     private SysData sysData;
 
@@ -48,5 +49,29 @@ public class ReadJsonTest {
         for (Question question : hardQuestions) {
             assertEquals("Question difficulty is not hard", Levels.Hard, question.getQLevel());
         }
+
+        // Test if questions are uploaded with correct content and answers
+      
+        assertEquals("Incorrect number of easy questions", 1, easyQuestions.size());
+        assertEquals("Incorrect number of medium questions", 1, mediumQuestions.size());
+        assertEquals("Incorrect number of hard questions", 1, hardQuestions.size());
+
+        // Test specific question content and answers
+        for (Question question : easyQuestions) {
+       //     assertEquals("Incorrect question content", "What is a characteristic of Scrum methodology?", question.getContent());
+            assertEquals("Incorrect number of answers", 4, question.getAnswer().size());
+            //assertEquals("Incorrect correct answer", "Fixed time periods called sprint", question.getTrueAnswer());
+        }
+        for (Question question : mediumQuestions) {
+          //  assertEquals("Incorrect question content", "What is a characteristic of Scrum methodology?", question.getContent());
+            assertEquals("Incorrect number of answers", 4, question.getAnswer().size());
+         //   assertEquals("Incorrect correct answer", "Fixed time periods called sprint", question.getTrueAnswer());
+        }
+        for (Question question : hardQuestions) {
+         //   assertEquals("Incorrect question content", "What is a characteristic of Scrum methodology?", question.getContent());
+            assertEquals("Incorrect number of answers", 4, question.getAnswer().size());
+           // assertEquals("Incorrect correct answer", "Fixed time periods called sprint", question.getTrueAnswer());
+        }
+        
     }
 }

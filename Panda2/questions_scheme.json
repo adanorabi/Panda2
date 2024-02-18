@@ -1,13 +1,13 @@
 {
     "questions": [{
-            "question": "q1",
+            "question": "What is a characteristic of Scrum methodology?",
             "answers": [
-                "answer1",
-                "answer2",
-                "answer3",
-                "answer4"
+                "Fixed time periods called sprint",
+                "No involvement of customer representatives",
+                "Lack of prioritization in backlog",
+                "Ad hoc planning of project tasks"
             ],
-            "correct_ans": "answer2",
+            "correct_ans":   "Fixed time periods called sprint",
             "difficulty": "1"
         }, {
             "question": "q2",
