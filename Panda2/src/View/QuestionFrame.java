@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,12 +58,42 @@ public class QuestionFrame extends JFrame {
         submitButton.setIcon(icon);
         submitButton.setBounds(635, 373, 115, 69);
         contentPane.add(submitButton);
-
-        JLabel lblNewLabel = new JLabel("New label");
+        
+        JLabel lblNewLabel = new JLabel();
         lblNewLabel.setBounds(194, 62, 549, 66);
         contentPane.add(lblNewLabel);
-        lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 24));
-        lblNewLabel.setText(question.getContent());
+
+        // Set initial font size
+        int fontSize = 24;
+        Font font = new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, fontSize);
+        lblNewLabel.setFont(font);
+
+        // Set text
+        String questionText = question.getContent();
+        lblNewLabel.setText(questionText);
+
+        // Get FontMetrics to calculate text width and height
+        FontMetrics metrics = lblNewLabel.getFontMetrics(font);
+        int textWidth = metrics.stringWidth(questionText);
+        int textHeight = metrics.getHeight();
+
+        // Adjust font size or wrap text to fit within the label bounds
+        while (textWidth > lblNewLabel.getWidth() || textHeight > lblNewLabel.getHeight()) {
+            fontSize--; // Decrease font size
+            font = new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, fontSize);
+            lblNewLabel.setFont(font);
+            
+            // Recalculate text width and height
+            metrics = lblNewLabel.getFontMetrics(font);
+            textWidth = metrics.stringWidth(questionText);
+            textHeight = metrics.getHeight();
+        }
+
+        // Center align the text within the label
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setVerticalAlignment(SwingConstants.CENTER);
+
+
 
         if (question.getQLevel().equals(Levels.Easy)) {
             JLabel lblNewLabel_1 = new JLabel("");
