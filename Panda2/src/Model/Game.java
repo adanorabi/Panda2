@@ -490,6 +490,7 @@ public class Game {
 			} 
 			int afterRoll[]=new int[2];
 			afterRoll=this.GameBoard.getCoordinates(newpos);
+			System.out.println(afterRoll);
 			this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterRoll[0]);
 			this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterRoll[1]);
 
@@ -536,6 +537,7 @@ public class Game {
 		int pos=this.GameBoard.getPosition(x, y);
 		Question Q = new Question();
 		int newpos=Q.answerFeedback(q, Answer, pos);
+//<<<<<<< Updated upstream
 		int size=this.ColsNum*this.RowsNum;
 		if(newpos>size) { //error!
 			newpos=size;
@@ -543,6 +545,9 @@ public class Game {
 			newpos=1;
 			
 		}
+//=======
+		
+//>>>>>>> Stashed changes
 		int afterQuestion[]=new int[2];
 		afterQuestion=this.GameBoard.getCoordinates(newpos);
 		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[0]);
@@ -577,6 +582,9 @@ public class Game {
 
 				}
 			}
+			return num;
+		}
+		if(num==3|| num==4||num==5) {
 			return num;
 		}
 
