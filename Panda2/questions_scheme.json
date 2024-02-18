@@ -10,15 +10,45 @@
             "correct_ans":   "Fixed time periods called sprint",
             "difficulty": "1"
         }, {
-            "question": "q2",
+            "question": "In Scrum, who is responsible for prioritizing the items in the product backlog?",
+            "answers": [
+                "The Scrum Master",
+                "The Stakeholders",
+                "The Development Team",
+                "The Product Owner"
+            ],
+            "correct_ans":   "The Product Owner",
+            "difficulty": "2"
+        }, {
+            "question": "What is the main purpose of a burn-down chart in Scrum?",
+            "answers": [
+                "To track the amount of time spent on each task during a sprint",
+                "To visualize the progress of work completed versus work remaining in a sprint",
+                " To assign tasks to team members based on their availability",
+                "To document the backlog items that have been completed in a sprint"
+            ],
+            "correct_ans":  "To visualize the progress of work completed versus work remaining in a sprint",
+            "difficulty": "3"
+        }, {
+            "question": "q3",
             "answers": [
                 "answer1",
                 "answer2",
                 "answer3",
                 "answer4"
             ],
-            "correct_ans": "answer1",
-            "difficulty": "2"
+            "correct_ans": "answer4",
+            "difficulty": "3"
+        }, {
+            "question": "q3",
+            "answers": [
+                "answer1",
+                "answer2",
+                "answer3",
+                "answer4"
+            ],
+            "correct_ans": "answer4",
+            "difficulty": "3"
         }, {
             "question": "q3",
             "answers": [

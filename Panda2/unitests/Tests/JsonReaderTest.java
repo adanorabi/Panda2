@@ -52,9 +52,9 @@ public class JsonReaderTest {
 
         // Test if questions are uploaded with correct content and answers
       
-        assertEquals("Incorrect number of easy questions", 1, easyQuestions.size());
-        assertEquals("Incorrect number of medium questions", 1, mediumQuestions.size());
-        assertEquals("Incorrect number of hard questions", 1, hardQuestions.size());
+        assertEquals("Incorrect number of easy questions", 10, easyQuestions.size());
+        assertEquals("Incorrect number of medium questions", 10, mediumQuestions.size());
+        assertEquals("Incorrect number of hard questions", 10, hardQuestions.size());
 
         // Test specific question content and answers
         for (Question question : easyQuestions) {
