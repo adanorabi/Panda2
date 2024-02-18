@@ -200,10 +200,14 @@ public class QuestionFrame extends JFrame {
 		                // If the selected answer is correct
 		            	answer=true;
 		                JOptionPane.showMessageDialog(contentPane, "Correct answer!");
+		                setVisible(false);
+		                
 		            } else {
 		                // If the selected answer is incorrect
 		            	answer=false;
 		                JOptionPane.showMessageDialog(contentPane, "Incorrect answer. Try again!");
+		                contentPane.setVisible(false);
+		                setVisible(false);
 		            }
 		        } else {
 		            // If no answer is selected
