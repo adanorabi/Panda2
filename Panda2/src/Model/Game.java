@@ -537,7 +537,6 @@ public class Game {
 		int pos=this.GameBoard.getPosition(x, y);
 		Question Q = new Question();
 		int newpos=Q.answerFeedback(q, Answer, pos);
-//<<<<<<< Updated upstream
 		int size=this.ColsNum*this.RowsNum;
 		if(newpos>size) { //error!
 			newpos=size;
@@ -545,9 +544,7 @@ public class Game {
 			newpos=1;
 			
 		}
-//=======
-		
-//>>>>>>> Stashed changes
+
 		int afterQuestion[]=new int[2];
 		afterQuestion=this.GameBoard.getCoordinates(newpos);
 		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[0]);
