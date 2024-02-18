@@ -112,7 +112,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 
 		diceButton = new JButton("Roll Dice");
-		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.png")));
+		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.jpg")));
 		diceButton.setBounds(43, 702, 134, 49);
 		diceButton.addActionListener(new ActionListener() {
 
