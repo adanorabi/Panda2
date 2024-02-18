@@ -26,7 +26,7 @@ import javax.swing.JRadioButton;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-import Controller.Service;
+
 import Enum.Levels;
 import Enum.SnakeColor;
 import Model.*;
@@ -822,17 +822,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 											}
 										});
 										c.setVisible(true);
-										System.out.println(Service.answered + "answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
-
-										if (Service.answered == true) {
-											g.updateByQuestion(myQ, Service.answered);
-
-											System.out.println(Service.answered + "answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
-											System.out.println(Service.answer);
-
-										} else {
-											JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
-										}
+		
 
 										int awx=p.getPlayerRow();//new x
 										int awy=p.getPlayerCol();// new y
@@ -880,19 +870,36 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		case 1:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
 			bx= 214 + beforx * 122;
-
+			pY =641-aftery*86;
+			by=641-befory*86;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
 			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
 			bx= 214 +N+ beforx * 122;
+			pY =641-aftery*86;
+
+			by=641-befory*86;
+			break;
+		case 3:
+			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
+			bx= 214 + beforx * 122;
+			pY =641-aftery*86+N;
+
+			by=641-befory*86+N;
+			//p1OnGame.setLocation(pX, pY);
+			break;
+		case 4://+N
+			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
+			bx= 214 +N+ beforx * 122;
+			pY =641-aftery*86+N;
+
+			by=641-befory*86+N;
 			break;
 
 		}
 
-		pY =641-aftery*86;
-
-		by=641-befory*86;
+	
 		final int finalBx = bx; // Declare effectively final variables
 		final int finalBy = by;
 
