@@ -58,19 +58,18 @@ public class JsonReaderTest {
 
         // Test specific question content and answers
         for (Question question : easyQuestions) {
-       //     assertEquals("Incorrect question content", "What is a characteristic of Scrum methodology?", question.getContent());
+  
             assertEquals("Incorrect number of answers", 4, question.getAnswer().size());
-            //assertEquals("Incorrect correct answer", "Fixed time periods called sprint", question.getTrueAnswer());
+          
         }
         for (Question question : mediumQuestions) {
-          //  assertEquals("Incorrect question content", "What is a characteristic of Scrum methodology?", question.getContent());
+      
             assertEquals("Incorrect number of answers", 4, question.getAnswer().size());
-         //   assertEquals("Incorrect correct answer", "Fixed time periods called sprint", question.getTrueAnswer());
+
         }
         for (Question question : hardQuestions) {
-         //   assertEquals("Incorrect question content", "What is a characteristic of Scrum methodology?", question.getContent());
-            assertEquals("Incorrect number of answers", 4, question.getAnswer().size());
-           // assertEquals("Incorrect correct answer", "Fixed time periods called sprint", question.getTrueAnswer());
+      assertEquals("Incorrect number of answers", 4, question.getAnswer().size());
+         
         }
         
     }
