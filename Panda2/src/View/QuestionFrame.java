@@ -56,7 +56,7 @@ public class QuestionFrame extends JFrame {
         Image newImage = image.getScaledInstance(120, 100, Image.SCALE_SMOOTH); // Resize it
         icon = new ImageIcon(newImage); // Convert back to ImageIcon
         submitButton.setIcon(icon);
-        submitButton.setBounds(635, 373, 115, 69);
+        submitButton.setBounds(680, 400, 122, 38);
         contentPane.add(submitButton);
         
         JLabel lblNewLabel = new JLabel();
