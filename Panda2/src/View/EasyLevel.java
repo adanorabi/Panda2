@@ -118,7 +118,7 @@ public class EasyLevel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("in dice btn");
-				rollDiceAnimation(g);
+				rollDiceAnimation(g,num);
 
 
 			}});
@@ -677,7 +677,7 @@ public class EasyLevel extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	private void rollDiceAnimation(Game g) {
+	private void rollDiceAnimation(Game g,int num) {
 		System.out.println("im in the roll dice func");
 		final int NUM_FRAMES = 15; // Number of frames for the dice animation
 		final int DELAY = 50; // Delay between each frame in milliseconds
@@ -701,6 +701,7 @@ public class EasyLevel extends JFrame {
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
 					Player p=g.CurrentTurn();
+					
 					int bx=p.getPlayerRow();
 					int by=p.getPlayerCol();
 
@@ -716,22 +717,49 @@ public class EasyLevel extends JFrame {
 						answer=Integer.toString((Integer)CHECK);
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
-
+						System.out.println("the current player is:"+p.getPlayerColor());
 						movePlayer(p, bx, by,ax, ay);//moved player once
+						
 						System.out.println("("+bx+","+by+")"+" to ("+ax+","+ay+")");
-
-						if(g.checkQuestionSquare()==null) {
-							squareResult=g.UpdatePlayerPlace();/*make a while if the result is not 0 */
-							if(squareResult!=0) {
-
-								// movePlayer(p,bx,by,p.getPlayerRow(),p.getPlayerCol());
-
+						while(g.checkQuestionSquare2()==true || g.UpdatePlayerPlace()!=0) {//
+							
+							if(g.checkQuestionSquare2()==true) {
+							Question myQ=g.checkQuestionSquare();
+							System.out.println("questionnnnnnn type from question square!!");
+							
+							if(myQ.getQLevel().equals(Levels.Easy)) {//check
+							
+								answer="easy question";
+							}else if(myQ.getQLevel().equals(Levels.Medium)) {
+						
+								answer="medium question";
+							}else {
+						
+								answer="hard question";
 							}
-						}else {/*ghaidaa you have to represent the question you have the question here from yara function*/
+							System.out.println("questionnnn frame");
+							QuestionFrame qu=new QuestionFrame( myQ);
+							qu.setVisible(true);
+							if (qu.answered==true)
+							{
+								g.updateByQuestion( myQ,qu.retAnswer());
+								qu.setVisible(false);
+								System.out.println(qu.retAnswer());
+								System.out.println(qu.answered);
+							}
+							
 
 						}
+							 ax=p.getPlayerRow();
+							 ay=p.getPlayerCol();
 
-					}else {
+							movePlayer(p, bx, by,ax, ay);	
+						}
+						g.NextPlayer();
+						lineMangment(g.CurrentTurn().getPlayeringame(), num);
+					}/**************************question dice*************************8*/
+					else {
+						System.out.println("the current player is:"+p.getPlayerColor());
 						System.out.println("questionnnnnnn type!!");
 						q=(Question)CHECK;
 						if(q.getQLevel().equals(Levels.Easy)) {
@@ -750,9 +778,53 @@ public class EasyLevel extends JFrame {
 						if (qu.answered==true)
 						{
 							g.updateByQuestion(q,qu.retAnswer());
+							qu.setVisible(false);
 							System.out.println(qu.retAnswer());
 							System.out.println(qu.answered);
 						}
+						int ax=p.getPlayerRow();
+						int ay=p.getPlayerCol();
+
+						movePlayer(p, bx, by,ax, ay);	//move player by answer
+						
+						while(g.checkQuestionSquare2()==true || g.UpdatePlayerPlace()!=0) {//
+							
+							if(g.checkQuestionSquare2()==true) {
+							Question myQ=g.checkQuestionSquare();
+							System.out.println("questionnnnnnn type from question square!!");
+							
+							if(myQ.getQLevel().equals(Levels.Easy)) {//check
+							
+								answer="easy question";
+							}else if(myQ.getQLevel().equals(Levels.Medium)) {
+						
+								answer="medium question";
+							}else {
+						
+								answer="hard question";
+							}
+							System.out.println("questionnnn frame");
+							QuestionFrame c=new QuestionFrame( myQ);
+							c.setVisible(true);
+							if (c.answered==true)
+							{
+								g.updateByQuestion( myQ,c.retAnswer());
+								c.setVisible(false);
+								System.out.println(c.retAnswer());
+								System.out.println(c.answered);
+							}
+							
+
+						}
+							 ax=p.getPlayerRow();
+							 ay=p.getPlayerCol();
+
+							movePlayer(p, bx, by,ax, ay);	
+						}
+						g.NextPlayer();
+						lineMangment(g.CurrentTurn().getPlayeringame(), num);
+						
+						
 					}
 					((Timer) e.getSource()).stop();
 					// Simulate rolling and display the final result
@@ -768,11 +840,12 @@ public class EasyLevel extends JFrame {
 	}
 
 
-	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery) {
+	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery) {//check
+		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 
 
-		switch(player.getPlayeringame()) {
+		switch(player.getPlayeringame()) {//check
 		case 1:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
 
@@ -800,7 +873,10 @@ public class EasyLevel extends JFrame {
 			if (count[0] < steps) {
 				int newX = (int) (finalBx + deltaX * count[0]);
 				int newY = (int) (finalBy+ deltaY * count[0]);
-				p1OnGame.setLocation(newX, newY);
+				if(player.getPlayeringame()==1)
+					p1OnGame.setLocation(newX, newY);
+				else if(player.getPlayeringame()==2)
+					p2OnGame.setLocation(newX, newY);
 				count[0]++;
 			} else {
 				timer.stop(); // Stop the timer when the movement is complete

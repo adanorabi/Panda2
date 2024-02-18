@@ -13,7 +13,7 @@
 //
 //        // Run the RandSurprise method multiple times and ensure it returns valid values
 //        for (int i = 0; i < 1000; i++) { // Running the test 1000 times
-//            int surprise = surpriseSquare.RandSurprise();
+//           /* int surprise = surpriseSquare.RandSurprise();*/
 //            assertTrue("Surprise value should be either -10 or 10", surprise == -10 || surprise == 10);
 //        }
 //    }

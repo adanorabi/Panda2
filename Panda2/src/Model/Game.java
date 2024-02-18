@@ -477,13 +477,17 @@ public class Game {
 	}
 
 	public Object Roll() {
-		
+
 		Object roll=this.gameDice.RollDice();
 		if(roll instanceof Integer) {
 			int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
 			int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
 			int pos=this.GameBoard.getPosition(x, y);
 			int newpos=pos+ (Integer)roll;
+			int size=this.ColsNum*this.RowsNum;
+			if(newpos>size) { //error!
+				newpos=size;
+			} 
 			int afterRoll[]=new int[2];
 			afterRoll=this.GameBoard.getCoordinates(newpos);
 			this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterRoll[0]);
@@ -509,6 +513,20 @@ public class Game {
 			}
 		}
 		return null;
+
+	}
+
+	public Boolean checkQuestionSquare2() {
+
+		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
+		if(num==3|| num==4||num==5) {
+			for(int i=0;i<this.Squares.size();i++) {
+				if(this.Squares.get(i) instanceof QuestionSquare) {
+					return true;
+				}
+			}
+		}
+		return false;
 
 	}
 	public boolean updateByQuestion(Question q,boolean Answer) {/*to move the player if he answered right or wrong, send if the player has answered true*/
@@ -538,10 +556,17 @@ public class Game {
 			for(int i=0;i<this.Squares.size();i++) {
 				if(this.Squares.get(i) instanceof SurpriseSquare) {
 					int newpos=((SurpriseSquare)this.Squares.get(i)).RandSurprise(pos);
+					int size=this.ColsNum*this.RowsNum;
+					if(newpos>size) { //error!
+						newpos=size;
+					}  else if (newpos<1) {
+						newpos=1;
+						
+					}
 					int afterSurprise[]=new int[2];
 					afterSurprise=this.GameBoard.getCoordinates(newpos);
 					this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterSurprise[0]);
-					this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterSurprise[0]);
+					this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterSurprise[1]);  //error!
 
 				}
 			}
