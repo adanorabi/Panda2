@@ -721,7 +721,8 @@ public class EasyLevel extends JFrame {
 						movePlayer(p, bx, by,ax, ay);//moved player once
 						
 						System.out.println("("+bx+","+by+")"+" to ("+ax+","+ay+")");
-						while(g.checkQuestionSquare2()==true || g.UpdatePlayerPlace()!=0) {//
+						
+						while( g.UpdatePlayerPlace()!=0) {//
 							
 							if(g.checkQuestionSquare2()==true) {
 							Question myQ=g.checkQuestionSquare();
@@ -743,16 +744,19 @@ public class EasyLevel extends JFrame {
 							if (qu.answered==true)
 							{
 								g.updateByQuestion( myQ,qu.retAnswer());
+						
 								System.out.println(qu.retAnswer());
 								System.out.println(qu.answered);
+								
 							}
 							
 
 						}
-							 ax=p.getPlayerRow();
-							 ay=p.getPlayerCol();
+							 int awx=p.getPlayerRow();//new x
+							 int awy=p.getPlayerCol();// new y
 
-							movePlayer(p, bx, by,ax, ay);	
+							movePlayer(p, ax, ay,awx, awy);
+							System.out.println("("+ax+","+ay+")"+" to ("+awx+","+awy+")");
 						}
 						g.NextPlayer();
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
@@ -785,7 +789,7 @@ public class EasyLevel extends JFrame {
 
 						movePlayer(p, bx, by,ax, ay);	//move player by answer
 						
-						while(g.checkQuestionSquare2()==true || g.UpdatePlayerPlace()!=0) {//
+						while( g.UpdatePlayerPlace()!=0) {//
 							
 							if(g.checkQuestionSquare2()==true) {
 							Question myQ=g.checkQuestionSquare();
@@ -813,16 +817,18 @@ public class EasyLevel extends JFrame {
 							
 
 						}
-							 ax=p.getPlayerRow();
-							 ay=p.getPlayerCol();
+							int awx=p.getPlayerRow();
+							int awy=p.getPlayerCol();
 
-							movePlayer(p, bx, by,ax, ay);	
+							movePlayer(p, ax, ay,awx, awy);	
+							System.out.println("("+ax+","+ay+")"+" to ("+awx+","+awy+")");
 						}
 						g.NextPlayer();
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
 						
 						
 					}
+					
 					((Timer) e.getSource()).stop();
 					// Simulate rolling and display the final result
 					//JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
@@ -845,17 +851,19 @@ public class EasyLevel extends JFrame {
 		switch(player.getPlayeringame()) {//check
 		case 1:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
+			bx= 214 + beforx * 122;
 
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
 			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
+			bx= 214 +N+ beforx * 122;
 			break;
 
 		}
 
 		pY =641-aftery*86;
-		bx= 214 + beforx * 122;
+	
 		by=641-befory*86;
 		final int finalBx = bx; // Declare effectively final variables
 		final int finalBy = by;
@@ -875,6 +883,7 @@ public class EasyLevel extends JFrame {
 				else if(player.getPlayeringame()==2)
 					p2OnGame.setLocation(newX, newY);
 				count[0]++;
+				System.out.println("move player");
 			} else {
 				timer.stop(); // Stop the timer when the movement is complete
 			}

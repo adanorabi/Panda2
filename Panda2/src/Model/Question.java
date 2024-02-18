@@ -79,7 +79,7 @@ public class Question {
 		// Check if the list corresponding to the question level is empty
 		if (questionLevel.equals(Levels.Easy) && !SysData.EasyQues.isEmpty()) {
 			int index = (int)(Math.random() * SysData.EasyQues.size()); 
-			//System.out.println("Random Question is: " + SysData.EasyQues.get(index));
+			//System.out.prisntln("Random Question is: " + SysData.EasyQues.get(index));
 			return SysData.EasyQues.get(index); // returning a random easy question
 		} else if (questionLevel.equals(Levels.Medium) && !SysData.MidQues.isEmpty()) {
 			int index = (int)(Math.random() * SysData.MidQues.size()); 
