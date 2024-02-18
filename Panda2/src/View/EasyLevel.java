@@ -26,6 +26,7 @@ import javax.swing.JRadioButton;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+import Controller.Service;
 import Enum.Levels;
 import Enum.SnakeColor;
 import Model.*;
@@ -741,13 +742,18 @@ public class EasyLevel extends JFrame {
 							System.out.println("questionnnn frame");
 							QuestionFrame qu=new QuestionFrame( myQ);
 							qu.setVisible(true);
-							if (qu.answered==true)
-							{
-								g.updateByQuestion( myQ,qu.retAnswer());
+							System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
 						
-								System.out.println(qu.retAnswer());
-								System.out.println(qu.answered);
+							if (Service.answered==true)
+							{
+								g.updateByQuestion( myQ,Service.answered);
+						
+
+								System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
+								System.out.println(Service.answer);
 								
+							}else {
+								  JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
 							}
 							
 
@@ -778,11 +784,17 @@ public class EasyLevel extends JFrame {
 						System.out.println("questionnnn frame");
 						QuestionFrame qu=new QuestionFrame(q);
 						qu.setVisible(true);
-						if (qu.answered==true)
+						System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
+					
+						if (Service.answered==true)
 						{
-							g.updateByQuestion(q,qu.retAnswer());
-							System.out.println(qu.retAnswer());
-							System.out.println(qu.answered);
+							g.updateByQuestion( q,Service.answered);
+					
+							System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
+							System.out.println(Service.answer);
+							
+						}else {
+							  JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
 						}
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
@@ -808,11 +820,17 @@ public class EasyLevel extends JFrame {
 							System.out.println("questionnnn frame");
 							QuestionFrame c=new QuestionFrame( myQ);
 							c.setVisible(true);
-							if (c.answered==true)
+							System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered from easy frame");
+					
+							if (Service.answered==true)
 							{
-								g.updateByQuestion( myQ,c.retAnswer());
-								System.out.println(c.retAnswer());
-								System.out.println(c.answered);
+								g.updateByQuestion( myQ,Service.answered);
+
+								System.out.println(Service.answered+"answeeeeeeeeeeeeeeeeeeeeeeeeeeeered");
+								System.out.println(Service.answer);
+								
+							}else {
+								  JOptionPane.showMessageDialog(contentPane, "you have loset you'r turn!");
 							}
 							
 
@@ -883,7 +901,7 @@ public class EasyLevel extends JFrame {
 				else if(player.getPlayeringame()==2)
 					p2OnGame.setLocation(newX, newY);
 				count[0]++;
-				System.out.println("move player");
+			
 			} else {
 				timer.stop(); // Stop the timer when the movement is complete
 			}
@@ -1060,4 +1078,20 @@ public class EasyLevel extends JFrame {
 
 
 	}
+	/*private void completeTask() {
+		Timer timer = new Timer(20, null); // Create a timer without ActionListener
+		int steps=3000;
+		timer.start(); // Start the timer
+		final int[] count = {0};
+		timer.addActionListener(e -> {
+			if (count[0] < steps) {
+				
+				count[0]++;
+			
+			} else {
+				timer.stop(); // Stop the timer when the movement is complete
+			}
+		});
+      
+    }*/
 }

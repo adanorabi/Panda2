@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import Controller.*;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
@@ -29,8 +30,8 @@ public class QuestionFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel questionFrame;
-	private boolean answer;
-	public boolean answered;
+
+
 	/**
 	 * Launch the application.
 	 */
@@ -51,8 +52,8 @@ public class QuestionFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public QuestionFrame(Question question) {
-		answer=false;
-		answered=false;
+		Service.answer=false;
+		Service.answered=false;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 200, 854, 500);
 		contentPane = new JPanel();
@@ -192,20 +193,23 @@ public class QuestionFrame extends JFrame {
 		        
 		        if (selectedRadioButton != null) {
 		            // Get the text of the selected radio button
-		        	answered=true;
+		        	Service.answered=true;
+		        	System.out.println("from q frame answered is: "+Service.answered);
 		            String selectedAnswer = selectedRadioButton.getText();
 		            
 		            // Compare the selected answer with the correct answer
 		            if (selectedAnswer.equals(question.getTrueAnswer())) {
 		                // If the selected answer is correct
-		            	answer=true;
+		            	Service.answer=true;
+		            	System.out.println("from q frame answer is: "+Service.answer);
 		                JOptionPane.showMessageDialog(contentPane, "Correct answer!");
 		                setVisible(false);
 		                
 		            } else {
 		                // If the selected answer is incorrect
-		            	answer=false;
-		                JOptionPane.showMessageDialog(contentPane, "Incorrect answer. Try again!");
+		            	Service.answer=false;
+		            	System.out.println("from q frame answer is: "+Service.answer);
+		                JOptionPane.showMessageDialog(contentPane, "Incorrect answer!");
 		                contentPane.setVisible(false);
 		                setVisible(false);
 		            }
@@ -213,7 +217,7 @@ public class QuestionFrame extends JFrame {
 		            // If no answer is selected
 		            JOptionPane.showMessageDialog(contentPane, "Please select an answer.");
 		        }
-		    }
+		   }
 		});
 		questionFrame = new JLabel("");
 		questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/questionFrame.jpg")));
@@ -222,7 +226,5 @@ public class QuestionFrame extends JFrame {
 		
 
 	}
-	public boolean retAnswer() {
-		return answer;
-	}
+
 }
