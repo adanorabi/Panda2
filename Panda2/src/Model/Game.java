@@ -536,6 +536,13 @@ public class Game {
 		int pos=this.GameBoard.getPosition(x, y);
 		Question Q = new Question();
 		int newpos=Q.answerFeedback(q, Answer, pos);
+		int size=this.ColsNum*this.RowsNum;
+		if(newpos>size) { //error!
+			newpos=size;
+		}  else if (newpos<1) {
+			newpos=1;
+			
+		}
 		int afterQuestion[]=new int[2];
 		afterQuestion=this.GameBoard.getCoordinates(newpos);
 		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[0]);
