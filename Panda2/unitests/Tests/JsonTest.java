@@ -20,8 +20,6 @@ public class JsonTest {
         sysData = new SysData();
     }
 
-
-
     @Test
     public void testUploadQuestionsCorrectNumber() {
         SysData.UploadQuestions();
@@ -41,7 +39,6 @@ public class JsonTest {
             assertEquals("Question difficulty is not hard", Levels.Hard, question.getQLevel());
         }
     }
-
 
     @Test
     public void testUploadQuestionsAnswers() {
