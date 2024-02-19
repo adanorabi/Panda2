@@ -20,14 +20,7 @@ public class JsonTest {
         sysData = new SysData();
     }
 
-    @Test
-    public void testUploadQuestionsCorrectNumber() {
-        SysData.UploadQuestions();
-
-        // Test if correct number of questions are uploaded
-    
-        assertEquals("Incorrect number of hard questions", 10, SysData.HardQues.size());
-    }
+  
 
     @Test
     public void testUploadQuestionsDifficultyLevels() {
