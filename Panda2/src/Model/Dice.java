@@ -104,34 +104,5 @@ public class Dice {
 
 
 	}
-	/*public Question CallQuestion(int questionLevel) {
-		if(questionLevel==1) { //Easy question 
-
-
-			// generating the index using Math.random() 
-			int index = (int)(Math.random() * SysData.EasyQues.size()); 
-
-			System.out.println("Random Question is :"+ SysData.EasyQues.get(index)); //yara!
-			return SysData.EasyQues.get(index); // returning a random easy question
-
-
-		}
-		else if(questionLevel==2) {//Medium Question
-
-			int index = (int)(Math.random() * SysData.MidQues.size()); 
-
-
-			return SysData.MidQues.get(index); // returning a random medium question
-		} 
-		else {//Hard Question 
-
-			// generating the index using Math.random() 
-			int index = (int)(Math.random() * SysData.HardQues.size()); 
-
-
-			return SysData.HardQues.get(index); // returning a random Hard question
-
-		}
-
-	}*/
+	
 }
