@@ -137,92 +137,6 @@ public class MediumLevel extends JFrame implements ActionListener {
 		Image resizedImage3 = originalIcon3.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 		diceIcons[9] = new ImageIcon(resizedImage3);
 
-		// Calculate the size of the snake image
-ImageIcon winIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/win.png"));
-int winWidth = 80; // Adjusted width based on grid size
-int winHeight = 80;//Adjusted height based on grid size
-
-// Scale down the size of the snake image
-Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
-ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
-
-// Create a JLabel for the scaled snake image
-JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
-lblNewLabel_3.setBounds(955, 130,winWidth,winHeight);//
-System.out.println(winIcon);
-System.out.println(lblNewLabel_3);
-// Add the snake label to the content pane
-contentPane.add(lblNewLabel_3);
-lblNewLabel_3.setVisible(true);
-contentPane.setComponentZOrder(lblNewLabel_3, 0);    
-/***************************************************************************************************************/
-JLabel lblNewLabel = new JLabel("");
-lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
-lblNewLabel.setBounds(0, 0, 1200, 900);
-contentPane.add(lblNewLabel);
-
-
-  int i,j;
-
-		for(i=0; i<g.getSnakes().size();i++)
-		{
-			SnakeColor color= g.getSnakes().get(i).getColor();
-			int xHead=g.getSnakes().get(i).getXHeadNum();
-			int xTail=g.getSnakes().get(i).getXTailNum();
-			int yHead=g.getSnakes().get(i).getYHeadNum();
-			int yTail=g.getSnakes().get(i).getYTailNum();
-			if(color==SnakeColor.Blue)
-			{
-				setbluesnake(xHead,yHead,xTail,yTail);
-				System.out.println("bluessnake (" +xHead  + "," + yHead+ "," + xTail+ "," + yTail+ "):" );
-
-			}
-			else if(color==SnakeColor.Green)
-			{
-				setgreensnake(xHead,yHead,xTail,yTail);
-				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
-
-			}
-			else if(color==SnakeColor.Red)
-			{
-				setredsnake(xHead,yHead);
-				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
-
-			}
-			else if (color==SnakeColor.Yellow)
-			{
-				setyellowsnake(xHead, yHead, xTail, yTail);
-				System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
-
-			}
-		}
-		for(i=0; i<g.getLadders().size();i++)
-		{
-			int length= g.getLadders().get(i).getLength();
-			int xHead=g.getLadders().get(i).getXEnd();
-			int xTail=g.getLadders().get(i).getXStart();
-			int yHead=g.getLadders().get(i).getYEnd();
-			int yTail=g.getLadders().get(i).getYStart();
-			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
-			setLadders(length,xHead,yHead,xTail,yTail);
-		}
-		for (i=0 ; i<10; i++)
-		{
-			for (j=0 ; j<10; j++ )
-			{
-				if(g.getPlaces()[i][j]==2||g.getPlaces()[i][j]==1) {
-					setsurprise(i, j);
-					System.out.println("surprise (" + i + "," + j + "):" );
-				}
-				else if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
-					setq(i, j);
-					System.out.println("question (" + i + "," + j + "):" );
-
-				}
-			}
-		}
-
-
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
 		{
@@ -307,8 +221,7 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 
 		p2OnGame=new JLabel(finalIcon2);//finish putting the icon only setbound and set visible left
 
-		setPlayer(p1);//
-		setPlayer(p2);//		
+				
 
 
 
@@ -354,7 +267,6 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 
 			p3OnGame=new JLabel(finalIcon3);//finish putting the icon only setbound and set visible left
 
-			setPlayer(p3);//
 			p3name = new JLabel(p3.getNickName());
 			p3name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			p3name.setBounds(73, 270, 200, 13);
@@ -395,7 +307,7 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 
 				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left
 
-				setPlayer(p4);//
+				
 				p4name = new JLabel(p4.getNickName());
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 				p4name.setBounds(73, 370, 200, 13);
@@ -404,17 +316,131 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 			}
 		}
 
+
+		// Calculate the size of the snake image
+ImageIcon winIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/win.png"));
+int winWidth = 80; // Adjusted width based on grid size
+int winHeight = 80;//Adjusted height based on grid size
+
+// Scale down the size of the snake image
+Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
+ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
+
+// Create a JLabel for the scaled snake image
+JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
+lblNewLabel_3.setBounds(1080, 100,70,80);//
+
+// Add the snake label to the content pane
+contentPane.add(lblNewLabel_3);
+lblNewLabel_3.setVisible(true);
+contentPane.setComponentZOrder(lblNewLabel_3, 0);    
+/***************************************************************************************************************/
+//JLabel lblNewLabel = new JLabel("");
+//lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
+//lblNewLabel.setBounds(0, 0, 1200, 900);
+//contentPane.add(lblNewLabel);
+//img now working
+//Load the image
+ImageIcon icon = new ImageIcon(MediumLevel.class.getResource("/View/img/game.png"));
+System.out.println("Image loaded: " + icon.getImageLoadStatus());
+
+//Verify image dimensions
+int containerWidth = 1300;
+int containerHeight = 1000;
+System.out.println("Container size: " + containerWidth + "x" + containerHeight);
+
+//Create JLabel with scaled image
+Image scaledImg = icon.getImage().getScaledInstance(containerWidth, containerHeight, Image.SCALE_SMOOTH);
+ImageIcon scaledIcon = new ImageIcon(scaledImg);
+JLabel lblNewLabel = new JLabel(scaledIcon);
+lblNewLabel.setBounds(0, 0,containerWidth, containerHeight);//
+//Set layout manager to BorderLayout
+
+
+//Add JLabel to center of contentPane
+contentPane.add(lblNewLabel);
+lblNewLabel_3.setVisible(true);
+//Repaint container
+contentPane.revalidate();
+contentPane.repaint();
+
+
+
+  int i,j;
+
+		for(i=0; i<g.getSnakes().size();i++)
+		{
+			SnakeColor color= g.getSnakes().get(i).getColor();
+			int xHead=g.getSnakes().get(i).getXHeadNum();
+			int xTail=g.getSnakes().get(i).getXTailNum();
+			int yHead=g.getSnakes().get(i).getYHeadNum();
+			int yTail=g.getSnakes().get(i).getYTailNum();
+			if(color==SnakeColor.Blue)
+			{
+				setbluesnake(xHead,yHead,xTail,yTail);
+				System.out.println("bluessnake (" +xHead  + "," + yHead+ "," + xTail+ "," + yTail+ "):" );
+
+			}
+			else if(color==SnakeColor.Green)
+			{
+				setgreensnake(xHead,yHead,xTail,yTail);
+				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+			}
+			else if(color==SnakeColor.Red)
+			{
+				setredsnake(xHead,yHead);
+				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
+
+			}
+			else if (color==SnakeColor.Yellow)
+			{
+				setyellowsnake(xHead, yHead, xTail, yTail);
+				System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+			}
+		}
+		for(i=0; i<g.getLadders().size();i++)
+		{
+			int length= g.getLadders().get(i).getLength();
+			int xHead=g.getLadders().get(i).getXEnd();
+			int xTail=g.getLadders().get(i).getXStart();
+			int yHead=g.getLadders().get(i).getYEnd();
+			int yTail=g.getLadders().get(i).getYStart();
+			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
+			setLadders(length,xHead,yHead,xTail,yTail);
+		}
+		for (i=0 ; i<10; i++)
+		{
+			for (j=0 ; j<10; j++ )
+			{
+				if(g.getPlaces()[i][j]==2||g.getPlaces()[i][j]==1) {
+					setsurprise(i, j);
+					System.out.println("surprise (" + i + "," + j + "):" );
+				}
+				else if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
+					setq(i, j);
+					System.out.println("question (" + i + "," + j + "):" );
+
+				}
+			}
+		}
+
+
 		/********************p4*******************************************************************88*/
 
-
+		setPlayer(p1);//
+		setPlayer(p2);//	
 		if(num>2) {
 			g.getPlayers().add(p3);
+			setPlayer(p3);//
 			if(num==4) {
-
+				setPlayer(p4);//
 
 				g.getPlayers().add(p4);
 			}
 		}
+		
 		
 
 		// Calculate the position of the snake head and tail
@@ -1001,7 +1027,6 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 				p4name.setLocation(73,270);
 				p1Label.setLocation(35, 380);
 				p1name.setLocation(73,370);
-
 				break;
 			case 3:
 				p3Label.setLocation(35, 80);
