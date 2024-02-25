@@ -210,16 +210,17 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
 
 			}
-			else if(color==SnakeColor.Red)
-			{
-				setredsnake(xHead,yHead);
-				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
-
-			}
+		
 			else if (color==SnakeColor.Yellow)
 			{
 				setyellowsnake(xHead, yHead, xTail, yTail);
 				System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+			}
+			else if(color==SnakeColor.Red)
+			{
+				setredsnake(xHead,yHead);
+				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
 
 			}
 		}
