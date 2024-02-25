@@ -25,8 +25,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
-
-
 import Enum.Levels;
 import Enum.SnakeColor;
 import Model.*;
@@ -44,8 +42,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	private JLabel lblLadder; 
 	private JButton diceButton;
 	private ImageIcon[] diceIcons;
-	private JLabel diceLabel ;
-	/***/
+	private JLabel diceLabel;
 	private JLabel p1Label;
 	private JLabel p2Label;
 	private JLabel p3Label;
@@ -72,7 +69,6 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	private JLabel p4name;
 	private JLabel mytext;
 	private QuestionFrame questionFrame;
-
 
 	/**
 	 * Create the frame.
@@ -167,6 +163,87 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		//        btnNewButton.setBounds(54, 712, 125, 56);
 		//        contentPane.add(btnNewButton);
 		/*********************************************************************************************************************************/
+		/*players places*/
+
+				// Calculate the size of the snake image
+		ImageIcon winIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/win.png"));
+		int winWidth = 80; // Adjusted width based on grid size
+		int winHeight = 80;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
+
+		// Create a JLabel for the scaled snake image
+		JLabel lblNewLabel_1  = new JLabel(scaledWinIcon);
+		lblNewLabel_1.setBounds(955, 130,winWidth,winHeight);//
+		System.out.println(winIcon);
+		System.out.println(lblNewLabel_1);
+		// Add the snake label to the content pane
+		contentPane.add(lblNewLabel_1);
+		lblNewLabel_1.setVisible(true);
+		contentPane.setComponentZOrder(lblNewLabel_1, 0);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
+		lblNewLabel.setBounds(0, 0, 1200, 900);
+		contentPane.add(lblNewLabel);
+		
+		/**************************winner**************************/
+
+		int i, j;
+		for(i=0; i<g.getSnakes().size();i++)
+		{
+			SnakeColor color= g.getSnakes().get(i).getColor();
+			int xHead=g.getSnakes().get(i).getXHeadNum();
+			int xTail=g.getSnakes().get(i).getXTailNum();
+			int yHead=g.getSnakes().get(i).getYHeadNum();
+			int yTail=g.getSnakes().get(i).getYTailNum();
+			if(color==SnakeColor.Blue)
+			{
+				setbluesnake(xHead,yHead,xTail,yTail);
+				System.out.println("bluessnake (" +xHead  + "," + yHead+ "," + xTail+ "," + yTail+ "):" );
+
+			}
+			else if(color==SnakeColor.Green)
+			{
+				setgreensnake(xHead,yHead,xTail,yTail);
+				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+			}
+			else if(color==SnakeColor.Red)
+			{
+				setredsnake(xHead,yHead);
+				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
+
+			}
+			else if (color==SnakeColor.Yellow)
+			{
+				setyellowsnake(xHead, yHead, xTail, yTail);
+				System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
+
+			}
+		}
+		for(i=0; i<g.getLadders().size();i++)
+		{
+			int length= g.getLadders().get(i).getLength();
+			int xHead=g.getLadders().get(i).getXEnd();
+			int xTail=g.getLadders().get(i).getXStart();
+			int yHead=g.getLadders().get(i).getYEnd();
+			int yTail=g.getLadders().get(i).getYStart();
+			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
+			setLadders(length,xHead,yHead,xTail,yTail);
+		}
+		for (i=0 ; i<7; i++)
+		{
+			for (j=0 ; j<7; j++ )
+			{
+				if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
+					setq(i, j);
+					System.out.println("question (" + i + "," + j + "):" );
+
+				}
+			}
+		}
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
 		{
@@ -359,67 +436,10 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				g.getPlayers().add(p4);
 			}
 		}
+		
 
-
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
-		lblNewLabel.setBounds(0, 0, 1200, 900);
-		contentPane.add(lblNewLabel);
-
-		int i, j;
-		for(i=0; i<g.getSnakes().size();i++)
-		{
-			SnakeColor color= g.getSnakes().get(i).getColor();
-			int xHead=g.getSnakes().get(i).getXHeadNum();
-			int xTail=g.getSnakes().get(i).getXTailNum();
-			int yHead=g.getSnakes().get(i).getYHeadNum();
-			int yTail=g.getSnakes().get(i).getYTailNum();
-			if(color==SnakeColor.Blue)
-			{
-				setbluesnake(xHead,yHead,xTail,yTail);
-				System.out.println("bluessnake (" +xHead  + "," + yHead+ "," + xTail+ "," + yTail+ "):" );
-
-			}
-			else if(color==SnakeColor.Green)
-			{
-				setgreensnake(xHead,yHead,xTail,yTail);
-				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
-
-			}
-			else if(color==SnakeColor.Red)
-			{
-				setredsnake(xHead,yHead);
-				System.out.println("redsnake (" + xHead + "," + yHead+"," +  xTail+ "," + yTail+ "):" );
-
-			}
-			else if (color==SnakeColor.Yellow)
-			{
-				setyellowsnake(xHead, yHead, xTail, yTail);
-				System.out.println("yellow (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
-
-			}
-		}
-		for(i=0; i<g.getLadders().size();i++)
-		{
-			int length= g.getLadders().get(i).getLength();
-			int xHead=g.getLadders().get(i).getXEnd();
-			int xTail=g.getLadders().get(i).getXStart();
-			int yHead=g.getLadders().get(i).getYEnd();
-			int yTail=g.getLadders().get(i).getYStart();
-			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
-			setLadders(length,xHead,yHead,xTail,yTail);
-		}
-		for (i=0 ; i<7; i++)
-		{
-			for (j=0 ; j<7; j++ )
-			{
-				if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
-					setq(i, j);
-					System.out.println("question (" + i + "," + j + "):" );
-
-				}
-			}
-		}
+		// Calculate the position of the snake head and tail
+			/**********************winner**********************/
 
 	}
 	// blue snakes function
@@ -457,6 +477,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		// Repaint the content pane to ensure the changes are displayed
 		contentPane.revalidate();
 		contentPane.repaint();
+		
 	}
 	// red snakes function
 	public void setredsnake(int xhead, int yhead) {
@@ -464,12 +485,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/redsnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 245 + xhead * 122; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY =680-yhead*86;
+				int snakeHeadX = 214 + xhead * 122; // Adjusted x position based on the board offset and grid size
+				int snakeHeadY =641-yhead*86;
 
-		// Calculate the size of the snake image
-		int snakeWidth = 60; // Adjusted width based on grid size
-		int snakeHeight = 40;//Adjusted height based on grid size
+				// Calculate the size of the snake image
+				int snakeWidth = 100; // Adjusted width based on grid size
+				int snakeHeight = 86;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -502,7 +523,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		int snakeTailX = 214 + xtail * 122; // Adjusted x position based on the board offset and grid size
 		int snakeTailY = 641 - ytail * 86; // Adjusted y position based on the board offset and grid size
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 122; // Adjusted width based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 100; // Adjusted width based on grid size
 		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 86; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
@@ -870,31 +891,31 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		case 1:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
 			bx= 214 + beforx * 122;
-			pY =641-aftery*86;
-			by=641-befory*86;
+			pY =630-aftery*86;
+			by=630-befory*86;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
 			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
 			bx= 214 +N+ beforx * 122;
-			pY =641-aftery*86;
+			pY =630-aftery*86;
 
-			by=641-befory*86;
+			by=630-befory*86;
 			break;
 		case 3:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
 			bx= 214 + beforx * 122;
-			pY =641-aftery*86+N;
+			pY =630-aftery*86+N-15;
 
-			by=641-befory*86+N;
+			by=630-befory*86+N-15;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 4://+N
 			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
 			bx= 214 +N+ beforx * 122;
-			pY =641-aftery*86+N;
+			pY =630-aftery*86+N-15;
 
-			by=641-befory*86+N;
+			by=630-befory*86+N-15;
 			break;
 
 		}
@@ -1091,9 +1112,6 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			break;
 
 		}
-
-
-
 	}
 	/*private void completeTask() {
 		Timer timer = new Timer(20, null); // Create a timer without ActionListener
