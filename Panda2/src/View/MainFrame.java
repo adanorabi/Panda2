@@ -79,6 +79,16 @@ public class MainFrame extends JFrame implements ActionListener{
 		btnNewButton_3.setBackground(Color.CYAN);
 		btnNewButton_3.setBounds(427, 418, 125, 130);
 		contentPane.add(btnNewButton_3);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				LogIn log=new LogIn();
+				setVisible(false);
+				log.setVisible(true);
+			}
+		});
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(10, 10, 1106, 645);
 		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/MainBG.png")));
