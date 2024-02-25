@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import Model.*;
 
 public class SysData {
 	static public  ArrayList<Game> gamesList= new ArrayList<Game>(); // array list that contains the games
-	static public  ArrayList<Question> questionList= new ArrayList<Question>();
+	static public  ArrayList<Question> questionList= new ArrayList<Question>(); //arraylist that contains questions from all levels
 	static public  ArrayList<Question> HardQues= new ArrayList<Question>();
 	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	
 	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
@@ -22,9 +23,6 @@ public class SysData {
 	public void UploadGames() {  
 
 	}
-
-
-
 	Levels QLevel;
 	String Content;
 	ArrayList<String> Answer;
@@ -37,7 +35,6 @@ public class SysData {
 			// Check if the top-level JSON structure contains the "questions" array
 			if (obj.has("questions")) {
 				JSONArray questionsArray = obj.getJSONArray("questions");
-
 				// Iterate over each question object in the array
 				for (int i = 0; i < questionsArray.length(); i++) {
 					JSONObject questionObject = questionsArray.getJSONObject(i);
@@ -63,21 +60,25 @@ public class SysData {
 					System.out.println("Difficulty: " + difficulty);
 					System.out.println("--------------------");
 					Levels QLevel;
-
+					Question q;
 					if(difficulty.equals("1")) { //easy question
 						QLevel=Levels.Easy;
-
-						EasyQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
+						q=new Question(QuestionId++,QLevel,content,Answers,TrueAnswer);
+						EasyQues.add(q); //building an easy question
+						questionList.add(q); //adding a question to the whole questions list
 
 					} else if(difficulty.equals("2")) { //medium question
 						QLevel=Levels.Medium;
-						MidQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
+						q=new Question(QuestionId++,QLevel,content,Answers,TrueAnswer);
+						MidQues.add(q); //building an easy question
+						questionList.add(q);
 
 					}
 					else { //hard question
 						QLevel=Levels.Hard;
-						HardQues.add(new Question(QuestionId++,QLevel,content,Answers,TrueAnswer)); //building an easy question
-
+						q=new Question(QuestionId++,QLevel,content,Answers,TrueAnswer);
+						HardQues.add(q); //building an easy question
+						questionList.add(q);
 					}
 				}
 			} else {
@@ -89,7 +90,6 @@ public class SysData {
 			e.printStackTrace();
 		}
 
-
-
 	}
+
 }
