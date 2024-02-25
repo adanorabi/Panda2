@@ -76,7 +76,7 @@ public class Dice {
 	public Object RollDice() {
 		Random random = new Random();
 		int options=this.getNumOfSides();
-		int RandOption = random.nextInt(options+1);
+		int RandOption = random.nextInt(options);
 		return CheckResult(RandOption); //returning the result of the dice it might be steps number or question
 	}
 	public Object CheckResult(int diceResult) {
