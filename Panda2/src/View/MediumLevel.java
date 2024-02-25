@@ -524,11 +524,11 @@ contentPane.repaint();
 
 		// Calculate the position of the snake head and tail
 		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size//170
-		int snakeHeadY =820-yhead*79;
+		int snakeHeadY =801-yhead*79;
 
 		// Calculate the size of the snake image
-		int snakeWidth = 60; // Adjusted width based on grid size
-		int snakeHeight = 60;//Adjusted height based on grid size
+		int snakeWidth = 100; // Adjusted width based on grid size
+		int snakeHeight = 79;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -895,33 +895,31 @@ contentPane.repaint();
 
 		switch(player.getPlayeringame()) {//check
 		case 1:
-			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
-			bx= 214 + beforx * 122;
-			pY =630-aftery*86;
-			by=630-befory*86;
+			pX = 185 + afterx * 101; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 + beforx * 101;
+			pY =790-aftery*79;
+			by=790-befory*79;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
-			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
-			bx= 214 +N+ beforx * 122;
-			pY =630-aftery*86;
-
-			by=630-befory*86;
+			pX = 185+N + afterx * 101; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 +N+beforx * 101;
+			pY =790-aftery*79;
+			by=790-befory*79;
+			
 			break;
 		case 3:
-			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
-			bx= 214 + beforx * 122;
-			pY =630-aftery*86+N-15;
-
-			by=630-befory*86+N-15;
+			pX = 185 + afterx * 101; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 + beforx * 101;
+			pY =790+N-aftery*79;
+			by=790+N-befory*79;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 4://+N
-			pX = N+214 +afterx * 122; // Adjusted x position based on the board offset and grid size//170
-			bx= 214 +N+ beforx * 122;
-			pY =630-aftery*86+N-15;
-
-			by=630-befory*86+N-15;
+			pY =801+N-aftery*79;
+			by=801+N-befory*79;
+			pX = 790+N + afterx * 101; // Adjusted x position based on the board offset and grid size//170
+			bx= 790 +N+beforx * 101;
 			break;
 
 		}
@@ -1058,13 +1056,13 @@ contentPane.repaint();
 
 
 	}
+
 	public void setPlayer(Player player) {
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
-
-			pX = 214 + player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
-			pY =630-player.getPlayerCol()*59;
+			pX = 185 + player.getPlayerRow() * 101; // Adjusted x position based on the board offset and grid size//170
+			pY =790-player.getPlayerCol()*79;
 			System.out.println("setting player 1");
 			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
 
@@ -1077,8 +1075,8 @@ contentPane.repaint();
 
 			break;
 		case 2://+N
-			pX = N+214+ player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
-			pY =630-player.getPlayerCol()*59;
+			pX = N+185 + player.getPlayerRow() * 101; // Adjusted x position based on the board offset and grid size//170
+			pY =790-player.getPlayerCol()*79;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1090,8 +1088,8 @@ contentPane.repaint();
 			contentPane.repaint();
 			break;
 		case 3://+N
-			pX = 214+ player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
-			pY =N-15+630-player.getPlayerCol()*59;
+			pX = 185 + player.getPlayerRow() * 101;// Adjusted x position based on the board offset and grid size//170
+			pY =N-15+790-player.getPlayerCol()*79;
 			System.out.println("setting player 3");
 			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1102,9 +1100,9 @@ contentPane.repaint();
 			contentPane.revalidate();
 			contentPane.repaint();
 			break;
-		case 4://+N
-			pX = N+214+ player.getPlayerRow() * 122; // Adjusted x position based on the board offset and grid size//170
-			pY =N-15+630-player.getPlayerCol()*59;
+		case 4://
+			pX = N+185+ player.getPlayerRow() *  101; // Adjusted x position based on the board offset and grid size//170
+			pY =N-15+790-player.getPlayerCol()*79;
 			System.out.println("setting player 4");
 			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1117,6 +1115,9 @@ contentPane.repaint();
 			break;
 
 		}
+
+
+
 	}
 	/*private void completeTask() {
 		Timer timer = new Timer(20, null); // Create a timer without ActionListener
