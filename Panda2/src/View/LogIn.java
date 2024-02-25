@@ -25,7 +25,6 @@ public class LogIn extends JFrame {
 
     private JPanel contentPane;
     private JTextField txtUsername;
-    private JPasswordField passwordField;
     private JPasswordField passwordField_1;
 
     /**
@@ -102,17 +101,17 @@ public class LogIn extends JFrame {
         	}
         });
         
-        btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/homepage.png")));
+        btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/homepage.jpg")));
         btnNewButton.setBounds(108, 623, 219, 37);
         contentPane.add(btnNewButton);
         
         JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon(getClass().getResource("/View/img/title.png")));
+        lblNewLabel_1.setIcon(new ImageIcon(getClass().getResource("/View/img/title.jpg")));
         lblNewLabel_1.setBounds(377, 108, 501, 203);
         contentPane.add(lblNewLabel_1);
         
 //        JLabel lblNewLabel_2 = new JLabel("");
-//        lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/message.png")));
+//        lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/message.jpg")));
 //        lblNewLabel_2.setBounds(423, 265, 398, 37);
 //        contentPane.add(lblNewLabel_2);
         
