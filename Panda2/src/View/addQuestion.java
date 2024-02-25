@@ -144,7 +144,11 @@ public class addQuestion extends JFrame {
         questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/sky.png")));
         questionFrame.setBounds(0, -17, 859, 624);
         contentPane.add(questionFrame);
-
+        // Set border color dynamically
+        textField_1.setBorder(new LineBorder(Color.GREEN)); // Set the correct answer border color to green
+        textField_2.setBorder(new LineBorder(Color.RED));   // Set other answer border color to red
+        textField_3.setBorder(new LineBorder(Color.RED));   // Set other answer border color to red
+        textField_4.setBorder(new LineBorder(Color.RED));   // Set other answer border color to red
         // Add focus listeners to clear default text
         textField_1.addFocusListener(new FocusListener() {
             @Override
