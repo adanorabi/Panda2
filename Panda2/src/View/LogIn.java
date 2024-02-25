@@ -101,9 +101,20 @@ public class LogIn extends JFrame {
         
         	}
         });
+        
         btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/homepage.png")));
         btnNewButton.setBounds(108, 623, 219, 37);
         contentPane.add(btnNewButton);
+        
+        JLabel lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1.setIcon(new ImageIcon(getClass().getResource("/View/img/title.png")));
+        lblNewLabel_1.setBounds(377, 108, 501, 203);
+        contentPane.add(lblNewLabel_1);
+        
+//        JLabel lblNewLabel_2 = new JLabel("");
+//        lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/message.png")));
+//        lblNewLabel_2.setBounds(423, 265, 398, 37);
+//        contentPane.add(lblNewLabel_2);
         
         JButton btnNewButton_1 = new JButton("Log in");
         btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/View/img/logInbut.jpg")));
@@ -138,9 +149,5 @@ public class LogIn extends JFrame {
         lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/logIn.jpg")));
         lblNewLabel.setBounds(-21, -36, 1162, 734);
         contentPane.add(lblNewLabel);
-        
-
-
-
     }
 }
