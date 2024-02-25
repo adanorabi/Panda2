@@ -756,49 +756,6 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 
 	}
-	public void movePlayer(Player player,int beforx,int befory,int aftery,int afterx) {
-		int pX=0,pY=0,bx=0,by=0;
-		
-
-		switch(player.getPlayeringame()) {
-		case 1:
-			pX = 185 + afterx * 101; // Adjusted x position based on the board offset and grid size//170
-			
-			//p1OnGame.setLocation(pX, pY);
-			break;
-		case 2://+N
-			pX = N+185 +afterx * 101; // Adjusted x position based on the board offset and grid size//170
-			break;
-
-		}
-		
-		pY =801-aftery*79;
-		bx= 185 + beforx * 101;
-		by=801-befory*79;
-		 final int finalBx = bx; // Declare effectively final variables
-		 final int finalBy = by;
-
-		int steps = 50; // Number of steps for the movement
-		double deltaX = (pX-bx) / (double) steps;
-		double deltaY = (pY-by) / (double) steps;
-		 Timer timer = new Timer(20, null); // Create a timer without ActionListener
-	        timer.start(); // Start the timer
-	        final int[] count = {0};
-	        timer.addActionListener(e -> {
-	            if (count[0] < steps) {
-	                int newX = (int) (finalBx + deltaX * count[0]);
-	                int newY = (int) (finalBy+ deltaY * count[0]);
-	                p1OnGame.setLocation(newX, newY);
-	                count[0]++;
-	            } else {
-	                timer.stop(); // Stop the timer when the movement is complete
-	            }
-	        });
-	        
-		
-
-
-	}
 	public void setPlayerText(Player p,String text) {
 		mytext.setText(p.getNickName()+" "+text);
 	}
