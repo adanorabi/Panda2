@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
@@ -35,8 +36,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 	private JLabel lblsur;
 	private JLabel lblq;
 	private JButton diceButton;
-    private ImageIcon[] diceIcons;
-    private JLabel diceLabel ;
+	private ImageIcon[] diceIcons;
+	private JLabel diceLabel ;
 	private JLabel lblLadder; 
 	private JLabel p1Label;
 	private JLabel p2Label;
@@ -62,6 +63,10 @@ public class MediumLevel extends JFrame implements ActionListener {
 	private JLabel p2name;
 	private JLabel p3name;
 	private JLabel p4name;
+    private JLabel timerLabel;
+    private Timer timer;
+    private int secondsElapsed;
+    private long endTime; // Variable to store the end time
 	/**
 	 * Create the frame.
 	 */
@@ -84,20 +89,20 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 		mytext = new JLabel("");
 		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
-		 mytext.setBounds(200, 29, 900, 50);
+		mytext.setBounds(200, 29, 900, 50);
 		contentPane.add( mytext);
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/mid.png")));
 		lblNewLabel_1.setBounds(185, 90, 1005,790);//94,59
 		contentPane.add(lblNewLabel_1);
 
-	
+
 		g.PlacespecialSquares(Levels.Medium);
 		g.placeNormalSquares();
 		g.PlaceSnakes();
 		g.placeLadders();
-		
-/****************************dice*************************************************************/
+
+		/****************************dice*************************************************************/
 		diceButton = new JButton("Roll Dice");
 		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.jpg")));
 		diceButton.setBounds(43, 702, 134, 49);
@@ -121,7 +126,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		diceLabel.setVisible(true);
 
 		diceIcons = new ImageIcon[10];
-		
+
 		for (int i = 0; i < 7; i++) {
 			ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + i  + ".png"));
 			Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
@@ -209,10 +214,10 @@ public class MediumLevel extends JFrame implements ActionListener {
 		// Create a JLabel for player p2
 		p2Label = new JLabel(scaledP2Icon);
 		p2Label.setBounds(p1X, 180, 100, 100); // Set bounds for player p1 label
-		
+
 		// Add player p1 label to the content pane
 		contentPane.add(p2Label);
-System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
+		System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 		// Ensure player p1 label is visible
 		p2Label.setVisible(true);
 
@@ -221,7 +226,7 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 
 		p2OnGame=new JLabel(finalIcon2);//finish putting the icon only setbound and set visible left
 
-				
+
 
 
 
@@ -307,7 +312,7 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 
 				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left
 
-				
+
 				p4name = new JLabel(p4.getNickName());
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 				p4name.setBounds(73, 370, 200, 13);
@@ -318,55 +323,107 @@ System.out.println("queueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+p2Label);
 
 
 		// Calculate the size of the snake image
-ImageIcon winIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/win.png"));
-int winWidth = 80; // Adjusted width based on grid size
-int winHeight = 80;//Adjusted height based on grid size
+		int tWidth ; // Adjusted width based on grid size
+		int tHeight ;//Adjusted height based on grid size
 
-// Scale down the size of the snake image
-Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
-ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
-
-// Create a JLabel for the scaled snake image
-JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
-lblNewLabel_3.setBounds(1080, 100,70,80);//
-
-// Add the snake label to the content pane
-contentPane.add(lblNewLabel_3);
-lblNewLabel_3.setVisible(true);
-contentPane.setComponentZOrder(lblNewLabel_3, 0);    
-/***************************************************************************************************************/
-//JLabel lblNewLabel = new JLabel("");
-//lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
-//lblNewLabel.setBounds(0, 0, 1200, 900);
-//contentPane.add(lblNewLabel);
-//img now working
-//Load the image
-ImageIcon icon = new ImageIcon(MediumLevel.class.getResource("/View/img/game.png"));
-System.out.println("Image loaded: " + icon.getImageLoadStatus());
-
-//Verify image dimensions
-int containerWidth = 1300;
-int containerHeight = 1000;
-System.out.println("Container size: " + containerWidth + "x" + containerHeight);
-
-//Create JLabel with scaled image
-Image scaledImg = icon.getImage().getScaledInstance(containerWidth, containerHeight, Image.SCALE_SMOOTH);
-ImageIcon scaledIcon = new ImageIcon(scaledImg);
-JLabel lblNewLabel = new JLabel(scaledIcon);
-lblNewLabel.setBounds(0, 0,containerWidth, containerHeight);//
-//Set layout manager to BorderLayout
+		// Scale down the size of the snake image
+		Image scaledTImage ;
+		ImageIcon scaledTIcon ;
 
 
-//Add JLabel to center of contentPane
-contentPane.add(lblNewLabel);
-lblNewLabel_3.setVisible(true);
-//Repaint container
-contentPane.revalidate();
-contentPane.repaint();
+		ImageIcon tIcon = new ImageIcon(Winner.class.getResource("/View/img/timer.png"));
+		tWidth = 200; // Adjusted width based on grid size
+		tHeight = 70;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		scaledTImage = tIcon.getImage().getScaledInstance(tWidth, tHeight, Image.SCALE_SMOOTH);
+		scaledTIcon = new ImageIcon(scaledTImage);
+
+		// Create a JLabel for the scaled snake image
+		JLabel lblNewLabel_time  = new JLabel(scaledTIcon);
+		lblNewLabel_time.setBounds(10, 0,tWidth, tHeight);//
+
+		// Add the snake label to the content pane
+		contentPane.add(lblNewLabel_time);
+		lblNewLabel_time.setVisible(true);
+		/*****************************timer*******************************************/
+		// Calculate the size of the snake image
+		timerLabel = new JLabel("00:00:00");
+		timerLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		timerLabel.setBounds(60, 20, 100, 30);
+
+		contentPane.add(timerLabel,0);
+
+		timer = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				secondsElapsed++;
+				int hours = secondsElapsed / 3600;
+				int minutes = (secondsElapsed % 3600) / 60;
+				int seconds = secondsElapsed % 60;
+				timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+
+				// Check condition and stop timer if condition is met
+				if (conditionMet()) {
+					stopTimer();
+					// Save the end time when the condition is met
+					endTime = System.currentTimeMillis();
+					System.out.println("End Time: " + endTime); // Print end time for demonstration
+				}
+			}
+		});
+		startTimer();
+
+		ImageIcon winIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/win.png"));
+		int winWidth = 80; // Adjusted width based on grid size
+		int winHeight = 80;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
+
+		// Create a JLabel for the scaled snake image
+		JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
+		lblNewLabel_3.setBounds(1080, 100,70,80);//
+
+		// Add the snake label to the content pane
+		contentPane.add(lblNewLabel_3);
+		lblNewLabel_3.setVisible(true);
+		contentPane.setComponentZOrder(lblNewLabel_3, 0);    
+		/***************************************************************************************************************/
+		//JLabel lblNewLabel = new JLabel("");
+		//lblNewLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/game.png")));
+		//lblNewLabel.setBounds(0, 0, 1200, 900);
+		//contentPane.add(lblNewLabel);
+		//img now working
+		//Load the image
+		ImageIcon icon = new ImageIcon(MediumLevel.class.getResource("/View/img/game.png"));
+		System.out.println("Image loaded: " + icon.getImageLoadStatus());
+
+		//Verify image dimensions
+		int containerWidth = 1300;
+		int containerHeight = 1000;
+		System.out.println("Container size: " + containerWidth + "x" + containerHeight);
+
+		//Create JLabel with scaled image
+		Image scaledImg = icon.getImage().getScaledInstance(containerWidth, containerHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon = new ImageIcon(scaledImg);
+		JLabel lblNewLabel = new JLabel(scaledIcon);
+		lblNewLabel.setBounds(0, 0,containerWidth, containerHeight);//
+		//Set layout manager to BorderLayout
+
+
+		//Add JLabel to center of contentPane
+		contentPane.add(lblNewLabel);
+		lblNewLabel_3.setVisible(true);
+		//Repaint container
+		contentPane.revalidate();
+		contentPane.repaint();
 
 
 
-  int i,j;
+		int i,j;
 
 		for(i=0; i<g.getSnakes().size();i++)
 		{
@@ -440,11 +497,11 @@ contentPane.repaint();
 				g.getPlayers().add(p4);
 			}
 		}
-		
-		
+
+
 
 		// Calculate the position of the snake head and tail
-			/**********************winner**********************/
+		/**********************winner**********************/
 
 	}
 
@@ -849,7 +906,7 @@ contentPane.repaint();
 											}
 										});
 										c.setVisible(true);
-		
+
 
 										int awx=p.getPlayerRow();//new x
 										int awy=p.getPlayerCol();// new y
@@ -906,7 +963,7 @@ contentPane.repaint();
 			bx= 185 +N+beforx * 101;
 			pY =790-aftery*79;
 			by=790-befory*79;
-			
+
 			break;
 		case 3:
 			pX = 185 + afterx * 101; // Adjusted x position based on the board offset and grid size//170
@@ -924,7 +981,7 @@ contentPane.repaint();
 
 		}
 
-	
+
 		final int finalBx = bx; // Declare effectively final variables
 		final int finalBy = by;
 
@@ -1135,12 +1192,27 @@ contentPane.repaint();
 		});
 
     }*/
+	  private boolean conditionMet() {
+	        // Replace this with your actual condition
+	        return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
+	    }
+
+	    // Method to start the timer
+	    public void startTimer() {
+	        secondsElapsed = 0; // Reset seconds elapsed
+	        timer.start();
+	    }
+
+	    // Method to stop the timer
+	    public void stopTimer() {
+	        timer.stop();
+	    }
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }
