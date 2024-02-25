@@ -23,7 +23,7 @@ class MovePlayerDownTest {
 
 	        assertEquals(3, result[0]);
 	        assertEquals(1, result[1]);
-	    }
+	  }
 
 	  
 
