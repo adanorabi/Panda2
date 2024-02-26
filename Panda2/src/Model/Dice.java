@@ -79,6 +79,7 @@ public class Dice {
 		int RandOption = random.nextInt(options);
 		return CheckResult(RandOption); //returning the result of the dice it might be steps number or question
 	}
+	
 	public Object CheckResult(int diceResult) {
 		if(this.diceOptions[diceResult]<7) {
 			return diceOptions[diceResult];
@@ -89,7 +90,7 @@ public class Dice {
 				return easyQuestion;
 
 			}
-			else if (this.diceOptions[diceResult]==7) { // the result is a random medium question 
+			else if (this.diceOptions[diceResult]==8) { // the result is a random medium question 
 				Question mediumQuestion=Question.CallQuestion(Levels.Medium);
 				return mediumQuestion;
 
