@@ -1,8 +1,11 @@
 package Controller;
 
+import java.util.ArrayList;
+
 import Enum.Levels;
 import Model.Board;
 import Model.Dice;
+import Model.Question;
 import View.MainFrame;
 
 public class Main {
@@ -39,7 +42,22 @@ public class Main {
 	    for(int j=0;j<9;j++) {
 	    	System.out.println("dice option: "+	d.RollDice());
 	    }
-	    
+	    System.out.println("/n");
+	    System.out.println("/n");
+	    System.out.println("/n");
+	    System.out.println("Iteration 3: lets check the json "); //yara!
+	    Levels QLevel=Levels.Easy;
+		String Content="How are you";
+		ArrayList<String> Answer=new ArrayList<>();
+		Answer.add("good");
+		Answer.add("fine");
+		Answer.add("bad");
+		Answer.add("so bad");
+		String TrueAnswer="bad";
+		Question q=new Question(SysData.QuestionId++,Content,Answer,TrueAnswer,QLevel);
+	   SysData.appendQuestionToJson(q);
 	}
+	
+
 
 }
