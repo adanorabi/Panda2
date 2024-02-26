@@ -130,8 +130,9 @@ public class Ladder {
 
 				ladder.setYStart(y-3);
 				int Startx;
+				int r = rand.nextInt(3);
 
-					Startx=Endx+2;
+					Startx=Endx+r;
 				
 				ladder.setXStart(Startx);
 
@@ -151,7 +152,7 @@ public class Ladder {
 				int y=Endy;
 
 				ladder.setYStart(y-4);
-
+				
 				ladder.setXStart(Endx);
 
 
@@ -204,8 +205,9 @@ public class Ladder {
 
 				ladder.setYStart(y-3);
 				int Startx;
+				int r = rand.nextInt(3);
 
-					Startx=Endx+2;
+					Startx=Endx+r;
 
 				ladder.setXStart(Startx);
 
@@ -224,14 +226,15 @@ public class Ladder {
 				int y=Endy;
 
 				ladder.setYStart(y-4);
-
+				
 				ladder.setXStart(Endx);
+				
 
 
 			}
 			else if(ladder.Length==5) {
 				
-				int Endx = rand.nextInt(9);
+				int Endx = rand.nextInt(8);
 				int Endy = 5+rand.nextInt(5);
 				while(Endy==5 && Endx==0) {
 					Endy = 5+rand.nextInt(5);
@@ -243,15 +246,15 @@ public class Ladder {
 
 				ladder.setYStart(y-5);
 				int Startx;
-
-					Startx=Endx+1;
+				int r = rand.nextInt(3);
+					Startx=Endx+r;
 
 				ladder.setXStart(Startx);
 				
 
 			}
 			else if(ladder.Length==6) {
-				int Endx = rand.nextInt(8);
+				int Endx = rand.nextInt(7);
 				int Endy = 6+rand.nextInt(4);
 				while(Endy==6 && Endx==0) {
 					Endy = 6+rand.nextInt(4);
@@ -263,7 +266,8 @@ public class Ladder {
 
 				ladder.setYStart(y-6);
 				int Startx;
-					Startx=Endx+2;
+				int r = 1+rand.nextInt(4);
+					Startx=Endx+r;
 				
 				ladder.setXStart(Startx);
 			}
@@ -317,7 +321,8 @@ public class Ladder {
 
 				ladder.setYStart(y-3);
 				int Startx;
-					Startx=Endx+2;
+				int r = rand.nextInt(3);
+					Startx=Endx+r;
 				
 				ladder.setXStart(Startx);
 
@@ -336,13 +341,13 @@ public class Ladder {
 				int y=Endy;
 
 				ladder.setYStart(y-4);
-
+				
 				ladder.setXStart(Endx);
 
 
 			}
 			else if(ladder.Length==5) {
-				int Endx = rand.nextInt(12);
+				int Endx = rand.nextInt(11);
 				int Endy = 5+rand.nextInt(8);
 				while(Endy==5 && Endx==0) {
 					Endy = 5+rand.nextInt(8);
@@ -354,12 +359,13 @@ public class Ladder {
 
 				ladder.setYStart(y-5);
 				int Startx;
-					Startx=Endx+1;
+				int r = rand.nextInt(3);
+					Startx=Endx+r;
 				
 				ladder.setXStart(Startx);
 			}
 			else if(ladder.Length==6) {
-				int Endx = rand.nextInt(11);
+				int Endx = rand.nextInt(10);
 				int Endy = 6+rand.nextInt(7);
 				while(Endy==12 && Endx==0) {
 					Endy = 6+rand.nextInt(7);
@@ -371,7 +377,8 @@ public class Ladder {
 
 				ladder.setYStart(y-6);
 				int Startx;
-					Startx=Endx+2;
+				int r = 1+rand.nextInt(4);
+					Startx=Endx+r;
 				
 				ladder.setXStart(Startx);
 			}

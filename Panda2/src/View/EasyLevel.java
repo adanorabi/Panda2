@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import Enum.Levels;
@@ -69,6 +70,11 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	private JLabel p4name;
 	private JLabel mytext;
 	private QuestionFrame questionFrame;
+    private JLabel timerLabel;
+    private Timer timer;
+    private int secondsElapsed;
+    private long endTime; // Variable to store the end time
+
 
 	/**
 	 * Create the frame.
@@ -344,8 +350,58 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		//        contentPane.add(btnNewButton);
 		/*********************************************************************************************************************************/
 		/*players places*/
+		int tWidth ; // Adjusted width based on grid size
+		int tHeight ;//Adjusted height based on grid size
 
+		// Scale down the size of the snake image
+		Image scaledTImage ;
+		ImageIcon scaledTIcon ;
+
+
+		ImageIcon tIcon = new ImageIcon(Winner.class.getResource("/View/img/timer.png"));
+		 tWidth = 200; // Adjusted width based on grid size
+		 tHeight = 70;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		 scaledTImage = tIcon.getImage().getScaledInstance(tWidth, tHeight, Image.SCALE_SMOOTH);
+		 scaledTIcon = new ImageIcon(scaledTImage);
+
+		// Create a JLabel for the scaled snake image
+		JLabel lblNewLabel_time  = new JLabel(scaledTIcon);
+		lblNewLabel_time.setBounds(10, 0,tWidth, tHeight);//
+
+		// Add the snake label to the content pane
+		contentPane.add(lblNewLabel_time);
+		lblNewLabel_time.setVisible(true);
+		/*****************************timer*******************************************/
 				// Calculate the size of the snake image
+		 timerLabel = new JLabel("00:00:00");
+		 timerLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+	        timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	        timerLabel.setBounds(60, 20, 100, 30);
+	        
+	        contentPane.add(timerLabel,0);
+	        
+	        timer = new Timer(1000, new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                secondsElapsed++;
+	                int hours = secondsElapsed / 3600;
+	                int minutes = (secondsElapsed % 3600) / 60;
+	                int seconds = secondsElapsed % 60;
+	                timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+
+	                // Check condition and stop timer if condition is met
+	                if (conditionMet()) {
+	                    stopTimer();
+	                    // Save the end time when the condition is met
+	                    endTime = System.currentTimeMillis();
+	                    System.out.println("End Time: " + endTime); // Print end time for demonstration
+	                }
+	            }
+	        });
+	        startTimer();
+
 		ImageIcon winIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/win.png"));
 		int winWidth = 80; // Adjusted width based on grid size
 		int winHeight = 80;//Adjusted height based on grid size
@@ -1131,6 +1187,23 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		});
 
     }*/
+	  // Method to check if the condition for stopping the timer is met
+    private boolean conditionMet() {
+        // Replace this with your actual condition
+        return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
+    }
+
+    // Method to start the timer
+    public void startTimer() {
+        secondsElapsed = 0; // Reset seconds elapsed
+        timer.start();
+    }
+
+    // Method to stop the timer
+    public void stopTimer() {
+        timer.stop();
+    }
+
 	@Override
 	public void onQuestionAnswered(boolean isCorrect) {
 		// TODO Auto-generated method stub
