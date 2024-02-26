@@ -14,7 +14,7 @@ public class Question {
 	private String TrueAnswer;	
 	private Levels QLevel;
 
-	public Question(int questionId, String content, ArrayList<String> answer, String trueAnswer ,Levels qLevel) {
+	public Question(int questionId, Levels qLevel,String content, ArrayList<String> answer, String trueAnswer ) {
 		super();
 		this.QuestionId = questionId;
 	

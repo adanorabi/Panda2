@@ -46,16 +46,16 @@ public class Main {
 	    System.out.println("/n");
 	    System.out.println("/n");
 	    System.out.println("Iteration 3: lets check the json "); //yara!
-	    Levels QLevel=Levels.Easy;
-		String Content="How are you";
-		ArrayList<String> Answer=new ArrayList<>();
-		Answer.add("good");
-		Answer.add("fine");
-		Answer.add("bad");
-		Answer.add("so bad");
-		String TrueAnswer="bad";
-		Question q=new Question(SysData.QuestionId++,Content,Answer,TrueAnswer,QLevel);
-	   SysData.appendQuestionToJson(q);
+//	    Levels QLevel=Levels.Easy;
+//		String Content="How are you";
+//		ArrayList<String> Answer=new ArrayList<>();
+//		Answer.add("good");
+//		Answer.add("fine");
+//		Answer.add("bad");
+//		Answer.add("so bad");
+//		String TrueAnswer="bad";
+//		Question q=new Question(SysData.QuestionId++,QLevel,Content,Answer,TrueAnswer);
+//	   SysData.appendQuestionToJson(q);
 	}
 	
 
