@@ -8,19 +8,21 @@ import Enum.Levels;
 
 public class Question {
 	private int QuestionId;
-	private Levels QLevel;
+
 	private String Content;
 	private ArrayList<String> Answers;
-	private String TrueAnswer;
+	private String TrueAnswer;	
+	private Levels QLevel;
 
-	public Question(int questionId, Levels qLevel, String content, ArrayList<String> answer, String trueAnswer) {
+	public Question(int questionId, Levels qLevel,String content, ArrayList<String> answer, String trueAnswer ) {
 		super();
 		this.QuestionId = questionId;
-		this.QLevel = qLevel;
+	
 		this.Content = content;
 		this.Answers =  new ArrayList<String>(); 
 		this.TrueAnswer = trueAnswer;
-		this.Answers=answer;
+		this.Answers=answer;	
+		this.QLevel = qLevel;
 	}
 
 
@@ -69,11 +71,14 @@ public class Question {
 		TrueAnswer = trueAnswer;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Question [QuestionId=" + QuestionId + ", QLevel=" + QLevel + ", Content=" + Content + ", Answer="
+		return "Question [QuestionId=" + QuestionId + ", QLevel=" + QLevel + ", Content=" + Content + ", Answers="
 				+ Answers + ", TrueAnswer=" + TrueAnswer + "]";
 	}
+
 
 	public static Question CallQuestion(Levels questionLevel)  {
 		// Check if the list corresponding to the question level is empty
