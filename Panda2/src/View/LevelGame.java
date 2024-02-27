@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -41,11 +42,11 @@ public class LevelGame extends JFrame  implements ActionListener {
 		contentPane.setLayout(null);
 		JLabel lblNewLabel_1 = new JLabel("Choose players numbers :");
 		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.ITALIC, 24));
-		lblNewLabel_1.setBounds(261, 223, 294, 27);
+		lblNewLabel_1.setBounds(261, 323, 294, 27);
 		contentPane.add(lblNewLabel_1);
 		JLabel lblNewLabel_2 = new JLabel("Choose game level :");
 		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.ITALIC, 24));
-		lblNewLabel_2.setBounds(261, 339, 300, 41);
+		lblNewLabel_2.setBounds(307, 49, 300, 41);
 		contentPane.add(lblNewLabel_2);
 		// combobox for choosing nimber of players
 		final JComboBox comboBox = new JComboBox();
@@ -54,26 +55,26 @@ public class LevelGame extends JFrame  implements ActionListener {
         	comboBox.addItem(i);
     
     }
-		comboBox.setBounds(565, 231, 94, 21);
+		comboBox.setBounds(565, 323, 94, 21);
 		contentPane.add(comboBox);
 
 		EasyRadioButton = new JRadioButton("Easy");
-		EasyRadioButton.setBounds(294, 386, 113, 21);
+		EasyRadioButton.setBounds(442, 129, 113, 21);
 		contentPane.add(EasyRadioButton);
 		EasyRadioButton.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
-		EasyRadioButton.setBackground(new Color(173, 216, 230));
+		EasyRadioButton.setBackground(new Color(204, 102, 0));
 
 		MeduimRadioButton = new JRadioButton("Medium");
-		MeduimRadioButton.setBounds(438, 386, 123, 21);
+		MeduimRadioButton.setBounds(442, 163, 123, 21);
 		contentPane.add(MeduimRadioButton);
 		MeduimRadioButton.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
-		MeduimRadioButton.setBackground(new Color(173, 216, 230));
+		MeduimRadioButton.setBackground(new Color(204, 102, 0));
 		
 		HardRadioButton = new JRadioButton("Hard");
-		HardRadioButton.setBounds(611, 386, 103, 21);
+		HardRadioButton.setBounds(442, 206, 103, 21);
 		contentPane.add(HardRadioButton);
 		HardRadioButton.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
-		HardRadioButton.setBackground(new Color(173, 216, 230));
+		HardRadioButton.setBackground(new Color(204, 102, 0));
 		
 		// choosing just one radio button , no more!
 		ButtonGroup G = new ButtonGroup();
@@ -128,6 +129,24 @@ public class LevelGame extends JFrame  implements ActionListener {
 
             }
         });
+		
+		
+		ImageIcon winIcon = new ImageIcon(Winner.class.getResource("/View/img/level.png"));
+		int winWidth = 250; // Adjusted width based on grid size
+		int winHeight = 200;//Adjusted height based on grid size
+
+		// Scale down the size of the snake image
+		Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
+
+		// Create a JLabel for the scaled snake image
+		JLabel lblNewLabel_4  = new JLabel(scaledWinIcon);
+		lblNewLabel_4.setBounds(392, 80, 300, 250);//
+
+		// Add the snake label to the content pane
+		contentPane.add(lblNewLabel_4);
+		lblNewLabel_4.setVisible(true);
+		//contentPane.setComponentZOrder(lblNewLabel_4, 0);    
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/gamebg.jpg")));
 		lblNewLabel.setBounds(10, -17, 1106, 645);
@@ -138,6 +157,4 @@ public class LevelGame extends JFrame  implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-	
-
 }
