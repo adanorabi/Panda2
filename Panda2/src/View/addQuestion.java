@@ -55,7 +55,7 @@ public class addQuestion extends JFrame {
      */
     public addQuestion() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 854, 500);
+        setBounds(500, 200, 1000, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -63,47 +63,47 @@ public class addQuestion extends JFrame {
         
         JLabel lblNewLabel = new JLabel("the content of the new question:");
         lblNewLabel.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
-        lblNewLabel.setBounds(195, 43, 300, 38);
+        lblNewLabel.setBounds(258, 72, 300, 38);
         contentPane.add(lblNewLabel);
         
         textField = new JTextField("Question");
         textField.setFont(new Font("Traditional Arabic", Font.PLAIN, 18));
-        textField.setBounds(195, 73, 404, 36);
+        textField.setBounds(257, 114, 404, 36);
         contentPane.add(textField);
         textField.setColumns(10);
         
         JLabel lblNewLabel_1 = new JLabel("The right answer :");
         lblNewLabel_1.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
-        lblNewLabel_1.setBounds(195, 119, 203, 25);
+        lblNewLabel_1.setBounds(258, 161, 203, 25);
         contentPane.add(lblNewLabel_1);
         
         textField_1 = new JTextField("answer 1");
         textField_1.setFont(new Font("Traditional Arabic", Font.PLAIN, 18));
-        textField_1.setBounds(195, 154, 404, 38);
+        textField_1.setBounds(257, 196, 404, 38);
         contentPane.add(textField_1);
         textField_1.setColumns(10);
         
         JLabel lblNewLabel_2 = new JLabel("Other answers : ");
         lblNewLabel_2.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
-        lblNewLabel_2.setBounds(195, 219, 250, 25);
+        lblNewLabel_2.setBounds(257, 242, 250, 25);
         contentPane.add(lblNewLabel_2);
         
         textField_2 = new JTextField("answer 2");
         textField_2.setFont(new Font("Traditional Arabic", Font.PLAIN, 18));
-        textField_2.setBounds(195, 250, 404, 38);
+        textField_2.setBounds(255, 281, 404, 38);
         contentPane.add(textField_2);
         textField_2.setColumns(10);
         
         textField_3 = new JTextField("answer 3");
         textField_3.setFont(new Font("Traditional Arabic", Font.PLAIN, 18));
-        textField_3.setBounds(195, 310, 404, 38);
+        textField_3.setBounds(256, 345, 404, 38);
         contentPane.add(textField_3);
         textField_3.setColumns(10);
 
         textField_4 = new JTextField("answer 4");
         textField_4.setFont(new Font("Traditional Arabic", Font.PLAIN, 18));
         textField_4.setColumns(10);
-        textField_4.setBounds(195, 368, 404, 38);
+        textField_4.setBounds(256, 412, 404, 38);
         contentPane.add(textField_4);
         
         btnNewButton = new JButton("Next");
@@ -117,14 +117,19 @@ public class addQuestion extends JFrame {
 				JOptionPane.showMessageDialog(getContentPane(),"Enter all the answers!");
             	}else
             	{
+            		
             		// add question to json and arraylist
+            		QuestionManage qm=new QuestionManage();
+            		setVisible(false);
+            		qm.setVisible(true);
+          
             	}
             	System.out.println(textField.getText());
             	System.out.println(textField_1.getText());
             }
             	
         });
-        btnNewButton.setBounds(661, 410, 99, 38);
+        btnNewButton.setBounds(820, 484, 96, 40);
         contentPane.add(btnNewButton);
         btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/next.png")));
 
@@ -136,13 +141,13 @@ public class addQuestion extends JFrame {
         		mf.setVisible(true);
             }
         });
-        btnNewButton_1.setBounds(22, 416, 174, 26);
+        btnNewButton_1.setBounds(14, 490, 174, 29);
         contentPane.add(btnNewButton_1);
         btnNewButton_1.setIcon(new ImageIcon(LevelGame.class.getResource("/View/img/hp.png")));
 
         questionFrame = new JLabel("");
         questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/sky.png")));
-        questionFrame.setBounds(0, -17, 859, 624);
+        questionFrame.setBounds(0, -70, 1005, 805);
         contentPane.add(questionFrame);
         // Set border color dynamically
         textField_1.setBorder(new LineBorder(Color.GREEN)); // Set the correct answer border color to green
