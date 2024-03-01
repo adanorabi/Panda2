@@ -511,7 +511,7 @@ public class Game {
 			this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterRoll[1]);
 
 		}
-//		SysData.AddGame(this); put in levels  Adan!!
+//		SysData.AddGame(this); 		put in levels  Adan!!
 		return roll;
 	}
 
