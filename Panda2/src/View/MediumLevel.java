@@ -72,7 +72,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	 */
 	public MediumLevel(Player p1,Player p2, Player p3,Player p4,int num) {
 
-		Game g=new Game(4, Levels.Medium, 10, 10);
+		Game g=new Game(Levels.Medium, 10, 10);
 		g.createGame();
 		g.getPlayers().add(p1);
 		g.getPlayers().add(p2);
@@ -370,6 +370,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 					// Save the end time when the condition is met
 					endTime = System.currentTimeMillis();
 					System.out.println("End Time: " + endTime); // Print end time for demonstration
+					g.setEndTime(endTime);
 				}
 			}
 		});

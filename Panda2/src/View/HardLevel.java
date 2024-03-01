@@ -63,7 +63,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		lblNewLabel.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200, 900);//
 		contentPane.add(lblNewLabel);
-		Game g=new Game(3, Levels.Hard,13, 13);
+		Game g=new Game( Levels.Hard,13, 13);
 		g.createGame();
 		g.PlacespecialSquares(Levels.Hard);
 		g.placeNormalSquares();

@@ -82,7 +82,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	public EasyLevel(Player p1,Player p2, Player p3,Player p4,int num) {
 
 
-		Game g=new Game(3, Levels.Easy, 7, 7);
+		Game g=new Game(Levels.Easy, 7, 7);
 		g.createGame();
 		g.getPlayers().add(p1);
 		g.getPlayers().add(p2);
@@ -397,6 +397,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	                    // Save the end time when the condition is met
 	                    endTime = System.currentTimeMillis();
 	                    System.out.println("End Time: " + endTime); // Print end time for demonstration
+	                    g.setEndTime(endTime);
 	                }
 	            }
 	        });
