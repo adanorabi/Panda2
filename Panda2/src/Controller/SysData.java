@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.BufferedReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -132,6 +133,71 @@ public class SysData {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public static void readCsv(String filePath) {
+		BufferedReader reader = null;
+
+		try {
+			List<Game> Games = new ArrayList<Game>();
+			String line = "";
+			reader = new BufferedReader(new FileReader(filePath));
+			reader.readLine();
+
+			while((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+
+
+				if(fields.length > 0) {
+					Game game = new Game();
+					Player player = new Player();
+					game.setGameId(Integer.parseInt(fields[0]));
+					if(fields[1].equals(Levels.Easy)) {
+						game.setGameLevel(Levels.Easy);
+					}else if(fields[1].equals(Levels.Medium)) {
+						game.setGameLevel(Levels.Medium);
+					}else if(fields[1].equals(Levels.Hard)) {
+						game.setGameLevel(Levels.Hard);
+					}
+					if(fields[3].equals(PlayerColor.Red)) {
+						player.setPlayerColor(PlayerColor.Red);
+					}else if(fields[3].equals(PlayerColor.Blue)) {
+						player.setPlayerColor(PlayerColor.Blue);
+					}else if(fields[3].equals(PlayerColor.Green)) {
+						player.setPlayerColor(PlayerColor.Green);
+					}else if(fields[3].equals(PlayerColor.Yellow)) {
+						player.setPlayerColor(PlayerColor.Yellow);
+					}
+
+					//		        game.setWinnerId(Integer.parseInt(fields[2]));
+
+					game.setEndTime(Integer.parseInt(fields[4]));
+					gamesList.add(game);
+				}
+			}
+
+			for(Game g: gamesList) {
+				for(Player pl: g.getPlayers()) {
+					if(pl.getPlayerID()== g.getWinnerId()) {
+						System.out.printf("GameId=%d, GameLevel=%s, WinnerNickName=%s, WinnerColor=%s, Time=%d%n]\n", g.getGameId(), 
+								g.getGameLevel(), pl.getNickName(),pl.getPlayerColor(),g.getEndTime());
+						System.out.println("Yes!! you did it");
+					}
+
+				}
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 }
