@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Controller.SysData;
 import Model.Question;
+import sun.util.logging.resources.logging;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,6 +34,10 @@ public class table2 extends JFrame {
 	private JButton details;
 	private JButton edit;
 	private JButton addQ;
+	private JButton btnNewButton;
+	/**
+	 * @wbp.nonvisual location=119,854
+	 */
 
 	/**
 	 * Launch the application.
@@ -124,20 +129,21 @@ public class table2 extends JFrame {
 		Image resizedImg2 = editimg.getScaledInstance(95, 44, Image.SCALE_SMOOTH);
 		edit.setIcon(new ImageIcon(resizedImg2));
 		contentPane.add(edit);
-        edit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int selectedRow = table.getSelectedRow();
-                if (selectedRow != -1) { // If a row is selected
-                    int modelRow = table.convertRowIndexToModel(selectedRow);
-                    Question selectedQuestion = allQuestions.get(modelRow);
-                    // Open the EditQ frame and pass the selected question
-                    editQ editFrame = new editQ(selectedQuestion);
-                    editFrame.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(contentPane, "Please select a row to edit.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        });
+		edit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow = table.getSelectedRow();
+				if (selectedRow != -1) { // If a row is selected
+					int modelRow = table.convertRowIndexToModel(selectedRow);
+					Question selectedQuestion = allQuestions.get(modelRow);
+					// Open the EditQ frame and pass the selected question and modelRow
+					editQ editFrame = new editQ(table2.this, selectedQuestion, modelRow);
+					editFrame.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(contentPane, "Please select a row to edit.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+
 
 		details = new JButton("details");
 		details.setBounds(867, 116, 95, 44);
@@ -169,15 +175,59 @@ public class table2 extends JFrame {
 		Image resizedImg4 = addimg.getScaledInstance( 245, 70, Image.SCALE_SMOOTH);
 		addQ.setIcon(new ImageIcon(resizedImg4));
 		addQ.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				addQuestion addf=new addQuestion();
 				addf.setVisible(true);
-				
+
 			}
 		});
 		contentPane.add(addQ);
+		
+
+		JButton back = new JButton("back button");
+		back.setBounds(74, 850, 153, 56);
+		ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
+		Image backimg = backIcon.getImage();
+		Image resizedImg1 = backimg.getScaledInstance(165, 56, Image.SCALE_SMOOTH);
+		back.setIcon(new ImageIcon(resizedImg1));
+		contentPane.add(back);
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame mf=new MainFrame();
+				setVisible(false);
+				mf.setVisible(false);
+			}
+		});
 	}
+	public void updateEditedQuestion(int rowIndex, Question editedQuestion) {
+		// Update the question in the ArrayList
+		allQuestions.set(rowIndex, editedQuestion);
+
+		// Update the table with the edited values
+		table.getModel().setValueAt(editedQuestion.getContent(), rowIndex, 1); // Update content column
+		table.getModel().setValueAt(editedQuestion.getQLevel(), rowIndex, 2); // Update level column
+
+		// Notify the table UI of changes
+		((DefaultTableModel) table.getModel()).fireTableDataChanged();
+	}
+	public void updateTable() {
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.setRowCount(0); // Clear existing rows
+		for (int i = 0; i < allQuestions.size(); i++) {
+			Question question = allQuestions.get(i);
+			Object[] rowData = {i + 1, question.getContent(), question.getQLevel()};
+			model.addRow(rowData);
+		}
+	}
+
+	public ArrayList<Question> getAllQuestions() {
+		// TODO Auto-generated method stub
+		return (ArrayList<Question>) this.allQuestions;
+	}
+
 }
