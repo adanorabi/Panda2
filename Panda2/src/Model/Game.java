@@ -10,7 +10,6 @@ import Enum.SnakeColor;
 public class Game {
 
 	private int GameId;
-	public static int counter=0;
 	private Levels GameLevel;
 	private int RowsNum;
 	private int ColsNum;
@@ -25,9 +24,9 @@ public class Game {
 	public static Board GameBoard;  //yara!
 	private long endTime; 
 
-	public Game( Levels gameLevel, int rowsNum, int colsNum) {
+	public Game(int gameid, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
-		this.GameId = counter++;
+		this.GameId = gameid;
 		this.GameLevel = gameLevel;
 		this.RowsNum = rowsNum;
 		this.ColsNum = colsNum;
