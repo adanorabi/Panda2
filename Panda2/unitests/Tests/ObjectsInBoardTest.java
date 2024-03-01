@@ -22,7 +22,7 @@ public class ObjectsInBoardTest {
 
 	@Test
 	public void testEasyLevelObjects() {
-		easy = new Game(1, Levels.Easy, 7, 7);
+		easy = new Game( Levels.Easy, 7, 7);
 		easy.createGame();
 		easy.PlacespecialSquares(Levels.Easy);
 		easy.placeNormalSquares();
