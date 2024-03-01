@@ -18,9 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import Enum.Levels;
 import Model.Question;
 
 import javax.swing.border.EmptyBorder;
+import javax.swing.JComboBox;
 
 public class addQuestion extends JFrame {
 
@@ -33,6 +35,7 @@ public class addQuestion extends JFrame {
     private JTextField textField_4;
     private JButton btnNewButton;
     private JButton btnNewButton_1;
+    private JLabel lblNewLabel_3;
 
     /**
      * Launch the application.
@@ -119,7 +122,7 @@ public class addQuestion extends JFrame {
             	{
             		
             		// add question to json and arraylist
-            		QuestionManage qm=new QuestionManage();
+            		table2 qm=new table2();
             		setVisible(false);
             		qm.setVisible(true);
           
@@ -144,6 +147,18 @@ public class addQuestion extends JFrame {
         btnNewButton_1.setBounds(14, 490, 174, 29);
         contentPane.add(btnNewButton_1);
         btnNewButton_1.setIcon(new ImageIcon(LevelGame.class.getResource("/View/img/hp.png")));
+        
+        lblNewLabel_3 = new JLabel("Level:");
+        lblNewLabel_3.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
+        lblNewLabel_3.setBounds(258, 470, 71, 26);
+        contentPane.add(lblNewLabel_3);
+        
+        JComboBox comboBox = new JComboBox();
+        comboBox.setBounds(318, 471, 119, 25);
+        contentPane.add(comboBox);
+        comboBox.addItem(Levels.Easy);
+        comboBox.addItem(Levels.Medium);
+        comboBox.addItem(Levels.Hard);
 
         questionFrame = new JLabel("");
         questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/sky.png")));
@@ -154,6 +169,7 @@ public class addQuestion extends JFrame {
         textField_2.setBorder(new LineBorder(Color.RED));   // Set other answer border color to red
         textField_3.setBorder(new LineBorder(Color.RED));   // Set other answer border color to red
         textField_4.setBorder(new LineBorder(Color.RED));   // Set other answer border color to red
+        
         // Add focus listeners to clear default text
         textField_1.addFocusListener(new FocusListener() {
             @Override
