@@ -5,21 +5,28 @@ import Enum.*;
 public class Player {
 
 	private int PlayerID;
+	public static int counter=0;
 	private PlayerColor playerColor ;
 	private String nickName;
 	private int PlayerCol;
 	private int PlayerRow;
 	private int playeringame;
+	
 
-	public Player(int playerID, PlayerColor playerColor, String nickName, int playerCol, int playerRow,int playeringame) {
+	public Player(PlayerColor playerColor, String nickName, int playerCol, int playerRow,int playeringame) {
 		super();
-		this.PlayerID = playerID;
+		this.PlayerID = this.counter++;
 		this.playerColor = playerColor;
 		this.nickName = nickName;
 		this.PlayerCol = playerCol;
 		this.PlayerRow = playerRow;
 		this.playeringame=playeringame;
 	}
+
+	public Player() {
+		super();
+	}
+
 
 	public int getPlayerID() {
 		return PlayerID;
