@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import Controller.SysData;
 import Enum.Levels;
 import Model.Question;
 
@@ -27,6 +29,7 @@ import javax.swing.JComboBox;
 public class addQuestion extends JFrame {
 
     private JPanel contentPane;
+	private table2 parentFrame; // Reference to the parent frame (table2)
     private JLabel questionFrame;
     private JTextField textField;
     private JTextField textField_1;
@@ -39,24 +42,25 @@ public class addQuestion extends JFrame {
 
     /**
      * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    addQuestion frame = new addQuestion();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+//     */
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//                    addQuestion frame = new addQuestion();
+//                    frame.setVisible(true);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 
     /**
      * Create the frame.
      */
-    public addQuestion() {
+    public addQuestion(table2 parentFrame) {
+        this.parentFrame = parentFrame;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 200, 1000, 700);
         contentPane = new JPanel();
@@ -109,28 +113,47 @@ public class addQuestion extends JFrame {
         textField_4.setBounds(256, 412, 404, 38);
         contentPane.add(textField_4);
         
+        JComboBox comboBox = new JComboBox();
+        comboBox.setBounds(318, 471, 119, 25);
+        contentPane.add(comboBox);
+        comboBox.addItem(Levels.Easy);
+        comboBox.addItem(Levels.Medium);
+        comboBox.addItem(Levels.Hard);
+
         btnNewButton = new JButton("Next");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	if (textField.getText().equals("Question"))
-            	{
-				JOptionPane.showMessageDialog(getContentPane(),"Enter content of Question!");
-            	}else if(textField_1.getText().equals("answer 1")||textField_2.getText().equals("answer 2")||textField_3.getText().equals("answer 3")||textField_4.getText().equals("answer 4") )
-            	{
-				JOptionPane.showMessageDialog(getContentPane(),"Enter all the answers!");
-            	}else
-            	{
-            		
-            		// add question to json and arraylist
-            		table2 qm=new table2();
-            		setVisible(false);
-            		qm.setVisible(true);
-          
-            	}
-            	System.out.println(textField.getText());
-            	System.out.println(textField_1.getText());
+                if (textField.getText().equals("Question")) {
+                    JOptionPane.showMessageDialog(getContentPane(),"Enter content of Question!");
+                } else if(textField_1.getText().equals("answer 1") || textField_2.getText().equals("answer 2") || 
+                        textField_3.getText().equals("answer 3") || textField_4.getText().equals("answer 4")) {
+                    JOptionPane.showMessageDialog(getContentPane(),"Enter all the answers!");
+                } else {
+                    // Create a new Question object
+                    String content = textField.getText();
+                    String trueAnswer = textField_1.getText();
+                    String answer2 = textField_2.getText();
+                    String answer3 = textField_3.getText();
+                    String answer4 = textField_4.getText();
+                    Levels level = (Levels) comboBox.getSelectedItem();
+                    ArrayList<String> answers =new ArrayList<String>();
+                    answers.add(trueAnswer);
+                    answers.add(answer2);
+                    answers.add(answer3);
+                    answers.add(answer4);
+
+                    Question newQuestion =new Question(SysData.QuestionId++, level, content, answers, trueAnswer);
+
+                    // Add the new question to the allQuestions ArrayList
+                    parentFrame.getAllQuestions().add(newQuestion);
+
+                    // Update the table directly in the parent frame (table2)
+                    parentFrame.updateTable();
+
+                    // Dispose of the addQuestion frame
+                    dispose();
+                }
             }
-            	
         });
         btnNewButton.setBounds(820, 484, 96, 40);
         contentPane.add(btnNewButton);
@@ -139,9 +162,7 @@ public class addQuestion extends JFrame {
         btnNewButton_1 = new JButton("Back");
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-        		MainFrame mf=new MainFrame();
         		setVisible(false);
-        		mf.setVisible(true);
             }
         });
         btnNewButton_1.setBounds(14, 490, 174, 29);
@@ -152,13 +173,6 @@ public class addQuestion extends JFrame {
         lblNewLabel_3.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
         lblNewLabel_3.setBounds(258, 470, 71, 26);
         contentPane.add(lblNewLabel_3);
-        
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(318, 471, 119, 25);
-        contentPane.add(comboBox);
-        comboBox.addItem(Levels.Easy);
-        comboBox.addItem(Levels.Medium);
-        comboBox.addItem(Levels.Hard);
 
         questionFrame = new JLabel("");
         questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/sky.png")));

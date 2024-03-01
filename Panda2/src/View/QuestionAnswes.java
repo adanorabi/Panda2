@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import Model.Question;
@@ -62,11 +64,27 @@ public class QuestionAnswes extends JFrame {
         falseAns3.setText(answers.get(2));
         adjustFontSize(falseAns3);
         falseAns3.setForeground(Color.WHITE);
-
+        
+        JButton back = new JButton("back button");
+        back.setBounds(79, 793, 170, 69);
+        ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
+		Image backimg = backIcon.getImage();
+		Image resizedImg = backimg.getScaledInstance(200, 69, Image.SCALE_SMOOTH);
+		back.setIcon(new ImageIcon(resizedImg));
+        contentPane.add(back);
+        back.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				setVisible(false);
+			}
+		});
         JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setBounds(10, 0, 1106, 1073);
         lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/adminanswers.jpg")));
         contentPane.add(lblNewLabel);
+
     }
 
     private void adjustFontSize(JLabel label) {

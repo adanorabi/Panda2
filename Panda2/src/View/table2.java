@@ -179,8 +179,8 @@ public class table2 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				addQuestion addf=new addQuestion();
-				addf.setVisible(true);
+				addQuestion addQuestionFrame = new addQuestion(table2.this);
+				addQuestionFrame.setVisible(true);
 
 			}
 		});
@@ -200,7 +200,7 @@ public class table2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainFrame mf=new MainFrame();
 				setVisible(false);
-				mf.setVisible(false);
+				mf.setVisible(true);
 			}
 		});
 	}
