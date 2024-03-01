@@ -95,6 +95,20 @@ public class SysData {
 		}
 
 	}
+	
+	public static void AddGame(Game g) {
+		g.setWinnerId(1);
+		g.setEndTime(50);
+
+		gamesList.add(g);
+		String filePath = "C:\\Users\\amroz\\Documents\\GitHub\\Panda2\\Panda2\\GameH.csv";
+
+		System.out.println("starting write user.csv file: " + filePath);
+		writeCsv(filePath);
+
+		System.out.println("starting read user.csv file");
+		readCsv(filePath);
+	}
 
 	public static void writeCsv(String filePath) {
 
