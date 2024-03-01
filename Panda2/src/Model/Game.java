@@ -3,12 +3,14 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Controller.SysData;
 import Enum.Levels;
 import Enum.SnakeColor;
 
 public class Game {
 
 	private int GameId;
+	public static int counter=0;
 	private Levels GameLevel;
 	private int RowsNum;
 	private int ColsNum;
@@ -21,10 +23,11 @@ public class Game {
 	private ArrayList<Square> Squares ;
 	public static int PlayerTurn=0;
 	public static Board GameBoard;  //yara!
+	private long endTime; 
 
-	public Game(int gameId, Levels gameLevel, int rowsNum, int colsNum) {
+	public Game( Levels gameLevel, int rowsNum, int colsNum) {
 		super();
-		this.GameId = gameId;
+		this.GameId = counter++;
 		this.GameLevel = gameLevel;
 		this.RowsNum = rowsNum;
 		this.ColsNum = colsNum;
@@ -37,6 +40,11 @@ public class Game {
 		this.gameDice=new Dice(gameLevel); //yara!
 		this.GameBoard= new Board(colsNum);  //yara!
 	}
+
+	public Game() {
+		super();
+	}
+
 
 	public int getGameId() {
 		return this.GameId;
@@ -126,6 +134,14 @@ public class Game {
 
 	public static void setPlayerTurn(int playerTurn) {
 		PlayerTurn = playerTurn;
+	}
+
+	public long getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(long endTime) {
+		this.endTime = endTime;
 	}
 
 	public void createGame() {
@@ -495,7 +511,7 @@ public class Game {
 			this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterRoll[1]);
 
 		}
-
+//		SysData.AddGame(this); put in levels  Adan!!
 		return roll;
 	}
 
@@ -542,7 +558,7 @@ public class Game {
 			newpos=size;
 		}  else if (newpos<1) {
 			newpos=1;
-			
+
 		}
 
 		int afterQuestion[]=new int[2];
@@ -570,7 +586,7 @@ public class Game {
 						newpos=size;
 					}  else if (newpos<1) {
 						newpos=1;
-						
+
 					}
 					int afterSurprise[]=new int[2];
 					afterSurprise=this.GameBoard.getCoordinates(newpos);
