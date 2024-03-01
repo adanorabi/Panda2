@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -80,9 +82,39 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	 * Create the frame.
 	 */
 	public EasyLevel(Player p1,Player p2, Player p3,Player p4,int num) {
+		String filePath = "C:\\Users\\amroz\\Documents\\GitHub\\Panda2\\Panda2\\GameH.csv";
+		BufferedReader reader = null;
+		int swap=-1;
+
+		try {
+			String line = "";
+			reader = new BufferedReader(new FileReader(filePath));
+			reader.readLine();
+
+			while((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
 
 
-		Game g=new Game(Levels.Easy, 7, 7);
+				if(fields.length > 0) {
+					if(swap<Integer.parseInt(fields[0])) {
+						swap=Integer.parseInt(fields[0]);
+					}
+				}
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println((swap+1)+"the new id for the new game");
+		Game g=new Game((swap+1),Levels.Easy, 7, 7);
 		g.createGame();
 		g.getPlayers().add(p1);
 		g.getPlayers().add(p2);
