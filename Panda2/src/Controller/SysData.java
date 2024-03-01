@@ -1,16 +1,19 @@
 package Controller;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import Enum.Levels;
+import Enum.PlayerColor;
 import Model.*;
 
 public class SysData {
@@ -91,7 +94,44 @@ public class SysData {
 		}
 
 	}
-	
-	
+
+	public static void writeCsv(String filePath) {
+
+
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(filePath);
+
+			fileWriter.append("GameId, GameLevel, WinnerId, Time\n");
+			for(Game g: SysData.gamesList) {
+				System.out.println(g);
+				fileWriter.append(String.valueOf(g.getGameId()));
+				fileWriter.append(",");
+				fileWriter.append(String.valueOf(g.getGameLevel()));
+				fileWriter.append(",");
+				//		    fileWriter.append(String.valueOf(g.getWinnerId()));
+				//		    fileWriter.append(",");
+				fileWriter.append(String.valueOf(g.getEndTime()));
+				for(Player p: g.getPlayers()) {
+					if(p.getPlayerID()==g.getWinnerId()) {
+						fileWriter.append(String.valueOf(p.getNickName()));
+						fileWriter.append(",");
+						fileWriter.append(String.valueOf(p.getPlayerColor()));
+						fileWriter.append(",");
+					}
+				}
+				fileWriter.append("\n");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				fileWriter.flush();
+				fileWriter.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }
