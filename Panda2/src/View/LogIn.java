@@ -155,7 +155,8 @@ public class LogIn extends JFrame {
 						JOptionPane.showMessageDialog(getContentPane(),"We didn't recognize you!");
 					}else
 					{
-						QuestionManage QM=new QuestionManage();
+//						QuestionManage QM=new QuestionManage();
+						table2 QM=new table2();
 						setVisible(false);
 						QM.setVisible(true);
 					}

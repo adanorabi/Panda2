@@ -60,10 +60,10 @@ public class Winner extends JFrame {
 	 */
 	public Winner() {
 		int num=4;
-		Player p1=new Player(5, PlayerColor.Red, "yara",4, 4,2);//wenner
-		Player p2=new Player (6, PlayerColor.Yellow, "yomna", 4, 4,2);//2nd
-		Player p3=new Player (7, PlayerColor.Green, "ghaidaa", 4, 4,2);//3rd
-		Player p4=new Player (8, PlayerColor.Blue, "adan", 4, 4,2);//4rd
+		Player p1=new Player( PlayerColor.Red, "yara",4, 4,2);//wenner
+		Player p2=new Player ( PlayerColor.Yellow, "yomna", 4, 4,2);//2nd
+		Player p3=new Player ( PlayerColor.Green, "ghaidaa", 4, 4,2);//3rd
+		Player p4=new Player ( PlayerColor.Blue, "adan", 4, 4,2);//4rd
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setBounds(400, 100, 1200, 700);

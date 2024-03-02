@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Collections;
 import java.util.List;
 
@@ -63,7 +65,42 @@ public class HardLevel extends JFrame implements ActionListener {
 		lblNewLabel.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200, 900);//
 		contentPane.add(lblNewLabel);
-		Game g=new Game(3, Levels.Hard,13, 13);
+		
+//---------------------yomna----------------------------------		
+		String filePath = "C:\\Users\\amroz\\Documents\\GitHub\\Panda2\\Panda2\\GameH.csv";
+		BufferedReader reader = null;
+		int swap=-1;
+
+		try {
+			String line = "";
+			reader = new BufferedReader(new FileReader(filePath));
+			reader.readLine();
+
+			while((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+
+
+				if(fields.length > 0) {
+					if(swap<Integer.parseInt(fields[0])) {
+						swap=Integer.parseInt(fields[0]);
+					}
+				}
+
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println((swap+1)+"the new id for the new game");
+//-------------------------------yomna-------------------------------------------		
+		Game g=new Game( (swap+1),Levels.Hard,13, 13);
 		g.createGame();
 		g.PlacespecialSquares(Levels.Hard);
 		g.placeNormalSquares();
