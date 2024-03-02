@@ -1,7 +1,5 @@
 package Controller;
 
-import java.io.BufferedReader;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,13 +7,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-=======
-import java.util.List;
->>>>>>> e0488d2637db8d6f4f9093e6e93018e3cf8d83e0
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,7 +21,6 @@ import org.json.JSONTokener;
 
 
 import Enum.Levels;
-import Enum.PlayerColor;
 import Model.*;
 
 public class SysData {
@@ -97,127 +90,6 @@ public class SysData {
 		}
 
 	}
-<<<<<<< HEAD
-=======
-	
-	public static void AddGame(Game g) {
-		g.setWinnerId(1);
-		g.setEndTime(50);
-
-		gamesList.add(g);
-		String filePath = "C:\\Users\\amroz\\Documents\\GitHub\\Panda2\\Panda2\\GameH.csv";
-
-		System.out.println("starting write user.csv file: " + filePath);
-		writeCsv(filePath);
-
-		System.out.println("starting read user.csv file");
-		readCsv(filePath);
-	}
-
-	public static void writeCsv(String filePath) {
-
-
-		FileWriter fileWriter = null;
-		try {
-			fileWriter = new FileWriter(filePath);
-
-			fileWriter.append("GameId, GameLevel, WinnerId, Time\n");
-			for(Game g: SysData.gamesList) {
-				System.out.println(g);
-				fileWriter.append(String.valueOf(g.getGameId()));
-				fileWriter.append(",");
-				fileWriter.append(String.valueOf(g.getGameLevel()));
-				fileWriter.append(",");
-				//		    fileWriter.append(String.valueOf(g.getWinnerId()));
-				//		    fileWriter.append(",");
-				fileWriter.append(String.valueOf(g.getEndTime()));
-				for(Player p: g.getPlayers()) {
-					if(p.getPlayerID()==g.getWinnerId()) {
-						fileWriter.append(String.valueOf(p.getNickName()));
-						fileWriter.append(",");
-						fileWriter.append(String.valueOf(p.getPlayerColor()));
-						fileWriter.append(",");
-					}
-				}
-				fileWriter.append("\n");
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			try {
-				fileWriter.flush();
-				fileWriter.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public static void readCsv(String filePath) {
-		BufferedReader reader = null;
-
-		try {
-			List<Game> Games = new ArrayList<Game>();
-			String line = "";
-			reader = new BufferedReader(new FileReader(filePath));
-			reader.readLine();
-
-			while((line = reader.readLine()) != null) {
-				String[] fields = line.split(",");
-
-
-				if(fields.length > 0) {
-					Game game = new Game();
-					Player player = new Player();
-					game.setGameId(Integer.parseInt(fields[0]));
-					if(fields[1].equals(Levels.Easy)) {
-						game.setGameLevel(Levels.Easy);
-					}else if(fields[1].equals(Levels.Medium)) {
-						game.setGameLevel(Levels.Medium);
-					}else if(fields[1].equals(Levels.Hard)) {
-						game.setGameLevel(Levels.Hard);
-					}
-					if(fields[3].equals(PlayerColor.Red)) {
-						player.setPlayerColor(PlayerColor.Red);
-					}else if(fields[3].equals(PlayerColor.Blue)) {
-						player.setPlayerColor(PlayerColor.Blue);
-					}else if(fields[3].equals(PlayerColor.Green)) {
-						player.setPlayerColor(PlayerColor.Green);
-					}else if(fields[3].equals(PlayerColor.Yellow)) {
-						player.setPlayerColor(PlayerColor.Yellow);
-					}
-
-					//		        game.setWinnerId(Integer.parseInt(fields[2]));
-
-					game.setEndTime(Integer.parseInt(fields[4]));
-					gamesList.add(game);
-				}
-			}
-
-			for(Game g: gamesList) {
-				for(Player pl: g.getPlayers()) {
-					if(pl.getPlayerID()== g.getWinnerId()) {
-						System.out.printf("GameId=%d, GameLevel=%s, WinnerNickName=%s, WinnerColor=%s, Time=%d%n]\n", g.getGameId(), 
-								g.getGameLevel(), pl.getNickName(),pl.getPlayerColor(),g.getEndTime());
-						System.out.println("Yes!! you did it");
-					}
-
-				}
-
-			}
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			try {
-				reader.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-	}
->>>>>>> e0488d2637db8d6f4f9093e6e93018e3cf8d83e0
 
 	public static void AddQuestioToJson(Question newQuestion) {
 		// Print a message indicating successful deletion of a question
