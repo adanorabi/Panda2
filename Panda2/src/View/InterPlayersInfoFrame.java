@@ -254,7 +254,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		yRadioButton.setBounds(363, 200, 111, 23);
+		yRadioButton.setBounds(363, 200, 116, 23);
 		contentPane.add(yRadioButton);
 		buttonGroup.add(yRadioButton);
 
@@ -262,7 +262,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 
 		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
-		lblNewLabel_2.setBounds(708, 93, 100, 130);
+		lblNewLabel_2.setBounds(560, 244, 100, 130);
 		contentPane.add(lblNewLabel_2);
 		//player2 info ************************
 		JLabel lblNewLabel_2 = new JLabel("player2 nickname:");
@@ -520,7 +520,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		yRadioButton2.setBounds(875, 200, 123, 23);
+		yRadioButton2.setBounds(868, 200, 123, 23);
 		contentPane.add(yRadioButton2);
 		buttonGroup2.add(yRadioButton2);
 
@@ -774,7 +774,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					}
 				}
 			});
-			greenRadioButton3.setBounds(142, 400, 90, 23);
+			greenRadioButton3.setBounds(142, 400, 102, 23);
 			contentPane.add(greenRadioButton3);
 			buttonGroup3.add(greenRadioButton3);
 
@@ -882,7 +882,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				
 					}}
 			});
-			blueRadioButton3.setBounds(246, 400, 70, 23);
+			blueRadioButton3.setBounds(256, 400,100, 23);
 			contentPane.add(blueRadioButton3);
 			buttonGroup3.add(blueRadioButton3);
 			yRadioButton3 = new JRadioButton("Yellow");
@@ -986,7 +986,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					
 				}
 			});
-			yRadioButton3.setBounds(333, 400, 100, 23);
+			yRadioButton3.setBounds(363, 400,116, 23);
 			contentPane.add(yRadioButton3);
 			buttonGroup2.add(yRadioButton3);
 			buttonGroup3.add(yRadioButton3);
@@ -1035,7 +1035,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			greenRadioButton2_1.setActionCommand("Green");
 			greenRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			greenRadioButton2_1.setBackground(new Color(173, 216, 230));
-			greenRadioButton2_1.setBounds(660, 400, 90, 23);
+			greenRadioButton2_1.setBounds(660, 400, 105, 23);
 			contentPane.add(greenRadioButton2_1);
 			greenRadioButton2_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -1052,7 +1052,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			blueRadioButton2_1.setActionCommand("Blue");
 			blueRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			blueRadioButton2_1.setBackground(new Color(173, 216, 230));
-			blueRadioButton2_1.setBounds(767, 400, 70, 23);
+			blueRadioButton2_1.setBounds(770, 400, 90, 23);
 			contentPane.add(blueRadioButton2_1);
 			blueRadioButton2_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -1069,7 +1069,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			yRadioButton2_1.setActionCommand("Yellow");
 			yRadioButton2_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 			yRadioButton2_1.setBackground(new Color(173, 216, 230));
-			yRadioButton2_1.setBounds(845, 400, 100, 23);
+			yRadioButton2_1.setBounds(868, 400, 123, 23);
 			contentPane.add(yRadioButton2_1);
 			yRadioButton2_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {

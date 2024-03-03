@@ -128,7 +128,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		}	
 		System.out.println((swap+1)+" the new id for the new game");
 		//-------------------------------yomna-------------------------------------------	
-		Game g=new Game((swap+1),Levels.Medium, 10, 10);
+		Game g=new Game((swap+1),Levels.Hard, 13, 13);
 		g.createGame();
 		g.getPlayers().add(p1);
 		g.getPlayers().add(p2);
@@ -164,7 +164,7 @@ public class HardLevel extends JFrame implements ActionListener {
 				lblNewLabel_w2.setVisible(true);
 		
 
-		g.PlacespecialSquares(Levels.Medium);
+		g.PlacespecialSquares(Levels.Hard);
 		g.placeNormalSquares();
 		g.PlaceSnakes();
 		g.placeLadders();
@@ -186,7 +186,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		contentPane.add(diceButton); 
 
 		diceLabel = new JLabel("");
-		diceLabel.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/1.png")));
+		diceLabel.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/1.png")));
 		diceLabel.setBounds(40, 520, 150, 150);
 
 		contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
@@ -212,22 +212,22 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
 		{
-			p1icon= new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
-			imgIcn1=new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
+			p1icon= new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
+			imgIcn1=new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
 		}
 		else if(p1.getPlayerColor()==PlayerColor.Green)
 		{
-			p1icon= new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
-			imgIcn1=new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
+			p1icon= new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
+			imgIcn1=new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
 		}
 		else if(p1.getPlayerColor()==PlayerColor.Blue)
 		{
-			p1icon= new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
-			imgIcn1=new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
+			p1icon= new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
+			imgIcn1=new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
 		}
 		else {
-			p1icon= new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
-			imgIcn1=new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
+			p1icon= new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
+			imgIcn1=new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
 		}
 		Image scaledP1Image = p1icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon scaledP1Icon = new ImageIcon(scaledP1Image);
@@ -261,20 +261,20 @@ public class HardLevel extends JFrame implements ActionListener {
 		/******************************p2**********************/
 		ImageIcon p2icon;
 		if(p2.getPlayerColor()==PlayerColor.Red) {
-			p2icon= new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
-			imgIcn2=new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
+			p2icon= new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
+			imgIcn2=new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
 		}
 		else if(p2.getPlayerColor()==PlayerColor.Green) {
-			p2icon= new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
-			imgIcn2=new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
+			p2icon= new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
+			imgIcn2=new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
 		}
 		else if(p2.getPlayerColor()==PlayerColor.Blue) {
-			p2icon= new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
-			imgIcn2=new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
+			p2icon= new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
+			imgIcn2=new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
 		}
 		else {
-			p2icon= new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
-			imgIcn2=new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
+			p2icon= new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
+			imgIcn2=new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
 		}
 		Image scaledP2Image = p2icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon scaledP2Icon = new ImageIcon(scaledP2Image);
@@ -307,20 +307,20 @@ public class HardLevel extends JFrame implements ActionListener {
 		if(num>2) {
 			ImageIcon p3icon;
 			if(p3.getPlayerColor()==PlayerColor.Red) {
-				p3icon= new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
-				imgIcn3=new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
+				p3icon= new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
+				imgIcn3=new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
 			}
 			else if(p3.getPlayerColor()==PlayerColor.Green) {
-				p3icon= new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
-				imgIcn3=new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
+				p3icon= new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
+				imgIcn3=new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
 			}
 			else if(p3.getPlayerColor()==PlayerColor.Blue) {
-				p3icon= new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
-				imgIcn3=new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
+				p3icon= new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
+				imgIcn3=new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
 			}
 			else {
-				p3icon= new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
-				imgIcn3=new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
+				p3icon= new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
+				imgIcn3=new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
 			}
 			Image scaledP3Image = p3icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			ImageIcon scaledP3Icon = new ImageIcon(scaledP3Image);
@@ -348,20 +348,20 @@ public class HardLevel extends JFrame implements ActionListener {
 			if(num==4) {
 				ImageIcon p4icon;
 				if(p4.getPlayerColor()==PlayerColor.Red) {
-					p4icon= new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
-					imgIcn4=new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
+					p4icon= new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
+					imgIcn4=new ImageIcon(HardLevel.class.getResource("/View/img/r.png"));
 				}
 				else if(p4.getPlayerColor()==PlayerColor.Green) {
-					p4icon= new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
-					imgIcn4=new ImageIcon(MediumLevel.class.getResource("/View/img/g.png"));
+					p4icon= new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
+					imgIcn4=new ImageIcon(HardLevel.class.getResource("/View/img/g.png"));
 				}
 				else if(p4.getPlayerColor()==PlayerColor.Blue) {
-					p4icon= new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
-					imgIcn4=new ImageIcon(MediumLevel.class.getResource("/View/img/b.png"));
+					p4icon= new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
+					imgIcn4=new ImageIcon(HardLevel.class.getResource("/View/img/b.png"));
 				}
 				else {
-					p4icon= new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
-					imgIcn4=new ImageIcon(MediumLevel.class.getResource("/View/img/y.png"));
+					p4icon= new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
+					imgIcn4=new ImageIcon(HardLevel.class.getResource("/View/img/y.png"));
 				}
 				Image scaledP4Image = p4icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 				ImageIcon scaledP4Icon = new ImageIcon(scaledP4Image);
@@ -443,7 +443,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		});
 		startTimer();
 
-		 winIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/win.png"));
+		 winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/win.png"));
 		 winWidth = 80; // Adjusted width based on grid size
 		 winHeight = 80;//Adjusted height based on grid size
 
@@ -453,7 +453,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Create a JLabel for the scaled snake image
 		JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
-		lblNewLabel_3.setBounds(1080, 100,70,80);//
+		lblNewLabel_3.setBounds(1480, 50,80,80);//
 
 		// Add the snake label to the content pane
 		contentPane.add(lblNewLabel_3);
@@ -470,7 +470,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		System.out.println("Image loaded: " + icon.getImageLoadStatus());
 
 		//Verify image dimensions
-		int containerWidth = 1300;
+		int containerWidth = 1900;
 		int containerHeight = 1000;
 		System.out.println("Container size: " + containerWidth + "x" + containerHeight);
 
@@ -578,14 +578,14 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/bluesnake2.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY = 801- yhead * 79; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 185 + xtail * 101; // Adjusted x position based on the board offset and grid size
-		int snakeTailY =  801- ytail * 79; // Adjusted y position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY = 812- yhead * 68; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 185 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int snakeTailY =  812- ytail * 68; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 101; // Adjusted width based on grid size
-		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 79; // Adjusted height based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 68; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -613,14 +613,14 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/greensnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY =  801  - yhead * 79; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 188 + xtail * 101; // Adjusted x position based on the board offset and grid size
-		int snakeTailY =  801  - ytail * 79; // Adjusted y position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY =  812  - yhead * 68; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 188 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int snakeTailY =  812  - ytail *  68; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 101; // Adjusted width based on grid size
-		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 79; // Adjusted height based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 68; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -648,12 +648,12 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/redsnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size//170
-		int snakeHeadY =801-yhead*79;
+		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size//170
+		int snakeHeadY =880-yhead*68;
 
 		// Calculate the size of the snake image
-		int snakeWidth = 100; // Adjusted width based on grid size
-		int snakeHeight = 79;//Adjusted height based on grid size
+		int snakeWidth = 110; // Adjusted width based on grid size
+		int snakeHeight = 68;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -680,13 +680,13 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/yellosnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 101; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY = 801 - yhead * 79; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 185 + xtail * 101; // Adjusted x position based on the board offset and grid size
-		int snakeTailY = 801 - ytail * 79; // Adjusted y position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY = 812 - yhead * 68; // Adjusted y position based on the board offset and grid size
+		int snakeTailX = 185 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int snakeTailY = 812 - ytail * 68; // Adjusted y position based on the board offset and grid size
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 101; // Adjusted width based on grid size
-		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 79; // Adjusted height based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
+		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 68; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -710,35 +710,42 @@ public class HardLevel extends JFrame implements ActionListener {
 	}
 
 	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
-		int ladderHeadX = 190 + xhead * 101; // Adjusted x position based on the board offset and grid size
-		int ladderHeadY = 801 - yhead * 79; // Adjusted y position based on the board offset and grid size
-		int ladderTailX = 190 + xtail * 101; // Adjusted x position based on the board offset and grid size
-		int ladderTailY = 801 - ytail * 79; // Adjusted y position based on the board offset and grid size
+		int ladderHeadX = 190 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int ladderHeadY = 812 - yhead * 68; // Adjusted y position based on the board offset and grid size
+		int ladderTailX = 190 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int ladderTailY = 812 - ytail * 68; // Adjusted y position based on the board offset and grid size
 		ImageIcon ladderIcon=null;
 		// Calculate the size of the snake image
-		int ladderWidth = Math.abs(ladderHeadX - ladderTailX) + 80; // Adjusted width based on grid size
-		int ladderHeight = Math.abs(ladderHeadY - ladderTailY) + 70; // Adjusted height based on grid size
+		int ladderWidth = Math.abs(ladderHeadX - ladderTailX) + 89; // Adjusted width based on grid size
+		int ladderHeight = Math.abs(ladderHeadY - ladderTailY) + 60; // Adjusted height based on grid size
 
 		System.out.println(typeOfLader);
 		// Load the ladder image based on the ladder type
 		switch (typeOfLader) {
 		case 1:
-			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder1.png"));
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder1.png"));
 			break;
 		case 2:
-			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder2.png"));
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder2.png"));
 			break;
 		case 3:
-			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder3.png"));
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder3.png"));
 			break;
 		case 4:
-			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder4.png"));
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder4.png"));
 			break;
 		case 5:
-			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder5.png"));
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder5.png"));
 			break;
 		case 6:
-			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder6.png"));
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder6.png"));
+			break;
+		case 7: 
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder7.png"));
+			break;
+		case 8: 
+			ladderIcon = new ImageIcon(HardLevel.class.getResource("/View/img/ladder8.png"));
+			break;
 		default:
 			// Default ladder image
 
@@ -770,8 +777,8 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/q.png"));
 
 		// Calculate the position of the surprise
-		int sX = 200 + x * 101; 
-		int sY =810-y*79;
+		int sX = 200 + x * 123; 
+		int sY =822-y*68;
 
 		// Calculate the size of the snake image
 		int width = 50; // Adjusted width based on grid size
@@ -803,12 +810,12 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/surprise.png"));
 
 		// Calculate the position of the surprise
-		int sX = 200 + x * 101; 
-		int sY =820-y*79;
+		int sX = 200 + x * 123; 
+		int sY =830-y*68;
 
 		// Calculate the size of the snake image
-		int width = 30; // Adjusted width based on grid size
-		int height = 30;//Adjusted height based on grid size
+		int width = 40; // Adjusted width based on grid size
+		int height = 40;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledImage = snakeIcon.getImage().getScaledInstance( width, height, Image.SCALE_SMOOTH);
@@ -1020,32 +1027,31 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		switch(player.getPlayeringame()) {//check
 		case 1:
-			pX = 185 + afterx * 101; // Adjusted x position based on the board offset and grid size//170
-			bx= 185 + beforx * 101;
-			pY =790-aftery*79;
-			by=790-befory*79;
+			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 + beforx * 123;
+			pY =800-aftery*68;
+			by=800-befory*68;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
-			pX = 185+N + afterx * 101; // Adjusted x position based on the board offset and grid size//170
-			bx= 185 +N+beforx * 101;
-			pY =790-aftery*79;
-			by=790-befory*79;
+			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 +N+beforx * 123;
+			pY =800-aftery*68;
+			by=800-befory*68;
 
 			break;
 		case 3:
-			pX = 185 + afterx * 101; // Adjusted x position based on the board offset and grid size//170
-			bx= 185 + beforx * 101;
-			pY =790+N-aftery*79;
-			by=790+N-befory*79;
+			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 + beforx * 123;
+			pY =800+N-aftery*68;
+			by=800+N-befory*68;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 4://+N
-			pY =801+N-aftery*79;
-			by=801+N-befory*79;
-			pX = 790+N + afterx * 101; // Adjusted x position based on the board offset and grid size//170
-			bx= 790 +N+beforx * 101;
-			break;
+			pY =800+N-aftery*68;
+			by=800+N-befory*68;
+			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 +N+beforx * 123;			break;
 
 		}
 
@@ -1186,8 +1192,8 @@ public class HardLevel extends JFrame implements ActionListener {
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
-			pX = 185 + player.getPlayerRow() * 101; // Adjusted x position based on the board offset and grid size//170
-			pY =790-player.getPlayerCol()*79;
+			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
+			pY =800-player.getPlayerCol()*68;
 			System.out.println("setting player 1");
 			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
 
@@ -1200,8 +1206,8 @@ public class HardLevel extends JFrame implements ActionListener {
 
 			break;
 		case 2://+N
-			pX = N+185 + player.getPlayerRow() * 101; // Adjusted x position based on the board offset and grid size//170
-			pY =790-player.getPlayerCol()*79;
+			pX = N+185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
+			pY =800-player.getPlayerCol()*68;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1213,8 +1219,8 @@ public class HardLevel extends JFrame implements ActionListener {
 			contentPane.repaint();
 			break;
 		case 3://+N
-			pX = 185 + player.getPlayerRow() * 101;// Adjusted x position based on the board offset and grid size//170
-			pY =N-15+790-player.getPlayerCol()*79;
+			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
+			pY =N-15+800-player.getPlayerCol()*68;
 			System.out.println("setting player 3");
 			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1226,8 +1232,8 @@ public class HardLevel extends JFrame implements ActionListener {
 			contentPane.repaint();
 			break;
 		case 4://
-			pX = N+185+ player.getPlayerRow() *  101; // Adjusted x position based on the board offset and grid size//170
-			pY =N-15+790-player.getPlayerCol()*79;
+			pX = N+185+ player.getPlayerRow() *  123; // Adjusted x position based on the board offset and grid size//170
+			pY =N-15+800-player.getPlayerCol()*68;
 			System.out.println("setting player 4");
 			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1262,7 +1268,7 @@ public class HardLevel extends JFrame implements ActionListener {
     }*/
 	  private boolean conditionMet() {
 	        // Replace this with your actual condition
-	        return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
+	        return secondsElapsed >= 30000; // Stop the timer after 10 seconds for demonstration
 	    }
 
 	    // Method to start the timer
