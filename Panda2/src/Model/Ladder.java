@@ -4,7 +4,7 @@ import java.util.Random;
 
 import Enum.Levels;
 
-public class Ladder {
+public class Ladder extends MovePlayerTemplate {
 
 
 	private int Length;
@@ -422,7 +422,10 @@ public class Ladder {
 		}
 	}
 	
-	public int[] MovePlayerUp (int playerX, int playerY){
+	
+	
+	@Override 
+	public int[] MovePlayer (int playerX, int playerY){
 		
 		int XYEnd[]=new int[2];
 		

@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		setBounds(100, 100, 1100, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
+
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -42,7 +42,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/start.png")));
 		btnNewButton.setBackground(Color.CYAN);
 		btnNewButton.setBounds(427, 266, 125, 130);
-		 /*btnNewButton.addMouseListener(new MouseListener() {
+		/*btnNewButton.addMouseListener(new MouseListener() {
 	            @Override
 	            public void mouseClicked(MouseEvent e) {}
 
@@ -67,28 +67,36 @@ public class MainFrame extends JFrame implements ActionListener{
 
 		contentPane.add(btnNewButton);
 		JButton btnNewButton_1 = new JButton("inst");/*adding instructions button*/
-		
+
 		btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/View/img/instructions.png")));
 		btnNewButton_1.setBackground(Color.YELLOW);
 		btnNewButton_1.setBounds(584, 266, 125, 130);
 		contentPane.add(btnNewButton_1);
-
+		btnNewButton_1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Instructions inst=new Instructions();
+				setVisible(false);
+				inst.setVisible(true);
+			}
+		});
 
 		JButton btnNewButton_2 = new JButton("hist");/*adding history button*/
 		btnNewButton_2.setIcon(new ImageIcon(getClass().getResource("/View/img/history.png")));
-		 btnNewButton_2.addActionListener(this);
+		btnNewButton_2.addActionListener(this);
 		btnNewButton_2.setBackground(Color.CYAN);
 		btnNewButton_2.setBounds(584, 418, 125, 130);
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("New button");/*adding q button*/
-		
+
 		btnNewButton_3.setIcon(new ImageIcon(getClass().getResource("/View/img/question.png")));
 		btnNewButton_3.setBackground(Color.CYAN);
 		btnNewButton_3.setBounds(427, 418, 125, 130);
 		contentPane.add(btnNewButton_3);
 		btnNewButton_3.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -101,29 +109,29 @@ public class MainFrame extends JFrame implements ActionListener{
 		lblNewLabel.setBounds(10, 10, 1106, 645);
 		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/MainBG.png")));
 		contentPane.add(lblNewLabel);
-		
-		
-		
+
+
+
 	}//		
 
 
 	public void actionPerformed(ActionEvent e) {
-		
-		     FlatLaf.registerCustomDefaultsSource("View");
-	         FlatLightLaf.setup();
+
+		FlatLaf.registerCustomDefaultsSource("View");
+		FlatLightLaf.setup();
 		// TODO Auto-generated method stub
 		String s=e.getActionCommand();
 		if(s.equals("start")) {/*start the game and move to levelgame frame*/
 			LevelGame lframe=new LevelGame();
 			this.setVisible(false);
 			lframe.setVisible(true);
-			
+
 		}
 		if(s.equals("hist")) {/*start the game and move to levelgame frame*/
 			History lframe=new History();
 			this.setVisible(false);
 			lframe.setVisible(true);
-			
+
 		}
 	}
 }
