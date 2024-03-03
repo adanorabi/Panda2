@@ -22,6 +22,7 @@ import Enum.PlayerColor;
 import Model.Player;
 
 import javax.sound.sampled.*;
+import javax.swing.JButton;
 public class Winner extends JFrame {
 	
 

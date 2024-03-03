@@ -130,7 +130,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		mytext = new JLabel("");
-		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		mytext.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
 		mytext.setBounds(200, 29, 900, 50);
 		contentPane.add( mytext);
 		Player proll=g.CurrentTurn();

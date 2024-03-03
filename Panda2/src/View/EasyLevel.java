@@ -1069,10 +1069,11 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				timer.stop(); // Stop the timer when the movement is complete
 			}
 		});
-		if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner*/
+		if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
 			
 			Player p1=g.CurrentTurn();
 			SysData.AddGame(g);
+			
 		//	Winner w=new Winner(p1,); 
 		}
 
