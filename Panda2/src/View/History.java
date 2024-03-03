@@ -128,6 +128,7 @@ public class History extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 
 	private void initComponents( ) {
+		Screenshot.loadExistingScreenshots();;
 		String filePath = "AllGames.csv";
 	SysData.readCsv(filePath);
 		jPanel1 = new javax.swing.JPanel();

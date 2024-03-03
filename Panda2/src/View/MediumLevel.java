@@ -1089,10 +1089,16 @@ if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
 			g.getPlayersFinalPLaces();
 			if(g.getPlayersFinalPLaces().size()==2) {
 				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
+				w.setVisible(true);
+				this.setVisible(false);
 			}else if(g.getPlayersFinalPLaces().size()==3) {
 				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+				w.setVisible(true);
+				this.setVisible(false);
 			}else {
 				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+				w.setVisible(true);
+				this.setVisible(false);
 			}
 		//	Winner w=new Winner(p1,); 
 		
