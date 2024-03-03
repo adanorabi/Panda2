@@ -880,7 +880,7 @@ public class HardLevel extends JFrame implements ActionListener {
 					System.out.println("********************************************************8the dice rolled"+CHECK);
 					Question q;
 					String answer="";
-					
+					int awx=0,awy=0;
 					if(CHECK instanceof Integer) {
 						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
 						String s= "you have to walk "+CHECK+" steps!!";
@@ -926,20 +926,20 @@ public class HardLevel extends JFrame implements ActionListener {
 								});
 								qu.setVisible(true);
 
-								int awx=p.getPlayerRow();//new x
-								int awy=p.getPlayerCol();// new y
+								awx=p.getPlayerRow();//new x
+								awy=p.getPlayerCol();// new y
 
 								movePlayer(p, ax, ay,awx, awy);
 								landedOn(g);
 
-							}if( g.UpdatePlayerPlace()!=0)
+							}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
 								break;
 
-							int awx=p.getPlayerRow();//new x
-							int awy=p.getPlayerCol();// new y
+							 awx=p.getPlayerRow();//new x
+							 awy=p.getPlayerCol();// new y
 
 							movePlayer(p, ax, ay,awx, awy);
-
+							landedOn(g);
 						}
 						g.NextPlayer();
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
@@ -1010,22 +1010,23 @@ public class HardLevel extends JFrame implements ActionListener {
 										c.setVisible(true);
 
 
-										int awx=p.getPlayerRow();//new x
-										int awy=p.getPlayerCol();// new y
+										 awx=p.getPlayerRow();//new x
+										 awy=p.getPlayerCol();// new y
 
 										movePlayer(p, ax, ay,awx, awy);
 										landedOn(g);
 
-									}if( g.UpdatePlayerPlace()!=0)
+									}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
 										break;
 
-									int awx = p.getPlayerRow();
-									int awy = p.getPlayerCol();
+									 awx = p.getPlayerRow();
+									 awy = p.getPlayerCol();
 
 									movePlayer(p, ax, ay, awx, awy);
 
 								}
 								g.NextPlayer();
+								setPlayerText(g.CurrentTurn(), "you have to roll the dice");
 								lineMangment(g.CurrentTurn().getPlayeringame(), num);
 							}
 						});
