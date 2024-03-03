@@ -19,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import Controller.SysData;
 import Enum.Levels;
 import Model.Question;
@@ -61,7 +64,13 @@ public class addQuestion extends JFrame {
      */
     public addQuestion(table2 parentFrame) {
         this.parentFrame = parentFrame;
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                setVisible(false); // Hide the addQuestion frame
+            }
+        });
         setBounds(500, 200, 1000, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -155,9 +164,9 @@ public class addQuestion extends JFrame {
                 }
             }
         });
-        btnNewButton.setBounds(820, 484, 96, 40);
+        btnNewButton.setBounds(823, 545, 96, 40);
         contentPane.add(btnNewButton);
-        btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/next.png")));
+        btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/submit.jpg")));
 
         btnNewButton_1 = new JButton("Back");
         btnNewButton_1.addActionListener(new ActionListener() {
@@ -165,9 +174,9 @@ public class addQuestion extends JFrame {
         		setVisible(false);
             }
         });
-        btnNewButton_1.setBounds(14, 490, 174, 29);
+        btnNewButton_1.setBounds(82, 554, 131, 46);
         contentPane.add(btnNewButton_1);
-        btnNewButton_1.setIcon(new ImageIcon(LevelGame.class.getResource("/View/img/hp.png")));
+        btnNewButton_1.setIcon(new ImageIcon(LevelGame.class.getResource("/View/img/back.jpg")));
         
         lblNewLabel_3 = new JLabel("Level:");
         lblNewLabel_3.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
