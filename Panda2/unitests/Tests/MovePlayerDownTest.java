@@ -19,7 +19,7 @@ class MovePlayerDownTest {
 	        snake.setXTailNum(3);
 	        snake.setYTailNum(1);
 
-	        int[] result = snake.MovePlayerDown(3, 4);
+	        int[] result = snake.MovePlayer(3, 4);
 
 	        assertEquals(3, result[0]);
 	        assertEquals(1, result[1]);

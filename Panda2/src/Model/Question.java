@@ -96,7 +96,7 @@ public class Question {
 			return SysData.HardQues.get(index); // returning a random Hard question
 		} else {
 			// Throw an exception indicating no questions available
-			return null; //yara!
+			return null; 
 		}
 	}
 

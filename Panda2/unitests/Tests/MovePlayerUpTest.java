@@ -21,8 +21,7 @@ class MovePlayerUpTest {
 		ladder.setXEnd(5);
 		ladder.setYEnd(9);
 
-		int[] result = ladder.MovePlayerUp(8, 1);
-
+		int[] result = ladder.MovePlayer(8, 1);
 		assertEquals(5, result[0]);
 		assertEquals(9, result[1]);
 	}
