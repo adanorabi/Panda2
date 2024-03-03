@@ -36,6 +36,8 @@ import Model.*;
 
 public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredListener {
 	static int N=60;
+	static int X=7;
+	static int Y=7;
 	private JPanel contentPane;
 	private JLabel lblEasyTable; // Label for the easytable image
 	private JLabel lblSnake; 
@@ -846,7 +848,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
 						System.out.println("the current player is:"+p.getPlayerColor());
-						movePlayer(p, bx, by,ax, ay);//moved player once
+						movePlayer(p, bx, by,ax, ay,g);//moved player once
 
 
 						while( g.UpdatePlayerPlace()!=0) {//
@@ -885,7 +887,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 								awx=p.getPlayerRow();//new x
 								awy=p.getPlayerCol();// new y
 
-								movePlayer(p, ax, ay,awx, awy);
+								movePlayer(p, ax, ay,awx, awy,g);
 								landedOn(g);
 
 							}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
@@ -894,7 +896,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 							 awx=p.getPlayerRow();//new x
 							 awy=p.getPlayerCol();// new y
 
-							movePlayer(p, ax, ay,awx, awy);
+							movePlayer(p, ax, ay,awx, awy,g);
 							landedOn(g);
 						}
 						g.NextPlayer();
@@ -935,7 +937,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 								int ax = p.getPlayerRow();
 								int ay = p.getPlayerCol();
 
-								movePlayer(p, bx, by, ax, ay);    //move player by answer
+								movePlayer(p, bx, by, ax, ay,g);    //move player by answer
 
 								while (g.UpdatePlayerPlace() != 0) {//
 									String answer="";
@@ -969,7 +971,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 										int awx=p.getPlayerRow();//new x
 										int awy=p.getPlayerCol();// new y
 
-										movePlayer(p, ax, ay,awx, awy);
+										movePlayer(p, ax, ay,awx, awy,g);
 										landedOn(g);
 
 									}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==p.getPlayerRow()&&ay==p.getPlayerCol()))
@@ -978,7 +980,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 									int awx = p.getPlayerRow();
 									 int awy = p.getPlayerCol();
 
-									movePlayer(p, ax, ay, awx, awy);
+									movePlayer(p, ax, ay, awx, awy,g);
 
 								}
 								g.NextPlayer();
@@ -1004,7 +1006,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	}
 
 
-	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery) {//check
+	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery,Game g) {//check
 		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 		System.out.println("("+beforx+","+befory+")"+" to ("+afterx+","+aftery+")");
@@ -1067,6 +1069,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				timer.stop(); // Stop the timer when the movement is complete
 			}
 		});
+		if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner*/
+			
+			Player p1=g.CurrentTurn();
+			SysData.AddGame(g);
+		//	Winner w=new Winner(p1,); 
+		}
 
 	}
 	public void lineMangment(int turn,int num) {
