@@ -1250,6 +1250,38 @@ public class MediumLevel extends JFrame implements ActionListener {
 	    public void stopTimer() {
 	        timer.stop();
 	    }
+	    public void setPlayerText(Player p, String text) {
+			// Get the player's name
+			String playerName = p.getNickName();
+
+			// Set the full text with player name and additional text
+			String fullText = "<html>Player <font color=\"" + getColorCode(p.getPlayerColor()) + "\">" + playerName + "</font> " + text + "</html>";
+
+			// Set the full HTML text
+			mytext.setText(fullText);
+
+			// Center the text horizontally
+			mytext.setHorizontalAlignment(SwingConstants.CENTER);
+		}
+
+		// Method to get color code based on PlayerColor
+		private String getColorCode(PlayerColor color) {
+			switch (color) {
+			case Red:
+				return "red";
+			case Green:
+				return "green";
+			case Yellow:
+				return "yellow";
+			case Blue:
+				return "blue";
+			default:
+				return "black"; // Default color if player color is not recognized
+			}
+		}
+
+
+
 
 
 	@Override
