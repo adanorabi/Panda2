@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import Controller.SysData;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -39,6 +41,8 @@ public class editQ extends JFrame {
 	private JButton Submit;
 
 	public editQ(table2 parent, Question q, int modelRow) {
+		Question oldQuestion=new Question(SysData.QuestionId++,q.getQLevel(),q.getContent(), q.getAnswer(), q.getTrueAnswer());
+	 
 		this.parentFrame = parent;
 
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
@@ -169,6 +173,12 @@ public class editQ extends JFrame {
 				// Update the question in the allQuestions ArrayList
 				int index = parentFrame.getAllQuestions().indexOf(q);
 				parentFrame.getAllQuestions().set(index, q);
+				Question [] questions= new Question[2];
+				questions[0]=oldQuestion;
+				questions[1]=q;
+				System.out.println("This is old question"+oldQuestion);
+				System.out.println("This is new question"+q);
+				SysData.editQuestion(questions); // editing json file
 
 				// Update the table directly in the parent frame (table2)
 				parentFrame.updateTable();

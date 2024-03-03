@@ -19,27 +19,26 @@ public class Main {
 		MainFrame mainF= new MainFrame();
 		mainF.setVisible(true);
 		
-		SysData.UploadQuestions(); 
+		SysData.UploadQuestions(); // uploading questions from json
 
-	 
-		Levels QLevel=Levels.Easy;
-		String Content="What is a characteristic of Scrum methodology?";
-		ArrayList<String> Answer=new ArrayList<>();
-		Answer.add("good");
-		Answer.add("fine");
-		Answer.add("bad");
-		Answer.add("so bad");
-		String TrueAnswer="bad";
-		Question q1=new Question(SysData.QuestionId++,QLevel,Content,Answer,TrueAnswer);
-	
-		Question q2=new Question(SysData.QuestionId++,Levels.Hard,"We Can Do This?",Answer,TrueAnswer);
-		//SysData. AddQuestioToJson(q1);
-	
-		Question[] questions;
-		questions=new Question[2];
-		questions[0]=q1;
-		questions[1]=q2;
-		SysData.editQuestion(questions);
+//		Levels QLevel=Levels.Easy;
+//		String Content="What is a characteristic of Scrum methodology?";
+//		ArrayList<String> Answer=new ArrayList<>();
+//		Answer.add("good");
+//		Answer.add("fine");
+//		Answer.add("bad");
+//		Answer.add("so bad");
+//		String TrueAnswer="bad";
+//		Question q1=new Question(SysData.QuestionId++,QLevel,Content,Answer,TrueAnswer);
+//	
+//		Question q2=new Question(SysData.QuestionId++,Levels.Hard,"We Can Do This?",Answer,TrueAnswer);
+//		//SysData. AddQuestioToJson(q1);
+//	
+//		Question[] questions;
+//		questions=new Question[2];
+//		questions[0]=q1;
+//		questions[1]=q2;
+//		SysData.editQuestion(questions);
 	//SysData.DeleteQuestioFromJson("What does MVC stand for in the context of software architecture?");
 	}
 }
