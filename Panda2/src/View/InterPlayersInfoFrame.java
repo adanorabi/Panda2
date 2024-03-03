@@ -262,7 +262,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 
 		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
-		lblNewLabel_2.setBounds(560, 244, 100, 130);
+		lblNewLabel_2.setBounds(711, 96, 100, 130);
 		contentPane.add(lblNewLabel_2);
 		//player2 info ************************
 		JLabel lblNewLabel_2 = new JLabel("player2 nickname:");
