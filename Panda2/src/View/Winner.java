@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -71,6 +72,9 @@ public class Winner extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		 // Play victory sound
+        playVictorySound();
+
 		ImageIcon winIcon = new ImageIcon(Winner.class.getResource("/View/img/winframe.png"));
 		int winWidth = 500; // Adjusted width based on grid size
 		int winHeight = 300;//Adjusted height based on grid size
@@ -353,4 +357,17 @@ public class Winner extends JFrame {
 
 
 	}
+	// Method to play victory sound
+    private void playVictorySound() {
+        try {
+            File audioFile = new File("victory.wav"); // Adjust the file path accordingly
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
 }
