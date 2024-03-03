@@ -347,6 +347,8 @@ public class SysData {
 					}else if(fields[3].equals(PlayerColor.Yellow)) {
 						player.setPlayerColor(PlayerColor.Yellow);
 					}
+					
+					
 
 					//		        game.setWinnerId(Integer.parseInt(fields[2]));
 
