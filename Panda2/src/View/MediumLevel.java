@@ -133,6 +133,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		mytext.setBounds(200, 29, 900, 50);
 		contentPane.add( mytext);
+		Player proll=g.CurrentTurn();
+		setPlayerText(proll, "you have to roll the dice");
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/mid.png")));
 		lblNewLabel_1.setBounds(185, 90, 1005,790);//94,59
@@ -826,9 +828,10 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 				// Create a new JLabel with the dice image and add it to the lblEasyTable panel
 				diceLabel.setIcon(diceIcons[randomIndex]);
-				diceLabel.setBounds(40, 520, 150, 150);
+				diceLabel.setBounds(40, 722, 150, 150);
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
+					
 					Player p=g.CurrentTurn();
 
 					int bx=p.getPlayerRow();
@@ -837,12 +840,15 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 					int squareResult;
 					Object  CHECK = g.Roll();
-					System.out.println("the dice rolled"+CHECK);
+					System.out.println("********************************************************8the dice rolled"+CHECK);
 					Question q;
 					String answer="";
-
+					int awx=0,awy=0;
 					if(CHECK instanceof Integer) {
 						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
+						String s= "you have to walk "+CHECK+" steps!!";
+						setPlayerText(p, s);
+					
 						answer=Integer.toString((Integer)CHECK);
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
@@ -858,10 +864,16 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 								if (myQ.getQLevel().equals(Levels.Easy)) {
 									answer = "easy question";
+									s= "you have landed on easy question";
+									setPlayerText(p, s);
 								} else if (myQ.getQLevel().equals(Levels.Medium)) {
 									answer = "medium question";
+									s= "you have landed on medium question";
+									setPlayerText(p, s);
 								} else {
 									answer = "hard question";
+									s= "you have landed on hard question";
+									setPlayerText(p, s);
 								}
 								System.out.println("questionnnn frame");
 
@@ -877,37 +889,45 @@ public class MediumLevel extends JFrame implements ActionListener {
 								});
 								qu.setVisible(true);
 
-								int awx=p.getPlayerRow();//new x
-								int awy=p.getPlayerCol();// new y
+								awx=p.getPlayerRow();//new x
+								awy=p.getPlayerCol();// new y
 
 								movePlayer(p, ax, ay,awx, awy);
+								landedOn(g);
 
-							}if( g.UpdatePlayerPlace()!=0)
+							}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
 								break;
 
-							int awx=p.getPlayerRow();//new x
-							int awy=p.getPlayerCol();// new y
+							 awx=p.getPlayerRow();//new x
+							 awy=p.getPlayerCol();// new y
 
 							movePlayer(p, ax, ay,awx, awy);
-
+							landedOn(g);
 						}
 						g.NextPlayer();
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
 					}/**************************question dice*************************8*/
 					else {
-
+						
 						System.out.println("the current player is:" + p.getPlayerColor());
 						System.out.println("questionnnnnnn type!!");
 						q = (Question) CHECK;
+						String s="";
 						if (q.getQLevel().equals(Levels.Easy)) {
-							diceLabel.setIcon(diceIcons[5]);
+							diceLabel.setIcon(diceIcons[7]);//adan added
 							answer = "easy question";
+							s= "you have landed on easy question";
+							setPlayerText(p, s);
 						} else if (q.getQLevel().equals(Levels.Medium)) {
-							diceLabel.setIcon(diceIcons[7]);
+							diceLabel.setIcon(diceIcons[9]);//adan added
 							answer = "medium question";
+							s= "you have landed on medium question";
+							setPlayerText(p, s);
 						} else {
-							diceLabel.setIcon(diceIcons[6]);
+							diceLabel.setIcon(diceIcons[8]);//adan added
 							answer = "hard question";
+							s= "you have landed on hard question";
+							setPlayerText(p, s);
 						}
 						System.out.println("questionnnn frame");
 						QuestionFrame qu = new QuestionFrame(q, new QuestionFrame.QuestionAnsweredListener() {
@@ -916,6 +936,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 								// This method will be called when the player answers the question
 								g.updateByQuestion(q, isCorrect);
 								System.out.println("Answered: " + isCorrect);
+								String s= "you'r answer is "+isCorrect;
+								setPlayerText(p, s);
 								// Continue with your logic here
 								int ax = p.getPlayerRow();
 								int ay = p.getPlayerCol();
@@ -955,17 +977,19 @@ public class MediumLevel extends JFrame implements ActionListener {
 										int awy=p.getPlayerCol();// new y
 
 										movePlayer(p, ax, ay,awx, awy);
+										landedOn(g);
 
-									}if( g.UpdatePlayerPlace()!=0)
+									}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==p.getPlayerRow()&&ay==p.getPlayerCol()))
 										break;
 
 									int awx = p.getPlayerRow();
-									int awy = p.getPlayerCol();
+									 int awy = p.getPlayerCol();
 
 									movePlayer(p, ax, ay, awx, awy);
 
 								}
 								g.NextPlayer();
+								setPlayerText(g.CurrentTurn(), "you have to roll the dice");
 								lineMangment(g.CurrentTurn().getPlayeringame(), num);
 							}
 						});
