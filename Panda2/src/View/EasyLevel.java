@@ -1081,13 +1081,13 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			
 			SysData.AddGame(g);
 			g.getPlayersFinalPLaces();
-		/*	if(g.getPlayersFinalPLaces().size()==2) {
+			if(g.getPlayersFinalPLaces().size()==2) {
 				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
-			}else if(g.getPlayersFinalPLaces().size()) {
+			}else if(g.getPlayersFinalPLaces().size()==3) {
 				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
 			}else {
 				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
-			}*/
+			}
 		//	Winner w=new Winner(p1,); 
 		}
 
