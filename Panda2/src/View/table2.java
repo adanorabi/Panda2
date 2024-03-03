@@ -47,20 +47,20 @@ public class table2 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-	     FlatLaf.registerCustomDefaultsSource("View");
-         FlatLightLaf.setup();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					table2 frame = new table2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//	     FlatLaf.registerCustomDefaultsSource("View");
+//         FlatLightLaf.setup();
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					table2 frame = new table2();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -124,10 +124,13 @@ public class table2 extends JFrame {
 				if (selectedRow != -1) { // If a row is selected
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					int modelRow = table.convertRowIndexToModel(selectedRow);
+					Question selectedQuestion = allQuestions.get(modelRow);
 					model.removeRow(modelRow); // Remove row from table
+					SysData.DeleteQuestioFromJson(selectedQuestion.getContent());  // deleting from json
 
 					// Remove corresponding question from the list
 					allQuestions.remove(modelRow);
+					
 				} else {
 					JOptionPane.showMessageDialog(contentPane, "Please select a row to delete.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
 				}
