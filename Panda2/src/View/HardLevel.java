@@ -172,7 +172,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		/****************************dice*************************************************************/
 		diceButton = new JButton("Roll Dice");
 		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.jpg")));
-		diceButton.setBounds(43, 702, 134, 49);
+		diceButton.setBounds(43, 902, 134, 49);
 		diceButton.addActionListener(new ActionListener() {
 
 
@@ -187,7 +187,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		diceLabel = new JLabel("");
 		diceLabel.setIcon(new ImageIcon(HardLevel.class.getResource("/View/img/1.png")));
-		diceLabel.setBounds(40, 520, 150, 150);
+		diceLabel.setBounds(43, 722, 150, 150);
 
 		contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
 		diceLabel.setVisible(true);
@@ -453,7 +453,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Create a JLabel for the scaled snake image
 		JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
-		lblNewLabel_3.setBounds(1480, 50,80,80);//
+		lblNewLabel_3.setBounds(1680, 50,80,80);//
 
 		// Add the snake label to the content pane
 		contentPane.add(lblNewLabel_3);
@@ -579,9 +579,9 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Calculate the position of the snake head and tail
 		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY = 812- yhead * 68; // Adjusted y position based on the board offset and grid size
+		int snakeHeadY = 880- yhead * 68; // Adjusted y position based on the board offset and grid size
 		int snakeTailX = 185 + xtail * 123; // Adjusted x position based on the board offset and grid size
-		int snakeTailY =  812- ytail * 68; // Adjusted y position based on the board offset and grid size
+		int snakeTailY =  880- ytail * 68; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
 		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
@@ -614,9 +614,9 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Calculate the position of the snake head and tail
 		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY =  812  - yhead * 68; // Adjusted y position based on the board offset and grid size
+		int snakeHeadY =  880 - yhead * 68; // Adjusted y position based on the board offset and grid size
 		int snakeTailX = 188 + xtail * 123; // Adjusted x position based on the board offset and grid size
-		int snakeTailY =  812  - ytail *  68; // Adjusted y position based on the board offset and grid size
+		int snakeTailY =  880  - ytail *  68; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
 		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
@@ -681,9 +681,9 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Calculate the position of the snake head and tail
 		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
-		int snakeHeadY = 812 - yhead * 68; // Adjusted y position based on the board offset and grid size
+		int snakeHeadY = 880 - yhead * 68; // Adjusted y position based on the board offset and grid size
 		int snakeTailX = 185 + xtail * 123; // Adjusted x position based on the board offset and grid size
-		int snakeTailY = 812 - ytail * 68; // Adjusted y position based on the board offset and grid size
+		int snakeTailY = 880 - ytail * 68; // Adjusted y position based on the board offset and grid size
 		// Calculate the size of the snake image
 		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
 		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 68; // Adjusted height based on grid size
@@ -711,9 +711,9 @@ public class HardLevel extends JFrame implements ActionListener {
 
 	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
 		int ladderHeadX = 190 + xhead * 123; // Adjusted x position based on the board offset and grid size
-		int ladderHeadY = 812 - yhead * 68; // Adjusted y position based on the board offset and grid size
+		int ladderHeadY = 880 - yhead * 68; // Adjusted y position based on the board offset and grid size
 		int ladderTailX = 190 + xtail * 123; // Adjusted x position based on the board offset and grid size
-		int ladderTailY = 812 - ytail * 68; // Adjusted y position based on the board offset and grid size
+		int ladderTailY = 880 - ytail * 68; // Adjusted y position based on the board offset and grid size
 		ImageIcon ladderIcon=null;
 		// Calculate the size of the snake image
 		int ladderWidth = Math.abs(ladderHeadX - ladderTailX) + 89; // Adjusted width based on grid size
@@ -778,7 +778,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Calculate the position of the surprise
 		int sX = 200 + x * 123; 
-		int sY =822-y*68;
+		int sY =892-y*68;
 
 		// Calculate the size of the snake image
 		int width = 50; // Adjusted width based on grid size
@@ -811,7 +811,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Calculate the position of the surprise
 		int sX = 200 + x * 123; 
-		int sY =830-y*68;
+		int sY =900-y*68;
 
 		// Calculate the size of the snake image
 		int width = 40; // Adjusted width based on grid size
@@ -858,7 +858,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 				// Create a new JLabel with the dice image and add it to the lblEasyTable panel
 				diceLabel.setIcon(diceIcons[randomIndex]);
-				diceLabel.setBounds(40, 520, 150, 150);
+				diceLabel.setBounds(40, 722, 150, 150);
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
 					Player p=g.CurrentTurn();
@@ -1029,27 +1029,27 @@ public class HardLevel extends JFrame implements ActionListener {
 		case 1:
 			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 + beforx * 123;
-			pY =800-aftery*68;
-			by=800-befory*68;
+			pY =870-aftery*68;
+			by=870-befory*68;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
 			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 +N+beforx * 123;
-			pY =800-aftery*68;
-			by=800-befory*68;
+			pY =870-aftery*68;
+			by=870-befory*68;
 
 			break;
 		case 3:
 			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 + beforx * 123;
-			pY =800+N-aftery*68;
-			by=800+N-befory*68;
+			pY =870+N-aftery*68;
+			by=870+N-befory*68;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 4://+N
-			pY =800+N-aftery*68;
-			by=800+N-befory*68;
+			pY =870+N-aftery*68;
+			by=870+N-befory*68;
 			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 +N+beforx * 123;			break;
 
@@ -1193,7 +1193,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		switch(player.getPlayeringame()) {
 		case 1:
 			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
-			pY =800-player.getPlayerCol()*68;
+			pY =870-player.getPlayerCol()*68;
 			System.out.println("setting player 1");
 			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
 
@@ -1207,7 +1207,7 @@ public class HardLevel extends JFrame implements ActionListener {
 			break;
 		case 2://+N
 			pX = N+185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
-			pY =800-player.getPlayerCol()*68;
+			pY =870-player.getPlayerCol()*68;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1220,7 +1220,7 @@ public class HardLevel extends JFrame implements ActionListener {
 			break;
 		case 3://+N
 			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
-			pY =N-15+800-player.getPlayerCol()*68;
+			pY =N-15+870-player.getPlayerCol()*68;
 			System.out.println("setting player 3");
 			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1233,7 +1233,7 @@ public class HardLevel extends JFrame implements ActionListener {
 			break;
 		case 4://
 			pX = N+185+ player.getPlayerRow() *  123; // Adjusted x position based on the board offset and grid size//170
-			pY =N-15+800-player.getPlayerCol()*68;
+			pY =N-15+870-player.getPlayerCol()*68;
 			System.out.println("setting player 4");
 			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
