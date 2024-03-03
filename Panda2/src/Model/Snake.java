@@ -5,7 +5,7 @@ import java.util.Random;
 import Enum.Levels;
 import Enum.SnakeColor;
 
-public class Snake {
+public class Snake extends MovePlayerTemplate {
 
 	private SnakeColor Color;
 
@@ -297,19 +297,20 @@ public class Snake {
 			}
 		}
 	}
-	
-	public int[] MovePlayerDown (int playerX, int playerY){
-		
-		int XYTail[]=new int[2];
-		
-		if(this.getXHeadNum()==playerX && this.getYHeadNum()==playerY) {
+	 @Override
+	 public int[] MovePlayer (int playerX, int playerY) {
+		 int XYTail[]=new int[2];
 			
+			if(this.getXHeadNum()==playerX && this.getYHeadNum()==playerY) {
+				
 
-			XYTail[0]=this.getXTailNum();
-			XYTail[1]=this.getYTailNum();
-		}
-		return XYTail;
-		
-	}
+				XYTail[0]=this.getXTailNum();
+				XYTail[1]=this.getYTailNum();
+			}
+			return XYTail;
+		 
+	 }
+	
+
 
 }
