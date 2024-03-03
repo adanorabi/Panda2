@@ -33,6 +33,7 @@ public class SysData {
 	public void UploadGames() {}
 	Levels QLevel;
 	String Content;
+	
 	ArrayList<String> Answer;
 	String TrueAnswer;
 	public static void UploadQuestions() {  //A function that pulling out the questions from json file
