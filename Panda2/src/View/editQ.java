@@ -117,7 +117,7 @@ public class editQ extends JFrame {
 		comboBox.setSelectedItem(q.getQLevel()); // Here, Levels.Easy is the default value
 
 		JButton back = new JButton("back button");
-		back.setBounds(79, 553, 136, 46);
+		back.setBounds(79, 553, 130, 46);
 		ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
 		Image backimg = backIcon.getImage();
 		Image resizedImg = backimg.getScaledInstance(145, 46, Image.SCALE_SMOOTH);
@@ -132,7 +132,7 @@ public class editQ extends JFrame {
 		});
 
 		Submit = new JButton("Submit");
-		Submit.setBounds(723, 553, 140, 46);
+		Submit.setBounds(723, 553, 120, 46);
 		ImageIcon SubmitIcon = new ImageIcon(getClass().getResource("/View/img/submit.jpg"));
 		Image Submitimg = SubmitIcon.getImage();
 		Image resizedImg2 = Submitimg.getScaledInstance(140, 46, Image.SCALE_SMOOTH);
