@@ -18,7 +18,7 @@ public class Dice {
 
 
 	public int[] getDiceOptions() {
-		return diceOptions;
+		return this.diceOptions;
 	}
 
 	public void setDiceOptions(int[] diceOptions) {
