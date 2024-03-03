@@ -22,6 +22,7 @@ import Enum.PlayerColor;
 import Model.Player;
 
 import javax.sound.sampled.*;
+import javax.swing.JButton;
 public class Winner extends JFrame {
 	
 
@@ -43,28 +44,16 @@ public class Winner extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Winner frame = new Winner();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
-	public Winner() {
-		int num=4;
-		Player p1=new Player( PlayerColor.Red, "yara",4, 4,2);//wenner
-		Player p2=new Player ( PlayerColor.Yellow, "yomna", 4, 4,2);//2nd
-		Player p3=new Player ( PlayerColor.Green, "ghaidaa", 4, 4,2);//3rd
-		Player p4=new Player ( PlayerColor.Blue, "adan", 4, 4,2);//4rd
+	public Winner(Player p1,Player p2,Player p3,Player p4,int num) {
+	//	int num=4;
+//		Player p1=new Player( PlayerColor.Red, "yara",4, 4,2);//wenner
+//		Player p2=new Player ( PlayerColor.Yellow, "yomna", 4, 4,2);//2nd
+//		Player p3=new Player ( PlayerColor.Green, "ghaidaa", 4, 4,2);//3rd
+//		Player p4=new Player ( PlayerColor.Blue, "adan", 4, 4,2);//4rd
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setBounds(400, 100, 1200, 700);
@@ -369,5 +358,4 @@ public class Winner extends JFrame {
             e.printStackTrace();
         }
     }
-	
 }

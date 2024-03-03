@@ -127,13 +127,16 @@ public class History extends javax.swing.JFrame {
 
 	private void initComponents( ) {
 		Game g=new Game(10,Levels.Easy,7,7);
-		g.setWinnerId(2);
+		
 		Player p1=new Player(PlayerColor.Blue,"panda1",0,0,1);
 		Player p2=new Player(PlayerColor.Red,"panda2",0,0,1);
+		g.setWinnerId(2);
 		g.getPlayers().add(p2);
 		g.getPlayers().add(p1);
 		g.setEndTime(110099);
+		SysData.winnerPlayer.add(p2);
 		SysData.gamesList.add(g);
+		SysData.AddGame(g);
 		jPanel1 = new javax.swing.JPanel();
 		scroll = new javax.swing.JScrollPane();
 		table = new javax.swing.JTable();
@@ -148,9 +151,11 @@ public class History extends javax.swing.JFrame {
 
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
 			Game game = SysData.gamesList.get(i);
+			System.out.println(i);
+			Player p=SysData.winnerPlayer.get(i);
 			data[i][0] = game.getGameId();
 			data[i][1] = game.getGameLevel();
-			data[i][2] = game.getWinnerId();
+			data[i][2] = p.getNickName();
 			data[i][3] = game.getEndTime();
 			data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
 		}
