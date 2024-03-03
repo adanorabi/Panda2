@@ -45,7 +45,7 @@ public class HardLevel extends JFrame implements ActionListener {
 	 */
 	public HardLevel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(400, 100, 1200, 900);
+		setBounds(400, 0, 2000, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

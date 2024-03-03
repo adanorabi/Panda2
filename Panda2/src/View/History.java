@@ -223,19 +223,4 @@ public class History extends javax.swing.JFrame {
 		MainFrame mainFrame = new MainFrame(); // Create an instance of MainFrame
 		mainFrame.setVisible(true); // Make the MainFrame visible
 	}
-
-	public static void main(String[] args) {
-		FlatLaf.registerCustomDefaultsSource("View");
-		FlatLightLaf.setup();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					History frame = new History();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 }
