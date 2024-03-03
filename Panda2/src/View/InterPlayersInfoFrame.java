@@ -1284,7 +1284,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 				else if(Levels.Hard==level)
 				{
-					HardLevel hardBoard= new HardLevel();
+					HardLevel hardBoard= new HardLevel(p1,p2,p3,p4,Num);
 					setVisible(false);
 					hardBoard.setVisible(true);
 				}
