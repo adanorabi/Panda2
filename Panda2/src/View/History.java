@@ -142,6 +142,8 @@ public class History extends javax.swing.JFrame {
 
 		jPanel1.setLayout(new java.awt.BorderLayout());
 		// Assuming SysData.gamesList is a list of Game objects
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.setRowCount(0); // Removes all rows from the table
 		Object[][] data = new Object[SysData.gamesList.size()][5]; // Assuming there are 5 columns in your table
 
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
