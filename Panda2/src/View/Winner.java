@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -9,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
+import FlatLafDesign.BackButton;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -19,6 +21,7 @@ import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import Enum.PlayerColor;
+import FlatLafDesign.BackButton;
 import Model.Player;
 
 import javax.sound.sampled.*;
@@ -290,6 +293,26 @@ public class Winner extends JFrame {
 /****************player movement**************/
      headMove();
 
+		BackButton backButton = new BackButton();
+		backButton.setText("Home"); // Set button text
+		backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
+
+		// Add BackButton to the frame
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setOpaque(false); // Set panel to be transparent
+		buttonPanel.add(backButton); // Add the backButton to the buttonPanel
+
+		Container backgroundPanel = null;
+		// Add the buttonPanel to the backgroundPanel
+		backgroundPanel.add(buttonPanel, BorderLayout.SOUTH); // Add buttonPanel to the SOUTH of backgroundPanel
+
+		// Adjust the bounds of the buttonPanel instead of the backButton
+		buttonPanel.setBounds(10, 700, 30, 20); // Adjust x, y, width, and height as needed for the buttonPanel
+
+		// Repaint the frame
+		revalidate();
+		repaint();
+
 	}
 	public void headMove() {
 		Timer playerMoveTimer = new Timer(100, new ActionListener() {
@@ -358,4 +381,11 @@ public class Winner extends JFrame {
             e.printStackTrace();
         }
     }
+
+	private void onBackButtonClick() {
+		// Handle back button click event here, navigate to MainFrame
+		dispose(); // Close the current window
+		MainFrame mainFrame = new MainFrame(); // Create an instance of MainFrame
+		mainFrame.setVisible(true); // Make the MainFrame visible
+	}
 }

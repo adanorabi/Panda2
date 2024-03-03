@@ -15,6 +15,8 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,13 +26,14 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 
 import Model.*;
 public class InterPlayersInfoFrame extends JFrame implements ActionListener{
-
+	  private final Map<JRadioButton, ButtonGroup> buttonGroupMap = new HashMap<JRadioButton, ButtonGroup>();
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public JTextField textField;
@@ -67,6 +70,25 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 	private final ButtonGroup buttonGroup4 = new ButtonGroup();
 	private Levels level;
 	public InterPlayersInfoFrame(final int NumofPlayers, Levels gameLevel) {
+		   addButtonToGroup(buttonGroup, redRadioButton);
+	        addButtonToGroup(buttonGroup, greenRadioButton);
+	        addButtonToGroup(buttonGroup, blueRadioButton);
+	        addButtonToGroup(buttonGroup, yRadioButton);
+
+	        addButtonToGroup(buttonGroup2, redRadioButton2);
+	        addButtonToGroup(buttonGroup2, greenRadioButton2);
+	        addButtonToGroup(buttonGroup2, blueRadioButton2);
+	        addButtonToGroup(buttonGroup2, yRadioButton2);
+
+	        addButtonToGroup(buttonGroup3, redRadioButton3);
+	        addButtonToGroup(buttonGroup3, greenRadioButton3);
+	        addButtonToGroup(buttonGroup3, blueRadioButton3);
+	        addButtonToGroup(buttonGroup3, yRadioButton3);
+	        
+	        addButtonToGroup(buttonGroup4, redRadioButton2_1);
+	        addButtonToGroup(buttonGroup4, greenRadioButton2_1);
+	        addButtonToGroup(buttonGroup4, blueRadioButton2_1);
+	        addButtonToGroup(buttonGroup4, yRadioButton2_1);
 		Num=NumofPlayers;
 		level=gameLevel;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,7 +129,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					enableColorButton(greenRadioButton2);
 					enableColorButton(blueRadioButton2);
 					enableColorButton(yRadioButton2);    
-					redRadioButton2.setSelected(false);
+					
+					//buttonGroup2.clearSelection();
 					if(NumofPlayers==3) {
 						disableAndMarkColorButton(redRadioButton3);
 						enableColorButton(greenRadioButton3);
@@ -1122,7 +1145,17 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 	}
 	private void disableAndMarkColorButton(JRadioButton button) {
+		
 		button.setEnabled(false);
+		System.out.println(button.isSelected());
+		if(button.isSelected()==true) {
+			System.out.println("it is true");
+			 ButtonGroup group = buttonGroupMap.get(button);
+		        if (group != null) {
+		        	System.out.println("it is true2");
+		            group.clearSelection();
+		        }
+		}
 		button.setForeground(Color.GRAY); // Change color to indicate it's disabled
 		button.setUI(new BasicRadioButtonUI() {
 			@Override
@@ -1133,6 +1166,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			}
 		});
 	}
+
 	// Method to enable a color button
 	private void enableColorButton(JRadioButton button) {
 		button.setEnabled(true);
@@ -1302,6 +1336,10 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		}
 
 	}
+	 private void addButtonToGroup(ButtonGroup group, JRadioButton button) {
+	        group.add(button);
+	        buttonGroupMap.put(button, group);
+	    }
 	
 
 }

@@ -16,7 +16,7 @@ import Model.Player;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-
+import Controller.*; 
 public class History extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -46,9 +46,10 @@ public class History extends javax.swing.JFrame {
 			@Override
 			public void onView(int row) {
 				System.out.println("View row : " + row);
-				JFrame frame=new JFrame();
-				
-				showDialog(frame);
+				int gameId = (int) table.getValueAt(row, 0);
+                // Call the showScreenshot method with the game ID
+				Screenshot.showScreenshot(gameId);
+               
 			}
 		};
 		//1d
@@ -127,6 +128,7 @@ public class History extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 
 	private void initComponents( ) {
+		Screenshot.loadExistingScreenshots();;
 		String filePath = "AllGames.csv";
 	SysData.readCsv(filePath);
 		jPanel1 = new javax.swing.JPanel();
