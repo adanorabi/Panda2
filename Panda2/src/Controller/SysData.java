@@ -244,10 +244,6 @@ public class SysData {
 	}
 	
 	public static void AddGame(Game g) {
-		g.setWinnerId(0);
-		g.setEndTime(10);
-
-		gamesList.add(g);
 		String filePath = "AllGames.csv";
 
 		System.out.println("starting write user.csv file: " + filePath);
@@ -275,7 +271,7 @@ public class SysData {
 				fileWriter.append(",");
 				fileWriter.append(String.valueOf(g.getGameLevel()));
 				fileWriter.append(",");
-				//		    fileWriter.append(String.valueOf(g.getWinnerId()));
+//				fileWriter.append(String.valueOf(g.getWinnerId()));
 
 				for(Player p: g.getPlayers()) {
 					if(p.getPlayerID()==g.getWinnerId()) {
