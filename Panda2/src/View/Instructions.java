@@ -20,22 +20,6 @@ public class Instructions extends JFrame implements ActionListener {
     private static final long serialVersionUID = 1L;
    
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Instructions frame = new Instructions();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    /**
-     * Create the frame.
-     */
     public Instructions() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(110, 100, 1314, 816); // Set frame size here
