@@ -142,7 +142,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		mytext = new JLabel("");
-		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		mytext.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
 		mytext.setBounds(200, 29, 900, 50);
 		contentPane.add( mytext);
 		Player proll=g.CurrentTurn();
@@ -821,7 +821,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 				// Create a new JLabel with the dice image and add it to the lblEasyTable panel
 				diceLabel.setIcon(diceIcons[randomIndex]);
-				diceLabel.setBounds(40, 722, 150, 150);
+				diceLabel.setBounds(40, 520, 150, 150);
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
 					

@@ -828,7 +828,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 				// Create a new JLabel with the dice image and add it to the lblEasyTable panel
 				diceLabel.setIcon(diceIcons[randomIndex]);
-				diceLabel.setBounds(40, 722, 150, 150);
+				diceLabel.setBounds(40, 520, 150, 150);
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
 					
