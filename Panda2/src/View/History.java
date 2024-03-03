@@ -20,10 +20,25 @@ public class History extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel backgroundPanel;
     private ImageIcon backgroundImage;
-
+    private BackButton backButton; // Declare BackButton
     public History() {
     
         initComponents();
+        backButton = new BackButton();
+        backButton.setText("Back"); // Set button text
+        // Add action listener to handle button click event
+        backButton.addActionListener(e -> {
+            // Handle back button click event here, e.g., navigate to previous screen
+            // For example:
+            // dispose(); // Close the current window
+            // new PreviousScreen().setVisible(true); // Open previous screen
+        });
+        
+        // Add BackButton to the frame
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setOpaque(false); // Set panel to be transparent
+        buttonPanel.add(backButton);
+        backgroundPanel.add(buttonPanel, BorderLayout.NORTH);
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onEdit(int row) {
