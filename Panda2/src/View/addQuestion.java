@@ -152,6 +152,7 @@ public class addQuestion extends JFrame {
                     answers.add(answer4);
 
                     Question newQuestion =new Question(SysData.QuestionId++, level, content, answers, trueAnswer);
+                    SysData.AddQuestioToJson(newQuestion); // Adding question to json 
 
                     // Add the new question to the allQuestions ArrayList
                     parentFrame.getAllQuestions().add(newQuestion);
