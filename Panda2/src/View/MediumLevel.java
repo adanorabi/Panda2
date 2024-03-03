@@ -75,38 +75,44 @@ public class MediumLevel extends JFrame implements ActionListener {
 	public MediumLevel(Player p1,Player p2, Player p3,Player p4,int num) {
 
 		//---------------------yomna----------------------------------		
-				String filePath = "C:\\Users\\amroz\\Documents\\GitHub\\Panda2\\Panda2\\GameH.csv";
-				BufferedReader reader = null;
-				int swap=-1;
+		String filePath = "AllGames.csv";
+		System.out.println("test number11111111111111111111111");
+		BufferedReader reader = null;
+		int swap=0;
 
-				try {
-					String line = "";
-					reader = new BufferedReader(new FileReader(filePath));
-					reader.readLine();
+		try {
+			String line = "";
+			reader = new BufferedReader(new FileReader(filePath));
+			reader.readLine();
 
-					while((line = reader.readLine()) != null) {
-						String[] fields = line.split(",");
+			while((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+				System.out.println("test number222222222222222222222222222");
 
-
-						if(fields.length > 0) {
-							if(swap<Integer.parseInt(fields[0])) {
-								swap=Integer.parseInt(fields[0]);
-							}
-						}
-
+				if(fields.length > 0) {
+					System.out.println("test number333333333333333333333333333");
+					Game game = new Game();
+					Player player = new Player();
+					if(swap<Integer.parseInt(fields[0])) {
+						swap=Integer.parseInt(fields[0]);
 					}
+					System.out.println("swap in sysy data "+swap);
 
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				} finally {
-					try {
-						reader.close();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
 				}
-				
-				System.out.println((swap+1)+"the new id for the new game");
+			}
+
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}	
+		System.out.println((swap+1)+" the new id for the new game");
 		//-------------------------------yomna-------------------------------------------	
 		Game g=new Game((swap+1),Levels.Medium, 10, 10);
 		g.createGame();
