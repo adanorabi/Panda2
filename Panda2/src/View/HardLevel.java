@@ -956,12 +956,12 @@ public class HardLevel extends JFrame implements ActionListener {
 							s= "you have landed on easy question";
 							setPlayerText(p, s);
 						} else if (q.getQLevel().equals(Levels.Medium)) {
-							diceLabel.setIcon(diceIcons[8]);//adan added
+							diceLabel.setIcon(diceIcons[9]);//adan added
 							answer = "medium question";
 							s= "you have landed on medium question";
 							setPlayerText(p, s);
 						} else {
-							diceLabel.setIcon(diceIcons[9]);//adan added
+							diceLabel.setIcon(diceIcons[8]);//adan added
 							answer = "hard question";
 							s= "you have landed on hard question";
 							setPlayerText(p, s);
@@ -1010,17 +1010,17 @@ public class HardLevel extends JFrame implements ActionListener {
 										c.setVisible(true);
 
 
-										 awx=p.getPlayerRow();//new x
-										 awy=p.getPlayerCol();// new y
+										int awx=p.getPlayerRow();//new x
+										int awy=p.getPlayerCol();// new y
 
 										movePlayer(p, ax, ay,awx, awy);
 										landedOn(g);
 
-									}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
+									}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==p.getPlayerRow()&&ay==p.getPlayerCol()))
 										break;
 
-									 awx = p.getPlayerRow();
-									 awy = p.getPlayerCol();
+									int awx = p.getPlayerRow();
+									 int awy = p.getPlayerCol();
 
 									movePlayer(p, ax, ay, awx, awy);
 
@@ -1365,10 +1365,5 @@ public class HardLevel extends JFrame implements ActionListener {
 		}else if(num==3|| num==4||num==5) {
 			
 		}
-		else {
-			s="you are the winner!!";
-			setPlayerText(p, s);
-		}
-		
 	}
 }
