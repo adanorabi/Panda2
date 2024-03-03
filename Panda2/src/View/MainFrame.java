@@ -9,6 +9,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +20,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 public class MainFrame extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -100,6 +107,9 @@ public class MainFrame extends JFrame implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent e) {
+		
+		     FlatLaf.registerCustomDefaultsSource("View");
+	         FlatLightLaf.setup();
 		// TODO Auto-generated method stub
 		String s=e.getActionCommand();
 		if(s.equals("start")) {/*start the game and move to levelgame frame*/

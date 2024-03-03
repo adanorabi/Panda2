@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.SysData;
+import FlatLafDesign.TableGradientCell;
 import Model.Question;
 import sun.util.logging.resources.logging;
 
@@ -24,6 +26,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 public class table2 extends JFrame {
 
 	private JPanel contentPane;
@@ -43,6 +48,8 @@ public class table2 extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+	     FlatLaf.registerCustomDefaultsSource("View");
+         FlatLightLaf.setup();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -65,6 +72,8 @@ public class table2 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
+		
+		
 		allQuestions = new ArrayList<>();
 		allQuestions.addAll(SysData.EasyQues);
 		allQuestions.addAll(SysData.MidQues);
@@ -91,7 +100,11 @@ public class table2 extends JFrame {
 		table.getColumnModel().getColumn(2).setPreferredWidth(200);
 		contentPane.setLayout(null);
 		table.setRowHeight(40);
-
+		table.setDefaultRenderer(Object.class, new TableGradientCell());
+		table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
+	                + "hoverBackground:null;"
+	                + "pressedBackground:null;"
+	                + "separatorColor:$TableHeader.background");
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(240, 170, 1000, 700);
 		contentPane.add(scrollPane);
@@ -99,7 +112,7 @@ public class table2 extends JFrame {
 		delete = new JButton("delete");
 		delete.setContentAreaFilled(false); // Remove background
 		delete.setBorderPainted(false); // Remove border
-		delete.setBounds(1107, 116, 95, 44);
+		delete.setBounds(1098, 116, 95, 44);
 		ImageIcon deleteIcon = new ImageIcon(getClass().getResource("/View/img/delete.jpg"));
 		Image img = deleteIcon.getImage();
 		Image resizedImg = img.getScaledInstance(95, 44, Image.SCALE_SMOOTH);
@@ -123,7 +136,7 @@ public class table2 extends JFrame {
 
 
 		edit = new JButton("edit");
-		edit.setBounds(988, 116, 95, 44);
+		edit.setBounds(988, 116, 82, 44);
 		ImageIcon editIcon = new ImageIcon(getClass().getResource("/View/img/edit.jpg"));
 		Image editimg = editIcon.getImage();
 		Image resizedImg2 = editimg.getScaledInstance(95, 44, Image.SCALE_SMOOTH);
@@ -146,7 +159,7 @@ public class table2 extends JFrame {
 
 
 		details = new JButton("details");
-		details.setBounds(867, 116, 95, 44);
+		details.setBounds(877, 116, 82, 44);
 		ImageIcon detailsIcon = new ImageIcon(getClass().getResource("/View/img/details.jpg"));
 		Image detailsimg = detailsIcon.getImage();
 		Image resizedImg3 = detailsimg.getScaledInstance(95, 44, Image.SCALE_SMOOTH);
@@ -169,7 +182,7 @@ public class table2 extends JFrame {
 			}
 		});
 		addQ = new JButton("add question");
-		addQ.setBounds(137, 81, 234, 62);
+		addQ.setBounds(240, 81, 234, 62);
 		ImageIcon addIcon = new ImageIcon(getClass().getResource("/View/img/addq.jpg"));
 		Image addimg = addIcon.getImage();
 		Image resizedImg4 = addimg.getScaledInstance( 245, 70, Image.SCALE_SMOOTH);
@@ -203,6 +216,24 @@ public class table2 extends JFrame {
 				mf.setVisible(true);
 			}
 		});
+
+		ImageIcon icon = new ImageIcon(Winner.class.getResource("/View/img/sky.png"));
+		System.out.println("Image loaded: " + icon.getImageLoadStatus());
+
+		//Verify image dimensions
+		int containerWidth = 1500;
+		int containerHeight = 1000;
+		System.out.println("Container size: " + containerWidth + "x" + containerHeight);
+		//Create JLabel with scaled image
+		Image scaledImg = icon.getImage().getScaledInstance(containerWidth, containerHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon = new ImageIcon(scaledImg);		
+		JLabel lblNewLabel = new JLabel(scaledIcon);
+		lblNewLabel.setBounds(0, 0,containerWidth, containerHeight);//
+		//Set layout manager to BorderLayout
+
+
+		//Add JLabel to center of contentPane
+		contentPane.add(lblNewLabel);
 	}
 	public void updateEditedQuestion(int rowIndex, Question editedQuestion) {
 		// Update the question in the ArrayList
