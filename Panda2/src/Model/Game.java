@@ -6,6 +6,8 @@ import java.util.Random;
 import Controller.SysData;
 import Enum.Levels;
 import Enum.SnakeColor;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Game {
 
@@ -568,6 +570,15 @@ public class Game {
 		return false;
 
 	}
+	public ArrayList<Integer> getPlayersFinalPLaces(){
+		ArrayList<Integer> placeofplayers=new ArrayList<Integer>();
+		for(Player p : this.Players) {
+			int num=this.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol());
+			placeofplayers.add(num);
+			Collections.sort(placeofplayers, Collections.reverseOrder());
+		}
+		return placeofplayers;
+	}
 
 
 	public int UpdatePlayerPlace() {
@@ -628,6 +639,7 @@ public class Game {
 	public int NextPlayer() {
 		return ++this.PlayerTurn;
 	}
+
 
 
 }
