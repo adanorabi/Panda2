@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -12,7 +13,7 @@ import java.io.FileReader;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
+import Enum.*;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -26,6 +27,9 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.StyleConstants;
+
+import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
 
 import Model.Game;
 import Model.Player;
@@ -132,7 +136,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		g.createGame();
 		g.getPlayers().add(p1);
 		g.getPlayers().add(p2);
-
+System.out.println("************************************"+p1.getNickName());
 		/**************************************************************************************************/
 
 
@@ -144,10 +148,11 @@ public class HardLevel extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		mytext = new JLabel("");
-		mytext.setFont(new Font("Tahoma", Font.ITALIC, 20));
-		mytext.setBounds(200, 29, 900, 50);
+		mytext.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
+		mytext.setBounds(200, 0, 1400, 50);
 		contentPane.add( mytext);
-
+		Player proll=g.CurrentTurn();
+setPlayerText(proll, "you have to roll the dice");
 		ImageIcon winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/hardtable.png"));
 		 int winWidth = 1600; // Adjusted width based on grid size
 		int winHeight = 880;//Adjusted height based on grid size
@@ -527,6 +532,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		}
 		for(i=0; i<g.getLadders().size();i++)
 		{
+			
 			int length= g.getLadders().get(i).getLength();
 			int xHead=g.getLadders().get(i).getXEnd();
 			int xTail=g.getLadders().get(i).getXStart();
@@ -535,13 +541,14 @@ public class HardLevel extends JFrame implements ActionListener {
 			System.out.println("lader ("+ length + "," + xHead + "," + yHead +"," +  xTail+ "," + yTail+"):" );
 			setLadders(length,xHead,yHead,xTail,yTail);
 		}
-		for (i=0 ; i<10; i++)
+		for (i=0 ; i<13; i++)
 		{
-			for (j=0 ; j<10; j++ )
+			for (j=0 ; j<13; j++ )
 			{
 				if(g.getPlaces()[i][j]==2||g.getPlaces()[i][j]==1) {
 					setsurprise(i, j);
 					System.out.println("surprise (" + i + "," + j + "):" );
+					
 				}
 				else if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
 					setq(i, j);
@@ -874,6 +881,7 @@ public class HardLevel extends JFrame implements ActionListener {
 					String answer="";
 
 					if(CHECK instanceof Integer) {
+						
 						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
 						answer=Integer.toString((Integer)CHECK);
 						int ax=p.getPlayerRow();
@@ -1029,27 +1037,27 @@ public class HardLevel extends JFrame implements ActionListener {
 		case 1:
 			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 + beforx * 123;
-			pY =870-aftery*68;
-			by=870-befory*68;
+			pY =860-aftery*68;
+			by=860-befory*68;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
 			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 +N+beforx * 123;
-			pY =870-aftery*68;
-			by=870-befory*68;
+			pY =860-aftery*68;
+			by=860-befory*68;
 
 			break;
 		case 3:
 			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 + beforx * 123;
-			pY =870+N-aftery*68;
-			by=870+N-befory*68;
+			pY =860+N-aftery*68;
+			by=860+N-befory*68;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 4://+N
-			pY =870+N-aftery*68;
-			by=870+N-befory*68;
+			pY =860+N-aftery*68;
+			by=860+N-befory*68;
 			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
 			bx= 185 +N+beforx * 123;			break;
 
@@ -1080,12 +1088,39 @@ public class HardLevel extends JFrame implements ActionListener {
 			}
 		});
 
+	}public void setPlayerText(Player p, String text) {
+	    // Get the player's name
+	    String playerName = p.getNickName();
+	    
+	    // Set the full text with player name and additional text
+	    String fullText = "<html>Player <font color=\"" + getColorCode(p.getPlayerColor()) + "\">" + playerName + "</font> " + text + "</html>";
+	    
+	    // Set the full HTML text
+	    mytext.setText(fullText);
+	    
+	    // Center the text horizontally
+	    mytext.setHorizontalAlignment(SwingConstants.CENTER);
 	}
-	public void setPlayerText(Player p,String text) {
-		System.out.println(p.getNickName());
-		System.out.println(text);
-		mytext.setText(p+" "+text);
+
+	// Method to get color code based on PlayerColor
+	private String getColorCode(PlayerColor color) {
+	    switch (color) {
+	        case Red:
+	            return "red";
+	        case Green:
+	            return "green";
+	        case Yellow:
+	            return "yellow";
+	        case Blue:
+	            return "blue";
+	        default:
+	            return "black"; // Default color if player color is not recognized
+	    }
 	}
+
+
+
+
 	public void lineMangment(int turn,int num) {
 		switch(num) {
 		case 2:
@@ -1193,7 +1228,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		switch(player.getPlayeringame()) {
 		case 1:
 			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
-			pY =870-player.getPlayerCol()*68;
+			pY =860-player.getPlayerCol()*68;
 			System.out.println("setting player 1");
 			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
 
@@ -1207,7 +1242,7 @@ public class HardLevel extends JFrame implements ActionListener {
 			break;
 		case 2://+N
 			pX = N+185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
-			pY =870-player.getPlayerCol()*68;
+			pY =860-player.getPlayerCol()*68;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1220,7 +1255,7 @@ public class HardLevel extends JFrame implements ActionListener {
 			break;
 		case 3://+N
 			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
-			pY =N-15+870-player.getPlayerCol()*68;
+			pY =N-15+860-player.getPlayerCol()*68;
 			System.out.println("setting player 3");
 			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
@@ -1233,7 +1268,7 @@ public class HardLevel extends JFrame implements ActionListener {
 			break;
 		case 4://
 			pX = N+185+ player.getPlayerRow() *  123; // Adjusted x position based on the board offset and grid size//170
-			pY =N-15+870-player.getPlayerCol()*68;
+			pY =N-15+860-player.getPlayerCol()*68;
 			System.out.println("setting player 4");
 			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
 
