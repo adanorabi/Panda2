@@ -328,6 +328,7 @@ public class SysData {
 					}
 					System.out.println("swap in sysy data "+swap);
 					game.setGameId(swap);
+					System.out.println("wwwwwwwwwwwwwwww");
 					if(fields[1].equals(Levels.Easy)) {
 						game.setGameLevel(Levels.Easy);
 					}else if(fields[1].equals(Levels.Medium)) {
