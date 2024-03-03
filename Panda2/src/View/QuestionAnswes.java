@@ -5,6 +5,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import Model.Question;
@@ -14,7 +16,13 @@ public class QuestionAnswes extends JFrame {
     private JPanel contentPane;
 
     public QuestionAnswes(Question q) {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                setVisible(false); // Hide the addQuestion frame
+            }
+        });
         setBounds(400, 30, 1100, 1000);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

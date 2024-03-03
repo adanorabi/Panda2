@@ -8,6 +8,8 @@ import java.awt.FontMetrics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -41,7 +43,13 @@ public class QuestionFrame extends JFrame {
         this.listener = listener; // Assign the listener
         answer = false;
         answered = false;
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                setVisible(false); // Hide the addQuestion frame
+            }
+        });
         setBounds(500, 200, 854, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -19,6 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import Enum.Levels;
 import Model.Question;
 
@@ -38,8 +41,14 @@ public class editQ extends JFrame {
 	public editQ(table2 parent, Question q, int modelRow) {
 		this.parentFrame = parent;
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 200, 1000, 700);
+	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                setVisible(false); // Hide the addQuestion frame
+            }
+        });
+        setBounds(500, 200, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
