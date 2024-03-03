@@ -76,6 +76,7 @@ public class MainFrame extends JFrame implements ActionListener{
 
 		JButton btnNewButton_2 = new JButton("hist");/*adding history button*/
 		btnNewButton_2.setIcon(new ImageIcon(getClass().getResource("/View/img/history.png")));
+		 btnNewButton_2.addActionListener(this);
 		btnNewButton_2.setBackground(Color.CYAN);
 		btnNewButton_2.setBounds(584, 418, 125, 130);
 		contentPane.add(btnNewButton_2);
@@ -114,6 +115,12 @@ public class MainFrame extends JFrame implements ActionListener{
 		String s=e.getActionCommand();
 		if(s.equals("start")) {/*start the game and move to levelgame frame*/
 			LevelGame lframe=new LevelGame();
+			this.setVisible(false);
+			lframe.setVisible(true);
+			
+		}
+		if(s.equals("hist")) {/*start the game and move to levelgame frame*/
+			History lframe=new History();
 			this.setVisible(false);
 			lframe.setVisible(true);
 			
