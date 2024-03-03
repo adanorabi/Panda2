@@ -1045,11 +1045,6 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		});
 
 	}
-	public void setPlayerText(Player p,String text) {
-		System.out.println(p.getNickName());
-		System.out.println(text);
-		mytext.setText(p+" "+text);
-	}
 	public void lineMangment(int turn,int num) {
 		switch(num) {
 		case 2:
@@ -1244,7 +1239,59 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	public void stopTimer() {
 		timer.stop();
 	}
+    public void setPlayerText(Player p, String text) {
+			// Get the player's name
+			String playerName = p.getNickName();
 
+			// Set the full text with player name and additional text
+			String fullText = "<html>Player <font color=\"" + getColorCode(p.getPlayerColor()) + "\">" + playerName + "</font> " + text + "</html>";
+
+			// Set the full HTML text
+			mytext.setText(fullText);
+
+			// Center the text horizontally
+			mytext.setHorizontalAlignment(SwingConstants.CENTER);
+		}
+
+		// Method to get color code based on PlayerColor
+		private String getColorCode(PlayerColor color) {
+			switch (color) {
+			case Red:
+				return "red";
+			case Green:
+				return "green";
+			case Yellow:
+				return "yellow";
+			case Blue:
+				return "blue";
+			default:
+				return "black"; // Default color if player color is not recognized
+			}
+		}
+
+
+		public void landedOn(Game g) {
+			String s=" ";
+			Player p=g.CurrentTurn();
+			
+			int num=g.UpdatePlayerPlace();
+			if(num==1||num==2) {
+				s="landed on surprise square";
+				setPlayerText(p, s);
+
+			}else if(num>=6 && num<=13) {
+				s="landed on a snake :(";
+				setPlayerText(p, s);
+				
+
+			}else if(num>=14 && num<=21) {
+				s="landed on a ladder :)";
+				setPlayerText(p, s);
+
+			}else if(num==3|| num==4||num==5) {
+				
+			}
+		}
 	@Override
 	public void onQuestionAnswered(boolean isCorrect) {
 		// TODO Auto-generated method stub
