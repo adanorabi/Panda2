@@ -29,6 +29,7 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+import Controller.Screenshot;
 import Controller.SysData;
 import Enum.Levels;
 import Enum.SnakeColor;
@@ -1072,6 +1073,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
 			
 			Player p1=g.CurrentTurn();
+			g.setWinnerId(p1.getPlayerID());
+			g.setEndTime(steps);
+			SysData.gamesList.add(g);
+			SysData.winnerPlayer.add(p1);
+			Screenshot.captureScreenshot(this);
+			
 			SysData.AddGame(g);
 			
 		//	Winner w=new Winner(p1,); 

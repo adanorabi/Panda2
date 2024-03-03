@@ -316,6 +316,7 @@ public class SysData {
 			while((line = reader.readLine()) != null) {
 				String[] fields = line.split(",");
 				System.out.println("test number222222222222222222222222222");
+				
 
 				if(fields.length > 0) {
 					System.out.println("test number333333333333333333333333333");
@@ -326,12 +327,12 @@ public class SysData {
 					}
 					System.out.println("swap in sysy data "+swap);
 					game.setGameId(swap);
-					System.out.println("wwwwwwwwwwwwwwww");
-					if(fields[1].equals(Levels.Easy)) {
+					
+					if(fields[1].equals("Easy")) {
 						game.setGameLevel(Levels.Easy);
-					}else if(fields[1].equals(Levels.Medium)) {
+					}else if(fields[1].equals("Medium")) {
 						game.setGameLevel(Levels.Medium);
-					}else if(fields[1].equals(Levels.Hard)) {
+					}else if(fields[1].equals("Hard")) {
 						game.setGameLevel(Levels.Hard);
 					}
 					player.setNickName(fields[2]);
@@ -344,12 +345,16 @@ public class SysData {
 					}else if(fields[3].equals(PlayerColor.Yellow)) {
 						player.setPlayerColor(PlayerColor.Yellow);
 					}
+					
+					
 
 					//		        game.setWinnerId(Integer.parseInt(fields[2]));
 
 					game.setEndTime(Integer.parseInt(fields[4]));
 					System.out.println(swap+ " ghdurtjrydtffhtfythg");
 					gamesList.add(game);
+					System.out.println(game.getGameLevel());
+					System.out.println(game.getGameId());
 					winnerPlayer.add(player);
 				}
 

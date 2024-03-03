@@ -43,7 +43,7 @@ public class Screenshot {
         }
     }
 
-    private static int captureScreenshot(JFrame frame) {
+    public static int captureScreenshot(JFrame frame) {
         int screenshotId = getNextScreenshotId();
         File screenshot = new File(SCREENSHOT_FOLDER + File.separator + "screenshot_" + screenshotId + ".png");
         try {

@@ -47,6 +47,7 @@ public class History extends javax.swing.JFrame {
 			public void onView(int row) {
 				System.out.println("View row : " + row);
 				JFrame frame=new JFrame();
+				
 				showDialog(frame);
 			}
 		};
@@ -126,17 +127,8 @@ public class History extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 
 	private void initComponents( ) {
-		Game g=new Game(10,Levels.Easy,7,7);
-		
-		Player p1=new Player(PlayerColor.Blue,"panda1",0,0,1);
-		Player p2=new Player(PlayerColor.Red,"panda2",0,0,1);
-		g.setWinnerId(2);
-		g.getPlayers().add(p2);
-		g.getPlayers().add(p1);
-		g.setEndTime(110099);
-		SysData.winnerPlayer.add(p2);
-		SysData.gamesList.add(g);
-		SysData.AddGame(g);
+		String filePath = "AllGames.csv";
+	SysData.readCsv(filePath);
 		jPanel1 = new javax.swing.JPanel();
 		scroll = new javax.swing.JScrollPane();
 		table = new javax.swing.JTable();
@@ -148,10 +140,12 @@ public class History extends javax.swing.JFrame {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0); // Removes all rows from the table
 		Object[][] data = new Object[SysData.gamesList.size()][5]; // Assuming there are 5 columns in your table
-
+        System.out.println("game list in history"+SysData.gamesList.size());
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
+			System.out.println("im in history");
 			Game game = SysData.gamesList.get(i);
-			System.out.println(i);
+			System.out.println(game.getGameLevel());
+			System.out.println(game.getGameId());
 			Player p=SysData.winnerPlayer.get(i);
 			data[i][0] = game.getGameId();
 			data[i][1] = game.getGameLevel();
