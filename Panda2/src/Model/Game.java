@@ -8,6 +8,8 @@ import Enum.Levels;
 import Enum.SnakeColor;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Map.Entry;
+import java.util.*;
 
 public class Game {
 
@@ -513,7 +515,7 @@ public class Game {
 
 		}
 		SysData.AddGame(this); 			
-//		put in levels  Adan!!
+		//		put in levels  Adan!!
 		return roll;
 	}
 
@@ -570,14 +572,41 @@ public class Game {
 		return false;
 
 	}
-	public ArrayList<Integer> getPlayersFinalPLaces(){
-		ArrayList<Integer> placeofplayers=new ArrayList<Integer>();
+	public ArrayList<Player> getPlayersFinalPLaces(){
+		ArrayList <Player> playersinthesameplace = new ArrayList<Player>();
+		TreeMap<Integer, ArrayList<Player>> placeofplayers = new TreeMap<>(Comparator.reverseOrder());
+		ArrayList <Player> finalplayersplaces = new ArrayList<Player>();
+		int temp;
 		for(Player p : this.Players) {
 			int num=this.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol());
-			placeofplayers.add(num);
-			Collections.sort(placeofplayers, Collections.reverseOrder());
+			if(placeofplayers.size()==0) {
+				playersinthesameplace.add(p);
+				placeofplayers.put(num,playersinthesameplace);
+				
+			}else {
+				for(int i=0;i<placeofplayers.size();i++) {
+					for(Integer key : placeofplayers.keySet()) {
+						if(num==key) {
+							placeofplayers.get(key).add(p);
+						}else {
+							playersinthesameplace.add(p);
+							placeofplayers.put(num, playersinthesameplace);
+						}
+					}
+					
+				}
+			}
+			
 		}
-		return placeofplayers;
+		ArrayList<Player> finall=new ArrayList<Player>();
+        for (Entry<Integer, ArrayList<Player>> entry : placeofplayers.entrySet()) {
+            finall  = entry.getValue();
+            for(Player p :finall) {
+            	finalplayersplaces.add(p);
+            }
+            
+        }
+		return finalplayersplaces;
 	}
 
 
