@@ -175,7 +175,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		greenRadioButton.setBounds(142, 200, 90, 23);
+		greenRadioButton.setBounds(142, 200, 102, 23);
 		contentPane.add(greenRadioButton);
 		buttonGroup.add(greenRadioButton);
 
@@ -214,7 +214,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		blueRadioButton.setBounds(246, 200, 70, 23);
+		blueRadioButton.setBounds(256, 200, 100, 23);
 		contentPane.add(blueRadioButton);
 		buttonGroup.add(blueRadioButton);
 		yRadioButton = new JRadioButton("Yellow");
@@ -254,7 +254,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		yRadioButton.setBounds(333, 200, 100, 23);
+		yRadioButton.setBounds(363, 200, 111, 23);
 		contentPane.add(yRadioButton);
 		buttonGroup.add(yRadioButton);
 
@@ -262,7 +262,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 
 		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
-		lblNewLabel_2.setBounds(723, 93, 100, 130);
+		lblNewLabel_2.setBounds(708, 93, 100, 130);
 		contentPane.add(lblNewLabel_2);
 		//player2 info ************************
 		JLabel lblNewLabel_2 = new JLabel("player2 nickname:");
@@ -334,7 +334,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		redRadioButton2.setBounds(580, 200, 70, 23);
+		redRadioButton2.setBounds(560, 200, 90, 23);
 		contentPane.add(redRadioButton2);
 		buttonGroup2.add(redRadioButton2);
 
@@ -392,7 +392,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		greenRadioButton2.setBounds(660, 200, 90, 23);
+		greenRadioButton2.setBounds(660, 200, 105, 23);
 		contentPane.add(greenRadioButton2);
 		buttonGroup2.add(greenRadioButton2);
 
@@ -456,7 +456,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 		});
 
-		blueRadioButton2.setBounds(767, 200, 70, 23);
+		blueRadioButton2.setBounds(770, 200, 90, 23);
 		contentPane.add(blueRadioButton2);
 		buttonGroup2.add(blueRadioButton2);
 		yRadioButton2 = new JRadioButton("Yellow");
@@ -520,7 +520,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				}
 			}
 		});
-		yRadioButton2.setBounds(845, 200, 100, 23);
+		yRadioButton2.setBounds(875, 200, 123, 23);
 		contentPane.add(yRadioButton2);
 		buttonGroup2.add(yRadioButton2);
 

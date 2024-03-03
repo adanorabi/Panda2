@@ -137,7 +137,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 0, 1800, 1000);
+		setBounds(0, 0, 1900, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -149,8 +149,8 @@ public class HardLevel extends JFrame implements ActionListener {
 		contentPane.add( mytext);
 
 		ImageIcon winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/hardtable.png"));
-		 int winWidth = 1800; // Adjusted width based on grid size
-		int winHeight = 900;//Adjusted height based on grid size
+		 int winWidth = 1600; // Adjusted width based on grid size
+		int winHeight = 880;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		 Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
@@ -158,7 +158,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		// Create a JLabel for the scaled snake image
 		JLabel lblNewLabel_w2  = new JLabel(scaledWinIcon);
-		lblNewLabel_w2.setBounds(185, 90, 1800,900);//
+		lblNewLabel_w2.setBounds(185, 50, 1600,880);//
 		// Add the snake label to the content pane
 				contentPane.add(lblNewLabel_w2);
 				lblNewLabel_w2.setVisible(true);
