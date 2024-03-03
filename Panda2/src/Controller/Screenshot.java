@@ -19,7 +19,7 @@ public class Screenshot {
     private static final String SCREENSHOT_FOLDER = "screenshots";
     private static final Map<Integer, String> screenshotMap = new HashMap<>();
 	
-    private static void loadExistingScreenshots() {
+    public static void loadExistingScreenshots() {
         File folder = new File(SCREENSHOT_FOLDER);
         if (!folder.exists()) {
             folder.mkdir();
