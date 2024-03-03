@@ -244,9 +244,7 @@ public class SysData {
 	}
 	
 	public static void AddGame(Game g) {
-		g.setWinnerId(0);
-		g.setEndTime(10);
-		gamesList.add(g);
+
 		String filePath = "AllGames.csv";
 
 		System.out.println("starting write user.csv file: " + filePath);
