@@ -1,5 +1,6 @@
 package Controller;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -21,6 +22,7 @@ import org.json.JSONTokener;
 
 
 import Enum.Levels;
+import Enum.PlayerColor;
 import Model.*;
 
 public class SysData {
@@ -29,6 +31,7 @@ public class SysData {
 	static public  ArrayList<Question> HardQues= new ArrayList<Question>();
 	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	
 	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
+	static public  ArrayList<Player> winnerPlayer= new ArrayList<Player>();
 	static public int QuestionId=0;
 	public void UploadGames() {}
 	Levels QLevel;
@@ -237,6 +240,133 @@ public class SysData {
 			e.printStackTrace();
 		}
 
+
+	}
+	
+	public static void AddGame(Game g) {
+		g.setWinnerId(0);
+		g.setEndTime(10);
+
+		gamesList.add(g);
+		String filePath = "AllGames.csv";
+
+		System.out.println("starting write user.csv file: " + filePath);
+		writeCsv(filePath);
+
+		System.out.println("starting read user.csv file");
+		readCsv(filePath);
+	}
+
+	 // Define a flag to check if it's the first run
+//    private static boolean isFirstRun = true;
+
+	public static void writeCsv(String filePath) {
+
+
+		FileWriter fileWriter = null;
+		try {
+
+			fileWriter = new FileWriter(filePath,true);
+//			fileWriter.append("GameId, GameLevel, WinnerNickName,WinnerColor, Time\n");
+
+			for(Game g: SysData.gamesList) {
+				System.out.println(g);
+				fileWriter.append(String.valueOf(g.getGameId()));
+				fileWriter.append(",");
+				fileWriter.append(String.valueOf(g.getGameLevel()));
+				fileWriter.append(",");
+				//		    fileWriter.append(String.valueOf(g.getWinnerId()));
+
+				for(Player p: g.getPlayers()) {
+					if(p.getPlayerID()==g.getWinnerId()) {
+						fileWriter.append(String.valueOf(p.getNickName()));
+						fileWriter.append(",");
+						fileWriter.append(String.valueOf(p.getPlayerColor()));
+						fileWriter.append(",");
+					}
+				}
+				//		    fileWriter.append(",");
+				fileWriter.append(String.valueOf(g.getEndTime()));
+				fileWriter.append("\n");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				fileWriter.flush();
+				fileWriter.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+
+
+	}
+		
+	
+
+	public static int readCsv(String filePath) {
+		System.out.println("test number11111111111111111111111");
+		BufferedReader reader = null;
+		int swap=0;
+
+		try {
+			String line = "";
+			reader = new BufferedReader(new FileReader(filePath));
+			reader.readLine();
+
+			while((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+				System.out.println("test number222222222222222222222222222");
+
+				if(fields.length > 0) {
+					System.out.println("test number333333333333333333333333333");
+					Game game = new Game();
+					Player player = new Player();
+					if(swap<Integer.parseInt(fields[0])) {
+						swap=Integer.parseInt(fields[0]);
+					}
+					System.out.println("swap in sysy data "+swap);
+					if(fields[1].equals(Levels.Easy)) {
+						game.setGameLevel(Levels.Easy);
+					}else if(fields[1].equals(Levels.Medium)) {
+						game.setGameLevel(Levels.Medium);
+					}else if(fields[1].equals(Levels.Hard)) {
+						game.setGameLevel(Levels.Hard);
+					}
+					player.setNickName(fields[2]);
+					if(fields[3].equals(PlayerColor.Red)) {
+						player.setPlayerColor(PlayerColor.Red);
+					}else if(fields[3].equals(PlayerColor.Blue)) {
+						player.setPlayerColor(PlayerColor.Blue);
+					}else if(fields[3].equals(PlayerColor.Green)) {
+						player.setPlayerColor(PlayerColor.Green);
+					}else if(fields[3].equals(PlayerColor.Yellow)) {
+						player.setPlayerColor(PlayerColor.Yellow);
+					}
+
+					//		        game.setWinnerId(Integer.parseInt(fields[2]));
+
+					game.setEndTime(Integer.parseInt(fields[4]));
+					System.out.println(swap+ " ghdurtjrydtffhtfythg");
+					gamesList.add(game);
+					winnerPlayer.add(player);
+				}
+
+			}
+			return swap;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				reader.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
 
 	}
 
