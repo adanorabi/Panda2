@@ -16,6 +16,7 @@ public class BackButton extends JButton {
     public BackButton() {
         setContentAreaFilled(false); // Ensure button background is not filled
         setBorder(new EmptyBorder(8, 16, 8, 16)); // Add padding around the button text/icon
+      
         setForeground(Color.decode("#408080")); // Set text/icon color
 
         // Set the background color of the button when hovered

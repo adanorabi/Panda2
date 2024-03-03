@@ -100,21 +100,27 @@ public class History extends javax.swing.JFrame {
 
 		table.repaint();
 
-		// Set the clicked column index
-		//     renderer.setClickedColumn(4);
+		backButton = new BackButton();
+		backButton.setText("Back"); // Set button text
+		backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
 
-		// testData(); 
-		 backButton = new BackButton();
-		    backButton.setText("Back"); // Set button text
-		    backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
+		// Add BackButton to the frame
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setOpaque(false); // Set panel to be transparent
+		buttonPanel.add(backButton); // Add the backButton to the buttonPanel
 
-		    // Add BackButton to the frame
-		    JPanel buttonPanel = new JPanel();
-		    buttonPanel.setOpaque(false); // Set panel to be transparent
-		    backButton.setBounds(100, 900, 60, 30); // Adjust x, y, width, and height as needed
+		// Add the buttonPanel to the backgroundPanel
+		backgroundPanel.add(buttonPanel, BorderLayout.SOUTH); // Add buttonPanel to the SOUTH of backgroundPanel
 
-		    buttonPanel.add(backButton);
-		    backgroundPanel.add(buttonPanel);
+		// Adjust the bounds of the buttonPanel instead of the backButton
+		buttonPanel.setBounds(10, 700, 30, 20); // Adjust x, y, width, and height as needed for the buttonPanel
+
+		// Repaint the frame
+		revalidate();
+		repaint();
+
+
+
 	}
 
 	@SuppressWarnings("unchecked")
