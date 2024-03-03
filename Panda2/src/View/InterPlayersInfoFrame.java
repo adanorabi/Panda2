@@ -104,7 +104,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel_1);
 
 		textField = new JTextField();
-		textField.setBounds(246, 101, 105, 19);
+		textField.setBounds(246, 91, 123, 29);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
@@ -129,7 +129,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					enableColorButton(greenRadioButton2);
 					enableColorButton(blueRadioButton2);
 					enableColorButton(yRadioButton2);    
-					
+					 System.out.println(buttonGroup2.getSelection());
+					 
 					//buttonGroup2.clearSelection();
 					if(NumofPlayers==3) {
 						disableAndMarkColorButton(redRadioButton3);
@@ -294,7 +295,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel_2);
 
 		textField2 = new JTextField();
-		textField2.setBounds(760, 101, 100, 19);
+		textField2.setBounds(760, 91, 116, 29);
 		contentPane.add(textField2);
 		textField2.setColumns(10);
 
@@ -569,7 +570,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			contentPane.add(lblNewLabel_3);
 
 			textField3 = new JTextField();
-			textField3.setBounds(250, 300, 100, 19);
+			textField3.setBounds(250, 300, 116, 29);
 			contentPane.add(textField3);
 			textField3.setColumns(10);
 
@@ -1027,7 +1028,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			contentPane.add(lblNewLabel_9);
 			textField_1 = new JTextField();
 			textField_1.setColumns(10);
-			textField_1.setBounds(767, 295, 100, 19);
+			textField_1.setBounds(767, 295, 116, 29);
 			contentPane.add(textField_1);
 			lblNewLabel_1_4 = new JLabel("player4 color:");
 			lblNewLabel_1_4.setFont(new Font("Tahoma", Font.ITALIC, 20));
@@ -1151,6 +1152,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		if(button.isSelected()==true) {
 			System.out.println("it is true");
 			 ButtonGroup group = buttonGroupMap.get(button);
+		
 		        if (group != null) {
 		        	System.out.println("it is true2");
 		            group.clearSelection();
