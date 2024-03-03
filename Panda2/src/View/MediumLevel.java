@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+import Controller.Screenshot;
+import Controller.SysData;
 import Model.Game;
 import Model.Player;
 import Model.Question;
@@ -29,6 +31,8 @@ import java.awt.event.ActionEvent;
 
 public class MediumLevel extends JFrame implements ActionListener {
 	static int N=50;
+	static int X=10;
+	static int Y=10;
 	private JPanel contentPane;
 	private JLabel mytext;
 	private JLabel lblSnake; 
@@ -853,7 +857,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
 						System.out.println("the current player is:"+p.getPlayerColor());
-						movePlayer(p, bx, by,ax, ay);//moved player once
+						movePlayer(p, bx, by,ax, ay,g);//moved player once
 
 
 						while( g.UpdatePlayerPlace()!=0) {//
@@ -892,7 +896,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 								awx=p.getPlayerRow();//new x
 								awy=p.getPlayerCol();// new y
 
-								movePlayer(p, ax, ay,awx, awy);
+								movePlayer(p, ax, ay,awx, awy,g);
 								landedOn(g);
 
 							}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
@@ -901,7 +905,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 							 awx=p.getPlayerRow();//new x
 							 awy=p.getPlayerCol();// new y
 
-							movePlayer(p, ax, ay,awx, awy);
+							movePlayer(p, ax, ay,awx, awy,g);
 							landedOn(g);
 						}
 						g.NextPlayer();
@@ -942,7 +946,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 								int ax = p.getPlayerRow();
 								int ay = p.getPlayerCol();
 
-								movePlayer(p, bx, by, ax, ay);    //move player by answer
+								movePlayer(p, bx, by, ax, ay,g);    //move player by answer
 
 								while (g.UpdatePlayerPlace() != 0) {//
 									String answer="";
@@ -976,7 +980,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 										int awx=p.getPlayerRow();//new x
 										int awy=p.getPlayerCol();// new y
 
-										movePlayer(p, ax, ay,awx, awy);
+										movePlayer(p, ax, ay,awx, awy,g);
 										landedOn(g);
 
 									}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==p.getPlayerRow()&&ay==p.getPlayerCol()))
@@ -985,7 +989,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 									int awx = p.getPlayerRow();
 									 int awy = p.getPlayerCol();
 
-									movePlayer(p, ax, ay, awx, awy);
+									movePlayer(p, ax, ay, awx, awy,g);
 
 								}
 								g.NextPlayer();
@@ -1011,7 +1015,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	}
 
 
-	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery) {//check
+	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery,Game g) {//check
 		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 		System.out.println("("+beforx+","+befory+")"+" to ("+afterx+","+aftery+")");
@@ -1072,6 +1076,28 @@ public class MediumLevel extends JFrame implements ActionListener {
 				timer.stop(); // Stop the timer when the movement is complete
 			}
 		});
+if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
+			
+			Player p1=g.CurrentTurn();
+			g.setWinnerId(p1.getPlayerID());
+			g.setEndTime(steps);
+			SysData.gamesList.add(g);
+			SysData.winnerPlayer.add(p1);
+			Screenshot.captureScreenshot(this);
+			
+			SysData.AddGame(g);
+			g.getPlayersFinalPLaces();
+		/*	if(g.getPlayersFinalPLaces().size()==2) {
+				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
+			}else if(g.getPlayersFinalPLaces().size()) {
+				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+			}else {
+				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+			}*/
+		//	Winner w=new Winner(p1,); 
+		
+
+	}
 
 	}
 	public void lineMangment(int turn,int num) {

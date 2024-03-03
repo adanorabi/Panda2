@@ -1123,6 +1123,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 	}
 	private void disableAndMarkColorButton(JRadioButton button) {
 		button.setEnabled(false);
+		 button.setSelected(false); 
+		 System.out.println(button.isSelected());
 		button.setForeground(Color.GRAY); // Change color to indicate it's disabled
 		button.setUI(new BasicRadioButtonUI() {
 			@Override
