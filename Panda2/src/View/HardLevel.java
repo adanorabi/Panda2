@@ -75,22 +75,22 @@ public class HardLevel extends JFrame implements ActionListener {
 	private JLabel p2name;
 	private JLabel p3name;
 	private JLabel p4name;
-    private JLabel timerLabel;
-    private Timer timer;
-    private int secondsElapsed;
-    private long endTime; // Variable to store the end time
-	
+	private JLabel timerLabel;
+	private Timer timer;
+	private int secondsElapsed;
+	private long endTime; // Variable to store the end time
+
 	/**
 	 * Create the frame.
 	 */
 	public HardLevel(Player p1,Player p2, Player p3,Player p4,int num) {
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setBounds(100, 0, 1800, 1100);
-//		contentPane = new JPanel();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		setContentPane(contentPane);
-//		
-		
+		//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//		setBounds(100, 0, 1800, 1100);
+		//		contentPane = new JPanel();
+		//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//		setContentPane(contentPane);
+		//		
+
 
 		//---------------------yomna----------------------------------		
 		String filePath = "AllGames.csv";
@@ -136,7 +136,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		g.createGame();
 		g.getPlayers().add(p1);
 		g.getPlayers().add(p2);
-System.out.println("************************************"+p1.getNickName());
+		System.out.println("************************************"+p1.getNickName());
 		/**************************************************************************************************/
 
 
@@ -152,22 +152,22 @@ System.out.println("************************************"+p1.getNickName());
 		mytext.setBounds(200, 0, 1400, 50);
 		contentPane.add( mytext);
 		Player proll=g.CurrentTurn();
-setPlayerText(proll, "you have to roll the dice");
+		setPlayerText(proll, "you have to roll the dice");
 		ImageIcon winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/hardtable.png"));
-		 int winWidth = 1600; // Adjusted width based on grid size
+		int winWidth = 1600; // Adjusted width based on grid size
 		int winHeight = 880;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
-		 Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
-		 ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
+		Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
 
 		// Create a JLabel for the scaled snake image
 		JLabel lblNewLabel_w2  = new JLabel(scaledWinIcon);
 		lblNewLabel_w2.setBounds(185, 50, 1600,880);//
 		// Add the snake label to the content pane
-				contentPane.add(lblNewLabel_w2);
-				lblNewLabel_w2.setVisible(true);
-		
+		contentPane.add(lblNewLabel_w2);
+		lblNewLabel_w2.setVisible(true);
+
 
 		g.PlacespecialSquares(Levels.Hard);
 		g.placeNormalSquares();
@@ -448,13 +448,13 @@ setPlayerText(proll, "you have to roll the dice");
 		});
 		startTimer();
 
-		 winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/win.png"));
-		 winWidth = 80; // Adjusted width based on grid size
-		 winHeight = 80;//Adjusted height based on grid size
+		winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/win.png"));
+		winWidth = 80; // Adjusted width based on grid size
+		winHeight = 80;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
-		 scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
-		 scaledWinIcon = new ImageIcon(scaledWinImage);
+		scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
+		scaledWinIcon = new ImageIcon(scaledWinImage);
 
 		// Create a JLabel for the scaled snake image
 		JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
@@ -532,7 +532,7 @@ setPlayerText(proll, "you have to roll the dice");
 		}
 		for(i=0; i<g.getLadders().size();i++)
 		{
-			
+
 			int length= g.getLadders().get(i).getLength();
 			int xHead=g.getLadders().get(i).getXEnd();
 			int xTail=g.getLadders().get(i).getXStart();
@@ -548,7 +548,7 @@ setPlayerText(proll, "you have to roll the dice");
 				if(g.getPlaces()[i][j]==2||g.getPlaces()[i][j]==1) {
 					setsurprise(i, j);
 					System.out.println("surprise (" + i + "," + j + "):" );
-					
+
 				}
 				else if(g.getPlaces()[i][j]==3||g.getPlaces()[i][j]==4||g.getPlaces()[i][j]==5) {
 					setq(i, j);
@@ -868,6 +868,7 @@ setPlayerText(proll, "you have to roll the dice");
 				diceLabel.setBounds(40, 722, 150, 150);
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
+					
 					Player p=g.CurrentTurn();
 
 					int bx=p.getPlayerRow();
@@ -876,13 +877,15 @@ setPlayerText(proll, "you have to roll the dice");
 
 					int squareResult;
 					Object  CHECK = g.Roll();
-					System.out.println("the dice rolled"+CHECK);
+					System.out.println("********************************************************8the dice rolled"+CHECK);
 					Question q;
 					String answer="";
-
+					
 					if(CHECK instanceof Integer) {
-						
 						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
+						String s= "you have to walk "+CHECK+" steps!!";
+						setPlayerText(p, s);
+					
 						answer=Integer.toString((Integer)CHECK);
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
@@ -898,10 +901,16 @@ setPlayerText(proll, "you have to roll the dice");
 
 								if (myQ.getQLevel().equals(Levels.Easy)) {
 									answer = "easy question";
+									s= "you have landed on easy question";
+									setPlayerText(p, s);
 								} else if (myQ.getQLevel().equals(Levels.Medium)) {
 									answer = "medium question";
+									s= "you have landed on medium question";
+									setPlayerText(p, s);
 								} else {
 									answer = "hard question";
+									s= "you have landed on hard question";
+									setPlayerText(p, s);
 								}
 								System.out.println("questionnnn frame");
 
@@ -921,6 +930,7 @@ setPlayerText(proll, "you have to roll the dice");
 								int awy=p.getPlayerCol();// new y
 
 								movePlayer(p, ax, ay,awx, awy);
+								landedOn(g);
 
 							}if( g.UpdatePlayerPlace()!=0)
 								break;
@@ -935,19 +945,26 @@ setPlayerText(proll, "you have to roll the dice");
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
 					}/**************************question dice*************************8*/
 					else {
-
+						
 						System.out.println("the current player is:" + p.getPlayerColor());
 						System.out.println("questionnnnnnn type!!");
 						q = (Question) CHECK;
+						String s="";
 						if (q.getQLevel().equals(Levels.Easy)) {
-							diceLabel.setIcon(diceIcons[5]);
+							diceLabel.setIcon(diceIcons[7]);//adan added
 							answer = "easy question";
+							s= "you have landed on easy question";
+							setPlayerText(p, s);
 						} else if (q.getQLevel().equals(Levels.Medium)) {
-							diceLabel.setIcon(diceIcons[7]);
+							diceLabel.setIcon(diceIcons[8]);//adan added
 							answer = "medium question";
+							s= "you have landed on medium question";
+							setPlayerText(p, s);
 						} else {
-							diceLabel.setIcon(diceIcons[6]);
+							diceLabel.setIcon(diceIcons[9]);//adan added
 							answer = "hard question";
+							s= "you have landed on hard question";
+							setPlayerText(p, s);
 						}
 						System.out.println("questionnnn frame");
 						QuestionFrame qu = new QuestionFrame(q, new QuestionFrame.QuestionAnsweredListener() {
@@ -956,6 +973,8 @@ setPlayerText(proll, "you have to roll the dice");
 								// This method will be called when the player answers the question
 								g.updateByQuestion(q, isCorrect);
 								System.out.println("Answered: " + isCorrect);
+								String s= "you'r answer is "+isCorrect;
+								setPlayerText(p, s);
 								// Continue with your logic here
 								int ax = p.getPlayerRow();
 								int ay = p.getPlayerCol();
@@ -995,6 +1014,7 @@ setPlayerText(proll, "you have to roll the dice");
 										int awy=p.getPlayerCol();// new y
 
 										movePlayer(p, ax, ay,awx, awy);
+										landedOn(g);
 
 									}if( g.UpdatePlayerPlace()!=0)
 										break;
@@ -1089,33 +1109,33 @@ setPlayerText(proll, "you have to roll the dice");
 		});
 
 	}public void setPlayerText(Player p, String text) {
-	    // Get the player's name
-	    String playerName = p.getNickName();
-	    
-	    // Set the full text with player name and additional text
-	    String fullText = "<html>Player <font color=\"" + getColorCode(p.getPlayerColor()) + "\">" + playerName + "</font> " + text + "</html>";
-	    
-	    // Set the full HTML text
-	    mytext.setText(fullText);
-	    
-	    // Center the text horizontally
-	    mytext.setHorizontalAlignment(SwingConstants.CENTER);
+		// Get the player's name
+		String playerName = p.getNickName();
+
+		// Set the full text with player name and additional text
+		String fullText = "<html>Player <font color=\"" + getColorCode(p.getPlayerColor()) + "\">" + playerName + "</font> " + text + "</html>";
+
+		// Set the full HTML text
+		mytext.setText(fullText);
+
+		// Center the text horizontally
+		mytext.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
 	// Method to get color code based on PlayerColor
 	private String getColorCode(PlayerColor color) {
-	    switch (color) {
-	        case Red:
-	            return "red";
-	        case Green:
-	            return "green";
-	        case Yellow:
-	            return "yellow";
-	        case Blue:
-	            return "blue";
-	        default:
-	            return "black"; // Default color if player color is not recognized
-	    }
+		switch (color) {
+		case Red:
+			return "red";
+		case Green:
+			return "green";
+		case Yellow:
+			return "yellow";
+		case Blue:
+			return "blue";
+		default:
+			return "black"; // Default color if player color is not recognized
+		}
 	}
 
 
@@ -1301,21 +1321,21 @@ setPlayerText(proll, "you have to roll the dice");
 		});
 
     }*/
-	  private boolean conditionMet() {
-	        // Replace this with your actual condition
-	        return secondsElapsed >= 30000; // Stop the timer after 10 seconds for demonstration
-	    }
+	private boolean conditionMet() {
+		// Replace this with your actual condition
+		return secondsElapsed >= 30000; // Stop the timer after 10 seconds for demonstration
+	}
 
-	    // Method to start the timer
-	    public void startTimer() {
-	        secondsElapsed = 0; // Reset seconds elapsed
-	        timer.start();
-	    }
+	// Method to start the timer
+	public void startTimer() {
+		secondsElapsed = 0; // Reset seconds elapsed
+		timer.start();
+	}
 
-	    // Method to stop the timer
-	    public void stopTimer() {
-	        timer.stop();
-	    }
+	// Method to stop the timer
+	public void stopTimer() {
+		timer.stop();
+	}
 
 
 	@Override
@@ -1323,6 +1343,31 @@ setPlayerText(proll, "you have to roll the dice");
 		// TODO Auto-generated method stub
 
 	}
-
-}
+	public void landedOn(Game g) {
+		String s=" ";
+		Player p=g.CurrentTurn();
 		
+		int num=g.UpdatePlayerPlace();
+		if(num==1||num==2) {
+			s="landed on surprise square";
+			setPlayerText(p, s);
+
+		}else if(num>=6 && num<=13) {
+			s="landed on a snake :(";
+			setPlayerText(p, s);
+			
+
+		}else if(num>=14 && num<=21) {
+			s="landed on a ladder :)";
+			setPlayerText(p, s);
+
+		}else if(num==3|| num==4||num==5) {
+			
+		}
+		else {
+			s="you are the winner!!";
+			setPlayerText(p, s);
+		}
+		
+	}
+}
