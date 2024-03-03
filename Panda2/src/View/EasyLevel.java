@@ -28,6 +28,8 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
+
+import Controller.SysData;
 import Enum.Levels;
 import Enum.SnakeColor;
 import Model.*;
@@ -72,19 +74,20 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	private JLabel p4name;
 	private JLabel mytext;
 	private QuestionFrame questionFrame;
-    private JLabel timerLabel;
-    private Timer timer;
-    private int secondsElapsed;
-    private long endTime; // Variable to store the end time
+	private JLabel timerLabel;
+	private Timer timer;
+	private int secondsElapsed;
+	private long endTime; // Variable to store the end time
 
 
 	/**
 	 * Create the frame.
 	 */
 	public EasyLevel(Player p1,Player p2, Player p3,Player p4,int num) {
-		String filePath = "C:\\Users\\amroz\\Documents\\GitHub\\Panda2\\Panda2\\GameH.csv";
+		String filePath = "AllGames.csv";
+		System.out.println("test number11111111111111111111111");
 		BufferedReader reader = null;
-		int swap=-1;
+		int swap=0;
 
 		try {
 			String line = "";
@@ -93,15 +96,20 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			while((line = reader.readLine()) != null) {
 				String[] fields = line.split(",");
-
+				System.out.println("test number222222222222222222222222222");
 
 				if(fields.length > 0) {
+					System.out.println("test number333333333333333333333333333");
+					Game game = new Game();
+					Player player = new Player();
 					if(swap<Integer.parseInt(fields[0])) {
 						swap=Integer.parseInt(fields[0]);
 					}
-				}
+					System.out.println("swap in sysy data "+swap);
 
+				}
 			}
+
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -111,9 +119,9 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
-		System.out.println((swap+1)+"the new id for the new game");
+
+		}	
+		System.out.println((swap+1)+" the new id for the new game");
 		Game g=new Game((swap+1),Levels.Easy, 7, 7);
 		g.createGame();
 		g.getPlayers().add(p1);
@@ -268,7 +276,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 		p2OnGame=new JLabel(finalIcon2);//finish putting the icon only setbound and set visible left
 
-		
+
 
 
 
@@ -314,7 +322,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			p3OnGame=new JLabel(finalIcon3);//finish putting the icon only setbound and set visible left
 
-			
+
 			p3name = new JLabel(p3.getNickName());
 			p3name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 			p3name.setBounds(73, 270, 200, 13);
@@ -355,7 +363,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left
 
-				
+
 				p4name = new JLabel(p4.getNickName());
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 				p4name.setBounds(73, 370, 200, 13);
@@ -391,12 +399,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 
 		ImageIcon tIcon = new ImageIcon(Winner.class.getResource("/View/img/timer.png"));
-		 tWidth = 200; // Adjusted width based on grid size
-		 tHeight = 70;//Adjusted height based on grid size
+		tWidth = 200; // Adjusted width based on grid size
+		tHeight = 70;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
-		 scaledTImage = tIcon.getImage().getScaledInstance(tWidth, tHeight, Image.SCALE_SMOOTH);
-		 scaledTIcon = new ImageIcon(scaledTImage);
+		scaledTImage = tIcon.getImage().getScaledInstance(tWidth, tHeight, Image.SCALE_SMOOTH);
+		scaledTIcon = new ImageIcon(scaledTImage);
 
 		// Create a JLabel for the scaled snake image
 		JLabel lblNewLabel_time  = new JLabel(scaledTIcon);
@@ -406,34 +414,34 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		contentPane.add(lblNewLabel_time);
 		lblNewLabel_time.setVisible(true);
 		/*****************************timer*******************************************/
-				// Calculate the size of the snake image
-		 timerLabel = new JLabel("00:00:00");
-		 timerLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-	        timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	        timerLabel.setBounds(60, 20, 100, 30);
-	        
-	        contentPane.add(timerLabel,0);
-	        
-	        timer = new Timer(1000, new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                secondsElapsed++;
-	                int hours = secondsElapsed / 3600;
-	                int minutes = (secondsElapsed % 3600) / 60;
-	                int seconds = secondsElapsed % 60;
-	                timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+		// Calculate the size of the snake image
+		timerLabel = new JLabel("00:00:00");
+		timerLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		timerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		timerLabel.setBounds(60, 20, 100, 30);
 
-	                // Check condition and stop timer if condition is met
-	                if (conditionMet()) {
-	                    stopTimer();
-	                    // Save the end time when the condition is met
-	                    endTime = System.currentTimeMillis();
-	                    System.out.println("End Time: " + endTime); // Print end time for demonstration
-	                    g.setEndTime(endTime);
-	                }
-	            }
-	        });
-	        startTimer();
+		contentPane.add(timerLabel,0);
+
+		timer = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				secondsElapsed++;
+				int hours = secondsElapsed / 3600;
+				int minutes = (secondsElapsed % 3600) / 60;
+				int seconds = secondsElapsed % 60;
+				timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+
+				// Check condition and stop timer if condition is met
+				if (conditionMet()) {
+					stopTimer();
+					// Save the end time when the condition is met
+					endTime = System.currentTimeMillis();
+					System.out.println("End Time: " + endTime); // Print end time for demonstration
+					g.setEndTime(endTime);
+				}
+			}
+		});
+		startTimer();
 
 		ImageIcon winIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/win.png"));
 		int winWidth = 80; // Adjusted width based on grid size
@@ -456,7 +464,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		lblNewLabel.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/game.png")));
 		lblNewLabel.setBounds(0, 0, 1200, 900);
 		contentPane.add(lblNewLabel);
-		
+
 		/**************************winner**************************/
 
 		int i, j;
@@ -479,7 +487,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				System.out.println("greensnake (" + xHead + "," + yHead +"," +  xTail+ "," + yTail+ "):" );
 
 			}
-		
+
 			else if (color==SnakeColor.Yellow)
 			{
 				setyellowsnake(xHead, yHead, xTail, yTail);
@@ -527,10 +535,10 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				g.getPlayers().add(p4);
 			}
 		}
-		
+
 
 		// Calculate the position of the snake head and tail
-			/**********************winner**********************/
+		/**********************winner**********************/
 
 	}
 	// blue snakes function
@@ -568,7 +576,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		// Repaint the content pane to ensure the changes are displayed
 		contentPane.revalidate();
 		contentPane.repaint();
-		
+
 	}
 	// red snakes function
 	public void setredsnake(int xhead, int yhead) {
@@ -576,12 +584,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/redsnake.png"));
 
 		// Calculate the position of the snake head and tail
-				int snakeHeadX = 214 + xhead * 122; // Adjusted x position based on the board offset and grid size
-				int snakeHeadY =641-yhead*86;
+		int snakeHeadX = 214 + xhead * 122; // Adjusted x position based on the board offset and grid size
+		int snakeHeadY =641-yhead*86;
 
-				// Calculate the size of the snake image
-				int snakeWidth = 100; // Adjusted width based on grid size
-				int snakeHeight = 86;//Adjusted height based on grid size
+		// Calculate the size of the snake image
+		int snakeWidth = 100; // Adjusted width based on grid size
+		int snakeHeight = 86;//Adjusted height based on grid size
 
 		// Scale down the size of the snake image
 		Image scaledSnakeImage = snakeIcon.getImage().getScaledInstance(snakeWidth, snakeHeight, Image.SCALE_SMOOTH);
@@ -934,7 +942,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 											}
 										});
 										c.setVisible(true);
-		
+
 
 										int awx=p.getPlayerRow();//new x
 										int awy=p.getPlayerCol();// new y
@@ -1011,7 +1019,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 		}
 
-	
+
 		final int finalBx = bx; // Declare effectively final variables
 		final int finalBy = by;
 
@@ -1220,22 +1228,22 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		});
 
     }*/
-	  // Method to check if the condition for stopping the timer is met
-    private boolean conditionMet() {
-        // Replace this with your actual condition
-        return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
-    }
+	// Method to check if the condition for stopping the timer is met
+	private boolean conditionMet() {
+		// Replace this with your actual condition
+		return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
+	}
 
-    // Method to start the timer
-    public void startTimer() {
-        secondsElapsed = 0; // Reset seconds elapsed
-        timer.start();
-    }
+	// Method to start the timer
+	public void startTimer() {
+		secondsElapsed = 0; // Reset seconds elapsed
+		timer.start();
+	}
 
-    // Method to stop the timer
-    public void stopTimer() {
-        timer.stop();
-    }
+	// Method to stop the timer
+	public void stopTimer() {
+		timer.stop();
+	}
 
 	@Override
 	public void onQuestionAnswered(boolean isCorrect) {
