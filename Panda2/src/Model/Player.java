@@ -11,6 +11,7 @@ public class Player {
 	private int PlayerCol;
 	private int PlayerRow;
 	private int playeringame;
+	private int Position;
 	
 
 	public Player(PlayerColor playerColor, String nickName, int playerCol, int playerRow,int playeringame) {
@@ -26,7 +27,15 @@ public class Player {
 	public Player() {
 		super();
 	}
+	
 
+	public int getPosition() {
+		return Position;
+	}
+
+	public void setPosition(int position) {
+		Position = position;
+	}
 
 	public int getPlayerID() {
 		return PlayerID;
