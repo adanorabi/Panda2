@@ -165,7 +165,7 @@ public class addQuestion extends JFrame {
                 }
             }
         });
-        btnNewButton.setBounds(823, 545, 96, 40);
+        btnNewButton.setBounds(783, 567, 135, 46);
         contentPane.add(btnNewButton);
         btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/submit.jpg")));
 
@@ -175,7 +175,7 @@ public class addQuestion extends JFrame {
         		setVisible(false);
             }
         });
-        btnNewButton_1.setBounds(82, 554, 131, 46);
+        btnNewButton_1.setBounds(52, 567, 158, 46);
         contentPane.add(btnNewButton_1);
         btnNewButton_1.setIcon(new ImageIcon(LevelGame.class.getResource("/View/img/back.jpg")));
         
