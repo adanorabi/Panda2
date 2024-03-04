@@ -1018,8 +1018,8 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 		System.out.println("("+beforx+","+befory+")"+" to ("+afterx+","+aftery+")");
-
-
+		aftery=0;
+		afterx=1;
 		switch(player.getPlayeringame()) {//check
 		case 1:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
@@ -1052,6 +1052,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			break;
 
 		}
+		
 
 
 		final int finalBx = bx; // Declare effectively final variables
@@ -1075,41 +1076,49 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			} else {
 				timer.stop(); // Stop the timer when the movement is complete
+				System.out.println("moveeeeeeeeeeeeeeeeeeeee");
+				System.out.println(g.GameBoard.getPosition(1, 0));
+				if(g.GameBoard.getPosition(1, 0)==2) {/*winner adan1*/
+					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
+					System.out.println(secondsElapsed);
+					Player p1=g.CurrentTurn();
+					g.setWinnerId(p1.getPlayerID());
+				    long Lseconds = (secondsElapsed / 1000) % 60;
+				    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
+				    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
+				    System.out.println("timeeeeeeeeeeeeeeee"+secondsElapsed);
+
+				    // Format the time
+				    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+					g.setEndTime(formattedTime);
+					SysData.gamesList.add(g);
+					SysData.winnerPlayer.add(p1);
+					Screenshot.captureScreenshot(this);
+					
+					SysData.AddGame(g);
+					System.out.println(g.getPlayersFinalPLaces()
+							);
+					
+					if(g.getPlayersFinalPLaces().size()==2) {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}else if(g.getPlayersFinalPLaces().size()==3) {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}else {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}
+				//	Winner w=new Winner(p1,); 
+				}
 			}
+			
+
 		});
-		if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
-			
-			Player p1=g.CurrentTurn();
-			g.setWinnerId(p1.getPlayerID());
-		    long Lseconds = (secondsElapsed / 1000) % 60;
-		    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
-		    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
-
-		    // Format the time
-		    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
-			g.setEndTime(formattedTime);
-			SysData.gamesList.add(g);
-			SysData.winnerPlayer.add(p1);
-			Screenshot.captureScreenshot(this);
-			
-			SysData.AddGame(g);
-			g.getPlayersFinalPLaces();
-			if(g.getPlayersFinalPLaces().size()==2) {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}else if(g.getPlayersFinalPLaces().size()==3) {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}else {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}
-		//	Winner w=new Winner(p1,); 
-		}
-
+		
 	}
 	public void lineMangment(int turn,int num) {
 		switch(num) {

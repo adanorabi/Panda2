@@ -603,9 +603,11 @@ public class Game {
             finall  = entry.getValue();
             for(Player p :finall) {
             	finalplayersplaces.add(p);
+            	System.out.println(p.getNickName());
             }
             
         }
+        System.out.println(	finalplayersplaces.size());
 		return finalplayersplaces;
 	}
 

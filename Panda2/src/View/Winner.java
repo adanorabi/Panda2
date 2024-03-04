@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -17,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
@@ -293,7 +295,25 @@ public class Winner extends JFrame {
 /****************player movement**************/
      headMove();
 
-		
+		BackButton backButton = new BackButton();
+		backButton.setBounds(20, 600, 100, 40); // Set the bounds of the button
+		backButton.setText("Home"); // Set the text of the button
+		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
+		backButton.setForeground(Color.black); // Set the text color
+		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
+		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainFrame f=new MainFrame();
+				f.setVisible(true);
+				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+		        frame.dispose();
+			}
+			
+		});
+		contentPane.add(backButton,0);
+
 	}
 	public void headMove() {
 		Timer playerMoveTimer = new Timer(100, new ActionListener() {
@@ -363,10 +383,4 @@ public class Winner extends JFrame {
         }
     }
 
-	private void onBackButtonClick() {
-		// Handle back button click event here, navigate to MainFrame
-		dispose(); // Close the current window
-		MainFrame mainFrame = new MainFrame(); // Create an instance of MainFrame
-		mainFrame.setVisible(true); // Make the MainFrame visible
-	}
 }
