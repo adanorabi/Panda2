@@ -350,7 +350,7 @@ public class SysData {
 
 					//		        game.setWinnerId(Integer.parseInt(fields[2]));
 
-					game.setEndTime(Integer.parseInt(fields[4]));
+					game.setEndTime(fields[4]);
 					System.out.println(swap+ " ghdurtjrydtffhtfythg");
 					gamesList.add(game);
 					System.out.println(game.getGameLevel());

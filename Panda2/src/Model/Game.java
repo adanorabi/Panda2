@@ -26,7 +26,7 @@ public class Game {
 	private ArrayList<Square> Squares ;
 	public static int PlayerTurn=0;
 	public static Board GameBoard;  //yara!
-	private long endTime; 
+	private String endTime; 
 
 	public Game(int gameid, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
@@ -139,11 +139,11 @@ public class Game {
 		PlayerTurn = playerTurn;
 	}
 
-	public long getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(long endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 
