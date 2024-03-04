@@ -65,7 +65,7 @@ public class Screenshot {
 
     private static int getNextScreenshotId() {
     	int size =screenshotMap.size();
-        return size++; // Modified to start from 1
+        return size++; 
     }
     
     private static String getScreenshotPathById(int screenshotId) {
