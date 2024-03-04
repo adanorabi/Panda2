@@ -2,6 +2,7 @@ package View;
 import Enum.Levels;
 import Enum.PlayerColor;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -26,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
@@ -33,6 +35,7 @@ import Controller.Screenshot;
 import Controller.SysData;
 import Enum.Levels;
 import Enum.SnakeColor;
+import FlatLafDesign.BackButton;
 import Model.*;
 
 public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredListener {
@@ -478,6 +481,25 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		contentPane.add(lblNewLabel);
 
 		/**************************winner**************************/
+		BackButton backButton = new BackButton();
+		backButton.setBounds(600, 750, 100, 40); // Set the bounds of the button
+		backButton.setText("Home"); // Set the text of the button
+		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
+		backButton.setForeground(Color.black); // Set the text color
+		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
+		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainFrame f=new MainFrame();
+				f.setVisible(true);
+				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+		        frame.dispose();
+			}
+			
+		});
+		contentPane.add(backButton,0);
+
 
 		int i, j;
 		for(i=0; i<g.getSnakes().size();i++)
@@ -1018,8 +1040,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 		System.out.println("("+beforx+","+befory+")"+" to ("+afterx+","+aftery+")");
-		aftery=0;
-		afterx=1;
+		
 		switch(player.getPlayeringame()) {//check
 		case 1:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
@@ -1078,16 +1099,16 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				
 				timer.stop(); // Stop the timer when the movement is complete
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-				System.out.println(g.GameBoard.getPosition(1, 0));
-				if(g.GameBoard.getPosition(1, 0)==2) {/*winner adan1*/
+				
+				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
 					stopTimer();
 					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
 					System.out.println(secondsElapsed);
 					Player p1=g.CurrentTurn();
 					g.setWinnerId(p1.getPlayerID());
-				    long Lseconds = (secondsElapsed / 1000) % 60;
-				    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
-				    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
+				    long Lseconds = (re() / 1000) % 60;
+				    long Lminutes = (re()/ (1000 * 60)) % 60;
+				    long Lhours = (re()/ (1000 * 60 * 60)) % 24;
 				 
 
 				    // Format the time
@@ -1304,9 +1325,16 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
     }*/
 	// Method to check if the condition for stopping the timer is met
 	private boolean conditionMet() {
+		
 		// Replace this with your actual condition
 		return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
 	}
+	private long re() {
+		
+		// Replace this with your actual condition
+		return secondsElapsed; // Stop the timer after 10 seconds for demonstration
+	}
+
 
 	// Method to start the timer
 	public void startTimer() {

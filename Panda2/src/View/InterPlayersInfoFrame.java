@@ -1234,6 +1234,9 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 					System.out.println(color);
 					 p2=new Player(color,textField2.getText(),0,0,2);
+					 if (p1.getPlayerColor() == p2.getPlayerColor()) {
+		                    throw new UnvalidExceptions("select a color for player 2!!");
+		                }
 				}
 				if(Num>=3) {
 					if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
@@ -1266,6 +1269,9 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						
 
 						 p3=new Player(color,textField3.getText(),0,0,3);
+						 if (p3.getPlayerColor() == p2.getPlayerColor()||p3.getPlayerColor() == p1.getPlayerColor()) {
+			                    throw new UnvalidExceptions("select a color for player 3!!");
+			                }
 					}
 					if(Num==4) {
 						if(textField.getText().equals("")||textField2.getText().equals("")||textField3.getText().equals("")||textField_1.getText().equals("")||buttonGroup3.getSelection() == null||buttonGroup4.getSelection() == null||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
@@ -1298,6 +1304,9 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							
 
 							 p4=new Player(color,textField_1.getText(),0,0,4);//
+							 if (p3.getPlayerColor() == p2.getPlayerColor()||p3.getPlayerColor() == p1.getPlayerColor()) {
+				                    throw new UnvalidExceptions("select a color for player 4!!");
+				                }
 						}
 						
 					}

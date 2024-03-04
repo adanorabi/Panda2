@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import Enum.*;
+import FlatLafDesign.BackButton;
+
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -25,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.StyleConstants;
@@ -168,7 +171,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		// Create a JLabel for the scaled snake image
 		JLabel lblNewLabel_w2  = new JLabel(scaledWinIcon);
 		lblNewLabel_w2.setBounds(185, 50, 1600,880);//
-		// Add the snake label to the content pane
+		// Add the snake label to the content 
 		contentPane.add(lblNewLabel_w2);
 		lblNewLabel_w2.setVisible(true);
 
@@ -458,6 +461,24 @@ public class HardLevel extends JFrame implements ActionListener {
 		});
 		startTimer();
 
+		BackButton backButton = new BackButton();
+		backButton.setBounds(800, 950, 100, 40); // Set the bounds of the button
+		backButton.setText("Home"); // Set the text of the button
+		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
+		backButton.setForeground(Color.black); // Set the text color
+		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
+		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainFrame f=new MainFrame();
+				f.setVisible(true);
+				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+		        frame.dispose();
+			}
+			
+		});
+		contentPane.add(backButton,0);
 		winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/win.png"));
 		winWidth = 80; // Adjusted width based on grid size
 		winHeight = 80;//Adjusted height based on grid size
@@ -504,8 +525,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 
-
-
+		contentPane.repaint();
 		int i,j;
 
 		for(i=0; i<g.getSnakes().size();i++)
@@ -595,13 +615,13 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/bluesnake2.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 124; // Adjusted x position based on the board offset and grid size
 		int snakeHeadY = 880- yhead * 68; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 185 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int snakeTailX = 185 + xtail * 124; // Adjusted x position based on the board offset and grid size
 		int snakeTailY =  880- ytail * 68; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 124; // Adjusted width based on grid size
 		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 68; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
@@ -630,13 +650,13 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/greensnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 124; // Adjusted x position based on the board offset and grid size
 		int snakeHeadY =  880 - yhead * 68; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 188 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int snakeTailX = 188 + xtail * 124; // Adjusted x position based on the board offset and grid size
 		int snakeTailY =  880  - ytail *  68; // Adjusted y position based on the board offset and grid size
 
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 124; // Adjusted width based on grid size
 		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 68; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
@@ -665,7 +685,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/redsnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size//170
+		int snakeHeadX = 185 + xhead * 124; // Adjusted x position based on the board offset and grid size//170
 		int snakeHeadY =880-yhead*68;
 
 		// Calculate the size of the snake image
@@ -697,12 +717,12 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/yellosnake.png"));
 
 		// Calculate the position of the snake head and tail
-		int snakeHeadX = 185 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int snakeHeadX = 185 + xhead * 124; // Adjusted x position based on the board offset and grid size
 		int snakeHeadY = 880 - yhead * 68; // Adjusted y position based on the board offset and grid size
-		int snakeTailX = 185 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int snakeTailX = 185 + xtail * 124; // Adjusted x position based on the board offset and grid size
 		int snakeTailY = 880 - ytail * 68; // Adjusted y position based on the board offset and grid size
 		// Calculate the size of the snake image
-		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 123; // Adjusted width based on grid size
+		int snakeWidth = Math.abs(snakeHeadX - snakeTailX) + 124; // Adjusted width based on grid size
 		int snakeHeight = Math.abs(snakeHeadY - snakeTailY) + 68; // Adjusted height based on grid size
 
 		// Scale down the size of the snake image
@@ -727,9 +747,9 @@ public class HardLevel extends JFrame implements ActionListener {
 	}
 
 	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
-		int ladderHeadX = 190 + xhead * 123; // Adjusted x position based on the board offset and grid size
+		int ladderHeadX = 190 + xhead * 124; // Adjusted x position based on the board offset and grid size
 		int ladderHeadY = 880 - yhead * 68; // Adjusted y position based on the board offset and grid size
-		int ladderTailX = 190 + xtail * 123; // Adjusted x position based on the board offset and grid size
+		int ladderTailX = 190 + xtail * 124; // Adjusted x position based on the board offset and grid size
 		int ladderTailY = 880 - ytail * 68; // Adjusted y position based on the board offset and grid size
 		ImageIcon ladderIcon=null;
 		// Calculate the size of the snake image
@@ -794,7 +814,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/q.png"));
 
 		// Calculate the position of the surprise
-		int sX = 200 + x * 123; 
+		int sX = 200 + x * 124; 
 		int sY =892-y*68;
 
 		// Calculate the size of the snake image
@@ -827,7 +847,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/surprise.png"));
 
 		// Calculate the position of the surprise
-		int sX = 200 + x * 123; 
+		int sX = 200 + x * 124; 
 		int sY =900-y*68;
 
 		// Calculate the size of the snake image
@@ -1066,22 +1086,22 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		switch(player.getPlayeringame()) {//check
 		case 1:
-			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
-			bx= 185 + beforx * 123;
+			pX = 185 + afterx * 124; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 + beforx * 124;
 			pY =860-aftery*68;
 			by=860-befory*68;
 			//p1OnGame.setLocation(pX, pY);
 			break;
 		case 2://+N
-			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
-			bx= 185 +N+beforx * 123;
+			pX = 185+N + afterx * 124; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 +N+beforx * 124;
 			pY =860-aftery*68;
 			by=860-befory*68;
 
 			break;
 		case 3:
-			pX = 185 + afterx * 123; // Adjusted x position based on the board offset and grid size//170
-			bx= 185 + beforx * 123;
+			pX = 185 + afterx * 124; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 + beforx * 124;
 			pY =860+N-aftery*68;
 			by=860+N-befory*68;
 			//p1OnGame.setLocation(pX, pY);
@@ -1089,8 +1109,8 @@ public class HardLevel extends JFrame implements ActionListener {
 		case 4://+N
 			pY =860+N-aftery*68;
 			by=860+N-befory*68;
-			pX = 185+N + afterx * 123; // Adjusted x position based on the board offset and grid size//170
-			bx= 185 +N+beforx * 123;			break;
+			pX = 185+N + afterx * 124; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 +N+beforx * 124;			break;
 
 		}
 
@@ -1116,42 +1136,48 @@ public class HardLevel extends JFrame implements ActionListener {
 
 			} else {
 				timer.stop(); // Stop the timer when the movement is complete
+				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+				
+				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
+					stopTimer();
+					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
+					System.out.println(secondsElapsed);
+					Player p1=g.CurrentTurn();
+					g.setWinnerId(p1.getPlayerID());
+					 long Lseconds = (secondsElapsed / 1000) % 60;
+					    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
+					    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
+
+				    // Format the time
+				    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+				    System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
+					g.setEndTime(formattedTime);
+					SysData.gamesList.add(g);
+					SysData.winnerPlayer.add(p1);
+				//	Screenshot.captureScreenshot(this);
+					
+					SysData.AddGame(g);
+					System.out.println(g.getPlayersFinalPLaces()
+							);
+					
+					if(g.getPlayersFinalPLaces().size()==2) {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}else if(g.getPlayersFinalPLaces().size()==3) {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}else {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}
+				//	Winner w=new Winner(p1,); 
+					
+				}
 			}
 		});
-if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
-			
-			Player p1=g.CurrentTurn();
-			g.setWinnerId(p1.getPlayerID());
-		    long Lseconds = (secondsElapsed / 1000) % 60;
-		    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
-		    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
-
-		    // Format the time
-		    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
-			g.setEndTime(formattedTime);
-			SysData.gamesList.add(g);
-			SysData.winnerPlayer.add(p1);
-			Screenshot.captureScreenshot(this);
-			
-			SysData.AddGame(g);
-			g.getPlayersFinalPLaces();
-			if(g.getPlayersFinalPLaces().size()==2) {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}else if(g.getPlayersFinalPLaces().size()==3) {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}else {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}
-		
-
-	}
-
 	}public void setPlayerText(Player p, String text) {
 		// Get the player's name
 		String playerName = p.getNickName();
@@ -1291,7 +1317,7 @@ if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
-			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
+			pX = 185 + player.getPlayerRow() * 124; // Adjusted x position based on the board offset and grid size//170
 			pY =860-player.getPlayerCol()*68;
 			System.out.println("setting player 1");
 			p1OnGame.setBounds(pX, pY, N, N); // Set bounds for player p1 label
@@ -1305,7 +1331,7 @@ if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
 
 			break;
 		case 2://+N
-			pX = N+185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
+			pX = N+185 + player.getPlayerRow() * 124; // Adjusted x position based on the board offset and grid size//170
 			pY =860-player.getPlayerCol()*68;
 			System.out.println("setting player 2");
 			p2OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
@@ -1318,7 +1344,7 @@ if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
 			contentPane.repaint();
 			break;
 		case 3://+N
-			pX = 185 + player.getPlayerRow() * 123; // Adjusted x position based on the board offset and grid size//170
+			pX = 185 + player.getPlayerRow() * 124; // Adjusted x position based on the board offset and grid size//170
 			pY =N-15+860-player.getPlayerCol()*68;
 			System.out.println("setting player 3");
 			p3OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label
@@ -1331,7 +1357,7 @@ if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
 			contentPane.repaint();
 			break;
 		case 4://
-			pX = N+185+ player.getPlayerRow() *  123; // Adjusted x position based on the board offset and grid size//170
+			pX = N+185+ player.getPlayerRow() *  124; // Adjusted x position based on the board offset and grid size//170
 			pY =N-15+860-player.getPlayerCol()*68;
 			System.out.println("setting player 4");
 			p4OnGame.setBounds(pX, pY, N, N); // Set bounds for player p2 label

@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
@@ -20,6 +22,8 @@ import Model.Game;
 import Model.Player;
 import Model.Question;
 import Enum.*;
+import FlatLafDesign.BackButton;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -285,6 +289,24 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 		/******************************p3***************/
 
+		BackButton backButton = new BackButton();
+		backButton.setBounds(600, 900, 100, 40); // Set the bounds of the button
+		backButton.setText("Home"); // Set the text of the button
+		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
+		backButton.setForeground(Color.black); // Set the text color
+		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
+		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainFrame f=new MainFrame();
+				f.setVisible(true);
+				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+		        frame.dispose();
+			}
+			
+		});
+		contentPane.add(backButton,0);
 		if(num>2) {
 			ImageIcon p3icon;
 			if(p3.getPlayerColor()==PlayerColor.Red) {
@@ -1079,42 +1101,52 @@ public class MediumLevel extends JFrame implements ActionListener {
 				count[0]++;
 
 			} else {
+				
 				timer.stop(); // Stop the timer when the movement is complete
+				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+				
+				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
+					stopTimer();
+					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
+					System.out.println(secondsElapsed);
+					Player p1=g.CurrentTurn();
+					g.setWinnerId(p1.getPlayerID());
+					 long Lseconds = (secondsElapsed / 1000) % 60;
+					    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
+					    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
+
+				    // Format the time
+				    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+				    System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
+					g.setEndTime(formattedTime);
+					SysData.gamesList.add(g);
+					SysData.winnerPlayer.add(p1);
+				//	Screenshot.captureScreenshot(this);
+					
+					SysData.AddGame(g);
+					System.out.println(g.getPlayersFinalPLaces()
+							);
+					
+					if(g.getPlayersFinalPLaces().size()==2) {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}else if(g.getPlayersFinalPLaces().size()==3) {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}else {
+						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+						w.setVisible(true);
+						this.setVisible(false);
+					}
+				//	Winner w=new Winner(p1,); 
+					
+				}
 			}
 		});
-if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
-    long Lseconds = (secondsElapsed / 1000) % 60;
-    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
-    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
 
-    // Format the time
-    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
-			Player p1=g.CurrentTurn();
-			g.setWinnerId(p1.getPlayerID());
-			g.setEndTime(formattedTime);
-			SysData.gamesList.add(g);
-			SysData.winnerPlayer.add(p1);
-			Screenshot.captureScreenshot(this);
-			
-			SysData.AddGame(g);
-			g.getPlayersFinalPLaces();
-			if(g.getPlayersFinalPLaces().size()==2) {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}else if(g.getPlayersFinalPLaces().size()==3) {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}else {
-				Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
-				w.setVisible(true);
-				this.setVisible(false);
-			}
-		//	Winner w=new Winner(p1,); 
-		
-
-	}
+	
 
 	}
 	public void lineMangment(int turn,int num) {
