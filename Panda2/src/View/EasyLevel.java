@@ -441,8 +441,15 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 					stopTimer();
 					// Save the end time when the condition is met
 					endTime = System.currentTimeMillis();
+			        // Convert milliseconds to hours, minutes, and seconds
+			        long Lseconds = (System.currentTimeMillis() / 1000) % 60;
+			        long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
+			        long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
+
+			        // Format the time
+			        String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
 					System.out.println("End Time: " + endTime); // Print end time for demonstration
-					g.setEndTime(endTime);
+					g.setEndTime(formattedTime);
 				}
 			}
 		});
@@ -1074,7 +1081,13 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			
 			Player p1=g.CurrentTurn();
 			g.setWinnerId(p1.getPlayerID());
-			g.setEndTime(steps);
+		    long Lseconds = (secondsElapsed / 1000) % 60;
+		    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
+		    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
+
+		    // Format the time
+		    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+			g.setEndTime(formattedTime);
 			SysData.gamesList.add(g);
 			SysData.winnerPlayer.add(p1);
 			Screenshot.captureScreenshot(this);
