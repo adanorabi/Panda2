@@ -40,8 +40,8 @@ public class Game {
 		this.Snakes= new ArrayList<Snake>() ;
 		this.Ladders= new ArrayList<Ladder>() ;
 		this.Squares= new ArrayList<Square>() ;
-		this.gameDice=new Dice(gameLevel); //yara!
-		this.GameBoard= new Board(colsNum);  //yara!
+		this.gameDice=DiceFactory.createDice(gameLevel);
+		this.GameBoard= new Board(colsNum);  
 	}
 
 	public Game() {
@@ -603,9 +603,11 @@ public class Game {
             finall  = entry.getValue();
             for(Player p :finall) {
             	finalplayersplaces.add(p);
+            	System.out.println(p.getNickName());
             }
             
         }
+        System.out.println(	finalplayersplaces.size());
 		return finalplayersplaces;
 	}
 

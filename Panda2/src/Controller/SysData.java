@@ -39,8 +39,14 @@ public class SysData {
 	
 	ArrayList<String> Answer;
 	String TrueAnswer;
+	
 	public static void UploadQuestions() {  //A function that pulling out the questions from json file
+
 		try {
+			HardQues.clear();
+			MidQues.clear();
+			EasyQues.clear();
+			questionList.clear();
 			// Parse the JSON file
 			JSONObject obj = new JSONObject(new JSONTokener(new FileReader("questions_scheme.json")));
 
@@ -138,6 +144,7 @@ public class SysData {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		UploadQuestions();
 	}
 
 	public static void DeleteQuestioFromJson(String content) {
@@ -181,20 +188,50 @@ public class SysData {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		UploadQuestions();
 	}
 
 	public static void editQuestion(Question questions[]) {
 		UploadQuestions();
+		System.out.println("Editing!!!!!!!!!!!!!!!");
 		Question oldQuestion=questions[0];
 		Question newQuestion=questions[1];
-		for(int i=0;i<questionList.size();i++) {
-			if(questionList.get(i).getContent().equals(oldQuestion.getContent())) {
-				DeleteQuestioFromJson(questionList.get(i).getContent());
-				AddQuestioToJson(newQuestion);
-				break;
+		if(oldQuestion.getQLevel().equals(Levels.Easy)) {
+			for(int i=0;i<EasyQues.size();i++) {
+				if(EasyQues.get(i).getContent().equals(oldQuestion.getContent())) {
+					DeleteQuestioFromJson(EasyQues.get(i).getContent());
+					AddQuestioToJson(newQuestion);
+					break;
+				}
 			}
 		}
+		else if(oldQuestion.getQLevel().equals(Levels.Medium))
+		{
+			for(int i=0;i<MidQues.size();i++) {
+				if(MidQues.get(i).getContent().equals(oldQuestion.getContent())) {
+					DeleteQuestioFromJson(MidQues.get(i).getContent());
+					AddQuestioToJson(newQuestion);
+					break;
+				}
+			}
+		}
+
+		else{
+			for(int i=0;i<HardQues.size();i++) {
+				if(HardQues.get(i).getContent().equals(oldQuestion.getContent())) {
+					DeleteQuestioFromJson(HardQues.get(i).getContent());
+					AddQuestioToJson(newQuestion);
+					break;
+
+				}
+
+			}
+		}
+
+		UploadQuestions();
+
 	}
+
 
 	public static void AddToJson(ArrayList<Question> newQuestions) {
 		System.out.println("question deleted successfuly");
@@ -350,7 +387,7 @@ public class SysData {
 
 					//		        game.setWinnerId(Integer.parseInt(fields[2]));
 
-					game.setEndTime(fields[4]);
+					game.setEndTime(fields[4]);//adan
 					System.out.println(swap+ " ghdurtjrydtffhtfythg");
 					gamesList.add(game);
 					System.out.println(game.getGameLevel());
