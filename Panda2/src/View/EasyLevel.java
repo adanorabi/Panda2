@@ -50,9 +50,9 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	private JLabel lblLadder; 
 	private JButton diceButton;
 	private ImageIcon[] diceIcons;
-	private JLabel diceLabel;
-	private JLabel p1Label;
-	private JLabel p2Label;
+	private JLabel diceLabel; 
+	private JLabel p1Label; 
+	private JLabel p2Label; 
 	private JLabel p3Label;
 	private JLabel p4Label;
 	private JLabel p1OnGame=null;
@@ -79,7 +79,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	private QuestionFrame questionFrame;
 	private JLabel timerLabel;
 	private Timer timer;
-	private int secondsElapsed;
+	private long secondsElapsed;
 	private long endTime; // Variable to store the end time
 
 
@@ -431,9 +431,9 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				secondsElapsed++;
-				int hours = secondsElapsed / 3600;
-				int minutes = (secondsElapsed % 3600) / 60;
-				int seconds = secondsElapsed % 60;
+				long hours = secondsElapsed / 3600;
+				long minutes = (secondsElapsed % 3600) / 60;
+				long seconds = secondsElapsed % 60;
 				timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
 
 				// Check condition and stop timer if condition is met
@@ -1077,7 +1077,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			} else {
 				
 				timer.stop(); // Stop the timer when the movement is complete
-				System.out.println("moveeeeeeeeeeeeeeeeeeeee");
+				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 				System.out.println(g.GameBoard.getPosition(1, 0));
 				if(g.GameBoard.getPosition(1, 0)==2) {/*winner adan1*/
 					stopTimer();
@@ -1088,14 +1088,15 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				    long Lseconds = (secondsElapsed / 1000) % 60;
 				    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
 				    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
-				    System.out.println("timeeeeeeeeeeeeeeee"+secondsElapsed);
+				 
 
 				    // Format the time
 				    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+				    System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
 					g.setEndTime(formattedTime);
 					SysData.gamesList.add(g);
 					SysData.winnerPlayer.add(p1);
-					Screenshot.captureScreenshot(this);
+				//	Screenshot.captureScreenshot(this);
 					
 					SysData.AddGame(g);
 					System.out.println(g.getPlayersFinalPLaces()
@@ -1115,6 +1116,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 						this.setVisible(false);
 					}
 				//	Winner w=new Winner(p1,); 
+					
 				}
 			}
 			

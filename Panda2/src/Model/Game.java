@@ -10,7 +10,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map.Entry;
 import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 public class Game {
 
 	private int GameId;
@@ -571,46 +573,25 @@ public class Game {
 		this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterQuestion[1]);
 		return false;
 
-	}
-	public ArrayList<Player> getPlayersFinalPLaces(){
-		ArrayList <Player> playersinthesameplace = new ArrayList<Player>();
-		TreeMap<Integer, ArrayList<Player>> placeofplayers = new TreeMap<>(Comparator.reverseOrder());
-		ArrayList <Player> finalplayersplaces = new ArrayList<Player>();
-		int temp;
-		for(Player p : this.Players) {
-			int num=this.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol());
-			if(placeofplayers.size()==0) {
-				playersinthesameplace.add(p);
-				placeofplayers.put(num,playersinthesameplace);
-				
-			}else {
-				for(int i=0;i<placeofplayers.size();i++) {
-					for(Integer key : placeofplayers.keySet()) {
-						if(num==key) {
-							placeofplayers.get(key).add(p);
-						}else {
-							playersinthesameplace.add(p);
-							placeofplayers.put(num, playersinthesameplace);
-						}
-					}
-					
-				}
-			}
-			
-		}
-		ArrayList<Player> finall=new ArrayList<Player>();
-        for (Entry<Integer, ArrayList<Player>> entry : placeofplayers.entrySet()) {
-            finall  = entry.getValue();
-            for(Player p :finall) {
-            	finalplayersplaces.add(p);
-            	System.out.println(p.getNickName());
-            }
-            
-        }
-        System.out.println(	finalplayersplaces.size());
-		return finalplayersplaces;
-	}
+	}public ArrayList<Player> getPlayersFinalPLaces(){
+	    ArrayList<Player> winnersQueue = new ArrayList<>();
+	    
+	    for (Player player : this.Players) {
+	        int position = this.GameBoard.getPosition(player.getPlayerRow(), player.getPlayerCol());
+	        player.setPosition(position); // Set the position in the Player object
+	        winnersQueue.add(player);
+	    }
+	    
+	    // Sort the list based on player positions
+	    Collections.sort(winnersQueue, new Comparator<Player>() {
+	        @Override
+	        public int compare(Player p1, Player p2) {
+	            return Integer.compare(p1.getPosition(), p2.getPosition());
+	        }
+	    });
 
+	    return winnersQueue;
+	}
 
 	public int UpdatePlayerPlace() {
 

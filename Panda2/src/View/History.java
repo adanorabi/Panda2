@@ -133,7 +133,7 @@ public class History extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 
 	private void initComponents( ) {
-		Screenshot.loadExistingScreenshots();;
+		//Screenshot.loadExistingScreenshots();;
 		String filePath = "AllGames.csv";
 	SysData.readCsv(filePath);
 		jPanel1 = new javax.swing.JPanel();
@@ -148,9 +148,13 @@ public class History extends javax.swing.JFrame {
 		model.setRowCount(0); // Removes all rows from the table
 		Object[][] data = new Object[SysData.gamesList.size()][4]; // Assuming there are 5 columns in your table
         System.out.println("game list in history"+SysData.gamesList.size());
+        int gid=0;
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
 			System.out.println("im in history");
+			
 			Game game = SysData.gamesList.get(i);
+			if(game.getGameId()==gid)
+				break;
 			System.out.println(game.getGameLevel());
 			System.out.println(game.getGameId());
 			Player p=SysData.winnerPlayer.get(i);
@@ -158,6 +162,7 @@ public class History extends javax.swing.JFrame {
 			data[i][1] = game.getGameLevel();
 			data[i][2] = p.getNickName();
 			data[i][3] = game.getEndTime();
+			gid=game.getGameId();
 			//data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
 		}
 
