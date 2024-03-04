@@ -1,321 +1,264 @@
-{"questions": [
-    {
-        "difficulty": "1",
-        "question": "What do functional user requirements typically describe?",
-        "answers": [
-            "How some computations must be carried out",
-            "Detailed system services",
-            "High-level statements of system behavior",
-            " Constraints on system operation"
-        ],
-        "correct_ans": "High-level statements of system behavior"
-    },
-    {
-        "difficulty": "1",
-        "question": "What is the primary purpose of the software requirements document?",
-        "answers": [
-            "To provide a design blueprint for developers",
-            "To define user requirements and system specifications",
-            "To detail how the system should accomplish its tasks",
-            "To document the software testing procedures"
-        ],
-        "correct_ans": "To define user requirements and system specifications"
-    },
-    {
-        "difficulty": "1",
-        "question": "What does SDLC stand for?",
-        "answers": [
-            "Software Design and Learning Cycle",
-            "Software Development Life Cycle",
-            "Software Deployment and Licensing Center",
-            "Software Documentation and Lifecycle"
-        ],
-        "correct_ans": "Software Development Life Cycle"
-    },
-    {
-        "difficulty": "1",
-        "question": "What component of Software Quality Assurance is involved in detecting programming errors?",
-        "answers": [
-            "Reviews",
-            "Testing",
-            "Faults management",
-            "Corrective maintenance"
-        ],
-        "correct_ans": "Testing"
-    },
-    {
-        "difficulty": "1",
-        "question": "Which phase of the project life cycle focuses on specifying system requirements in detail?",
-        "answers": [
-            "Development",
-            "Integration",
-            "Specification",
-            "Maintenance"
-        ],
-        "correct_ans": "Specification"
-    },
-    {
-        "difficulty": "1",
-        "question": "What should a complete requirements document include?",
-        "answers": [
-            "Descriptions of all facilities required",
-            "Detailed system design specifications",
-            "High-level statements of system behavior",
-            "A definition of user intentions"
-        ],
-        "correct_ans": "Descriptions of all facilities required"
-    },
-    {
-        "difficulty": "1",
-        "question": "Which software development methodology emphasizes iterative and incremental development?",
-        "answers": [
-            "Waterfall model",
-            "Agile methodology",
-            "Spiral model",
-            "RAD (Rapid Application Development)"
-        ],
-        "correct_ans": "Agile methodology"
-    },
-    {
-        "difficulty": "1",
-        "question": "What is the purpose of version control systems like Git",
-        "answers": [
-            "To create backups of software projects",
-            "To track changes in code and collaborate with others on development",
-            "To automatically generate documentation",
-            "To test software for bugs"
-        ],
-        "correct_ans": "To track changes in code and collaborate with others on development"
-    },
-    {
-        "difficulty": "1",
-        "question": "What does MVC stand for in the context of software architecture?",
-        "answers": [
-            "Model-View-Component",
-            "Model-View-Controller",
-            "Model-Visual-Component",
-            "Management-View-Controller"
-        ],
-        "correct_ans": "Model-View-Controller"
-    },
-    {
-        "difficulty": "2",
-        "question": "What is the purpose of a software requirements specification (SRS) document?",
-        "answers": [
-            "To document the internal design of the software",
-            "To specify the functionality, performance, and design constraints of the software",
-            " To outline the marketing strategy for the software product",
-            "To provide user documentation for the software"
-        ],
-        "correct_ans": "To specify the functionality, performance, and design constraints of the software"
-    },
-    {
-        "difficulty": "2",
-        "question": "Which software development methodology focuses on delivering working software in short iterations and adapting to change",
-        "answers": [
-            " Waterfall model",
-            "Agile methodology",
-            "Spiral model",
-            "RAD (Rapid Application Development) model"
-        ],
-        "correct_ans": "Agile methodology"
-    },
-    {
-        "difficulty": "2",
-        "question": "What's the primary goal of integration testing",
-        "answers": [
-            "Test in production",
-            "Meet user requirements",
-            "Ensure units work together",
-            "Validate acceptance criteria"
-        ],
-        "correct_ans": "Ensure units work together"
-    },
-    {
-        "difficulty": "2",
-        "question": "What's another term for black-box testing?",
-        "answers": [
-            "Unit testing",
-            "Acceptance testing",
-            "System testing",
-            "Integration testing"
-        ],
-        "correct_ans": "Acceptance testing"
-    },
-    {
-        "difficulty": "2",
-        "question": "What's a software design pattern's main purpose?",
-        "answers": [
-            "Introduce complexity",
-            "Solve common design problems",
-            "Restrict flexibility",
-            "Reduce code readability"
-        ],
-        "correct_ans": "Solve common design problems"
-    },
-    {
-        "difficulty": "2",
-        "question": "What type of testing ensures all components work together?",
-        "answers": [
-            "Unit testing",
-            "System testing",
-            "Acceptance testing",
-            "Integration testing"
-        ],
-        "correct_ans": "System testing"
-    },
-    {
-        "difficulty": "2",
-        "question": "What is the primary difference between functional and non-functional requirements?",
-        "answers": [
-            "Functional requirements define system services, while non-functional requirements define system constraints",
-            "Functional requirements define system constraints, while non-functional requirements define system services.",
-            "Functional requirements are written for customers, while non-functional requirements are written for developers",
-            "Functional requirements focus on system behavior, while non-functional requirements focus on system properties and constraints"
-        ],
-        "correct_ans": "Functional requirements focus on system behavior, while non-functional requirements focus on system properties and constraints"
-    },
-    {
-        "difficulty": "2",
-        "question": "What is the primary objective of black-box testing",
-        "answers": [
-            "To test individual components of the system",
-            "To test the overall system functionality",
-            "To test system performance under load",
-            "To test the system against predefined specifications without knowledge of its internal structure"
-        ],
-        "correct_ans": "To test the system against predefined specifications without knowledge of its internal structure"
-    },
-    {
-        "difficulty": "2",
-        "question": "In Scrum, who is responsible for prioritizing the items in the product backlog?",
-        "answers": [
-            "The Scrum Master",
-            "The Stakeholders",
-            "The Development Team",
-            "The Product Owner"
-        ],
-        "correct_ans": "The Product Owner"
-    },
-    {
-        "difficulty": "3",
-        "question": "What distinguishes the software requirements document from a design document?",
-        "answers": [
-            "The software requirements document specifies what the system should do, while the design document specifies how it should do it",
-            "The software requirements document includes technical details, while the design document focuses on user requirements",
-            "The software requirements document is updated frequently, while the design document remains static",
-            "The software requirements document outlines the development process, while the design document outlines the system architecture"
-        ],
-        "correct_ans": "The software requirements document specifies what the system should do, while the design document specifies how it should do it"
-    },
-    {
-        "difficulty": "3",
-        "question": "How are requirements and design interconnected in software development?",
-        "answers": [
-            "Requirements and design are separate phases with no overlap",
-            "Requirements dictate the system architecture, while design specifies the system's functionality",
-            "Requirements drive the system architecture and design decisions",
-            "Design precedes the establishment of requirements in the development process"
-        ],
-        "correct_ans": "Requirements drive the system architecture and design decisions"
-    },
-    {
-        "difficulty": "3",
-        "question": "What is the main purpose of a burn-down chart in Scrum?",
-        "answers": [
-            "To track the amount of time spent on each task during a sprint",
-            "To visualize the progress of work completed versus work remaining in a sprint",
-            " To assign tasks to team members based on their availability",
-            "To document the backlog items that have been completed in a sprint"
-        ],
-        "correct_ans": "To visualize the progress of work completed versus work remaining in a sprint"
-    },
-    {
-        "difficulty": "3",
-        "question": "What is the difference between black-box and white-box testing?",
-        "answers": [
-            "White-box testing focuses on internal code structures, while black-box testing focuses on external functionality",
-            "White-box testing only involves manual testing, while black-box testing involves automated testing",
-            "White-box testing is conducted by end-users, while black-box testing is conducted by developers",
-            "White-box testing is only applicable to frontend testing, while black-box testing is applicable to both frontend and backend testing"
-        ],
-        "correct_ans": "White-box testing focuses on internal code structures, while black-box testing focuses on external functionality"
-    },
-    {
-        "difficulty": "3",
-        "question": "How are design and implementation activities typically interleaved in software engineering?",
-        "answers": [
-            "Design and implementation are separate phases with no interaction",
-            "Design decisions are made after the implementation phase to ensure compatibility",
-            "Design and implementation activities are closely linked and often overlap",
-            "Implementation precedes the design phase to expedite development"
-        ],
-        "correct_ans": "Design and implementation activities are closely linked and often overlap"
-    },
-    {
-        "difficulty": "3",
-        "question": "what is the primary role of software architecture in the software design process?",
-        "answers": [
-            "To document the internal design of the software system",
-            "To specify the functionality, performance, and design constraints of the software",
-            "To provide a design blueprint for developers",
-            "To define user requirements and system specifications"
-        ],
-        "correct_ans": "To specify the functionality, performance, and design constraints of the software"
-    },
-    {
-        "difficulty": "3",
-        "question": "How does the first stage of the software design process contribute to establishing system boundaries?",
-        "answers": [
-            "By identifying and defining the external interactions with the system",
-            "By determining the programming language to be used for implementation",
-            "By documenting the testing procedures for the software",
-            "By selecting the hardware infrastructure for the software system"
-        ],
-        "correct_ans": "By identifying and defining the external interactions with the system"
-    },
-    {
-        "difficulty": "3",
-        "question": "What is the primary objective of a burn-down chart in Scrum methodology?",
-        "answers": [
-            "To track the amount of time spent on each task during a sprint",
-            "To assign tasks to team members based on their availability",
-            "To document the backlog items that have been completed in a sprint",
-            "To visualize the progress of work completed versus work remaining in a sprint"
-        ],
-        "correct_ans": "To visualize the progress of work completed versus work remaining in a sprint"
-    },
-    {
-        "difficulty": "3",
-        "question": "In white-box testing, what does the term code coverage refer to?",
-        "answers": [
-            "The number of test cases executed",
-            "The percentage of code lines executed during testing",
-            "The depth of nested if-else statements in the code",
-            "The amount of code written by each developer"
-        ],
-        "correct_ans": "The percentage of code lines executed during testing"
-    },
-    {
-        "difficulty": "3",
-        "question": "Which stage of the software development lifecycle is most suitable for conducting white-box testing?",
-        "answers": [
-            "Requirements gathering",
-            "Design",
-            "Implementation and coding",
-            "Testing and quality assurance"
-        ],
-        "correct_ans": "Implementation and coding"
-    },
-    {
-        "difficulty": "3",
-        "question": "We Can Do This?",
-        "answers": [
-            "good",
-            "fine",
-            "bad",
-            "so bad"
-        ],
-        "correct_ans": "bad"
-    }
-]}
+{
+    "questions": [{
+            "question": "What is a characteristic of Scrum methodology?",
+            "answers": [
+                "Fixed time periods called sprints",
+                "No involvement of customer representatives",
+                "Lack of prioritization in backlog",
+                "Ad hoc planning of project tasks"
+            ],
+            "correct_ans": "Fixed time periods called sprints",
+            "difficulty": "1"
+        },{
+            "question": "What do functional user requirements typically describe?",
+            "answers": [
+                "How some computations must be carried out",
+                "Detailed system services",
+                "High-level statements of system behavior",
+                " Constraints on system operation"
+            ],
+            "correct_ans":  "High-level statements of system behavior",
+            "difficulty": "1"
+        },{
+            "question": "What is the primary purpose of the software requirements document?",
+            "answers": [
+                "To provide a design blueprint for developers",
+                "To define user requirements and system specifications",
+                "To detail how the system should accomplish its tasks",
+                "To document the software testing procedures"
+            ],
+            "correct_ans": "To define user requirements and system specifications",
+            "difficulty": "1"
+        },{
+            "question": "What does SDLC stand for?",
+            "answers": [
+                "Software Design and Learning Cycle",
+                "Software Development Life Cycle",
+                "Software Deployment and Licensing Center",
+                "Software Documentation and Lifecycle"
+            ],
+            "correct_ans": "Software Development Life Cycle",
+            "difficulty": "1"
+        },{
+            "question": "What aspect of Software Quality Assurance finds coding mistakes?",
+            "answers": [
+                "Reviews",
+                "Testing",
+                "Faults management",
+                "Corrective maintenance"
+            ],
+            "correct_ans": "Testing",
+            "difficulty": "1"
+        },{
+            "question": "Which project phase details system requirements?",
+            "answers": [
+                "Development",
+                "Integration",
+                "Specification",
+                "Maintenance"
+            ],
+            "correct_ans": "Specification",
+            "difficulty": "1"
+        },{
+            "question": "What should a complete requirements document include?",
+            "answers": [
+                "Descriptions of all facilities required",
+                "Detailed system design specifications",
+                "High-level statements of system behavior",
+                "A definition of user intentions"
+            ],
+            "correct_ans": "Descriptions of all facilities required",
+            "difficulty": "1"
+        },{
+            "question": "Which methodology stresses iterative development?",
+            "answers": [
+                "Waterfall model",
+                "Agile methodology",
+                "Spiral model",
+                "RAD (Rapid Application Development)"
+            ],
+            "correct_ans":  "Agile methodology",
+            "difficulty": "1"
+        },{
+            "question": "What is the purpose of version control systems like Git",
+            "answers": [
+                "To create backups of software projects",
+                "To track changes in code and collaborate with others on development",
+                "To automatically generate documentation",
+                "To test software for bugs"
+            ],
+            "correct_ans": "To track changes in code and collaborate with others on development",
+            "difficulty": "1"
+        },{
+            "question": "What does MVC stand for in the context of software architecture?",
+            "answers": [
+                "Model-View-Component",
+                "Model-View-Controller",
+                "Model-Visual-Component",
+                "Management-View-Controller"
+            ],
+            "correct_ans": "Model-View-Controller",
+            "difficulty": "1"
+        },{
+            "question": "Which methodology emphasizes adaptable, iterative delivery of working software?",
+            "answers": [
+                " Waterfall model",
+                "Agile methodology",
+                "Spiral model",
+                "RAD (Rapid Application Development) model"
+            ],
+            "correct_ans": "Agile methodology",
+            "difficulty": "2"
+        },{
+            "question": "What's the primary goal of integration testing",
+            "answers": [
+                "Test in production",
+                "Meet user requirements",
+                "Ensure units work together",
+                "Validate acceptance criteria"
+            ],
+            "correct_ans":"Ensure units work together",
+            "difficulty": "2"
+        },{
+            "question": "What's another term for black-box testing?",
+            "answers": [
+                "Unit testing",
+                "Acceptance testing",
+                "System testing",
+                "Integration testing"
+            ],
+            "correct_ans": "Acceptance testing",
+            "difficulty": "2"
+        },{
+            "question": "What's a software design pattern's main purpose?",
+            "answers": [
+                "Introduce complexity",
+                "Solve common design problems",
+                "Restrict flexibility",
+                "Reduce code readability"
+            ],
+            "correct_ans":  "Solve common design problems",
+            "difficulty": "2"
+        },{
+            "question": "What type of testing ensures all components work together?",
+            "answers": [
+                "Unit testing",
+                "System testing",
+                "Acceptance testing",
+                "Integration testing"
+            ],
+            "correct_ans": "System testing",
+            "difficulty": "2"
+        },{
+            "question": "What is the primary objective of black-box testing",
+            "answers": [
+                "To test individual components of the system",
+                "To test the overall system functionality",
+                "To test system performance under load",
+                "Testing the system against specs without knowing its internals."
+            ],
+            "correct_ans": "Testing the system against specs without knowing its internals",
+            "difficulty": "2"
+        },{
+            "question": "What is a characteristic of Scrum methodology?",
+            "answers": [
+                "Fixed time periods called sprint",
+                "No involvement of customer representatives",
+                "Lack of prioritization in backlog",
+                "Ad hoc planning of project tasks"
+            ],
+            "correct_ans":   "Fixed time periods called sprint",
+            "difficulty": "2"
+        }, {
+            "question": "In Scrum, who prioritizes the product backlog?",
+            "answers": [
+                "The Scrum Master",
+                "The Stakeholders",
+                "The Development Team",
+                "The Product Owner"
+            ],
+            "correct_ans":   "The Product Owner",
+            "difficulty": "2"
+        }, {
+            "question": "How are requirements and design interconnected in software development?",
+            "answers": [
+                "Requirements and design are separate phases with no overlap",
+                "Requirements dictate the system architecture, while design specifies the system's functionality",
+                "Requirements drive the system architecture and design decisions",
+                "Design precedes the establishment of requirements in the development process"
+            ],
+            "correct_ans":"Requirements drive the system architecture and design decisions",
+            "difficulty": "3"
+        }, {
+            "question": "What is the main purpose of a burn-down chart in Scrum?",
+            "answers": [
+                "To track the amount of time spent on each task during a sprint",
+                "To visualize the progress of work completed versus work remaining in a sprint",
+                " To assign tasks to team members based on their availability",
+                "To document the backlog items that have been completed in a sprint"
+            ],
+            "correct_ans":  "To visualize the progress of work completed versus work remaining in a sprint",
+            "difficulty": "3"
+        }, {
+            "question": "How are design and implementation activities typically interleaved in software engineering?",
+            "answers": [
+                "Design and implementation are separate phases with no interaction",
+                "Design decisions are made after the implementation phase to ensure compatibility",
+                "Design and implementation activities are closely linked and often overlap",
+                "Implementation precedes the design phase to expedite development"
+            ],
+            "correct_ans":  "Design and implementation activities are closely linked and often overlap",
+            "difficulty": "3"
+        }, {
+            "question": "what is the primary role of software architecture in the software design process?",
+            "answers": [
+                "To document the internal design of the software system",
+                "To specify the functionality, performance, and design constraints of the software",
+                "To provide a design blueprint for developers",
+                "To define user requirements and system specifications"
+            ],
+            "correct_ans":  "To specify the functionality, performance, and design constraints of the software",
+            "difficulty": "3"
+        }, {
+            "question": "How does the initial software design stage define system boundaries?",
+            "answers": [
+                "By identifying and defining the external interactions with the system",
+                "By determining the programming language to be used for implementation",
+                "By documenting the testing procedures for the software",
+                "By selecting the hardware infrastructure for the software system"
+            ],
+            "correct_ans": "By identifying and defining the external interactions with the system",
+            "difficulty": "3"
+        }, {
+            "question": "What is the primary objective of a burn-down chart in Scrum methodology?",
+            "answers": [
+                "To track the amount of time spent on each task during a sprint",
+                "To assign tasks to team members based on their availability",
+                "To document the backlog items that have been completed in a sprint",
+                "To visualize the progress of work completed versus work remaining in a sprint"
+            ],
+            "correct_ans":  "To visualize the progress of work completed versus work remaining in a sprint",
+            "difficulty": "3"
+        }, {
+            "question": "In white-box testing, what does the term code coverage refer to?",
+            "answers": [
+                "The number of test cases executed",
+                "The percentage of code lines executed during testing",
+                "The depth of nested if-else statements in the code",
+                "The amount of code written by each developer"
+            ],
+            "correct_ans": "The percentage of code lines executed during testing",
+            "difficulty": "3"
+        }, {
+            "question": "What software development stage is best for white-box testing?",
+            "answers": [
+                "Requirements gathering",
+                "Design",
+                "Implementation and coding",
+                "Testing and quality assurance"
+            ],
+            "correct_ans": "Implementation and coding",
+            "difficulty": "3"
+        }
+    ]
+}
