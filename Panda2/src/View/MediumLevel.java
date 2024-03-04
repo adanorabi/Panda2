@@ -417,8 +417,14 @@ public class MediumLevel extends JFrame implements ActionListener {
 					stopTimer();
 					// Save the end time when the condition is met
 					endTime = System.currentTimeMillis();
+			        long Lseconds = (System.currentTimeMillis() / 1000) % 60;
+			        long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
+			        long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
+
+			        // Format the time
+			        String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
 					System.out.println("End Time: " + endTime); // Print end time for demonstration
-					g.setEndTime(endTime);
+					g.setEndTime(formattedTime);
 				}
 			}
 		});
@@ -1077,10 +1083,15 @@ public class MediumLevel extends JFrame implements ActionListener {
 			}
 		});
 if(g.GameBoard.getPosition(afterx, aftery)==Y*X) {/*winner adan*/
-			
+    long Lseconds = (secondsElapsed / 1000) % 60;
+    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
+    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
+
+    // Format the time
+    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
 			Player p1=g.CurrentTurn();
 			g.setWinnerId(p1.getPlayerID());
-			g.setEndTime(steps);
+			g.setEndTime(formattedTime);
 			SysData.gamesList.add(g);
 			SysData.winnerPlayer.add(p1);
 			Screenshot.captureScreenshot(this);
