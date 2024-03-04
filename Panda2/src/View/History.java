@@ -103,9 +103,9 @@ public class History extends javax.swing.JFrame {
 //		table.getColumnModel().getColumn(4).setCellRenderer(cellRender);
 //		table.getColumnModel().getColumn(4).setCellEditor(cellRender);
 
-        table.getColumnModel().getColumn(4).setCellRenderer(new TableActionCellRender());
-        table.getColumnModel().getColumn(4).setCellEditor(new TableActionCellEditor(event));
-		table.repaint();
+//        table.getColumnModel().getColumn(4).setCellRenderer(new TableActionCellRender());
+//        table.getColumnModel().getColumn(4).setCellEditor(new TableActionCellEditor(event));
+//		table.repaint();
 
 		backButton = new BackButton();
 		backButton.setText("Back"); // Set button text
@@ -146,7 +146,7 @@ public class History extends javax.swing.JFrame {
 		// Assuming SysData.gamesList is a list of Game objects
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0); // Removes all rows from the table
-		Object[][] data = new Object[SysData.gamesList.size()][5]; // Assuming there are 5 columns in your table
+		Object[][] data = new Object[SysData.gamesList.size()][4]; // Assuming there are 5 columns in your table
         System.out.println("game list in history"+SysData.gamesList.size());
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
 			System.out.println("im in history");
@@ -158,13 +158,13 @@ public class History extends javax.swing.JFrame {
 			data[i][1] = game.getGameLevel();
 			data[i][2] = p.getNickName();
 			data[i][3] = game.getEndTime();
-			data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
+			//data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
 		}
 
-		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer", "Game ScreenShoot"};
+		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer"};
 
 		table.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
-			boolean[] canEdit = new boolean[]{false, false, false, false, true}; // Assuming the last column is editable
+			boolean[] canEdit = new boolean[]{false, false, false, false}; // Assuming the last column is editable
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
