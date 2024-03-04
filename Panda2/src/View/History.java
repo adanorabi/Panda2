@@ -12,6 +12,8 @@ import Enum.PlayerColor;
 import FlatLafDesign.*;
 import Model.Game;
 import Model.Player;
+import FlatLafDesign.*;
+
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -47,8 +49,9 @@ public class History extends javax.swing.JFrame {
 			public void onView(int row) {
 				System.out.println("View row : " + row);
 				int gameId = (int) table.getValueAt(row, 0);
+				System.out.println(gameId );
                 // Call the showScreenshot method with the game ID
-				Screenshot.showScreenshot(gameId);
+				Screenshot.showScreenshot(gameId-1);
                
 			}
 		};
@@ -96,10 +99,12 @@ public class History extends javax.swing.JFrame {
 		// 
 		//        // Set the cell renderer and cell editor for the "Game ScreenShoot" columnint columnIndex = 4; // Adjust this to the index of the column you want to apply the renderer to
 		//        table.getColumnModel().getColumn(4).setCellRenderer(renderer);
-		TableActionCellRender cellRender = new TableActionCellRender(event);
-		table.getColumnModel().getColumn(4).setCellRenderer(cellRender);
-		table.getColumnModel().getColumn(4).setCellEditor(cellRender);
+//		TableActionCellRender cellRender = new TableActionCellRender(event);
+//		table.getColumnModel().getColumn(4).setCellRenderer(cellRender);
+//		table.getColumnModel().getColumn(4).setCellEditor(cellRender);
 
+        table.getColumnModel().getColumn(4).setCellRenderer(new TableActionCellRender());
+        table.getColumnModel().getColumn(4).setCellEditor(new TableActionCellEditor(event));
 		table.repaint();
 
 		backButton = new BackButton();

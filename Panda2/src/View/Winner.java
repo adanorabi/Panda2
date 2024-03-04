@@ -293,26 +293,7 @@ public class Winner extends JFrame {
 /****************player movement**************/
      headMove();
 
-		BackButton backButton = new BackButton();
-		backButton.setText("Home"); // Set button text
-		backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
-
-		// Add BackButton to the frame
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setOpaque(false); // Set panel to be transparent
-		buttonPanel.add(backButton); // Add the backButton to the buttonPanel
-
-		Container backgroundPanel = null;
-		// Add the buttonPanel to the backgroundPanel
-		backgroundPanel.add(buttonPanel, BorderLayout.SOUTH); // Add buttonPanel to the SOUTH of backgroundPanel
-
-		// Adjust the bounds of the buttonPanel instead of the backButton
-		buttonPanel.setBounds(10, 700, 30, 20); // Adjust x, y, width, and height as needed for the buttonPanel
-
-		// Repaint the frame
-		revalidate();
-		repaint();
-
+		
 	}
 	public void headMove() {
 		Timer playerMoveTimer = new Timer(100, new ActionListener() {
