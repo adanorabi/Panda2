@@ -371,16 +371,16 @@ public class Winner extends JFrame {
 
 	}
 	// Method to play victory sound
-    private void playVictorySound() {
-        try {
-            File audioFile = new File("victory.wav"); // Adjust the file path accordingly
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void playVictorySound() {
+//        try {
+//            File audioFile = new File("victory.wav"); // Adjust the file path accordingly
+//            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+//            Clip clip = AudioSystem.getClip();
+//            clip.open(audioStream);
+//            clip.start();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 }
