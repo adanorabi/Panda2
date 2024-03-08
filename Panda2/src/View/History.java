@@ -123,6 +123,8 @@ public class History extends javax.swing.JFrame {
 	private void initComponents( ) {
 		Screenshot.loadExistingScreenshots();
 		String filePath = "AllGames.csv";
+		SysData.gamesList.clear();
+		SysData.winnerPlayer.clear();
 		SysData.readCsv(filePath);
 		jPanel1 = new javax.swing.JPanel();
 		scroll = new javax.swing.JScrollPane();
