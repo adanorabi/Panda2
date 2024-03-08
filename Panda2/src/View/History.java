@@ -96,8 +96,8 @@ public class History extends javax.swing.JFrame {
         setContentPane(backgroundPanel);
 
         // Set the custom cell renderer and editor for the "Game ScreenShoot" column
-        table.getColumnModel().getColumn(4).setCellRenderer(new ViewButtonRenderer());
-        table.getColumnModel().getColumn(4).setCellEditor(new ViewButtonEditor(new JCheckBox(), event));
+      // 3ad table.getColumnModel().getColumn(4).setCellRenderer(new ViewButtonRenderer());
+      // 3ad table.getColumnModel().getColumn(4).setCellEditor(new ViewButtonEditor(new JCheckBox(), event));
 
         backButton = new JButton("Back"); // Changed to JButton
         backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
@@ -150,16 +150,16 @@ public class History extends javax.swing.JFrame {
 			data[i][1] = game.getGameLevel();
 			data[i][2] = p.getNickName();
 			data[i][3] = game.getEndTime();
-			data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
+		//adan	data[i][4] = null; // Assuming you handle the Game ScreenShoot separately 3ad
 			gid=game.getGameId();
 			
 
 		}
 
-		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer", "Game ScreenShoot"};
+		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer"};//,, "Game ScreenShoot" 3ad
 
 		table.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
-			boolean[] canEdit = new boolean[]{false, false, false, false, true}; // Assuming the last column is editable
+			boolean[] canEdit = new boolean[]{false, false, false, false}; // Assuming the last column is editable , true 3ad
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {
