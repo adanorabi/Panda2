@@ -67,7 +67,7 @@ public class Winner extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		 // Play victory sound
-        playVictorySound();
+       //yara audio playVictorySound();
 
 		ImageIcon winIcon = new ImageIcon(Winner.class.getResource("/View/img/winframe.png"));
 		int winWidth = 500; // Adjusted width based on grid size

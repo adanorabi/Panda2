@@ -1105,7 +1105,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 				timer.stop(); // Stop the timer when the movement is complete
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 				
-				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
+				if(g.GameBoard.getPosition(afterx, aftery)<=10) {/*winner adan1*/
 					stopTimer();
 					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
 					System.out.println(secondsElapsed);
@@ -1121,7 +1121,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 					g.setEndTime(formattedTime);
 					SysData.gamesList.add(g);
 					SysData.winnerPlayer.add(p1);
-				//	Screenshot.captureScreenshot(this);
+					Screenshot.captureScreenshot(this);
 					
 					SysData.AddGame(g);
 					System.out.println(g.getPlayersFinalPLaces()

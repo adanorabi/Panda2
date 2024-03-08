@@ -6,15 +6,20 @@ import FlatLafDesign.BackButton;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
+import Controller.Screenshot;
 import Controller.SysData;
 import Enum.Levels;
 import Enum.PlayerColor;
 import FlatLafDesign.*;
 import Model.Game;
 import Model.Player;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
 import java.awt.*;
 
 public class History extends javax.swing.JFrame {
@@ -24,111 +29,101 @@ public class History extends javax.swing.JFrame {
 	private ImageIcon backgroundImage;
 	private JButton backButton;
 
-	public History() {
+    public History() {
+        initComponents();
 
-		initComponents();
-		
-		TableActionEvent event = new TableActionEvent() {
-			@Override
-			public void onEdit(int row) {
-				System.out.println("Edit row : " + row);
-			}
+        TableActionEvent event = new TableActionEvent() {
+            @Override
+            public void onEdit(int row) {
+                System.out.println("Edit row : " + row);
+            }
 
-			@Override
-			public void onDelete(int row) {
-				if (table.isEditing()) {
-					table.getCellEditor().stopCellEditing();
-				}
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				model.removeRow(row);
-			}
+            @Override
+            public void onDelete(int row) {
+                if (table.isEditing()) {
+                    table.getCellEditor().stopCellEditing();
+                }
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                model.removeRow(row);
+            }
 
-			@Override
-			public void onView(int row) {
-				System.out.println("View row : " + row);
-				JFrame frame=new JFrame();
-				
-				showDialog(frame);
-			}
-		};
-		//1d
-		// Load the background image
-		backgroundImage = new ImageIcon(getClass().getResource("/View/img/game.png"));
+            @Override
+            public void onView(int row) {
+                System.out.println("View row : " + row);
+                int gameId = (int) table.getValueAt(row, 0);
+                System.out.println(gameId);
+                // Call the showScreenshot method with the game ID
+                Screenshot.showScreenshot(gameId - 1);
+            }
+        };
 
-		backgroundPanel = new JPanel(new BorderLayout()) {
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				// Draw the image as the background
-				g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
-			}
-		};
+        // Load the background image
+        backgroundImage = new ImageIcon(getClass().getResource("/View/img/game.png"));
 
-		jPanel1.setPreferredSize(new Dimension(1200, 500));
-		JPanel panelWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		panelWrapper.setOpaque(false); // Set panelWrapper to be transparent
-		panelWrapper.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
-		panelWrapper.add(jPanel1);
+        backgroundPanel = new JPanel(new BorderLayout()) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Draw the image as the background
+                g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
 
-		backgroundPanel.add(panelWrapper, BorderLayout.CENTER);
+        jPanel1.setPreferredSize(new Dimension(1200, 500));
+        JPanel panelWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelWrapper.setOpaque(false); // Set panelWrapper to be transparent
+        panelWrapper.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        panelWrapper.add(jPanel1);
 
-		jPanel1.setAlignmentX(LEFT_ALIGNMENT);
-		scroll.setAlignmentX(LEFT_ALIGNMENT);
-		table.setDefaultRenderer(Object.class, new TableGradientCell());
-		jPanel1.putClientProperty(FlatClientProperties.STYLE, ""
-				+ "border:1,1,1,1,$TableHeader.bottomSeparatorColor,,10");
-		table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
-				+ "hoverBackground:null;"
-				+ "pressedBackground:null;"
-				+ "separatorColor:$TableHeader.background");
-		scroll.putClientProperty(FlatClientProperties.STYLE, ""
-				+ "border:3,0,3,0,$Table.background,10,10");
-		scroll.getVerticalScrollBar().putClientProperty(FlatClientProperties.STYLE, ""
-				+ "hoverTrackColor:null");
+        backgroundPanel.add(panelWrapper, BorderLayout.CENTER);
 
-		setSize(1300, 1000);
-		setLocationRelativeTo(null);
-		setContentPane(backgroundPanel);
+        jPanel1.setAlignmentX(LEFT_ALIGNMENT);
+        scroll.setAlignmentX(LEFT_ALIGNMENT);
+        table.setDefaultRenderer(Object.class, new TableGradientCell());
+        jPanel1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "border:1,1,1,1,$TableHeader.bottomSeparatorColor,,10");
+        table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
+                + "hoverBackground:null;"
+                + "pressedBackground:null;"
+                + "separatorColor:$TableHeader.background");
+        scroll.putClientProperty(FlatClientProperties.STYLE, ""
+                + "border:3,0,3,0,$Table.background,10,10");
+        scroll.getVerticalScrollBar().putClientProperty(FlatClientProperties.STYLE, ""
+                + "hoverTrackColor:null");
 
-		//        table.getColumnModel().getColumn(4).setCellRenderer(renderer);
-		//        table.getColumnModel().getColumn(4).setCellEditor(new TableActionCellEditor(event));
-		// 
-		//        // Set the cell renderer and cell editor for the "Game ScreenShoot" columnint columnIndex = 4; // Adjust this to the index of the column you want to apply the renderer to
-		//        table.getColumnModel().getColumn(4).setCellRenderer(renderer);
-		TableActionCellRender cellRender = new TableActionCellRender(event);
-		table.getColumnModel().getColumn(4).setCellRenderer(cellRender);
-		table.getColumnModel().getColumn(4).setCellEditor(cellRender);
+        setSize(1300, 1000);
+        setLocationRelativeTo(null);
+        setContentPane(backgroundPanel);
 
-		table.repaint();
+        // Set the custom cell renderer and editor for the "Game ScreenShoot" column
+        table.getColumnModel().getColumn(4).setCellRenderer(new ViewButtonRenderer());
+        table.getColumnModel().getColumn(4).setCellEditor(new ViewButtonEditor(new JCheckBox(), event));
 
-		backButton = new BackButton();
-		backButton.setText("Back"); // Set button text
-		backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
+        backButton = new JButton("Back"); // Changed to JButton
+        backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
 
-		// Add BackButton to the frame
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setOpaque(false); // Set panel to be transparent
-		buttonPanel.add(backButton); // Add the backButton to the buttonPanel
+        // Add BackButton to the frame
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setOpaque(false); // Set panel to be transparent
+        buttonPanel.add(backButton); // Add the backButton to the buttonPanel
 
-		// Add the buttonPanel to the backgroundPanel
-		backgroundPanel.add(buttonPanel, BorderLayout.SOUTH); // Add buttonPanel to the SOUTH of backgroundPanel
+        // Add the buttonPanel to the backgroundPanel
+        backgroundPanel.add(buttonPanel, BorderLayout.SOUTH); // Add buttonPanel to the SOUTH of backgroundPanel
 
-		// Adjust the bounds of the buttonPanel instead of the backButton
-		buttonPanel.setBounds(10, 700, 30, 20); // Adjust x, y, width, and height as needed for the buttonPanel
+        // Adjust the bounds of the buttonPanel instead of the backButton
+        buttonPanel.setBounds(10, 700, 30, 20); // Adjust x, y, width, and height as needed for the buttonPanel
 
-		// Repaint the frame
-		revalidate();
-		repaint();
-
-
-
-	}
+        // Repaint the frame
+        revalidate();
+        repaint();
+    }
 
 	@SuppressWarnings("unchecked")
 
 	private void initComponents( ) {
+		Screenshot.loadExistingScreenshots();
 		String filePath = "AllGames.csv";
-	SysData.readCsv(filePath);
+		SysData.readCsv(filePath);
 		jPanel1 = new javax.swing.JPanel();
 		scroll = new javax.swing.JScrollPane();
 		table = new javax.swing.JTable();
@@ -140,10 +135,14 @@ public class History extends javax.swing.JFrame {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0); // Removes all rows from the table
 		Object[][] data = new Object[SysData.gamesList.size()][5]; // Assuming there are 5 columns in your table
-        System.out.println("game list in history"+SysData.gamesList.size());
+		System.out.println("game list in history"+SysData.gamesList.size());
+		int gid=0;
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
 			System.out.println("im in history");
+
 			Game game = SysData.gamesList.get(i);
+			if(game.getGameId()==gid)
+				break;
 			System.out.println(game.getGameLevel());
 			System.out.println(game.getGameId());
 			Player p=SysData.winnerPlayer.get(i);
@@ -152,6 +151,9 @@ public class History extends javax.swing.JFrame {
 			data[i][2] = p.getNickName();
 			data[i][3] = game.getEndTime();
 			data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
+			gid=game.getGameId();
+			
+
 		}
 
 		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer", "Game ScreenShoot"};
@@ -190,6 +192,68 @@ public class History extends javax.swing.JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
+
+    private class ViewButtonRenderer extends JButton implements TableCellRenderer {
+        public ViewButtonRenderer() {
+            setOpaque(true);
+        }
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            // Load the original icon
+            ImageIcon icon = new ImageIcon(getClass().getResource("/View/img/view.png"));
+            // Scale down the icon
+            Image scaledImage = icon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            setIcon(new ImageIcon(scaledImage));
+            return this;
+        }
+
+    }
+
+    private class ViewButtonEditor extends DefaultCellEditor {
+        private JButton button;
+        private TableActionEvent event;
+        private String label;
+        private boolean isClicked;
+
+        public ViewButtonEditor(JCheckBox checkBox, TableActionEvent event) {
+            super(checkBox);
+            this.event = event;
+            button = new JButton();
+            button.setOpaque(true);
+            button.addActionListener(e -> fireEditingStopped());
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            if (isSelected) {
+                button.setForeground(table.getSelectionForeground());
+                button.setBackground(table.getSelectionBackground());
+            } else {
+                button.setForeground(table.getForeground());
+                button.setBackground(table.getBackground());
+            }
+
+            label = (value == null) ? "" : value.toString();
+            button.setText(label);
+            isClicked = true;
+            return button;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            if (isClicked) {
+                event.onView(table.getSelectedRow());
+            }
+            isClicked = false;
+            return label;
+        }
+
+        @Override
+        public boolean stopCellEditing() {
+            isClicked = false;
+            return super.stopCellEditing();
+        }
+    }
 
 
 	private javax.swing.JPanel jPanel1;
