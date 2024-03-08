@@ -1,15 +1,7 @@
 package View;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -44,12 +36,6 @@ public class QuestionFrame extends JFrame {
         answer = false;
         answered = false;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                setVisible(false); // Hide the addQuestion frame
-            }
-        });
         setBounds(500, 200, 854, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -58,50 +44,28 @@ public class QuestionFrame extends JFrame {
         setAlwaysOnTop(true); // Make sure the frame stays on top
 
         JButton submitButton = new JButton("");
-        // submitButton.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/submit.jpg")));
         ImageIcon icon = new ImageIcon(QuestionFrame.class.getResource("/View/img/submit.jpg"));
-        Image image = icon.getImage(); // Transform it
-        Image newImage = image.getScaledInstance(120, 100, Image.SCALE_SMOOTH); // Resize it
-        icon = new ImageIcon(newImage); // Convert back to ImageIcon
         submitButton.setIcon(icon);
         submitButton.setBounds(680, 400, 122, 38);
         contentPane.add(submitButton);
         
         JLabel lblNewLabel = new JLabel();
-        lblNewLabel.setBounds(194, 62, 549, 66);
+        lblNewLabel.setBounds(181, 36, 501, 106);
         contentPane.add(lblNewLabel);
 
         // Set initial font size
-        int fontSize = 24;
+        int fontSize = 20;
         Font font = new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, fontSize);
         lblNewLabel.setFont(font);
 
         // Set text
         String questionText = question.getContent();
-        lblNewLabel.setText(questionText);
-
-        // Get FontMetrics to calculate text width and height
-        FontMetrics metrics = lblNewLabel.getFontMetrics(font);
-        int textWidth = metrics.stringWidth(questionText);
-        int textHeight = metrics.getHeight();
-
-        // Adjust font size or wrap text to fit within the label bounds
-        while (textWidth > lblNewLabel.getWidth() || textHeight > lblNewLabel.getHeight()) {
-            fontSize--; // Decrease font size
-            font = new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, fontSize);
-            lblNewLabel.setFont(font);
-            
-            // Recalculate text width and height
-            metrics = lblNewLabel.getFontMetrics(font);
-            textWidth = metrics.stringWidth(questionText);
-            textHeight = metrics.getHeight();
-        }
+        String formattedQuestionText = insertLineBreaks(questionText);
+        lblNewLabel.setText("<html>" + formattedQuestionText + "</html>");
 
         // Center align the text within the label
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setVerticalAlignment(SwingConstants.CENTER);
-
-
 
         if (question.getQLevel().equals(Levels.Easy)) {
             JLabel lblNewLabel_1 = new JLabel("");
@@ -137,98 +101,50 @@ public class QuestionFrame extends JFrame {
             lblNewLabel_2.setBounds(661, 107, 169, 29);
             contentPane.add(lblNewLabel_2);
         }
+        // Code for question level icons omitted for brevity...
 
         ArrayList<String> shuffledAnswers = new ArrayList<>(question.getAnswer());
         Collections.shuffle(shuffledAnswers);
 
-        JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
-        rdbtnNewRadioButton.setBackground(Color.WHITE);
-        rdbtnNewRadioButton.setBounds(103, 153, 322, 66);
-        rdbtnNewRadioButton.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
-        contentPane.add(rdbtnNewRadioButton);
+        JRadioButton[] radioButtons = new JRadioButton[4];
+        ButtonGroup G = new ButtonGroup();
 
-    	JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
-		rdbtnNewRadioButton_1.setBackground(Color.WHITE);
-		rdbtnNewRadioButton_1.setBounds(491, 153, 311, 66);
-		rdbtnNewRadioButton_1.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
+        for (int i = 0; i < 4; i++) {
+            radioButtons[i] = new JRadioButton();
+            radioButtons[i].setBackground(Color.WHITE);
+            radioButtons[i].setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14));
+            radioButtons[i].setBounds(103 + 388 * (i % 2), 153 + 133 * (i / 2), 322, 66);
+            contentPane.add(radioButtons[i]);
+            G.add(radioButtons[i]);
 
-		contentPane.add(rdbtnNewRadioButton_1);
-		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
-		rdbtnNewRadioButton_2.setBackground(Color.WHITE);
-		rdbtnNewRadioButton_2.setBounds(103, 286, 322, 66);
-		rdbtnNewRadioButton_2.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
-		contentPane.add(rdbtnNewRadioButton_2);
-		
-		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("New radio button");
-		rdbtnNewRadioButton_3.setBackground(Color.WHITE);
-		rdbtnNewRadioButton_3.setBounds(491, 296, 311, 59);
-		rdbtnNewRadioButton_3.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 14)); // Set font size here
-		contentPane.add(rdbtnNewRadioButton_3);
-		
-		ButtonGroup G = new ButtonGroup();
-		G.add(rdbtnNewRadioButton);
-		G.add(rdbtnNewRadioButton_1);
-		G.add(rdbtnNewRadioButton_2);
-		G.add(rdbtnNewRadioButton_3);
+            // Insert line breaks after every seventh word
+            String answerText = shuffledAnswers.get(i);
+            String formattedAnswerText = insertLineBreaks(answerText);
+            radioButtons[i].setText("<html>" + formattedAnswerText + "</html>");
+        }
 
-		for(int i=0 ; i<4; i++)
-		{
-			if (i==0)
-			{
-				rdbtnNewRadioButton.setText(shuffledAnswers.get(i));
-			}
-			if(i==1) {
-				rdbtnNewRadioButton_1.setText(shuffledAnswers.get(i));
-
-			}
-			if(i==2)
-			{
-				rdbtnNewRadioButton_2.setText(shuffledAnswers.get(i));
-			}
-			if(i==3)
-			{
-				rdbtnNewRadioButton_3.setText(shuffledAnswers.get(i));
-			}
-		}
-
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Find out which radio button is selected
-                JRadioButton selectedRadioButton = null;
-		        if (rdbtnNewRadioButton.isSelected()) {
-		            selectedRadioButton = rdbtnNewRadioButton;
-		        } else if (rdbtnNewRadioButton_1.isSelected()) {
-		            selectedRadioButton = rdbtnNewRadioButton_1;
-		        } else if (rdbtnNewRadioButton_2.isSelected()) {
-		            selectedRadioButton = rdbtnNewRadioButton_2;
-		        } else if (rdbtnNewRadioButton_3.isSelected()) {
-		            selectedRadioButton = rdbtnNewRadioButton_3;
-		        }
-                if (selectedRadioButton != null) {
-                    // Get the text of the selected radio button
-                    answered = true;
-                    String selectedAnswer = selectedRadioButton.getText();
-
-                    // Compare the selected answer with the correct answer
-                    if (selectedAnswer.equals(question.getTrueAnswer())) {
-                        // If the selected answer is correct
-                        answer = true;
-                        JOptionPane.showMessageDialog(contentPane, "Correct answer!");
-                    } else {
-                        // If the selected answer is incorrect
-                        answer = false;
-                        JOptionPane.showMessageDialog(contentPane, "Incorrect answer. Try again!");
-                    }
-                    // Call the listener's method passing the answer status
-                    listener.onQuestionAnswered(answer);
-                    setVisible(false);
-                } else {
-                    // If no answer is selected
-                    JOptionPane.showMessageDialog(contentPane, "Please select an answer.");
+        submitButton.addActionListener(e -> {
+            JRadioButton selectedRadioButton = null;
+            for (JRadioButton radioButton : radioButtons) {
+                if (radioButton.isSelected()) {
+                    selectedRadioButton = radioButton;
+                    break;
                 }
+            }
+            if (selectedRadioButton != null) {
+                answered = true;
+                String selectedAnswer = selectedRadioButton.getText();
+                if (selectedAnswer.equals(question.getTrueAnswer())) {
+                    answer = true;
+                    JOptionPane.showMessageDialog(contentPane, "Correct answer!");
+                } else {
+                    answer = false;
+                    JOptionPane.showMessageDialog(contentPane, "Incorrect answer. Try again!");
+                }
+                listener.onQuestionAnswered(answer);
+                setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(contentPane, "Please select an answer.");
             }
         });
 
@@ -236,6 +152,21 @@ public class QuestionFrame extends JFrame {
         questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/questionFrame.jpg")));
         questionFrame.setBounds(5, 5, 830, 453);
         contentPane.add(questionFrame);
+    }
+
+    private String insertLineBreaks(String text) {
+        String[] words = text.split("\\s+");
+        StringBuilder result = new StringBuilder();
+        int wordCount = 0;
+        for (String word : words) {
+            result.append(word).append(" ");
+            wordCount++;
+            if (wordCount == 6) {
+                result.append("<br>");
+                wordCount = 0;
+            }
+        }
+        return result.toString().trim();
     }
 
     public boolean retAnswer() {
