@@ -99,24 +99,27 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			String line = "";
 			reader = new BufferedReader(new FileReader(filePath));
 			reader.readLine();
+			if (line == null) {
+				System.out.println("The file is empty.");
+			}else {
 
-			while((line = reader.readLine()) != null) {
-				String[] fields = line.split(",");
-				System.out.println("test number222222222222222222222222222");
+				while((line = reader.readLine()) != null) {
+					String[] fields = line.split(",");
+					System.out.println("test number222222222222222222222222222");
 
-				if(fields.length > 0) {
-					System.out.println("test number333333333333333333333333333");
-					Game game = new Game();
-					Player player = new Player();
-					if(swap<Integer.parseInt(fields[0])) {
-						swap=Integer.parseInt(fields[0]);
+					if(fields.length > 0) {
+						System.out.println("test number333333333333333333333333333");
+						Game game = new Game();
+						Player player = new Player();
+						if(swap<Integer.parseInt(fields[0])) {
+							swap=Integer.parseInt(fields[0]);
+						}
+						System.out.println("swap in sysy data "+swap);
+
 					}
-					System.out.println("swap in sysy data "+swap);
-
 				}
+
 			}
-
-
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -444,13 +447,13 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 					stopTimer();
 					// Save the end time when the condition is met
 					endTime = System.currentTimeMillis();
-			        // Convert milliseconds to hours, minutes, and seconds
-			        long Lseconds = (System.currentTimeMillis() / 1000) % 60;
-			        long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
-			        long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
+					// Convert milliseconds to hours, minutes, and seconds
+					long Lseconds = (System.currentTimeMillis() / 1000) % 60;
+					long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
+					long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
 
-			        // Format the time
-			        String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+					// Format the time
+					String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
 					System.out.println("End Time: " + endTime); // Print end time for demonstration
 					g.setEndTime(formattedTime);
 				}
@@ -494,9 +497,9 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				MainFrame f=new MainFrame();
 				f.setVisible(true);
 				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-		        frame.dispose();
+				frame.dispose();
 			}
-			
+
 		});
 		contentPane.add(backButton,0);
 
@@ -856,7 +859,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				diceLabel.setBounds(40, 520, 150, 150);
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
-					
+
 					Player p=g.CurrentTurn();
 
 					int bx=p.getPlayerRow();
@@ -873,7 +876,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
 						String s= "you have to walk "+CHECK+" steps!!";
 						setPlayerText(p, s);
-					
+
 						answer=Integer.toString((Integer)CHECK);
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
@@ -923,8 +926,8 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 							}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
 								break;
 
-							 awx=p.getPlayerRow();//new x
-							 awy=p.getPlayerCol();// new y
+							awx=p.getPlayerRow();//new x
+							awy=p.getPlayerCol();// new y
 
 							movePlayer(p, ax, ay,awx, awy,g);
 							landedOn(g);
@@ -933,7 +936,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
 					}/**************************question dice*************************8*/
 					else {
-						
+
 						System.out.println("the current player is:" + p.getPlayerColor());
 						System.out.println("questionnnnnnn type!!");
 						q = (Question) CHECK;
@@ -1008,7 +1011,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 										break;
 
 									int awx = p.getPlayerRow();
-									 int awy = p.getPlayerCol();
+									int awy = p.getPlayerCol();
 
 									movePlayer(p, ax, ay, awx, awy,g);
 
@@ -1040,7 +1043,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 		System.out.println("("+beforx+","+befory+")"+" to ("+afterx+","+aftery+")");
-		
+
 		switch(player.getPlayeringame()) {//check
 		case 1:
 			pX = 214 + afterx * 122; // Adjusted x position based on the board offset and grid size//170
@@ -1073,7 +1076,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			break;
 
 		}
-		
+
 
 
 		final int finalBx = bx; // Declare effectively final variables
@@ -1096,33 +1099,33 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				count[0]++;
 
 			} else {
-				
+
 				timer.stop(); // Stop the timer when the movement is complete
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-				
-				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
+
+				if(g.GameBoard.getPosition(afterx, aftery)>2) {/*winner adan1*/
 					stopTimer();
 					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
 					System.out.println(secondsElapsed);
 					Player p1=g.CurrentTurn();
 					g.setWinnerId(p1.getPlayerID());
-				    long Lseconds = (re() / 1000) % 60;
-				    long Lminutes = (re()/ (1000 * 60)) % 60;
-				    long Lhours = (re()/ (1000 * 60 * 60)) % 24;
-				 
+					long Lseconds = secondsElapsed % 60;
+					long Lminutes = (secondsElapsed / 60) % 60;
+					long Lhours = (secondsElapsed / (60 * 60)) % 24;
 
-				    // Format the time
-				    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
-				    System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
+
+					// Format the time
+					String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+					System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
 					g.setEndTime(formattedTime);
 					SysData.gamesList.add(g);
 					SysData.winnerPlayer.add(p1);
-				//	Screenshot.captureScreenshot(this);
-					
+					//	Screenshot.captureScreenshot(this);
+
 					SysData.AddGame(g);
 					System.out.println(g.getPlayersFinalPLaces()
 							);
-					
+
 					if(g.getPlayersFinalPLaces().size()==2) {
 						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
 						w.setVisible(true);
@@ -1136,14 +1139,14 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 						w.setVisible(true);
 						this.setVisible(false);
 					}
-				//	Winner w=new Winner(p1,); 
-					
+					//	Winner w=new Winner(p1,); 
+
 				}
 			}
-			
+
 
 		});
-		
+
 	}
 	public void lineMangment(int turn,int num) {
 		switch(num) {
@@ -1325,12 +1328,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
     }*/
 	// Method to check if the condition for stopping the timer is met
 	private boolean conditionMet() {
-		
+
 		// Replace this with your actual condition
 		return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
 	}
 	private long re() {
-		
+
 		// Replace this with your actual condition
 		return secondsElapsed; // Stop the timer after 10 seconds for demonstration
 	}
@@ -1346,59 +1349,59 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	public void stopTimer() {
 		timer.stop();
 	}
-    public void setPlayerText(Player p, String text) {
-			// Get the player's name
-			String playerName = p.getNickName();
+	public void setPlayerText(Player p, String text) {
+		// Get the player's name
+		String playerName = p.getNickName();
 
-			// Set the full text with player name and additional text
-			String fullText = "<html>Player <font color=\"" + getColorCode(p.getPlayerColor()) + "\">" + playerName + "</font> " + text + "</html>";
+		// Set the full text with player name and additional text
+		String fullText = "<html>Player <font color=\"" + getColorCode(p.getPlayerColor()) + "\">" + playerName + "</font> " + text + "</html>";
 
-			// Set the full HTML text
-			mytext.setText(fullText);
+		// Set the full HTML text
+		mytext.setText(fullText);
 
-			// Center the text horizontally
-			mytext.setHorizontalAlignment(SwingConstants.CENTER);
+		// Center the text horizontally
+		mytext.setHorizontalAlignment(SwingConstants.CENTER);
+	}
+
+	// Method to get color code based on PlayerColor
+	private String getColorCode(PlayerColor color) {
+		switch (color) {
+		case Red:
+			return "red";
+		case Green:
+			return "green";
+		case Yellow:
+			return "yellow";
+		case Blue:
+			return "blue";
+		default:
+			return "black"; // Default color if player color is not recognized
 		}
+	}
 
-		// Method to get color code based on PlayerColor
-		private String getColorCode(PlayerColor color) {
-			switch (color) {
-			case Red:
-				return "red";
-			case Green:
-				return "green";
-			case Yellow:
-				return "yellow";
-			case Blue:
-				return "blue";
-			default:
-				return "black"; // Default color if player color is not recognized
-			}
+
+	public void landedOn(Game g) {
+		String s=" ";
+		Player p=g.CurrentTurn();
+
+		int num=g.UpdatePlayerPlace();
+		if(num==1||num==2) {
+			s="landed on surprise square";
+			setPlayerText(p, s);
+
+		}else if(num>=6 && num<=13) {
+			s="landed on a snake :(";
+			setPlayerText(p, s);
+
+
+		}else if(num>=14 && num<=21) {
+			s="landed on a ladder :)";
+			setPlayerText(p, s);
+
+		}else if(num==3|| num==4||num==5) {
+
 		}
-
-
-		public void landedOn(Game g) {
-			String s=" ";
-			Player p=g.CurrentTurn();
-			
-			int num=g.UpdatePlayerPlace();
-			if(num==1||num==2) {
-				s="landed on surprise square";
-				setPlayerText(p, s);
-
-			}else if(num>=6 && num<=13) {
-				s="landed on a snake :(";
-				setPlayerText(p, s);
-				
-
-			}else if(num>=14 && num<=21) {
-				s="landed on a ladder :)";
-				setPlayerText(p, s);
-
-			}else if(num==3|| num==4||num==5) {
-				
-			}
-		}
+	}
 	@Override
 	public void onQuestionAnswered(boolean isCorrect) {
 		// TODO Auto-generated method stub
