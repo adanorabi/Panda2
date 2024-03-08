@@ -12,13 +12,11 @@ import Enum.PlayerColor;
 import FlatLafDesign.*;
 import Model.Game;
 import Model.Player;
-import FlatLafDesign.*;
-
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import Controller.*; 
+
 public class History extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -48,11 +46,9 @@ public class History extends javax.swing.JFrame {
 			@Override
 			public void onView(int row) {
 				System.out.println("View row : " + row);
-				int gameId = (int) table.getValueAt(row, 0);
-				System.out.println(gameId );
-                // Call the showScreenshot method with the game ID
-				Screenshot.showScreenshot(gameId-1);
-               
+				JFrame frame=new JFrame();
+				
+				showDialog(frame);
 			}
 		};
 		//1d
@@ -99,13 +95,11 @@ public class History extends javax.swing.JFrame {
 		// 
 		//        // Set the cell renderer and cell editor for the "Game ScreenShoot" columnint columnIndex = 4; // Adjust this to the index of the column you want to apply the renderer to
 		//        table.getColumnModel().getColumn(4).setCellRenderer(renderer);
-//		TableActionCellRender cellRender = new TableActionCellRender(event);
-//		table.getColumnModel().getColumn(4).setCellRenderer(cellRender);
-//		table.getColumnModel().getColumn(4).setCellEditor(cellRender);
+		TableActionCellRender cellRender = new TableActionCellRender(event);
+		table.getColumnModel().getColumn(4).setCellRenderer(cellRender);
+		table.getColumnModel().getColumn(4).setCellEditor(cellRender);
 
-//        table.getColumnModel().getColumn(4).setCellRenderer(new TableActionCellRender());
-//        table.getColumnModel().getColumn(4).setCellEditor(new TableActionCellEditor(event));
-//		table.repaint();
+		table.repaint();
 
 		backButton = new BackButton();
 		backButton.setText("Back"); // Set button text
@@ -133,7 +127,6 @@ public class History extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 
 	private void initComponents( ) {
-		//Screenshot.loadExistingScreenshots();;
 		String filePath = "AllGames.csv";
 	SysData.readCsv(filePath);
 		jPanel1 = new javax.swing.JPanel();
@@ -146,15 +139,11 @@ public class History extends javax.swing.JFrame {
 		// Assuming SysData.gamesList is a list of Game objects
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0); // Removes all rows from the table
-		Object[][] data = new Object[SysData.gamesList.size()][4]; // Assuming there are 5 columns in your table
+		Object[][] data = new Object[SysData.gamesList.size()][5]; // Assuming there are 5 columns in your table
         System.out.println("game list in history"+SysData.gamesList.size());
-        int gid=0;
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
 			System.out.println("im in history");
-			
 			Game game = SysData.gamesList.get(i);
-			if(game.getGameId()==gid)
-				break;
 			System.out.println(game.getGameLevel());
 			System.out.println(game.getGameId());
 			Player p=SysData.winnerPlayer.get(i);
@@ -162,14 +151,13 @@ public class History extends javax.swing.JFrame {
 			data[i][1] = game.getGameLevel();
 			data[i][2] = p.getNickName();
 			data[i][3] = game.getEndTime();
-			gid=game.getGameId();
-			//data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
+			data[i][4] = null; // Assuming you handle the Game ScreenShoot separately
 		}
 
-		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer"};
+		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer", "Game ScreenShoot"};
 
 		table.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
-			boolean[] canEdit = new boolean[]{false, false, false, false}; // Assuming the last column is editable
+			boolean[] canEdit = new boolean[]{false, false, false, false, true}; // Assuming the last column is editable
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {

@@ -1138,7 +1138,7 @@ public class HardLevel extends JFrame implements ActionListener {
 				timer.stop(); // Stop the timer when the movement is complete
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 				
-				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
+				if(g.GameBoard.getPosition(afterx, aftery)<=X*Y) {/*winner adan1*/
 					stopTimer();
 					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
 					System.out.println(secondsElapsed);
@@ -1159,17 +1159,16 @@ public class HardLevel extends JFrame implements ActionListener {
 					SysData.AddGame(g);
 					System.out.println(g.getPlayersFinalPLaces()
 							);
-					
 					if(g.getPlayersFinalPLaces().size()==2) {
-						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),null,null,2); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}else if(g.getPlayersFinalPLaces().size()==3) {
-						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}else {
-						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}

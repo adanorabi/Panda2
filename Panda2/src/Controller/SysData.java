@@ -287,8 +287,7 @@ public class SysData {
 		System.out.println("starting write user.csv file: " + filePath);
 		writeCsv(filePath);
 
-		System.out.println("starting read user.csv file");
-		readCsv(filePath);
+		
 	}
 
 	 // Define a flag to check if it's the first run
