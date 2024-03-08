@@ -36,10 +36,10 @@ public class SysData {
 	public void UploadGames() {}
 	Levels QLevel;
 	String Content;
-	
+
 	ArrayList<String> Answer;
 	String TrueAnswer;
-	
+
 	public static void UploadQuestions() {  //A function that pulling out the questions from json file
 
 		try {
@@ -279,36 +279,36 @@ public class SysData {
 
 
 	}
-	
+
 	public static void AddGame(Game g) {
 
 		String filePath = "AllGames.csv";
 
 		System.out.println("starting write user.csv file: " + filePath);
-		writeCsv(filePath);
+		writeCsv(filePath,g);
 
-		
+
 	}
 
-	 // Define a flag to check if it's the first run
-//    private static boolean isFirstRun = true;
+	// Define a flag to check if it's the first run
+	//    private static boolean isFirstRun = true;
 
-	public static void writeCsv(String filePath) {
+	public static void writeCsv(String filePath,Game g) {
 
 
 		FileWriter fileWriter = null;
 		try {
 
 			fileWriter = new FileWriter(filePath,true);
-//			fileWriter.append("GameId, GameLevel, WinnerNickName,WinnerColor, Time\n");
+			//			fileWriter.append("GameId, GameLevel, WinnerNickName,WinnerColor, Time\n");
 
-			for(Game g: SysData.gamesList) {
+//			for(Game g: SysData.gamesList) {
 				System.out.println(g);
 				fileWriter.append(String.valueOf(g.getGameId()));
 				fileWriter.append(",");
 				fileWriter.append(String.valueOf(g.getGameLevel()));
 				fileWriter.append(",");
-//				fileWriter.append(String.valueOf(g.getWinnerId()));
+				//				fileWriter.append(String.valueOf(g.getWinnerId()));
 
 				for(Player p: g.getPlayers()) {
 					if(p.getPlayerID()==g.getWinnerId()) {
@@ -321,7 +321,7 @@ public class SysData {
 				//		    fileWriter.append(",");
 				fileWriter.append(String.valueOf(g.getEndTime()));
 				fileWriter.append("\n");
-			}
+//			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -336,64 +336,141 @@ public class SysData {
 
 
 	}
-		
-	
+
+
+
+	//	public static int readCsv(String filePath) {
+	//		System.out.println("test number11111111111111111111111");
+	//		BufferedReader reader = null;
+	//		int swap=0;
+	//
+	//		try {
+	//			String line = "";
+	//			reader = new BufferedReader(new FileReader(filePath));
+	//			reader.readLine();
+	//
+	//			while((line = reader.readLine()) != null) {
+	//				String[] fields = line.split(",");
+	//				System.out.println("test number222222222222222222222222222");
+	//				
+	//
+	//				if(fields.length > 0) {
+	//					System.out.println("test number333333333333333333333333333");
+	//					Game game = new Game();
+	//					Player player = new Player();
+	//					if(swap<Integer.parseInt(fields[0])) {
+	//						swap=Integer.parseInt(fields[0]);
+	//					}
+	//					System.out.println("swap in sysy data "+swap);
+	//					game.setGameId(swap);
+	//					
+	//					if(fields[1].equals("Easy")) {
+	//						game.setGameLevel(Levels.Easy);
+	//					}else if(fields[1].equals("Medium")) {
+	//						game.setGameLevel(Levels.Medium);
+	//					}else if(fields[1].equals("Hard")) {
+	//						game.setGameLevel(Levels.Hard);
+	//					}
+	//					player.setNickName(fields[2]);
+	//					if(fields[3].equals(PlayerColor.Red)) {
+	//						player.setPlayerColor(PlayerColor.Red);
+	//					}else if(fields[3].equals(PlayerColor.Blue)) {
+	//						player.setPlayerColor(PlayerColor.Blue);
+	//					}else if(fields[3].equals(PlayerColor.Green)) {
+	//						player.setPlayerColor(PlayerColor.Green);
+	//					}else if(fields[3].equals(PlayerColor.Yellow)) {
+	//						player.setPlayerColor(PlayerColor.Yellow);
+	//					}
+	//					
+	//					
+	//
+	//					//		        game.setWinnerId(Integer.parseInt(fields[2]));
+	//
+	//					game.setEndTime(fields[4]);//adan
+	//					System.out.println(swap+ " ghdurtjrydtffhtfythg");
+	//					gamesList.add(game);
+	//					System.out.println(game.getGameLevel());
+	//					System.out.println(game.getGameId());
+	//					winnerPlayer.add(player);
+	//				}
+	//
+	//			}
+	//			return swap;
+	//
+	//		} catch (Exception ex) {
+	//			ex.printStackTrace();
+	//		} finally {
+	//			try {
+	//				reader.close();
+	//			} catch (Exception e) {
+	//				e.printStackTrace();
+	//			}
+	//		}
+	//		return 0;
+	//
+	//	}
+
 
 	public static int readCsv(String filePath) {
 		System.out.println("test number11111111111111111111111");
 		BufferedReader reader = null;
-		int swap=0;
+		int swap = 0;
 
 		try {
 			String line = "";
 			reader = new BufferedReader(new FileReader(filePath));
-			reader.readLine();
+			line = reader.readLine(); // Read the first line
 
-			while((line = reader.readLine()) != null) {
-				String[] fields = line.split(",");
-				System.out.println("test number222222222222222222222222222");
-				
+			// Check if the file is empty
+			if (line == null) {
+				System.out.println("The file is empty.");
+				return 0;
+			}else {
 
-				if(fields.length > 0) {
-					System.out.println("test number333333333333333333333333333");
-					Game game = new Game();
-					Player player = new Player();
-					if(swap<Integer.parseInt(fields[0])) {
-						swap=Integer.parseInt(fields[0]);
+				// Start reading the file
+				while ((line = reader.readLine()) != null) {
+					String[] fields = line.split(",");
+					System.out.println("test number222222222222222222222222222");
+
+					if (fields.length > 0) {
+						System.out.println("test number333333333333333333333333333");
+						Game game = new Game();
+						Player player = new Player();
+						if (swap < Integer.parseInt(fields[0])) {
+							swap = Integer.parseInt(fields[0]);
+						}
+						System.out.println("swap in sysy data " + swap);
+						game.setGameId(swap);
+
+						if (fields[1].equals("Easy")) {
+							game.setGameLevel(Levels.Easy);
+						} else if (fields[1].equals("Medium")) {
+							game.setGameLevel(Levels.Medium);
+						} else if (fields[1].equals("Hard")) {
+							game.setGameLevel(Levels.Hard);
+						}
+						player.setNickName(fields[2]);
+						if (fields[3].equals(PlayerColor.Red)) {
+							player.setPlayerColor(PlayerColor.Red);
+						} else if (fields[3].equals(PlayerColor.Blue)) {
+							player.setPlayerColor(PlayerColor.Blue);
+						} else if (fields[3].equals(PlayerColor.Green)) {
+							player.setPlayerColor(PlayerColor.Green);
+						} else if (fields[3].equals(PlayerColor.Yellow)) {
+							player.setPlayerColor(PlayerColor.Yellow);
+						}
+
+						// game.setWinnerId(Integer.parseInt(fields[2]));
+
+						game.setEndTime(fields[4]);//adan
+						System.out.println(swap + " ghdurtjrydtffhtfythg");
+						gamesList.add(game);
+						System.out.println(game.getGameLevel());
+						System.out.println(game.getGameId());
+						winnerPlayer.add(player);
 					}
-					System.out.println("swap in sysy data "+swap);
-					game.setGameId(swap);
-					
-					if(fields[1].equals("Easy")) {
-						game.setGameLevel(Levels.Easy);
-					}else if(fields[1].equals("Medium")) {
-						game.setGameLevel(Levels.Medium);
-					}else if(fields[1].equals("Hard")) {
-						game.setGameLevel(Levels.Hard);
-					}
-					player.setNickName(fields[2]);
-					if(fields[3].equals(PlayerColor.Red)) {
-						player.setPlayerColor(PlayerColor.Red);
-					}else if(fields[3].equals(PlayerColor.Blue)) {
-						player.setPlayerColor(PlayerColor.Blue);
-					}else if(fields[3].equals(PlayerColor.Green)) {
-						player.setPlayerColor(PlayerColor.Green);
-					}else if(fields[3].equals(PlayerColor.Yellow)) {
-						player.setPlayerColor(PlayerColor.Yellow);
-					}
-					
-					
 
-					//		        game.setWinnerId(Integer.parseInt(fields[2]));
-
-					game.setEndTime(fields[4]);//adan
-					System.out.println(swap+ " ghdurtjrydtffhtfythg");
-					gamesList.add(game);
-					System.out.println(game.getGameLevel());
-					System.out.println(game.getGameId());
-					winnerPlayer.add(player);
 				}
-
 			}
 			return swap;
 
@@ -401,7 +478,8 @@ public class SysData {
 			ex.printStackTrace();
 		} finally {
 			try {
-				reader.close();
+				if (reader != null)
+					reader.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
