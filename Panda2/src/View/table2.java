@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.BorderLayout;
+// table that contain all the questions from the json file
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -40,27 +41,6 @@ public class table2 extends JFrame {
 	private JButton edit;
 	private JButton addQ;
 	private JButton btnNewButton;
-	/**
-	 * @wbp.nonvisual location=119,854
-	 */
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//	     FlatLaf.registerCustomDefaultsSource("View");
-//         FlatLightLaf.setup();
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					table2 frame = new table2();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -72,14 +52,14 @@ public class table2 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		
-		
+		// all the question from the json file in one arraylist
 		allQuestions = new ArrayList<>();
 		allQuestions.addAll(SysData.EasyQues);
 		allQuestions.addAll(SysData.MidQues);
 		allQuestions.addAll(SysData.HardQues);
 
 		Object[][] data = new Object[allQuestions.size()][3];
+		// the column on th =e table
 		String[] columnNames = {"Num of Row", "Content of Question", "Level"};
 		for (int i = 0; i < allQuestions.size(); i++) {
 			Question question = allQuestions.get(i);
@@ -94,7 +74,7 @@ public class table2 extends JFrame {
 			}
 		};
 		table = new JTable(model);
-
+		// Expand cells
 		table.getColumnModel().getColumn(0).setPreferredWidth(100);
 		table.getColumnModel().getColumn(1).setPreferredWidth(300);
 		table.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -102,13 +82,14 @@ public class table2 extends JFrame {
 		table.setRowHeight(40);
 		table.setDefaultRenderer(Object.class, new TableGradientCell());
 		table.getTableHeader().putClientProperty(FlatClientProperties.STYLE, ""
-	                + "hoverBackground:null;"
-	                + "pressedBackground:null;"
-	                + "separatorColor:$TableHeader.background");
+				+ "hoverBackground:null;"
+				+ "pressedBackground:null;"
+				+ "separatorColor:$TableHeader.background");
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(240, 170, 1000, 700);
 		contentPane.add(scrollPane);
 
+		// delete button that delete question immediatly from the table and the json file
 		delete = new JButton("delete");
 		delete.setContentAreaFilled(false); // Remove background
 		delete.setBorderPainted(false); // Remove border
@@ -130,14 +111,14 @@ public class table2 extends JFrame {
 
 					// Remove corresponding question from the list
 					allQuestions.remove(modelRow);
-					
+
 				} else {
 					JOptionPane.showMessageDialog(contentPane, "Please select a row to delete.", "No Row Selected", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
 
-
+		// edit button that openn edit window for the selected question, and edit the question immediatly from the table and the json file
 		edit = new JButton("edit");
 		edit.setBounds(988, 116, 82, 44);
 		ImageIcon editIcon = new ImageIcon(getClass().getResource("/View/img/edit.jpg"));
@@ -161,6 +142,7 @@ public class table2 extends JFrame {
 		});
 
 
+		// details button , when the user select row and click on details button , fraame opened aand contain the deatils of selected question
 		details = new JButton("details");
 		details.setBounds(877, 116, 82, 44);
 		ImageIcon detailsIcon = new ImageIcon(getClass().getResource("/View/img/details.jpg"));
@@ -184,6 +166,7 @@ public class table2 extends JFrame {
 				}
 			}
 		});
+		// add question button ,that openrd add new question frame
 		addQ = new JButton("add question");
 		addQ.setBounds(240, 81, 234, 62);
 		ImageIcon addIcon = new ImageIcon(getClass().getResource("/View/img/addq.jpg"));
@@ -201,8 +184,8 @@ public class table2 extends JFrame {
 			}
 		});
 		contentPane.add(addQ);
-		
 
+		// return to main frame 
 		JButton back = new JButton("back button");
 		back.setBounds(74, 850, 153, 56);
 		ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
@@ -233,7 +216,6 @@ public class table2 extends JFrame {
 		JLabel lblNewLabel = new JLabel(scaledIcon);
 		lblNewLabel.setBounds(0, 0,containerWidth, containerHeight);//
 		//Set layout manager to BorderLayout
-
 
 		//Add JLabel to center of contentPane
 		contentPane.add(lblNewLabel);

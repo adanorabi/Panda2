@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import Model.Question;
 
+// frame that present question with 4 answers
 public class QuestionAnswes extends JFrame {
 
     private JPanel contentPane;
@@ -29,6 +30,7 @@ public class QuestionAnswes extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+        // arraylist that contain the false answers
         ArrayList<String> answers=new ArrayList<String>();
         for(String temp: q.getAnswer())
         {
@@ -38,6 +40,7 @@ public class QuestionAnswes extends JFrame {
         	}
         }
         
+        // set the contant of the question
         JLabel Qu = new JLabel("");
         Qu.setBounds(329, 51, 544, 175);
         contentPane.add(Qu);
@@ -45,6 +48,7 @@ public class QuestionAnswes extends JFrame {
         adjustFontSize(Qu);
         Qu.setForeground(Color.WHITE);
 
+        // set the true answer
         JLabel TrueAns = new JLabel("");
         TrueAns.setBounds(519, 296, 415, 116);
         contentPane.add(TrueAns);
@@ -52,6 +56,7 @@ public class QuestionAnswes extends JFrame {
         adjustFontSize(TrueAns);
         TrueAns.setForeground(Color.WHITE);
 
+        // present the false answers
         JLabel falseAns1 = new JLabel("New label");
         falseAns1.setBounds(592, 479, 415, 103);
         contentPane.add(falseAns1);
@@ -73,6 +78,7 @@ public class QuestionAnswes extends JFrame {
         adjustFontSize(falseAns3);
         falseAns3.setForeground(Color.WHITE);
         
+        // back button thar return the user to question management
         JButton back = new JButton("back button");
         back.setBounds(79, 793, 170, 69);
         ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
@@ -95,12 +101,13 @@ public class QuestionAnswes extends JFrame {
 
     }
 
+    // function that set the size of the texts 
     private void adjustFontSize(JLabel label) {
         String text = label.getText();
         int length = text.length();
         Font originalFont = label.getFont();
         int fontSize = originalFont.getSize();
-        if (length > 20) { // You can adjust this threshold according to your preference
+        if (length > 20) { 
             fontSize += 10; // Decrease font size if text is long
         } else {
             fontSize += 20; // Increase font size if text is short
