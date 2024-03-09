@@ -12,6 +12,8 @@ public class PlayAudio {
 	public static Clip hpClip ;
 	public static Clip diceClip; 
 	public static Clip victoryClip;
+	public static Clip playinBackGround;
+	public static Clip steps;
 	public static void playHPSound() {
 		try {
 			File audioFile = new File("src/Model/Audio/MainPage.wav"); // Adjust the file path accordingly
@@ -106,6 +108,31 @@ public static void playBoxSound() { // -Yara
 	      e.printStackTrace();
 	  }
 	}
+public static void playGameSound() {
+	 try {
+	      File audioFile = new File("src/Model/Audio/playing.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	    playinBackGround = AudioSystem.getClip();
+	    playinBackGround.open(audioStream);
+	    playinBackGround.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+}
+public static void PlayStepsSound() {
+	 try {
+	      File audioFile = new File("src/Model/Audio/steps.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	  steps = AudioSystem.getClip();
+	  steps.open(audioStream);
+	   steps.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	
+}
 //	 public static void playVictorySound() {
 //	        try {
 //	            File audioFile = new File("src/Model/Audio/winner.wav"); // Adjust the file path accordingly
