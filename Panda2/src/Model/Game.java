@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 public class Game {
-
+public static boolean now;
 	private int GameId;
 	private Levels GameLevel;
 	private int RowsNum;
@@ -162,7 +162,14 @@ public class Game {
 
 	}
 
-
+public void youHaveToRoll(boolean b) {
+	if(b==true) {
+		now=true;
+	}
+	else {
+		now=false;
+	}
+}
 	public void PlacespecialSquares(Levels gameLevel) { //should be continueed have to check that snake and ladder not in the same place
 		int randQol;
 		int randRow;

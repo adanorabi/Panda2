@@ -923,7 +923,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 							diceLabel.setIcon(diceIcons[(Integer)CHECK]);
 							String s= "you have to walk "+CHECK+" steps!!";
 							setPlayerText(p, s);
-
+							System.out.println(s);
 							answer=Integer.toString((Integer)CHECK);
 							int ax=p.getPlayerRow();
 							int ay=p.getPlayerCol();
@@ -977,6 +977,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 								awy=p.getPlayerCol();// new y
 
 								movePlayer(p, ax, ay,awx, awy,g);
+								System.out.println("move");
 								landedOn(g);
 							}
 
@@ -985,7 +986,8 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 								setPlayerText(p, s);
 							}else {
 								g.NextPlayer();
-								setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+							//	setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+								Game.now=true;
 								lineMangment(g.CurrentTurn().getPlayeringame(), num);
 							}
 
@@ -1076,7 +1078,8 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 										setPlayerText(p, s);
 									}else {
 										g.NextPlayer();
-										setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+										//setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+										Game.now=true;//adan1
 										lineMangment(g.CurrentTurn().getPlayeringame(), num);
 									}
 
@@ -1149,8 +1152,14 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		Timer timer = new Timer(20, null); // Create a timer without ActionListener
 		timer.start(); // Start the timer
 		final int[] count = {0};
+		if((afterx-beforx==0)&&(aftery-befory==0)) {
+			
+		}else {
+		PlayAudio.PlayStepsSound();
+		}
 		timer.addActionListener(e -> {
 			if (count[0] < steps) {
+				
 				int newX = (int) (finalBx + deltaX * count[0]);
 				int newY = (int) (finalBy+ deltaY * count[0]);
 				if(player.getPlayeringame()==1)
@@ -1158,10 +1167,14 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				else if(player.getPlayeringame()==2)
 					p2OnGame.setLocation(newX, newY);
 				count[0]++;
-
+				System.out.println(count[0]);
 			} else {
 
 				timer.stop(); // Stop the timer when the movement is complete
+				if(Game.now==true) {//adan1
+					setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+					Game.now=false;
+				}
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
 
@@ -1419,6 +1432,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		timer.stop();
 	}
 	public void setPlayerText(Player p, String text) {
+		System.out.println(text+"123123123123123123213123");
 		// Get the player's name
 		String playerName = p.getNickName();
 
@@ -1462,13 +1476,15 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			s="landed on a snake :(";
 			//	PlayAudio.playSnakeSound() // if the player landed on a snake call the snake sound function-Yara
 			setPlayerText(p, s);
-
+			PlayAudio.playSnakeSound();
+			System.out.println(s);
 
 		}else if(num>=14 && num<=21) {
 			s="landed on a ladder :)";
 			//	PlayAudio.playLadderSound()// if the player landed on a ladder call the ladder sound function-Yara
 			setPlayerText(p, s);
-
+			PlayAudio.playLadderSound();
+			System.out.println(s);
 		}else if(num==3|| num==4||num==5) {
 
 		}
