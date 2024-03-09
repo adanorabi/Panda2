@@ -20,6 +20,7 @@ import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
 import Enum.Levels;
+import Model.PlayAudio;
 
 public class LevelGame extends JFrame  implements ActionListener {
 
@@ -79,6 +80,30 @@ public class LevelGame extends JFrame  implements ActionListener {
 		G.add(EasyRadioButton);
 		G.add(MeduimRadioButton);
 		G.add(HardRadioButton);
+		//Yara
+				// ActionListener for EasyRadioButton  -Yara
+				EasyRadioButton.addActionListener(new ActionListener() {
+				    public void actionPerformed(ActionEvent e) {
+				        PlayAudio.playRadioSound();
+				        // Any additional actions you want to perform when EasyRadioButton is selected
+				    }
+				});
+
+				// ActionListener for MeduimRadioButton
+				MeduimRadioButton.addActionListener(new ActionListener() {
+				    public void actionPerformed(ActionEvent e) {
+				        PlayAudio.playRadioSound();
+				        // Any additional actions you want to perform when MeduimRadioButton is selected
+				    }
+				});
+
+				// ActionListener for HardRadioButton
+				HardRadioButton.addActionListener(new ActionListener() {
+				    public void actionPerformed(ActionEvent e) {
+				        PlayAudio.playRadioSound();
+				        // Any additional actions you want to perform when HardRadioButton is selected
+				    }
+				});
 		// next button and send information to next frame
 		JButton btnNewButton = new JButton("Next>>");
 
