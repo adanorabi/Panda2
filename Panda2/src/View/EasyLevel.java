@@ -105,14 +105,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			String line = "";
 			reader = new BufferedReader(new FileReader(filePath));
 			reader.readLine();
-			if (line == null) {
-				System.out.println("The file is empty.");
-			}else {
 
-				while((line = reader.readLine()) != null) {
-					String[] fields = line.split(",");
-					System.out.println("test number222222222222222222222222222");
 
+			while((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+				System.out.println("test number222222222222222222222222222");
+				if(!fields[0].isEmpty()) {
 					if(fields.length > 0) {
 						System.out.println("test number333333333333333333333333333");
 						Game game = new Game();
@@ -123,9 +121,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 						System.out.println("swap in sysy data "+swap);
 
 					}
+				}else {
+					System.out.println("the file is empty so the Game ID will be 1");
 				}
-
 			}
+
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -986,7 +987,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 								setPlayerText(p, s);
 							}else {
 								g.NextPlayer();
-							//	setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+								//	setPlayerText(g.CurrentTurn(), "you have to roll the dice");
 								Game.now=true;
 								lineMangment(g.CurrentTurn().getPlayeringame(), num);
 							}
@@ -1153,13 +1154,13 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		timer.start(); // Start the timer
 		final int[] count = {0};
 		if((afterx-beforx==0)&&(aftery-befory==0)) {
-			
+
 		}else {
-		PlayAudio.PlayStepsSound();
+			PlayAudio.PlayStepsSound();
 		}
 		timer.addActionListener(e -> {
 			if (count[0] < steps) {
-				
+
 				int newX = (int) (finalBx + deltaX * count[0]);
 				int newY = (int) (finalBy+ deltaY * count[0]);
 				if(player.getPlayeringame()==1)
