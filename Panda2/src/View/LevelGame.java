@@ -162,14 +162,8 @@ public class LevelGame extends JFrame  implements ActionListener {
 		// Add the snake label to the content pane
 		contentPane.add(lblNewLabel_4);
 		lblNewLabel_4.setVisible(true);
-		//contentPane.setComponentZOrder(lblNewLabel_4, 0);    
-		//		JLabel lblNewLabel = new JLabel("");
-		//		lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/gamebg.jpg")));
-		//		lblNewLabel.setBounds(10, -17, 1106, 645);
-		//		contentPane.add(lblNewLabel);
+	
 		ImageIcon icon = new ImageIcon(Winner.class.getResource("/View/img/gamebg.jpg"));
-		System.out.println("Image loaded: " + icon.getImageLoadStatus());
-
 		//Verify image dimensions
 		int containerWidth = 1200;
 		int containerHeight = 900;
