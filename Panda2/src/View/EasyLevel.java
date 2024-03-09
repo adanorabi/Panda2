@@ -172,9 +172,9 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				PlayAudio.playDiceSound(); // calling the functio that play the sound of RollDice -Yara
 				System.out.println("in dice btn");
 				rollDiceAnimation(g,num);
-
 
 			}});
 		contentPane.add(diceButton); 
@@ -1391,6 +1391,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 		}else if(num>=6 && num<=13) {
 			s="landed on a snake :(";
+			PlayAudio.playSnakeSound(); // if the player landed on a snake call the snake sound function-Yara
 			setPlayerText(p, s);
 
 
