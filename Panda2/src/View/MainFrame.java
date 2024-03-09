@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JButton btnNewButton;
 	public MainFrame() {
-		PlayAudio.playHPSound("S");  // calling the function that play Home Page sound and sending S to it in order to Start the music -Yara
+		PlayAudio.playHPSound();  // calling the function that play Home Page sound in order to Start the music -Yara
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 700);
