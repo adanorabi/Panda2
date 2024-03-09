@@ -5,21 +5,14 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineListener;
 
 public class PlayAudio {
 	public static Clip hpClip ;
-	public static void playVictorySound() {
-        try {
-            File audioFile = new File("/Audio/victory.wav"); // Adjust the file path accordingly
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-	public static void playHPSound(String response) {
+	public static Clip diceClip; 
+	public static Clip victoryClip;
+	public static void playHPSound() {
 		try {
 			File audioFile = new File("src/Model/Audio/MainPage.wav"); // Adjust the file path accordingly
 			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -30,6 +23,62 @@ public class PlayAudio {
 			e.printStackTrace();
 		}
 	}
+	public static void playDiceSound() {
+		try {
+			File audioFile = new File("src/Model/Audio/rollDice.wav"); // Adjust the file path accordingly
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+			diceClip = AudioSystem.getClip();
+			diceClip.open(audioStream);
+			diceClip.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+public static void playVictorySound() {
+  try {
+      File audioFile = new File("src/Model/Audio/winner.wav"); // Adjust the file path accordingly
+      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+      victoryClip = AudioSystem.getClip();
+      victoryClip.open(audioStream);
+      victoryClip.start();
+  } catch (Exception e) {
+      e.printStackTrace();
+  }
+}
+public static void playSnakeSound() { // function that play sound when movin down throgh a sasake -Yara
+	  try {
+	      File audioFile = new File("src/Model/Audio/down.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	     Clip snakeClip = AudioSystem.getClip();
+	     snakeClip.open(audioStream);
+	      snakeClip.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	}
+//	 public static void playVictorySound() {
+//	        try {
+//	            File audioFile = new File("src/Model/Audio/winner.wav"); // Adjust the file path accordingly
+//	            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+//	            victoryClip = AudioSystem.getClip();
+//	            victoryClip.open(audioStream);
+//	            
+//	            // Add listener to restart clip when it ends
+//	            victoryClip.addLineListener(new LineListener() {
+//	                public void update(LineEvent event) {
+//	                    if (event.getType() == LineEvent.Type.STOP) {
+//	                        victoryClip.setMicrosecondPosition(0);
+//	                        victoryClip.start();
+//	                    }
+//	                }
+//	            });
+//
+//	            victoryClip.start();
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	        }
+//	    }
 
 
 }
