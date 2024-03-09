@@ -53,7 +53,7 @@ public class History extends javax.swing.JFrame {
                 int gameId = (int) table.getValueAt(row, 0);
                 System.out.println(gameId);
                 // Call the showScreenshot method with the game ID
-                Screenshot.showScreenshot(gameId - 1);
+                Screenshot.showScreenshot(gameId );
             }
         };
 
@@ -96,8 +96,8 @@ public class History extends javax.swing.JFrame {
         setContentPane(backgroundPanel);
 
         // Set the custom cell renderer and editor for the "Game ScreenShoot" column
-      // 3ad table.getColumnModel().getColumn(4).setCellRenderer(new ViewButtonRenderer());
-      // 3ad table.getColumnModel().getColumn(4).setCellEditor(new ViewButtonEditor(new JCheckBox(), event));
+        table.getColumnModel().getColumn(4).setCellRenderer(new ViewButtonRenderer());
+        table.getColumnModel().getColumn(4).setCellEditor(new ViewButtonEditor(new JCheckBox(), event));
 
         backButton = new JButton("Back"); // Changed to JButton
         backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
@@ -152,16 +152,16 @@ public class History extends javax.swing.JFrame {
 			data[i][1] = game.getGameLevel();
 			data[i][2] = p.getNickName();
 			data[i][3] = game.getEndTime();
-		//adan	data[i][4] = null; // Assuming you handle the Game ScreenShoot separately 3ad
+			data[i][4] = null; // Assuming you handle the Game ScreenShoot separately 
 			gid=game.getGameId();
 			
 
 		}
 
-		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer"};//,, "Game ScreenShoot" 3ad
+		String[] columnNames = {"Game ID", "Game Level", "Winner nickName", "Timer", "Game ScreenShot" };
 
 		table.setModel(new javax.swing.table.DefaultTableModel(data, columnNames) {
-			boolean[] canEdit = new boolean[]{false, false, false, false}; // Assuming the last column is editable , true 3ad
+			boolean[] canEdit = new boolean[]{false, false, false, false , true}; //makeing the screen shot clicking adan
 
 			@Override
 			public boolean isCellEditable(int rowIndex, int columnIndex) {

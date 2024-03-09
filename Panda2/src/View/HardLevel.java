@@ -973,8 +973,16 @@ public class HardLevel extends JFrame implements ActionListener {
 							movePlayer(p, ax, ay,awx, awy,g);
 							landedOn(g);
 						}
-						g.NextPlayer();
-						lineMangment(g.CurrentTurn().getPlayeringame(), num);
+
+						if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
+							 s= "And the Winner is ";
+							setPlayerText(p, s);
+						}else {
+							g.NextPlayer();
+							setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+							lineMangment(g.CurrentTurn().getPlayeringame(), num);
+						}
+						
 					}/**************************question dice*************************8*/
 					else {
 
@@ -1057,9 +1065,16 @@ public class HardLevel extends JFrame implements ActionListener {
 									movePlayer(p, ax, ay, awx, awy,g);
 
 								}
-								g.NextPlayer();
-								setPlayerText(g.CurrentTurn(), "you have to roll the dice");
-								lineMangment(g.CurrentTurn().getPlayeringame(), num);
+
+								if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
+									 s= "And the Winner is ";
+									setPlayerText(p, s);
+								}else {
+									g.NextPlayer();
+									setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+									lineMangment(g.CurrentTurn().getPlayeringame(), num);
+								}
+								
 							}
 						});
 						qu.setVisible(true);
@@ -1139,8 +1154,9 @@ public class HardLevel extends JFrame implements ActionListener {
 			} else {
 				timer.stop(); // Stop the timer when the movement is complete
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
 
-				if(g.GameBoard.getPosition(afterx, aftery)>2) {/*winner adan1*/
+					System.out.println("thw winneeeeeeeeeeeeeeer is "+player.getNickName());
 					stopTimer();
 					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
 					System.out.println(secondsElapsed);
@@ -1155,26 +1171,37 @@ public class HardLevel extends JFrame implements ActionListener {
 					System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
 					g.setEndTime(formattedTime);
 					SysData.gamesList.add(g);
-					SysData.winnerPlayer.add(p1);
-					//	Screenshot.captureScreenshot(this);
+					if(g.getPlayersFinalPLaces().size()==2) {
+						SysData.winnerPlayer.add(g.getPlayersFinalPLaces().get(1));
+					}else if(g.getPlayersFinalPLaces().size()==3) {
+						SysData.winnerPlayer.add(g.getPlayersFinalPLaces().get(2));
+					}else {
+						SysData.winnerPlayer.add(g.getPlayersFinalPLaces().get(3));
+					}
+					
+						Screenshot.captureScreenshot(this,g.getGameId());
 
 					SysData.AddGame(g);
+				
+
 					System.out.println(g.getPlayersFinalPLaces()
 							);
+
 					if(g.getPlayersFinalPLaces().size()==2) {
-						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),null,null,2); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(0),null,null,2); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}else if(g.getPlayersFinalPLaces().size()==3) {
-						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(0),null,3); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}else {
-						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(3),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(0),4); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}
 					//	Winner w=new Winner(p1,); 
+
 
 				}
 			}
