@@ -57,6 +57,18 @@ public static void playSnakeSound() { // function that play sound when movin dow
 	      e.printStackTrace();
 	  }
 	}
+public static void playLadderSound() { // function that play sound when movin down throgh a sasake -Yara
+	  try {
+	      File audioFile = new File("src/Model/Audio/ladder.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	     Clip ladderClip = AudioSystem.getClip();
+	     ladderClip.open(audioStream);
+	     ladderClip.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	}
 //	 public static void playVictorySound() {
 //	        try {
 //	            File audioFile = new File("src/Model/Audio/winner.wav"); // Adjust the file path accordingly
