@@ -55,6 +55,13 @@ public class LevelGame extends JFrame  implements ActionListener {
 
 		}
 		comboBox.setBounds(671, 514, 103, 27);
+		comboBox.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		        PlayAudio.playBoxSound();//Yara
+		        // Any additional actions you want to perform when EasyRadioButton is selected
+		    }
+		});
+
 		contentPane.add(comboBox);
 
 		EasyRadioButton = new JRadioButton("Easy");

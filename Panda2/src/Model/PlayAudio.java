@@ -94,6 +94,18 @@ public static void playRadioSound() { // -Yara
 	      e.printStackTrace();
 	  }
 	}
+public static void playBoxSound() { // -Yara
+	  try {
+	      File audioFile = new File("src/Model/Audio/playersNum.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	     Clip box = AudioSystem.getClip();
+	    box.open(audioStream);
+	     box.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	}
 //	 public static void playVictorySound() {
 //	        try {
 //	            File audioFile = new File("src/Model/Audio/winner.wav"); // Adjust the file path accordingly
