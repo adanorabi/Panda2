@@ -49,7 +49,7 @@ public class History extends javax.swing.JFrame {
 
             @Override
             public void onView(int row) {
-                System.out.println("View row : " + row);
+                System.out.println("View row : " + row+1);
                 int gameId = (int) table.getValueAt(row, 0);
                 System.out.println(gameId);
                 // Call the showScreenshot method with the game ID

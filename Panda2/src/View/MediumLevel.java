@@ -2,6 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -22,6 +23,7 @@ import Model.Game;
 import Model.Player;
 import Model.Question;
 import Enum.*;
+import FlatLafDesign.AudioButton;
 import FlatLafDesign.BackButton;
 
 import java.awt.Font;
@@ -388,7 +390,19 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 			}
 		}
+		 Container contentPane = getContentPane();
+	        contentPane.setLayout(null); // Use null layout
+	        ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));
+	        ImageIcon clickedIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOff.png"));
 
+	        // Create back button with icons
+	        AudioButton aButton = new AudioButton(defaultIcon, clickedIcon);
+	        
+	        // Set the bounds of the button
+	        aButton.setBounds(1200, 20, 50, 50); // x, y, width, height
+
+	        // Add the button to the content pane
+	        contentPane.add(aButton,0);
 
 		// Calculate the size of the snake image
 		int tWidth ; // Adjusted width based on grid size

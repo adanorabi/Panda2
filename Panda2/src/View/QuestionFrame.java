@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import Enum.Levels;
 import Model.Question;
 
+// frame that present question and 4 answers , the user shouls choose one answer
 public class QuestionFrame extends JFrame {
 
     private JPanel contentPane;
@@ -41,8 +42,9 @@ public class QuestionFrame extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        setAlwaysOnTop(true); // Make sure the frame stays on top
+        setAlwaysOnTop(true); //  the frame stays on top
 
+        // submit button to submit the answer that the player choosed
         JButton submitButton = new JButton("");
         ImageIcon icon = new ImageIcon(QuestionFrame.class.getResource("/View/img/submit.jpg"));
         submitButton.setIcon(icon);
@@ -58,7 +60,7 @@ public class QuestionFrame extends JFrame {
         Font font = new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, fontSize);
         lblNewLabel.setFont(font);
 
-        // Set text
+        // Set content of the question
         String questionText = question.getContent();
         String formattedQuestionText = insertLineBreaks(questionText);
         lblNewLabel.setText("<html>" + formattedQuestionText + "</html>");
@@ -67,6 +69,7 @@ public class QuestionFrame extends JFrame {
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setVerticalAlignment(SwingConstants.CENTER);
 
+        // set icon for easy level question
         if (question.getQLevel().equals(Levels.Easy)) {
             JLabel lblNewLabel_1 = new JLabel("");
             lblNewLabel_1.setBounds(627, 10, 203, 106);
@@ -78,6 +81,7 @@ public class QuestionFrame extends JFrame {
             lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
             lblNewLabel_2.setBounds(661, 107, 169, 29);
             contentPane.add(lblNewLabel_2);
+            // set icon for hard level question
         } else if (question.getQLevel().equals(Levels.Hard)) {
             JLabel lblNewLabel_1 = new JLabel("");
             lblNewLabel_1.setBounds(627, 10, 203, 106);
@@ -89,6 +93,7 @@ public class QuestionFrame extends JFrame {
             lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
             lblNewLabel_2.setBounds(661, 107, 169, 29);
             contentPane.add(lblNewLabel_2);
+            // set icon for Medium level question
         } else if (question.getQLevel().equals(Levels.Medium)) {
             JLabel lblNewLabel_1 = new JLabel("");
             lblNewLabel_1.setBounds(627, 10, 203, 106);
@@ -101,8 +106,7 @@ public class QuestionFrame extends JFrame {
             lblNewLabel_2.setBounds(661, 107, 169, 29);
             contentPane.add(lblNewLabel_2);
         }
-        // Code for question level icons omitted for brevity...
-
+        // order the answers of the question randomaly
         ArrayList<String> shuffledAnswers = new ArrayList<>(question.getAnswer());
         Collections.shuffle(shuffledAnswers);
 
@@ -125,7 +129,7 @@ public class QuestionFrame extends JFrame {
         int num;
         submitButton.addActionListener(e -> {
             JRadioButton selectedRadioButton = null;
-            int selectedIndex = -1; // Initialize with a default value in case no radio button is selected
+            int selectedIndex = -1;
 
             for (int i = 0; i < radioButtons.length; i++) {
                 JRadioButton radioButton = radioButtons[i];
@@ -137,13 +141,14 @@ public class QuestionFrame extends JFrame {
             }
 
             if (selectedRadioButton != null) {
-                answered = true;
+                answered = true; // variable that check if the user has answered 
                 String selectedAnswer =shuffledAnswers.get(selectedIndex) ;
+                // check the selected answer if correct or wrong
                 if (selectedAnswer.equals(question.getTrueAnswer())) {
-                    answer = true;
+                    answer = true; // the user answer correct
                     JOptionPane.showMessageDialog(contentPane, "Correct answer!");
                 } else {
-                    answer = false;
+                    answer = false; // the user answer wrong
                     JOptionPane.showMessageDialog(contentPane, "Incorrect answer. Try again!");
                 }
                 listener.onQuestionAnswered(answer);
@@ -158,6 +163,7 @@ public class QuestionFrame extends JFrame {
         questionFrame.setBounds(5, 5, 830, 453);
         contentPane.add(questionFrame);
     }
+    // function that Insert line breaks after every seventh word
 
     private String insertLineBreaks(String text) {
         String[] words = text.split("\\s+");

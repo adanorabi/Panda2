@@ -33,25 +33,8 @@ public class LogIn extends JFrame {
     private JPasswordField passwordField_1;
     private ArrayList<Admin> admins;
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    LogIn frame = new LogIn();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
-    /**
-     * Create the frame.
-     */
+    // log in frame for admins - panda group members
     public LogIn() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 70,1200, 900);
@@ -60,7 +43,7 @@ public class LogIn extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        
+        // the information of the admins for the log in 
         admins=new ArrayList<>();
         admins.add(new Admin("Ghaidaaazzam", "Ghaidaa123"));
         admins.add(new Admin("YaraGh", "Yara123"));
@@ -103,6 +86,7 @@ public class LogIn extends JFrame {
         passwordField_1.setBounds(386, 641, 415, 86);
         contentPane.add(passwordField_1);
         
+        // home page button , return to the main frame
         JButton btnNewButton = new JButton("<<home page");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -125,11 +109,8 @@ public class LogIn extends JFrame {
         lblNewLabel_1.setBounds(359, 180, 539, 271);
         contentPane.add(lblNewLabel_1);
         
-//        JLabel lblNewLabel_2 = new JLabel("");
-//        lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/message.jpg")));
-//        lblNewLabel_2.setBounds(423, 265, 398, 37);
-//        contentPane.add(lblNewLabel_2);
-        
+
+        // log in button
         JButton btnNewButton_1 = new JButton("Log in");
         btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/View/img/logInbut.jpg")));
         btnNewButton_1.setBounds(935, 772, 156, 37);
@@ -141,6 +122,7 @@ public class LogIn extends JFrame {
 				// TODO Auto-generated method stub
 				String username=txtUsername.getText();
 				String password=passwordField_1.getText();
+				// cheeck if the user fill all the fields
 				if(username.isEmpty()|| password.isEmpty()) {
 					JOptionPane.showMessageDialog(getContentPane(),"You need to fill both username and password");
 
@@ -156,10 +138,11 @@ public class LogIn extends JFrame {
 						}
 					}
 					if(!check) {
+						// when the user enter false informations
 						JOptionPane.showMessageDialog(getContentPane(),"We didn't recognize you!");
 					}else
 					{
-//						QuestionManage QM=new QuestionManage();
+						// when the user enter correct informations
 						table2 QM=new table2();
 						setVisible(false);
 						QM.setVisible(true);

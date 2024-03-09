@@ -2,6 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -14,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import Enum.*;
+import FlatLafDesign.AudioButton;
 import FlatLafDesign.BackButton;
 
 import javax.swing.BoxLayout;
@@ -481,6 +483,19 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		});
 		contentPane.add(backButton,0);
+		 Container contentPane = getContentPane();
+	        contentPane.setLayout(null); // set audio
+	        ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));
+	        ImageIcon clickedIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOff.png"));
+
+	        // Create back button with icons
+	        AudioButton aButton = new AudioButton(defaultIcon, clickedIcon);
+	        
+	        // Set the bounds of the button
+	        aButton.setBounds(1790, 5, 50, 50); // x, y, width, height
+
+	        // Add the button to the content pane
+	        contentPane.add(aButton,0);
 		winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/win.png"));
 		winWidth = 80; // Adjusted width based on grid size
 		winHeight = 80;//Adjusted height based on grid size
@@ -509,7 +524,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		//Verify image dimensions
 		int containerWidth = 1900;
-		int containerHeight = 1000;
+		int containerHeight = 1100;
 		System.out.println("Container size: " + containerWidth + "x" + containerHeight);
 
 		//Create JLabel with scaled image

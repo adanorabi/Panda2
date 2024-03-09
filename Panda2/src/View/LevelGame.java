@@ -29,9 +29,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 	private JRadioButton MeduimRadioButton;
 	private JRadioButton HardRadioButton;
 
-	/**
-	 * Create the frame.
-	 */
+	// frame to choose level game, and number of players
 	public LevelGame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 70,1200, 900);
@@ -48,7 +46,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.ITALIC, 24));
 		lblNewLabel_2.setBounds(351, 255, 300, 41);
 		contentPane.add(lblNewLabel_2);
-		// combobox for choosing nimber of players
+		// combobox for choosing number of players between 2-4
 		final JComboBox comboBox = new JComboBox();
 		for(int i=2;i<=4;i++)
 		{
@@ -88,13 +86,14 @@ public class LevelGame extends JFrame  implements ActionListener {
 		int winWidth = 170; // Adjusted width based on grid size
 		int winHeight = 45;//Adjusted height based on grid size
 
-		// Scale down the size of the snake image
+		// Scale down the size of the image
 		Image scaledWinImage2 = winIcon2.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
 		ImageIcon scaledWinIcon2 = new ImageIcon(scaledWinImage2);
 		btnNewButton = new JButton(scaledWinIcon2);
 		btnNewButton.setBounds(961, 794, 154, 41);
 		contentPane.add(btnNewButton);
 
+		// when the user click next
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (EasyRadioButton.isSelected()||MeduimRadioButton.isSelected() ||HardRadioButton.isSelected() )
@@ -113,10 +112,12 @@ public class LevelGame extends JFrame  implements ActionListener {
 					else {
 						gameLevel=Levels.Hard;
 					}
+					// send numofplayer and level game to next frame
 					InterPlayersInfoFrame frame=new InterPlayersInfoFrame(numOfPlayers,gameLevel); 
 					setVisible(false);
 					frame.setVisible(true);
 				}
+				// when the user doesnt choose a level
 				else {
 					JOptionPane.showMessageDialog(getContentPane(),"You need to choice game Level");
 
@@ -125,7 +126,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 			}
 		});
 
-
+		// home page icon for the button
 		ImageIcon winIcon1 = new ImageIcon(LevelGame.class.getResource("/View/img/hp.png"));
 		winWidth = 170; // Adjusted width based on grid size
 		winHeight = 45;//Adjusted height based on grid size
@@ -135,7 +136,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 		ImageIcon scaledWinIcon1 = new ImageIcon(scaledWinImage1);
 		JButton btnNewButton_1 = new JButton(scaledWinIcon1);
 		btnNewButton_1.setBounds(138, 786, 170, 49);
-
+		// return to home page frame
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,19 +148,19 @@ public class LevelGame extends JFrame  implements ActionListener {
 		});
 
 
+		// icon for level game
 		ImageIcon winIcon = new ImageIcon(Winner.class.getResource("/View/img/level.png"));
 		winWidth = 350; // Adjusted width based on grid size
 		winHeight = 250;//Adjusted height based on grid size
 
-		// Scale down the size of the snake image
+		// Scale down the size of the image
 		Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
 		ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
 
-		// Create a JLabel for the scaled snake image
+		// Create a JLabel for the scaled image
 		JLabel lblNewLabel_4  = new JLabel(scaledWinIcon);
 		lblNewLabel_4.setBounds(608, 194, 300, 270);//
 
-		// Add the snake label to the content pane
 		contentPane.add(lblNewLabel_4);
 		lblNewLabel_4.setVisible(true);
 	
