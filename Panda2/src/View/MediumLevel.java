@@ -22,6 +22,7 @@ import Controller.SysData;
 import Model.Game;
 import Model.Player;
 import Model.Question;
+import View.HardLevel.PauseButtonListener;
 import Enum.*;
 import FlatLafDesign.AudioButton;
 import FlatLafDesign.BackButton;
@@ -79,6 +80,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 	private Timer timer;
 	private int secondsElapsed;
 	private long endTime; // Variable to store the end time
+	private boolean isPaused = false;
+	private JButton pauseButton;
 	/**
 	 * Create the frame.
 	 */
@@ -148,7 +151,12 @@ public class MediumLevel extends JFrame implements ActionListener {
 		lblNewLabel_1.setBounds(185, 90, 1005,790);//94,59
 		contentPane.add(lblNewLabel_1);
 
-
+		//-----------------------------------yomna-----------------------------------
+		pauseButton = new JButton("Pause");
+		pauseButton.addActionListener(new PauseButtonListener());
+		pauseButton.setBounds(70, 350, 100, 70);
+		contentPane.add(pauseButton);
+		//        -----------------------------------yomna----------------------------
 		g.PlacespecialSquares(Levels.Medium);
 		g.placeNormalSquares();
 		g.PlaceSnakes();
@@ -440,6 +448,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		timer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (!isPaused) {
 				secondsElapsed++;
 				int hours = secondsElapsed / 3600;
 				int minutes = (secondsElapsed % 3600) / 60;
@@ -460,6 +469,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 					System.out.println("End Time: " + endTime); // Print end time for demonstration
 					g.setEndTime(formattedTime);
 				}
+			}
 			}
 		});
 		startTimer();
@@ -592,6 +602,21 @@ public class MediumLevel extends JFrame implements ActionListener {
 		// Calculate the position of the snake head and tail
 		/**********************winner**********************/
 
+	}
+	class PauseButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == pauseButton) {
+				isPaused = !isPaused;
+				if (isPaused) {
+					pauseButton.setText("Resume");
+					timer.stop();
+				} else {
+					pauseButton.setText("Pause");
+					timer.start();
+				}
+			}
+		}
 	}
 
 	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {
@@ -863,6 +888,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (!isPaused) {
 				// Change dice image randomly for animation
 
 
@@ -1060,7 +1086,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 					// Simulate rolling and display the final result
 					//JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
 				}
-
+			}
 			}
 		});
 

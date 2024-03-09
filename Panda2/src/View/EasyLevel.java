@@ -87,6 +87,9 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	private Timer timer;
 	private long secondsElapsed;
 	private long endTime; // Variable to store the end time
+	private boolean isPaused = false;
+	private JButton pauseButton;
+
 
 
 	/**
@@ -165,8 +168,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		lblEasyTable.setIcon(new ImageIcon(EasyLevel.class.getResource("/View/img/easytable.png")));
 		lblEasyTable.setBounds(214, 125, 861, 602);
 		contentPane.add(lblEasyTable);
-
-
+		//-----------------------------------yomna-----------------------------------
+		pauseButton = new JButton("Pause");
+		pauseButton.addActionListener(new PauseButtonListener());
+		pauseButton.setBounds(70, 350, 100, 70);
+		contentPane.add(pauseButton);
+		//        -----------------------------------yomna----------------------------
 		diceButton = new JButton("Roll Dice");
 		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.jpg")));
 		diceButton.setBounds(43, 702, 134, 49);
@@ -175,9 +182,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PlayAudio.playDiceSound(); // calling the functio that play the sound of RollDice -Yara
-				System.out.println("in dice btn");
-				rollDiceAnimation(g,num);
+				if (!isPaused) {
+
+					PlayAudio.playDiceSound(); // calling the functio that play the sound of RollDice -Yara
+					System.out.println("in dice btn");
+					rollDiceAnimation(g,num);
+				}
 
 			}});
 		contentPane.add(diceButton); 
@@ -385,20 +395,20 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			}
 		}
-		 // setting the audio button
-        Container contentPane = getContentPane();
-        contentPane.setLayout(null); // Use null layout
-        ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));
-        ImageIcon clickedIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOff.png"));
+		// setting the audio button
+		Container contentPane = getContentPane();
+		contentPane.setLayout(null); // Use null layout
+		ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));
+		ImageIcon clickedIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOff.png"));
 
-        // Create back button with icons
-        AudioButton aButton = new AudioButton(defaultIcon, clickedIcon);
-        
-        // Set the bounds of the button
-        aButton.setBounds(1050, 20, 50, 50); // x, y, width, height
+		// Create back button with icons
+		AudioButton aButton = new AudioButton(defaultIcon, clickedIcon);
 
-        // Add the button to the content pane
-        contentPane.add(aButton);
+		// Set the bounds of the button
+		aButton.setBounds(1050, 20, 50, 50); // x, y, width, height
+
+		// Add the button to the content pane
+		contentPane.add(aButton);
 
 		// question example
 		//		ArrayList<String> answers= new ArrayList<String>();
@@ -453,30 +463,33 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		timer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				secondsElapsed++;
-				long hours = secondsElapsed / 3600;
-				long minutes = (secondsElapsed % 3600) / 60;
-				long seconds = secondsElapsed % 60;
-				timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+				if (!isPaused) {
+					secondsElapsed++;
+					long hours = secondsElapsed / 3600;
+					long minutes = (secondsElapsed % 3600) / 60;
+					long seconds = secondsElapsed % 60;
+					timerLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
 
-				// Check condition and stop timer if condition is met
-				if (conditionMet()) {
-					stopTimer();
-					// Save the end time when the condition is met
-					endTime = System.currentTimeMillis();
-					// Convert milliseconds to hours, minutes, and seconds
-					long Lseconds = (System.currentTimeMillis() / 1000) % 60;
-					long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
-					long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
+					// Check condition and stop timer if condition is met
+					if (conditionMet()) {
+						stopTimer();
+						// Save the end time when the condition is met
+						endTime = System.currentTimeMillis();
+						// Convert milliseconds to hours, minutes, and seconds
+						long Lseconds = (System.currentTimeMillis() / 1000) % 60;
+						long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
+						long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
 
-					// Format the time
-					String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
-					System.out.println("End Time: " + endTime); // Print end time for demonstration
-					g.setEndTime(formattedTime);
+						// Format the time
+						String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+						System.out.println("End Time: " + endTime); // Print end time for demonstration
+						g.setEndTime(formattedTime);
+					}
 				}
 			}
 		});
 		startTimer();
+
 
 		ImageIcon winIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/win.png"));
 		int winWidth = 80; // Adjusted width based on grid size
@@ -594,6 +607,21 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		// Calculate the position of the snake head and tail
 		/**********************winner**********************/
 
+	}
+	class PauseButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == pauseButton) {
+				isPaused = !isPaused;
+				if (isPaused) {
+					pauseButton.setText("Resume");
+					timer.stop();
+				} else {
+					pauseButton.setText("Pause");
+					timer.start();
+				}
+			}
+		}
 	}
 	// blue snakes function
 	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {
@@ -864,203 +892,205 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Change dice image randomly for animation
+				if (!isPaused) {
+
+					// Change dice image randomly for animation
 
 
-				// Create a new JLabel with the dice image and add it to the lblEasyTable panel
-				// Change dice image randomly for animation
-				int randomIndex = random.nextInt(diceIcons.length);
+					// Create a new JLabel with the dice image and add it to the lblEasyTable panel
+					// Change dice image randomly for animation
+					int randomIndex = random.nextInt(diceIcons.length);
 
-				// Create a new JLabel with the dice image and add it to the lblEasyTable panel
-				diceLabel.setIcon(diceIcons[randomIndex]);
-				diceLabel.setBounds(40, 520, 150, 150);
-				frameCount++;
-				if (frameCount >= NUM_FRAMES) {
+					// Create a new JLabel with the dice image and add it to the lblEasyTable panel
+					diceLabel.setIcon(diceIcons[randomIndex]);
+					diceLabel.setBounds(40, 520, 150, 150);
+					frameCount++;
+					if (frameCount >= NUM_FRAMES) {
 
-					Player p=g.CurrentTurn();
+						Player p=g.CurrentTurn();
 
-					int bx=p.getPlayerRow();
-					int by=p.getPlayerCol();
-
-
-					int squareResult;
-					Object  CHECK = g.Roll();
-					System.out.println("********************************************************8the dice rolled"+CHECK);
-					Question q;
-					String answer="";
-					int awx=0,awy=0;
-					if(CHECK instanceof Integer) {
-						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
-						String s= "you have to walk "+CHECK+" steps!!";
-						setPlayerText(p, s);
-
-						answer=Integer.toString((Integer)CHECK);
-						int ax=p.getPlayerRow();
-						int ay=p.getPlayerCol();
-						System.out.println("the current player is:"+p.getPlayerColor());
-						movePlayer(p, bx, by,ax, ay,g);//moved player once
+						int bx=p.getPlayerRow();
+						int by=p.getPlayerCol();
 
 
-						while( g.UpdatePlayerPlace()!=0) {//
+						int squareResult;
+						Object  CHECK = g.Roll();
+						System.out.println("********************************************************8the dice rolled"+CHECK);
+						Question q;
+						String answer="";
+						int awx=0,awy=0;
+						if(CHECK instanceof Integer) {
+							diceLabel.setIcon(diceIcons[(Integer)CHECK]);
+							String s= "you have to walk "+CHECK+" steps!!";
+							setPlayerText(p, s);
 
-							if (g.checkQuestionSquare2() == true) {
-								Question myQ = g.checkQuestionSquare();
-								System.out.println("questionnnnnnn type from question square!!");
+							answer=Integer.toString((Integer)CHECK);
+							int ax=p.getPlayerRow();
+							int ay=p.getPlayerCol();
+							System.out.println("the current player is:"+p.getPlayerColor());
+							movePlayer(p, bx, by,ax, ay,g);//moved player once
 
-								if (myQ.getQLevel().equals(Levels.Easy)) {
-									answer = "easy question";
-									s= "you have landed on easy question";
-									setPlayerText(p, s);
-								} else if (myQ.getQLevel().equals(Levels.Medium)) {
-									answer = "medium question";
-									s= "you have landed on medium question";
-									setPlayerText(p, s);
-								} else {
-									answer = "hard question";
-									s= "you have landed on hard question";
-									setPlayerText(p, s);
-								}
-								System.out.println("questionnnn frame");
 
-								// Create the QuestionFrame
-								QuestionFrame qu = new QuestionFrame(myQ, new QuestionFrame.QuestionAnsweredListener() {
-									@Override
-									public void onQuestionAnswered(boolean isCorrect) {
-										// This method will be called when the player answers the question
-										g.updateByQuestion(myQ, isCorrect);
-										System.out.println("Answered: " + isCorrect);
-										// Continue with your logic here
+							while( g.UpdatePlayerPlace()!=0) {//
+
+								if (g.checkQuestionSquare2() == true) {
+									Question myQ = g.checkQuestionSquare();
+									System.out.println("questionnnnnnn type from question square!!");
+
+									if (myQ.getQLevel().equals(Levels.Easy)) {
+										answer = "easy question";
+										s= "you have landed on easy question";
+										setPlayerText(p, s);
+									} else if (myQ.getQLevel().equals(Levels.Medium)) {
+										answer = "medium question";
+										s= "you have landed on medium question";
+										setPlayerText(p, s);
+									} else {
+										answer = "hard question";
+										s= "you have landed on hard question";
+										setPlayerText(p, s);
 									}
-								});
-								qu.setVisible(true);
+									System.out.println("questionnnn frame");
+
+									// Create the QuestionFrame
+									QuestionFrame qu = new QuestionFrame(myQ, new QuestionFrame.QuestionAnsweredListener() {
+										@Override
+										public void onQuestionAnswered(boolean isCorrect) {
+											// This method will be called when the player answers the question
+											g.updateByQuestion(myQ, isCorrect);
+											System.out.println("Answered: " + isCorrect);
+											// Continue with your logic here
+										}
+									});
+									qu.setVisible(true);
+
+									awx=p.getPlayerRow();//new x
+									awy=p.getPlayerCol();// new y
+
+									movePlayer(p, ax, ay,awx, awy,g);
+									landedOn(g);
+
+								}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
+									break;
 
 								awx=p.getPlayerRow();//new x
 								awy=p.getPlayerCol();// new y
 
 								movePlayer(p, ax, ay,awx, awy,g);
 								landedOn(g);
-
-							}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
-								break;
-
-							awx=p.getPlayerRow();//new x
-							awy=p.getPlayerCol();// new y
-
-							movePlayer(p, ax, ay,awx, awy,g);
-							landedOn(g);
-						}
-
-						if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-							 s= "And the Winner is ";
-							setPlayerText(p, s);
-						}else {
-							g.NextPlayer();
-							setPlayerText(g.CurrentTurn(), "you have to roll the dice");
-							lineMangment(g.CurrentTurn().getPlayeringame(), num);
-						}
-						
-					}/**************************question dice*************************8*/
-					else {
-
-						System.out.println("the current player is:" + p.getPlayerColor());
-						System.out.println("questionnnnnnn type!!");
-						q = (Question) CHECK;
-						String s="";
-						if (q.getQLevel().equals(Levels.Easy)) {
-							diceLabel.setIcon(diceIcons[5]);//adan added
-							answer = "easy question";
-							s= "you have landed on easy question";
-							setPlayerText(p, s);
-						} else if (q.getQLevel().equals(Levels.Medium)) {
-							diceLabel.setIcon(diceIcons[7]);//adan added
-							answer = "medium question";
-							s= "you have landed on medium question";
-							setPlayerText(p, s);
-						} else {
-							diceLabel.setIcon(diceIcons[6]);//adan added
-							answer = "hard question";
-							s= "you have landed on hard question";
-							setPlayerText(p, s);
-						}
-						System.out.println("questionnnn frame");
-						QuestionFrame qu = new QuestionFrame(q, new QuestionFrame.QuestionAnsweredListener() {
-							@Override
-							public void onQuestionAnswered(boolean isCorrect) {
-								// This method will be called when the player answers the question
-								g.updateByQuestion(q, isCorrect);
-								System.out.println("Answered: " + isCorrect);
-								String s= "you'r answer is "+isCorrect;
-								setPlayerText(p, s);
-								// Continue with your logic here
-								int ax = p.getPlayerRow();
-								int ay = p.getPlayerCol();
-
-								movePlayer(p, bx, by, ax, ay,g);    //move player by answer
-
-								while (g.UpdatePlayerPlace() != 0) {//
-									String answer="";
-									if (g.checkQuestionSquare2() == true) {
-										Question myQ = g.checkQuestionSquare();
-										System.out.println("questionnnnnnn type from question square!!");
-
-										if (myQ.getQLevel().equals(Levels.Easy)) {//check
-
-											answer = "easy question";
-										} else if (myQ.getQLevel().equals(Levels.Medium)) {
-
-											answer = "medium question";
-										} else {
-
-											answer = "hard question";
-										}
-										System.out.println("questionnnn frame");
-										QuestionFrame c = new QuestionFrame(myQ, new QuestionFrame.QuestionAnsweredListener() {
-											@Override
-											public void onQuestionAnswered(boolean isCorrect) {
-												// This method will be called when the player answers the question
-												g.updateByQuestion(myQ, isCorrect);
-												System.out.println("Answered: " + isCorrect);
-												// Continue with your logic here
-											}
-										});
-										c.setVisible(true);
-
-
-										int awx=p.getPlayerRow();//new x
-										int awy=p.getPlayerCol();// new y
-
-										movePlayer(p, ax, ay,awx, awy,g);
-										landedOn(g);
-
-									}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==p.getPlayerRow()&&ay==p.getPlayerCol()))
-										break;
-
-									int awx = p.getPlayerRow();
-									int awy = p.getPlayerCol();
-
-									movePlayer(p, ax, ay, awx, awy,g);
-
-								}
-								if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-									 s= "And the Winner is ";
-									setPlayerText(p, s);
-								}else {
-									g.NextPlayer();
-									setPlayerText(g.CurrentTurn(), "you have to roll the dice");
-									lineMangment(g.CurrentTurn().getPlayeringame(), num);
-								}
-								
 							}
-						});
-						qu.setVisible(true);
+
+							if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
+								s= "And the Winner is ";
+								setPlayerText(p, s);
+							}else {
+								g.NextPlayer();
+								setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+								lineMangment(g.CurrentTurn().getPlayeringame(), num);
+							}
+
+						}/**************************question dice*************************8*/
+						else {
+
+							System.out.println("the current player is:" + p.getPlayerColor());
+							System.out.println("questionnnnnnn type!!");
+							q = (Question) CHECK;
+							String s="";
+							if (q.getQLevel().equals(Levels.Easy)) {
+								diceLabel.setIcon(diceIcons[5]);//adan added
+								answer = "easy question";
+								s= "you have landed on easy question";
+								setPlayerText(p, s);
+							} else if (q.getQLevel().equals(Levels.Medium)) {
+								diceLabel.setIcon(diceIcons[7]);//adan added
+								answer = "medium question";
+								s= "you have landed on medium question";
+								setPlayerText(p, s);
+							} else {
+								diceLabel.setIcon(diceIcons[6]);//adan added
+								answer = "hard question";
+								s= "you have landed on hard question";
+								setPlayerText(p, s);
+							}
+							System.out.println("questionnnn frame");
+							QuestionFrame qu = new QuestionFrame(q, new QuestionFrame.QuestionAnsweredListener() {
+								@Override
+								public void onQuestionAnswered(boolean isCorrect) {
+									// This method will be called when the player answers the question
+									g.updateByQuestion(q, isCorrect);
+									System.out.println("Answered: " + isCorrect);
+									String s= "you'r answer is "+isCorrect;
+									setPlayerText(p, s);
+									// Continue with your logic here
+									int ax = p.getPlayerRow();
+									int ay = p.getPlayerCol();
+
+									movePlayer(p, bx, by, ax, ay,g);    //move player by answer
+
+									while (g.UpdatePlayerPlace() != 0) {//
+										String answer="";
+										if (g.checkQuestionSquare2() == true) {
+											Question myQ = g.checkQuestionSquare();
+											System.out.println("questionnnnnnn type from question square!!");
+
+											if (myQ.getQLevel().equals(Levels.Easy)) {//check
+
+												answer = "easy question";
+											} else if (myQ.getQLevel().equals(Levels.Medium)) {
+
+												answer = "medium question";
+											} else {
+
+												answer = "hard question";
+											}
+											System.out.println("questionnnn frame");
+											QuestionFrame c = new QuestionFrame(myQ, new QuestionFrame.QuestionAnsweredListener() {
+												@Override
+												public void onQuestionAnswered(boolean isCorrect) {
+													// This method will be called when the player answers the question
+													g.updateByQuestion(myQ, isCorrect);
+													System.out.println("Answered: " + isCorrect);
+													// Continue with your logic here
+												}
+											});
+											c.setVisible(true);
+
+
+											int awx=p.getPlayerRow();//new x
+											int awy=p.getPlayerCol();// new y
+
+											movePlayer(p, ax, ay,awx, awy,g);
+											landedOn(g);
+
+										}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==p.getPlayerRow()&&ay==p.getPlayerCol()))
+											break;
+
+										int awx = p.getPlayerRow();
+										int awy = p.getPlayerCol();
+
+										movePlayer(p, ax, ay, awx, awy,g);
+
+									}
+									if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
+										s= "And the Winner is ";
+										setPlayerText(p, s);
+									}else {
+										g.NextPlayer();
+										setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+										lineMangment(g.CurrentTurn().getPlayeringame(), num);
+									}
+
+								}
+							});
+							qu.setVisible(true);
+						}
+
+
+						((Timer) e.getSource()).stop();
+						// Simulate rolling and display the final result
+						//JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
 					}
-
-
-					((Timer) e.getSource()).stop();
-					// Simulate rolling and display the final result
-					//JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
 				}
-
 			}
 		});
 
@@ -1134,7 +1164,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				timer.stop(); // Stop the timer when the movement is complete
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
-					
+
 					System.out.println("thw winneeeeeeeeeeeeeeer is "+player.getNickName());
 					stopTimer();
 					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
@@ -1157,11 +1187,11 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 					}else {
 						SysData.winnerPlayer.add(g.getPlayersFinalPLaces().get(3));
 					}
-					
-						Screenshot.captureScreenshot(this,g.getGameId());
+
+					Screenshot.captureScreenshot(this,g.getGameId());
 
 					SysData.AddGame(g);
-				
+
 
 					System.out.println(g.getPlayersFinalPLaces()
 							);
@@ -1430,13 +1460,13 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 		}else if(num>=6 && num<=13) {
 			s="landed on a snake :(";
-		//	PlayAudio.playSnakeSound() // if the player landed on a snake call the snake sound function-Yara
+			//	PlayAudio.playSnakeSound() // if the player landed on a snake call the snake sound function-Yara
 			setPlayerText(p, s);
 
 
 		}else if(num>=14 && num<=21) {
 			s="landed on a ladder :)";
-		//	PlayAudio.playLadderSound()// if the player landed on a ladder call the ladder sound function-Yara
+			//	PlayAudio.playLadderSound()// if the player landed on a ladder call the ladder sound function-Yara
 			setPlayerText(p, s);
 
 		}else if(num==3|| num==4||num==5) {
