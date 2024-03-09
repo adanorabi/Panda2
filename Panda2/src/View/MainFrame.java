@@ -83,6 +83,7 @@ public class MainFrame extends JFrame implements ActionListener{
 				// TODO Auto-generated method stub
 				Instructions inst=new Instructions();
 				PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yara
+				 PlayAudio.playMenuSound(); // calling the function that play button click audio -Yara
 				setVisible(false);
 				inst.setVisible(true);
 			}
@@ -108,6 +109,8 @@ public class MainFrame extends JFrame implements ActionListener{
 				// TODO Auto-generated method stub
 				LogIn log=new LogIn();
 				PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yara
+				PlayAudio.playMenuSound(); // calling the function that play button click audio -Yara
+			
 				setVisible(false);
 				log.setVisible(true);
 			}
@@ -138,13 +141,15 @@ public class MainFrame extends JFrame implements ActionListener{
 		if(s.equals("start")) {/*start the game and move to levelgame frame*/
 			LevelGame lframe=new LevelGame();
 			PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yaraorder to Quit the music -Yara
+			PlayAudio.playMenuSound(); // calling the function that play button click audio -Yara
 			this.setVisible(false);
 			lframe.setVisible(true);
 
 		}
 		if(s.equals("hist")) {/*start the game and move to levelgame frame*/
 			History lframe=new History();
-			PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yara order to Quit the music -Yara
+			PlayAudio.hpClip.stop();  // calling the stop function of the home page clip in order to Quit the music -Yara
+			PlayAudio.playMenuSound(); // calling the function that play button click audio -Yara
 			this.setVisible(false);
 			lframe.setVisible(true);
 
