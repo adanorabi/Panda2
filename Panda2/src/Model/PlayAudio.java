@@ -70,7 +70,7 @@ public static void playLadderSound() { // function that play sound when movin do
 	      e.printStackTrace();
 	  }
 	}
-public static void playMenuSound() { // function that play sound when movin down throgh a sasake -Yara
+public static void playMenuSound() { // function that play sound when choosing button in menu -Yara
 	  try {
 	      File audioFile = new File("src/Model/Audio/menuButton.wav"); // Adjust the file path accordingly
 	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -78,6 +78,18 @@ public static void playMenuSound() { // function that play sound when movin down
 	     Clip menuBT = AudioSystem.getClip();
 	     menuBT.open(audioStream);
 	     menuBT.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	}
+public static void playRadioSound() { // -Yara
+	  try {
+	      File audioFile = new File("src/Model/Audio/pickRadio.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	     Clip radioBT = AudioSystem.getClip();
+	    radioBT.open(audioStream);
+	     radioBT.start();
 	  } catch (Exception e) {
 	      e.printStackTrace();
 	  }
