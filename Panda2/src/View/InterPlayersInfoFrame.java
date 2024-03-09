@@ -1115,8 +1115,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 		}
 		//****************************************************
-		JButton btnNewButton = new JButton("Next>>");
-
+		JButton btnNewButton = new JButton("next");
+		btnNewButton.addActionListener(this);
 		ImageIcon winIcon2 = new ImageIcon(LevelGame.class.getResource("/View/img/next.png"));
 		int winWidth = 170; // Adjusted width based on grid size
 		int winHeight = 45;//Adjusted height based on grid size
@@ -1124,8 +1124,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		// Scale down the size of the snake image
 		Image scaledWinImage2 = winIcon2.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
 		ImageIcon scaledWinIcon2 = new ImageIcon(scaledWinImage2);
-		btnNewButton = new JButton(scaledWinIcon2);
-		btnNewButton.setBounds(961, 794, 143, 41);
+		btnNewButton.setIcon(scaledWinIcon2);
+		btnNewButton.setBounds(946, 794, 158, 41);
 		contentPane.add(btnNewButton);
 
 	
