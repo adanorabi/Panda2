@@ -41,18 +41,18 @@ public class editQ extends JFrame {
 	private JButton Submit;
 
 	public editQ(table2 parent, Question q, int modelRow) {
+		// the question that the user want to edit 
 		Question oldQuestion=new Question(SysData.QuestionId++,q.getQLevel(),q.getContent(), q.getAnswer(), q.getTrueAnswer());
-	 
-		this.parentFrame = parent;
 
-	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                setVisible(false); // Hide the addQuestion frame
-            }
-        });
-        setBounds(500, 200, 1000, 700);
+		this.parentFrame = parent;
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				setVisible(false); // Hide the addQuestion frame
+			}
+		});
+		setBounds(500, 200, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,6 +65,7 @@ public class editQ extends JFrame {
 			}
 		}
 
+		// present the content of the question 
 		JLabel lblNewLabel = new JLabel("the content of the new question:");
 		lblNewLabel.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
 		lblNewLabel.setBounds(258, 72, 300, 38);
@@ -77,6 +78,7 @@ public class editQ extends JFrame {
 		textField.setColumns(10);
 		textField.setText(q.getContent());
 
+		// present the correct answer of the question 
 		JLabel lblNewLabel_1 = new JLabel("The right answer :");
 		lblNewLabel_1.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(258, 161, 203, 25);
@@ -89,6 +91,7 @@ public class editQ extends JFrame {
 		textField_1.setColumns(10);
 		textField_1.setText(q.getTrueAnswer());
 
+		// present the other answers of the question 
 		JLabel lblNewLabel_2 = new JLabel("Other answers : ");
 		lblNewLabel_2.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
 		lblNewLabel_2.setBounds(257, 242, 250, 25);
@@ -127,8 +130,10 @@ public class editQ extends JFrame {
 		comboBox.addItem(Levels.Easy);
 		comboBox.addItem(Levels.Medium);
 		comboBox.addItem(Levels.Hard);
-		comboBox.setSelectedItem(q.getQLevel()); // Here, Levels.Easy is the default value
+		//  the level of the question is the default value
+		comboBox.setSelectedItem(q.getQLevel()); 
 
+		// close the window
 		JButton back = new JButton("back button");
 		back.setBounds(79, 553, 130, 46);
 		ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
@@ -144,6 +149,7 @@ public class editQ extends JFrame {
 			}
 		});
 
+		
 		Submit = new JButton("Submit");
 		Submit.setBounds(723, 553, 120, 46);
 		ImageIcon SubmitIcon = new ImageIcon(getClass().getResource("/View/img/submit.jpg"));
@@ -151,6 +157,7 @@ public class editQ extends JFrame {
 		Image resizedImg2 = Submitimg.getScaledInstance(140, 46, Image.SCALE_SMOOTH);
 		Submit.setIcon(new ImageIcon(resizedImg2));
 		contentPane.add(Submit);
+		// edit the question
 		Submit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -178,7 +185,7 @@ public class editQ extends JFrame {
 				questions[1]=q;
 				System.out.println("This is old question"+oldQuestion);
 				System.out.println("This is new question"+q);
-				SysData.editQuestion(questions); // editing json file
+				SysData.editQuestion(questions); // editing the question in json file
 
 				// Update the table directly in the parent frame (table2)
 				parentFrame.updateTable();
@@ -187,7 +194,7 @@ public class editQ extends JFrame {
 				dispose();
 			}
 		});
-
+		// background
 		questionFrame = new JLabel("");
 		questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/sky.png")));
 		questionFrame.setBounds(0, -70, 1005, 805);

@@ -122,6 +122,7 @@ public class addQuestion extends JFrame {
         textField_4.setBounds(256, 412, 404, 38);
         contentPane.add(textField_4);
         
+        // choosing one level of game
         JComboBox comboBox = new JComboBox();
         comboBox.setBounds(318, 471, 119, 25);
         contentPane.add(comboBox);
@@ -132,8 +133,11 @@ public class addQuestion extends JFrame {
         btnNewButton = new JButton("Next");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	
+            	// check if the user enter a content for the question
                 if (textField.getText().equals("Question")) {
                     JOptionPane.showMessageDialog(getContentPane(),"Enter content of Question!");
+                    // check if the user enter 4 answers
                 } else if(textField_1.getText().equals("answer 1") || textField_2.getText().equals("answer 2") || 
                         textField_3.getText().equals("answer 3") || textField_4.getText().equals("answer 4")) {
                     JOptionPane.showMessageDialog(getContentPane(),"Enter all the answers!");
