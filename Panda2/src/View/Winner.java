@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 
 import Enum.PlayerColor;
 import FlatLafDesign.BackButton;
+import Model.PlayAudio;
 import Model.Player;
 
 import javax.sound.sampled.*;
@@ -54,6 +55,7 @@ public class Winner extends JFrame {
 	 * Create the frame.
 	 */
 	public Winner(Player p1,Player p2,Player p3,Player p4,int num) {
+		PlayAudio.playVictorySound(); // calling the function that play Winner screen audio-Yara
 	//	int num=4;
 //		Player p1=new Player( PlayerColor.Red, "yara",4, 4,2);//wenner
 //		Player p2=new Player ( PlayerColor.Yellow, "yomna", 4, 4,2);//2nd
@@ -305,6 +307,7 @@ public class Winner extends JFrame {
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				PlayAudio.victoryClip.close(); // closing the winner page audio when the user want to return to home page -Yara
 				MainFrame f=new MainFrame();
 				f.setVisible(true);
 				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
@@ -370,17 +373,6 @@ public class Winner extends JFrame {
 
 
 	}
-	// Method to play victory sound
-//    private void playVictorySound() {
-//        try {
-//            File audioFile = new File("victory.wav"); // Adjust the file path accordingly
-//            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-//            Clip clip = AudioSystem.getClip();
-//            clip.open(audioStream);
-//            clip.start();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
 
 }
