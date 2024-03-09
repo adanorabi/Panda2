@@ -70,6 +70,18 @@ public static void playLadderSound() { // function that play sound when movin do
 	      e.printStackTrace();
 	  }
 	}
+public static void playMenuSound() { // function that play sound when movin down throgh a sasake -Yara
+	  try {
+	      File audioFile = new File("src/Model/Audio/menuButton.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	     Clip menuBT = AudioSystem.getClip();
+	     menuBT.open(audioStream);
+	     menuBT.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	}
 //	 public static void playVictorySound() {
 //	        try {
 //	            File audioFile = new File("src/Model/Audio/winner.wav"); // Adjust the file path accordingly
