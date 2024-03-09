@@ -109,24 +109,26 @@ public class HardLevel extends JFrame implements ActionListener {
 			String line = "";
 			reader = new BufferedReader(new FileReader(filePath));
 			reader.readLine();
+			if (line == null) {
+				System.out.println("The file is empty.");
+			}else {
+				while((line = reader.readLine()) != null) {
+					String[] fields = line.split(",");
+					System.out.println("test number222222222222222222222222222");
 
-			while((line = reader.readLine()) != null) {
-				String[] fields = line.split(",");
-				System.out.println("test number222222222222222222222222222");
+					if(fields.length > 0) {
+						System.out.println("test number333333333333333333333333333");
+						Game game = new Game();
+						Player player = new Player();
+						if(swap<Integer.parseInt(fields[0])) {
+							swap=Integer.parseInt(fields[0]);
+						}
+						System.out.println("swap in sysy data "+swap);
 
-				if(fields.length > 0) {
-					System.out.println("test number333333333333333333333333333");
-					Game game = new Game();
-					Player player = new Player();
-					if(swap<Integer.parseInt(fields[0])) {
-						swap=Integer.parseInt(fields[0]);
 					}
-					System.out.println("swap in sysy data "+swap);
-
 				}
+
 			}
-
-
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -448,12 +450,12 @@ public class HardLevel extends JFrame implements ActionListener {
 					stopTimer();
 					// Save the end time when the condition is met
 					endTime = System.currentTimeMillis();
-			        long Lseconds = (System.currentTimeMillis() / 1000) % 60;
-			        long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
-			        long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
+					long Lseconds = (System.currentTimeMillis() / 1000) % 60;
+					long Lminutes = (System.currentTimeMillis() / (1000 * 60)) % 60;
+					long Lhours = (System.currentTimeMillis() / (1000 * 60 * 60)) % 24;
 
-			        // Format the time
-			        String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+					// Format the time
+					String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
 					System.out.println("End Time: " + endTime); // Print end time for demonstration
 					g.setEndTime(formattedTime);
 				}
@@ -474,9 +476,9 @@ public class HardLevel extends JFrame implements ActionListener {
 				MainFrame f=new MainFrame();
 				f.setVisible(true);
 				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-		        frame.dispose();
+				frame.dispose();
 			}
-			
+
 		});
 		contentPane.add(backButton,0);
 		winIcon = new ImageIcon(HardLevel.class.getResource("/View/img/win.png"));
@@ -898,7 +900,7 @@ public class HardLevel extends JFrame implements ActionListener {
 				diceLabel.setBounds(40, 722, 150, 150);
 				frameCount++;
 				if (frameCount >= NUM_FRAMES) {
-					
+
 					Player p=g.CurrentTurn();
 
 					int bx=p.getPlayerRow();
@@ -915,7 +917,7 @@ public class HardLevel extends JFrame implements ActionListener {
 						diceLabel.setIcon(diceIcons[(Integer)CHECK]);
 						String s= "you have to walk "+CHECK+" steps!!";
 						setPlayerText(p, s);
-					
+
 						answer=Integer.toString((Integer)CHECK);
 						int ax=p.getPlayerRow();
 						int ay=p.getPlayerCol();
@@ -965,8 +967,8 @@ public class HardLevel extends JFrame implements ActionListener {
 							}if( (g.UpdatePlayerPlace()==5||g.UpdatePlayerPlace()==4||g.UpdatePlayerPlace()==3)&&(ax==awx&&ay==awy))
 								break;
 
-							 awx=p.getPlayerRow();//new x
-							 awy=p.getPlayerCol();// new y
+							awx=p.getPlayerRow();//new x
+							awy=p.getPlayerCol();// new y
 
 							movePlayer(p, ax, ay,awx, awy,g);
 							landedOn(g);
@@ -975,7 +977,7 @@ public class HardLevel extends JFrame implements ActionListener {
 						lineMangment(g.CurrentTurn().getPlayeringame(), num);
 					}/**************************question dice*************************8*/
 					else {
-						
+
 						System.out.println("the current player is:" + p.getPlayerColor());
 						System.out.println("questionnnnnnn type!!");
 						q = (Question) CHECK;
@@ -1050,7 +1052,7 @@ public class HardLevel extends JFrame implements ActionListener {
 										break;
 
 									int awx = p.getPlayerRow();
-									 int awy = p.getPlayerCol();
+									int awy = p.getPlayerCol();
 
 									movePlayer(p, ax, ay, awx, awy,g);
 
@@ -1137,44 +1139,43 @@ public class HardLevel extends JFrame implements ActionListener {
 			} else {
 				timer.stop(); // Stop the timer when the movement is complete
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-				
-				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
+
+				if(g.GameBoard.getPosition(afterx, aftery)>2) {/*winner adan1*/
 					stopTimer();
 					System.out.println("moveeeeeeeeeeeeeeeeeeeee2");
 					System.out.println(secondsElapsed);
 					Player p1=g.CurrentTurn();
 					g.setWinnerId(p1.getPlayerID());
-					 long Lseconds = (secondsElapsed / 1000) % 60;
-					    long Lminutes = (secondsElapsed / (1000 * 60)) % 60;
-					    long Lhours = (secondsElapsed / (1000 * 60 * 60)) % 24;
+					long Lseconds = secondsElapsed % 60;
+					long Lminutes = (secondsElapsed / 60) % 60;
+					long Lhours = (secondsElapsed / (60 * 60)) % 24;
 
-				    // Format the time
-				    String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
-				    System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
+					// Format the time
+					String formattedTime = String.format("%02d:%02d:%02d", Lhours, Lminutes, Lseconds);
+					System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
 					g.setEndTime(formattedTime);
 					SysData.gamesList.add(g);
 					SysData.winnerPlayer.add(p1);
-				//	Screenshot.captureScreenshot(this);
-					
+					//	Screenshot.captureScreenshot(this);
+
 					SysData.AddGame(g);
 					System.out.println(g.getPlayersFinalPLaces()
 							);
-					
 					if(g.getPlayersFinalPLaces().size()==2) {
-						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),null,null,2); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),null,null,2); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}else if(g.getPlayersFinalPLaces().size()==3) {
-						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),null,3); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}else {
-						Winner w=new Winner(p1,g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
+						Winner w=new Winner(g.getPlayersFinalPLaces().get(0),g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(2),g.getPlayersFinalPLaces().get(3),4); 
 						w.setVisible(true);
 						this.setVisible(false);
 					}
-				//	Winner w=new Winner(p1,); 
-					
+					//	Winner w=new Winner(p1,); 
+
 				}
 			}
 		});
@@ -1416,7 +1417,7 @@ public class HardLevel extends JFrame implements ActionListener {
 	public void landedOn(Game g) {
 		String s=" ";
 		Player p=g.CurrentTurn();
-		
+
 		int num=g.UpdatePlayerPlace();
 		if(num==1||num==2) {
 			s="landed on surprise square";
@@ -1425,14 +1426,14 @@ public class HardLevel extends JFrame implements ActionListener {
 		}else if(num>=6 && num<=13) {
 			s="landed on a snake :(";
 			setPlayerText(p, s);
-			
+
 
 		}else if(num>=14 && num<=21) {
 			s="landed on a ladder :)";
 			setPlayerText(p, s);
 
 		}else if(num==3|| num==4||num==5) {
-			
+
 		}
 	}
 }

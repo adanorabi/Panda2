@@ -13,6 +13,8 @@ import javax.swing.border.EmptyBorder;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
+import Model.PlayAudio;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,6 +31,8 @@ public class MainFrame extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JButton btnNewButton;
 	public MainFrame() {
+		PlayAudio.playHPSound();  // calling the function that play Home Page sound in order to Start the music -Yara
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 700);
 		contentPane = new JPanel();
@@ -77,6 +81,7 @@ public class MainFrame extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Instructions inst=new Instructions();
+				PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yara
 				setVisible(false);
 				inst.setVisible(true);
 			}
@@ -101,6 +106,7 @@ public class MainFrame extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				LogIn log=new LogIn();
+				PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yara
 				setVisible(false);
 				log.setVisible(true);
 			}
@@ -123,12 +129,14 @@ public class MainFrame extends JFrame implements ActionListener{
 		String s=e.getActionCommand();
 		if(s.equals("start")) {/*start the game and move to levelgame frame*/
 			LevelGame lframe=new LevelGame();
+			PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yaraorder to Quit the music -Yara
 			this.setVisible(false);
 			lframe.setVisible(true);
 
 		}
 		if(s.equals("hist")) {/*start the game and move to levelgame frame*/
 			History lframe=new History();
+			PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yara order to Quit the music -Yara
 			this.setVisible(false);
 			lframe.setVisible(true);
 
