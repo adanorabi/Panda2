@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class LogIn extends JFrame {
      */
     public LogIn() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(10, 10, 1106, 720);
+		setBounds(400, 70,1200, 900);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -81,7 +82,7 @@ public class LogIn extends JFrame {
                 // Empty implementation
             }
         });
-        txtUsername.setBounds(359, 360, 404, 68);
+        txtUsername.setBounds(386, 487, 415, 86);
         contentPane.add(txtUsername);
 
         // Password field
@@ -99,7 +100,7 @@ public class LogIn extends JFrame {
                 // Empty implementation
             }
         });
-        passwordField_1.setBounds(359, 480, 404, 68);
+        passwordField_1.setBounds(386, 641, 415, 86);
         contentPane.add(passwordField_1);
         
         JButton btnNewButton = new JButton("<<home page");
@@ -113,12 +114,15 @@ public class LogIn extends JFrame {
         });
         
         btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/homepage.jpg")));
-        btnNewButton.setBounds(108, 623, 219, 37);
+        btnNewButton.setBounds(67, 772, 219, 37);
         contentPane.add(btnNewButton);
         
-        JLabel lblNewLabel_1 = new JLabel("");
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/View/img/title.jpg"));
+        Image scaledImg1 = icon1.getImage().getScaledInstance(500, 250, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon1 = new ImageIcon(scaledImg1);		
+		JLabel lblNewLabel_1 = new JLabel(scaledIcon1);
         lblNewLabel_1.setIcon(new ImageIcon(getClass().getResource("/View/img/title.jpg")));
-        lblNewLabel_1.setBounds(377, 108, 501, 203);
+        lblNewLabel_1.setBounds(359, 180, 539, 271);
         contentPane.add(lblNewLabel_1);
         
 //        JLabel lblNewLabel_2 = new JLabel("");
@@ -128,7 +132,7 @@ public class LogIn extends JFrame {
         
         JButton btnNewButton_1 = new JButton("Log in");
         btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/View/img/logInbut.jpg")));
-        btnNewButton_1.setBounds(825, 623, 156, 37);
+        btnNewButton_1.setBounds(935, 772, 156, 37);
         contentPane.add(btnNewButton_1);
         btnNewButton_1.addActionListener(new ActionListener() {
 			
@@ -165,9 +169,18 @@ public class LogIn extends JFrame {
 			}
 		});
         // Background photo
-        JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon(getClass().getResource("/View/img/logIn.jpg")));
-        lblNewLabel.setBounds(-21, -36, 1162, 734);
-        contentPane.add(lblNewLabel);
+		ImageIcon icon = new ImageIcon(Winner.class.getResource("/View/img/logIn.jpg"));
+		System.out.println("Image loaded: " + icon.getImageLoadStatus());
+
+		//Verify image dimensions
+		int containerWidth = 1200;
+		int containerHeight = 900;
+		System.out.println("Container size: " + containerWidth + "x" + containerHeight);
+		//Create JLabel with scaled image
+		Image scaledImg = icon.getImage().getScaledInstance(containerWidth, containerHeight, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon = new ImageIcon(scaledImg);		
+		JLabel lblNewLabel = new JLabel(scaledIcon);
+		lblNewLabel.setBounds(0, 10,1200, 871);
+		contentPane.add(lblNewLabel);
     }
 }
