@@ -3,6 +3,7 @@ import Enum.Levels;
 import Enum.PlayerColor;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -37,6 +38,8 @@ import Enum.Levels;
 import Enum.SnakeColor;
 import FlatLafDesign.BackButton;
 import Model.*;
+import FlatLafDesign.*;
+
 
 public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredListener {
 	static int N=60;
@@ -382,6 +385,20 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 			}
 		}
+		 // setting the audio button
+        Container contentPane = getContentPane();
+        contentPane.setLayout(null); // Use null layout
+        ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));
+        ImageIcon clickedIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOff.png"));
+
+        // Create back button with icons
+        AudioButton aButton = new AudioButton(defaultIcon, clickedIcon);
+        
+        // Set the bounds of the button
+        aButton.setBounds(1050, 20, 50, 50); // x, y, width, height
+
+        // Add the button to the content pane
+        contentPane.add(aButton);
 
 		// question example
 		//		ArrayList<String> answers= new ArrayList<String>();
