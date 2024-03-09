@@ -122,18 +122,23 @@ public class QuestionFrame extends JFrame {
             String formattedAnswerText = insertLineBreaks(answerText);
             radioButtons[i].setText("<html>" + formattedAnswerText + "</html>");
         }
-
+        int num;
         submitButton.addActionListener(e -> {
             JRadioButton selectedRadioButton = null;
-            for (JRadioButton radioButton : radioButtons) {
+            int selectedIndex = -1; // Initialize with a default value in case no radio button is selected
+
+            for (int i = 0; i < radioButtons.length; i++) {
+                JRadioButton radioButton = radioButtons[i];
                 if (radioButton.isSelected()) {
+                    selectedIndex = i; // Save the index of the selected radio button
                     selectedRadioButton = radioButton;
                     break;
                 }
             }
+
             if (selectedRadioButton != null) {
                 answered = true;
-                String selectedAnswer = selectedRadioButton.getText();
+                String selectedAnswer =shuffledAnswers.get(selectedIndex) ;
                 if (selectedAnswer.equals(question.getTrueAnswer())) {
                     answer = true;
                     JOptionPane.showMessageDialog(contentPane, "Correct answer!");
