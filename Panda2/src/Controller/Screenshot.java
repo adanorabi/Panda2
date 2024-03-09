@@ -43,9 +43,9 @@ public class Screenshot {
         }
     }
 
-    public static int captureScreenshot(JFrame frame) {
-        int screenshotId = getNextScreenshotId();
-        File screenshot = new File(SCREENSHOT_FOLDER + File.separator + "screenshot_" + screenshotId + ".png");
+    public static int captureScreenshot(JFrame frame,int id) {
+      
+        File screenshot = new File(SCREENSHOT_FOLDER + File.separator + "screenshot_" + id + ".png");
         try {
             // Capture screenshot of the JFrame
             Rectangle frameRect = frame.getBounds();
@@ -54,9 +54,9 @@ public class Screenshot {
 
             // Save the screenshot to a file
             ImageIO.write(screenImage, "png", screenshot);
-            screenshotMap.put(screenshotId, screenshot.getAbsolutePath());
+            screenshotMap.put(id, screenshot.getAbsolutePath());
             System.out.println("Screenshot captured and saved as: " + screenshot.getAbsolutePath());
-            return screenshotId;
+            return id;
         } catch (AWTException | IOException ex) {
             ex.printStackTrace();
         }
