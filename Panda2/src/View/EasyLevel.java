@@ -216,9 +216,9 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		Image resizedImage3 = originalIcon3.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 		diceIcons[7] = new ImageIcon(resizedImage3);
 
-
-		ImageIcon p1icon;
-		if(p1.getPlayerColor()==PlayerColor.Red)
+/*****************************************ADAN-PUTTING THE PLAYERS LINE(QUEUE) WITH THERE NAME**********************************/
+		ImageIcon p1icon;//CREATE PLAYER 1 ICON-ADAN
+		if(p1.getPlayerColor()==PlayerColor.Red)//CHECK THE COLOR-ADAN
 		{
 			p1icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
 			imgIcn1=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
@@ -240,7 +240,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		Image scaledP1Image = p1icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon scaledP1Icon = new ImageIcon(scaledP1Image);
 		//setting icon on game
-		img1=imgIcn1.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
+		img1=imgIcn1.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);//ADJUST THE ICON
 		finalIcon1= new ImageIcon(img1);
 
 		p1OnGame=new JLabel(finalIcon1);//finish putting the icon only setbound and set visible left
@@ -250,24 +250,24 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		p1Label = new JLabel(scaledP1Icon);
 
 
-		int p1X = 35; // Adjusted x position based on the board offset and grid size
-		int p1Y = 80; // Adjusted y position based on the board offset and grid size
-		p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
+		int p1X = 35; // Adjusted x position based on the board offset and grid size-ADAN
+		int p1Y = 80; // Adjusted y position based on the board offset and grid size-ADAN
+		p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label-ADAN
 
 
-		// Add player p1 label to the content pane
+		// Add player p1 label to the content pane-ADAN
 		contentPane.add(p1Label);
 
-		// Ensure player p1 label is visible
+		// Ensure player p1 label is visible-ADAN
 		p1Label.setVisible(true);
 
 		p1name = new JLabel(p1.getNickName());
 		p1name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p1name.setBounds(73, 70, 200, 13);
-		contentPane.add(p1name);
+		contentPane.add(p1name);//ADD THE PLAYER IN THE LINE-ADAN
 
 		/******************************p2**********************/
-		ImageIcon p2icon;
+		ImageIcon p2icon;//CREATE PLAYE R 2 ICON-ADAN
 		if(p2.getPlayerColor()==PlayerColor.Red) {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
 			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
@@ -284,22 +284,22 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
 			imgIcn2=new ImageIcon(EasyLevel.class.getResource("/View/img/y.png"));
 		}
-		Image scaledP2Image = p2icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		Image scaledP2Image = p2icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);//ADJUST THE SIZE-ADAN
 		ImageIcon scaledP2Icon = new ImageIcon(scaledP2Image);
 		// Create a JLabel for player p2
 		p2Label = new JLabel(scaledP2Icon);
 		p2Label.setBounds(p1X, 180, 100, 100); // Set bounds for player p1 label
 
-		// Add player p1 label to the content pane
+		// Add player p1 label to the content pane-ADAN
 		contentPane.add(p2Label);
 
-		// Ensure player p1 label is visible
+		// Ensure player p1 label is visible-ADAN
 		p2Label.setVisible(true);
 
 		img2=imgIcn2.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
 		finalIcon2= new ImageIcon(img2);
 
-		p2OnGame=new JLabel(finalIcon2);//finish putting the icon only setbound and set visible left
+		p2OnGame=new JLabel(finalIcon2);//finish putting the icon only setbound and set visible left-ADAN
 
 
 
@@ -308,12 +308,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		p2name = new JLabel(p2.getNickName());
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p2name.setBounds(73, 170, 200, 13);
-		contentPane.add(p2name);
+		contentPane.add(p2name);//PUT THE NAME
 
 		/******************************p3***************/
 
-		if(num>2) {
-			ImageIcon p3icon;
+		if(num>2) {//IF THERE IS PLAYER 3-ADAN
+			ImageIcon p3icon;//CREATE THE ICON FOR PLAYER 3
 			if(p3.getPlayerColor()==PlayerColor.Red) {
 				p3icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
 				imgIcn3=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
@@ -332,20 +332,20 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			}
 			Image scaledP3Image = p3icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 			ImageIcon scaledP3Icon = new ImageIcon(scaledP3Image);
-			// Create a JLabel for player p2
+			// Create a JLabel for player p2-ADAN
 			p3Label = new JLabel(scaledP3Icon);
-			p3Label.setBounds(p1X, 280, 100, 100); // Set bounds for player p1 label
+			p3Label.setBounds(p1X, 280, 100, 100); // Set bounds for player p3 label-ADAN
 
-			// Add player p1 label to the content pane
+			// Add player p3 label to the content pane-ADAN
 			contentPane.add(p3Label);
 
-			// Ensure player p1 label is visible
+			// Ensure player p3 label is visible-ADAN
 			p3Label.setVisible(true);
 
 			img3=imgIcn3.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
 			finalIcon3= new ImageIcon(img3);
 
-			p3OnGame=new JLabel(finalIcon3);//finish putting the icon only setbound and set visible left
+			p3OnGame=new JLabel(finalIcon3);//finish putting the icon only setbound and set visible left-ADAN
 
 
 			p3name = new JLabel(p3.getNickName());
@@ -354,8 +354,8 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			contentPane.add(p3name);
 
 
-			if(num==4) {
-				ImageIcon p4icon;
+			if(num==4) {//CHECK IF THERE IS PLAYER 4-ADAN
+				ImageIcon p4icon;//CREATE ICON FOR PLAYER 4-ADAN
 				if(p4.getPlayerColor()==PlayerColor.Red) {
 					p4icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
 					imgIcn4=new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
@@ -376,31 +376,31 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				ImageIcon scaledP4Icon = new ImageIcon(scaledP4Image);
 				// Create a JLabel for player p2
 				p4Label = new JLabel(scaledP4Icon);
-				p4Label.setBounds(p1X, 380, 100, 100); // Set bounds for player p1 label
+				p4Label.setBounds(p1X, 380, 100, 100); // Set bounds for player p4 label-ADAN
 
-				// Add player p1 label to the content pane
+				// Add player p4 label to the content pane-ADAN
 				contentPane.add(p4Label);
 
-				// Ensure player p1 label is visible
+				// Ensure player p4 label is visible-ADAN
 				p4Label.setVisible(true);
 				img4=imgIcn4.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
 				finalIcon4= new ImageIcon(img4);
 
-				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left
+				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left-ADAN
 
 
 				p4name = new JLabel(p4.getNickName());
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 				p4name.setBounds(73, 370, 200, 13);
-				contentPane.add(p4name);
+				contentPane.add(p4name);//SET PLAYER 4 NAME ON THE LINE
 
 			}
 		}
 		// setting the audio button
 		Container contentPane = getContentPane();
 		contentPane.setLayout(null); // Use null layout
-		ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));
-		ImageIcon clickedIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOff.png"));
+		ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));//ADD AUDIO ON-ADAN
+		ImageIcon clickedIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOff.png"));//
 
 		// Create back button with icons
 		AudioButton aButton = new AudioButton(defaultIcon, clickedIcon);
@@ -411,24 +411,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		// Add the button to the content pane
 		contentPane.add(aButton);
 
-		// question example
-		//		ArrayList<String> answers= new ArrayList<String>();
-		//		answers.add("No one");
-		//		answers.add("the manager of the project");
-		//		answers.add("who leads the team using agile");
-		//		answers.add("QA ");
-		//		Question q= new Question(1, Levels.Hard,"what is scrum master?", answers,"who leads the team using agile");
-		//		q.setAnswer(answers);
-		//		System.out.println(q.getAnswer());
-		//		QuestionFrame fQ=new QuestionFrame(q);
-		//		fQ.setVisible(true);
-		// Button for rolling the dice
-
-		//        JButton btnNewButton = new JButton("New button");
-		//        btnNewButton.setBounds(54, 712, 125, 56);
-		//        contentPane.add(btnNewButton);
-		/*********************************************************************************************************************************/
-		/*players places*/
+	
 		int tWidth ; // Adjusted width based on grid size
 		int tHeight ;//Adjusted height based on grid size
 
