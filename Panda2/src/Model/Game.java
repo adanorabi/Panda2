@@ -578,6 +578,7 @@ public void youHaveToRoll(boolean b) {
 		afterQuestion=this.GameBoard.getCoordinates(newpos);
 		this.getPlayers().get(this.getPlayerTurn()).UpdateRow(afterQuestion[0]);
 		this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterQuestion[1]);
+		System.out.println("updateeeeeeeeeeeeeeeeeeeeeeeeqqqqqq"+x+" "+y);
 		return false;
 
 	}public ArrayList<Player> getPlayersFinalPLaces(){

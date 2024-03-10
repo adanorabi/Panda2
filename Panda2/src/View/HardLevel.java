@@ -39,6 +39,7 @@ import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
 import Controller.Screenshot;
 import Controller.SysData;
 import Model.Game;
+import Model.PlayAudio;
 import Model.Player;
 import Model.Question;
 import Enum.*;
@@ -1016,8 +1017,9 @@ public class HardLevel extends JFrame implements ActionListener {
 								landedOn(g);
 							}
 
+							
 							if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-								s= "And the Winner is ";
+								s= "IS THE WINNER!!!!! ";
 								setPlayerText(p, s);
 							}else {
 								g.NextPlayer();
@@ -1109,7 +1111,7 @@ public class HardLevel extends JFrame implements ActionListener {
 									}
 
 									if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-										s= "And the Winner is ";
+										s= "IS THE WINNER!!!!! ";
 										setPlayerText(p, s);
 									}else {
 										g.NextPlayer();
@@ -1183,6 +1185,11 @@ public class HardLevel extends JFrame implements ActionListener {
 		Timer timer = new Timer(20, null); // Create a timer without ActionListener
 		timer.start(); // Start the timer
 		final int[] count = {0};
+		if((afterx-beforx==0)&&(aftery-befory==0)) {
+
+		}else {
+			PlayAudio.PlayStepsSound();
+		}
 		timer.addActionListener(e -> {
 			if (count[0] < steps) {
 				int newX = (int) (finalBx + deltaX * count[0]);
@@ -1191,6 +1198,10 @@ public class HardLevel extends JFrame implements ActionListener {
 					p1OnGame.setLocation(newX, newY);
 				else if(player.getPlayeringame()==2)
 					p2OnGame.setLocation(newX, newY);
+				else if(player.getPlayeringame()==3)
+					p3OnGame.setLocation(newX, newY);
+				else if(player.getPlayeringame()==4)
+					p4OnGame.setLocation(newX, newY);
 				count[0]++;
 
 			} else {

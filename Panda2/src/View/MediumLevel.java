@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 import Controller.Screenshot;
 import Controller.SysData;
 import Model.Game;
+import Model.PlayAudio;
 import Model.Player;
 import Model.Question;
 import View.HardLevel.PauseButtonListener;
@@ -976,11 +977,12 @@ public class MediumLevel extends JFrame implements ActionListener {
 							}
 
 							if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-								s= "And the Winner is ";
+								s= "IS THE WINNER!!!!! ";
 								setPlayerText(p, s);
 							}else {
 								g.NextPlayer();
-								setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+								Game.now=true;
+							//	setPlayerText(g.CurrentTurn(), "you have to roll the dice");
 								lineMangment(g.CurrentTurn().getPlayeringame(), num);
 							}
 
@@ -1068,10 +1070,12 @@ public class MediumLevel extends JFrame implements ActionListener {
 									}
 
 									if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-										s= "And the Winner is ";
+										s= "IS THE WINNER!!!!! ";
 										setPlayerText(p, s);
 									}else {
 										g.NextPlayer();
+										Game.now=true;
+										
 										setPlayerText(g.CurrentTurn(), "you have to roll the dice");
 										lineMangment(g.CurrentTurn().getPlayeringame(), num);
 									}
@@ -1143,6 +1147,11 @@ public class MediumLevel extends JFrame implements ActionListener {
 		Timer timer = new Timer(20, null); // Create a timer without ActionListener
 		timer.start(); // Start the timer
 		final int[] count = {0};
+		if((afterx-beforx==0)&&(aftery-befory==0)) {
+
+		}else {
+			PlayAudio.PlayStepsSound();
+		}
 		timer.addActionListener(e -> {
 			if (count[0] < steps) {
 				int newX = (int) (finalBx + deltaX * count[0]);
@@ -1151,12 +1160,20 @@ public class MediumLevel extends JFrame implements ActionListener {
 					p1OnGame.setLocation(newX, newY);
 				else if(player.getPlayeringame()==2)
 					p2OnGame.setLocation(newX, newY);
+				else if(player.getPlayeringame()==3)
+					p3OnGame.setLocation(newX, newY);
+				else if(player.getPlayeringame()==4)
+					p4OnGame.setLocation(newX, newY);
 				count[0]++;
 
 			} else {
 
 
 				timer.stop(); // Stop the timer when the movement is complete
+				if(Game.now==true) {//adan1
+					setPlayerText(g.CurrentTurn(), "you have to roll the dice");
+					Game.now=false;
+				}
 				System.out.println("moveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 				if(g.GameBoard.getPosition(afterx, aftery)==X*Y) {/*winner adan1*/
 

@@ -515,24 +515,24 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		contentPane.add(lblNewLabel);
 
 		/**************************winner**************************/
-		BackButton backButton = new BackButton();
-		backButton.setBounds(600, 750, 100, 40); // Set the bounds of the button
-		backButton.setText("Home"); // Set the text of the button
-		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
-		backButton.setForeground(Color.black); // Set the text color
-		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
-		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				MainFrame f=new MainFrame();
-				f.setVisible(true);
-				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-				frame.dispose();
-			}
-
-		});
-		contentPane.add(backButton,0);
+//		BackButton backButton = new BackButton();
+//		backButton.setBounds(600, 750, 100, 40); // Set the bounds of the button
+//		backButton.setText("Home"); // Set the text of the button
+//		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
+//		backButton.setForeground(Color.black); // Set the text color
+//		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
+//		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
+//		backButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				MainFrame f=new MainFrame();
+//				f.setVisible(true);
+//				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+//				frame.dispose();
+//			}
+//
+//		});
+//		contentPane.add(backButton,0);
 
 
 		int i, j;
@@ -983,7 +983,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 							}
 
 							if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-								s= "And the Winner is ";
+								s= "IS THE WINNER!!!!! ";
 								setPlayerText(p, s);
 							}else {
 								g.NextPlayer();
@@ -1075,7 +1075,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 									}
 									if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
-										s= "And the Winner is ";
+										s= "IS THE WINNER!!!!! ";
 										setPlayerText(p, s);
 									}else {
 										g.NextPlayer();
@@ -1167,6 +1167,10 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 					p1OnGame.setLocation(newX, newY);
 				else if(player.getPlayeringame()==2)
 					p2OnGame.setLocation(newX, newY);
+				else if(player.getPlayeringame()==3)
+					p3OnGame.setLocation(newX, newY);
+				else if(player.getPlayeringame()==4)
+					p4OnGame.setLocation(newX, newY);
 				count[0]++;
 				System.out.println(count[0]);
 			} else {

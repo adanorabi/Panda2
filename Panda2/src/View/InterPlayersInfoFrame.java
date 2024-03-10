@@ -70,26 +70,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 	private int Num=2;
 	private final ButtonGroup buttonGroup4 = new ButtonGroup();
 	private Levels level;
-	public InterPlayersInfoFrame(final int NumofPlayers, Levels gameLevel) {
-		   addButtonToGroup(buttonGroup, redRadioButton);
-	        addButtonToGroup(buttonGroup, greenRadioButton);
-	        addButtonToGroup(buttonGroup, blueRadioButton);
-	        addButtonToGroup(buttonGroup, yRadioButton);
-
-	        addButtonToGroup(buttonGroup2, redRadioButton2);
-	        addButtonToGroup(buttonGroup2, greenRadioButton2);
-	        addButtonToGroup(buttonGroup2, blueRadioButton2);
-	        addButtonToGroup(buttonGroup2, yRadioButton2);
-
-	        addButtonToGroup(buttonGroup3, redRadioButton3);
-	        addButtonToGroup(buttonGroup3, greenRadioButton3);
-	        addButtonToGroup(buttonGroup3, blueRadioButton3);
-	        addButtonToGroup(buttonGroup3, yRadioButton3);
-	        
-	        addButtonToGroup(buttonGroup4, redRadioButton2_1);
-	        addButtonToGroup(buttonGroup4, greenRadioButton2_1);
-	        addButtonToGroup(buttonGroup4, blueRadioButton2_1);
-	        addButtonToGroup(buttonGroup4, yRadioButton2_1);
+	public InterPlayersInfoFrame(final int NumofPlayers, Levels gameLevel) {/*Gitting the player number and the choosen level-Adan*/
+		  
 		Num=NumofPlayers;
 		level=gameLevel;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,7 +80,8 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+		
+			/*creating a name field and color group for player 1- Adan*/
 		JLabel lblNewLabel_1 = new JLabel("player1 nickname:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		lblNewLabel_1.setBounds(83, 166, 350, 20);
@@ -109,23 +92,24 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JLabel lblNewLabel_1_1 = new JLabel("player1 color:");
+		JLabel lblNewLabel_1_1 = new JLabel("player1 color:");//jlable for color choosing -Adan
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		lblNewLabel_1_1.setBounds(83, 225, 350, 20);
 		contentPane.add(lblNewLabel_1_1);
 
-		redRadioButton = new JRadioButton("Red");
+		redRadioButton = new JRadioButton("Red");//adding red color
 		redRadioButton.setActionCommand("Red");
 		redRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		redRadioButton.setBackground(new Color(173, 216, 230));
 		redRadioButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (redRadioButton.isSelected()) {
-					redRadioButton.setForeground(Color.RED);
-					greenRadioButton.setForeground(Color.black);
+					redRadioButton.setForeground(Color.RED);//change the button for red color-Adan
+					greenRadioButton.setForeground(Color.black);//if there was a chosen color before make it black-Adan
 					blueRadioButton.setForeground(Color.black);
 					yRadioButton.setForeground(Color.black);
 
+					/*disable the other players from choosing red color*/
 					disableAndMarkColorButton(redRadioButton2);
 					enableColorButton(greenRadioButton2);
 					enableColorButton(blueRadioButton2);
@@ -133,13 +117,13 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					 System.out.println(buttonGroup2.getSelection());
 					 
 					//buttonGroup2.clearSelection();
-					if(NumofPlayers==3) {
+					if(NumofPlayers==3) {//check if the player number is 3 and disable the red color for player 3-Adan
 						disableAndMarkColorButton(redRadioButton3);
 						enableColorButton(greenRadioButton3);
 						enableColorButton(blueRadioButton3);
 						enableColorButton(yRadioButton3);
 						redRadioButton3.setSelected(false);
-					}else if(NumofPlayers==4) {
+					}else if(NumofPlayers==4) {//check if the player number is 4 and disable the red color for player 3 and 4-Adan
 						disableAndMarkColorButton(redRadioButton3);
 						enableColorButton(greenRadioButton3);
 						enableColorButton(blueRadioButton3);
@@ -159,7 +143,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		redRadioButton.setBounds(83, 282, 70, 23);
 		contentPane.add(redRadioButton);
 		buttonGroup.add(redRadioButton);
-
+/*do the same color check for green-Adan*/
 		greenRadioButton = new JRadioButton("Green");
 		greenRadioButton.setActionCommand("Green");
 		greenRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -178,19 +162,19 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 					//   greenRadioButton2.setSelected(false);
 					if(NumofPlayers==3) {
-						disableAndMarkColorButton(greenRadioButton3);
+						disableAndMarkColorButton(greenRadioButton3);//disaple color green to be choosen by the others-Adan
 						enableColorButton(redRadioButton3);
 						enableColorButton(blueRadioButton3);
 						enableColorButton(yRadioButton3);
 						// greenRadioButton3.setSelected(false);
 					}
 					else if(NumofPlayers==4) {
-						disableAndMarkColorButton(greenRadioButton3);
+						disableAndMarkColorButton(greenRadioButton3);//disaple color green to be choosen by the others-Adan
 						enableColorButton(redRadioButton3);
 						enableColorButton(blueRadioButton3);
 						enableColorButton(yRadioButton3);
 
-						disableAndMarkColorButton(greenRadioButton2_1);
+						disableAndMarkColorButton(greenRadioButton2_1);//disaple color green to be choosen by the others-Adan
 						enableColorButton(redRadioButton2_1);
 						enableColorButton(blueRadioButton2_1);
 						enableColorButton(yRadioButton2_1);
@@ -203,7 +187,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		greenRadioButton.setBounds(164, 282, 102, 23);
 		contentPane.add(greenRadioButton);
 		buttonGroup.add(greenRadioButton);
-
+		/*do the same color check for blue-Adan*/
 		blueRadioButton = new JRadioButton("Blue");
 		blueRadioButton.setActionCommand("Blue");
 		blueRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -221,12 +205,12 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					enableColorButton(yRadioButton2);
 
 					if(NumofPlayers==3) {
-						disableAndMarkColorButton(blueRadioButton3);
+						disableAndMarkColorButton(blueRadioButton3);//disaple color blue to be choosen by the others-Adan
 						enableColorButton(greenRadioButton3);
 						enableColorButton(redRadioButton3);
 						enableColorButton(yRadioButton3);
 					}else if(NumofPlayers==4) {
-						disableAndMarkColorButton(blueRadioButton3);
+						disableAndMarkColorButton(blueRadioButton3);//disaple color blue to be choosen by the others-Adan
 						enableColorButton(greenRadioButton3);
 						enableColorButton(redRadioButton3);
 						enableColorButton(yRadioButton3);
@@ -242,6 +226,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		blueRadioButton.setBounds(266, 282, 100, 23);
 		contentPane.add(blueRadioButton);
 		buttonGroup.add(blueRadioButton);
+		/*do the same color check for green-Yellow*/
 		yRadioButton = new JRadioButton("Yellow");
 		yRadioButton.setActionCommand("Yellow");
 		yRadioButton.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -254,18 +239,18 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					blueRadioButton.setForeground(Color.black);
 					redRadioButton.setForeground(Color.black);
 
-					disableAndMarkColorButton(yRadioButton2);
+					disableAndMarkColorButton(yRadioButton2);//disaple color yellow to be choosen by the others-Adan
 					enableColorButton(greenRadioButton2);
 					enableColorButton(redRadioButton2);
 					enableColorButton(blueRadioButton2);
 					if(NumofPlayers==3) {
-						disableAndMarkColorButton(yRadioButton3);
+						disableAndMarkColorButton(yRadioButton3);//disaple color yellow to be choosen by the others-Adan
 						enableColorButton(greenRadioButton3);
 						enableColorButton(redRadioButton3);
 						enableColorButton(blueRadioButton3);
 					}
 					else  if(NumofPlayers==4) {
-						disableAndMarkColorButton(yRadioButton2_1);
+						disableAndMarkColorButton(yRadioButton2_1);//disaple color yellow to be choosen by the others-Adan
 						enableColorButton(greenRadioButton2_1);
 						enableColorButton(redRadioButton2_1);
 						enableColorButton(blueRadioButton2_1);
@@ -286,10 +271,10 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		lblNewLabel_2 = new JLabel("");
 
 
-		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
+		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));//set the panda icon- Adan
 		lblNewLabel_2.setBounds(731, 166, 100, 130);
 		contentPane.add(lblNewLabel_2);
-		//player2 info ************************
+		//getting the player 2 info-Adan
 		JLabel lblNewLabel_2 = new JLabel("player2 nickname:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		lblNewLabel_2.setBounds(600, 166, 350, 20);
@@ -300,7 +285,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(textField2);
 		textField2.setColumns(10);
 
-		JLabel lblNewLabel_1_2 = new JLabel("player2 color:");
+		JLabel lblNewLabel_1_2 = new JLabel("player2 color:");//color group for player 2-Adan
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		lblNewLabel_1_2.setBounds(600, 225, 400, 20);
 		contentPane.add(lblNewLabel_1_2);
@@ -312,7 +297,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		redRadioButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (redRadioButton2.isSelected()) {
-					redRadioButton2.setForeground(Color.RED);
+					redRadioButton2.setForeground(Color.RED);//make the choosen button red
 					greenRadioButton2.setForeground(Color.black);
 					blueRadioButton2.setForeground(Color.black);
 					yRadioButton2.setForeground(Color.black);
@@ -321,18 +306,18 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						if(NumofPlayers==4)
 							disableAndMarkColorButton(redRadioButton2_1);
 					}
-					if(greenRadioButton.isSelected()&&NumofPlayers>=3) {//done
+					if(greenRadioButton.isSelected()&&NumofPlayers>=3) {//disable the color for player 3 and 4 if they are clicked by player 1 and 2
 						disableAndMarkColorButton(greenRadioButton3);
 						enableColorButton(blueRadioButton3);
 						enableColorButton(yRadioButton3);
 						greenRadioButton3.setSelected(false);
-						if(NumofPlayers==4) {
+						if(NumofPlayers==4) {//disable the color for player 3 if they are clicked by player 1 and 2-Adan
 							disableAndMarkColorButton(greenRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							greenRadioButton2_1.setSelected(false);
 						}
-					}else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {
+					}else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {//disaple color blue to be choosen by the others-Adan
 						if(NumofPlayers==4) {
 							disableAndMarkColorButton(blueRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
@@ -345,7 +330,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						blueRadioButton3.setSelected(false);
 					}else if(yRadioButton.isSelected()&&NumofPlayers>=3) {
 						if(NumofPlayers==4) {
-							disableAndMarkColorButton(yRadioButton2_1);
+							disableAndMarkColorButton(yRadioButton2_1);//disaple color yellow to be choosen by the others-Adan
 							enableColorButton(greenRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							yRadioButton2_1.setSelected(false);
@@ -362,7 +347,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		redRadioButton2.setBounds(580, 282, 90, 23);
 		contentPane.add(redRadioButton2);
 		buttonGroup2.add(redRadioButton2);
-
+/*same color syncronization*/
 		greenRadioButton2 = new JRadioButton("Green");
 		greenRadioButton2.setActionCommand("Green");
 		greenRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -375,7 +360,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					blueRadioButton2.setForeground(Color.black);
 					yRadioButton2.setForeground(Color.black);
 					if(NumofPlayers>=3) {
-						disableAndMarkColorButton(greenRadioButton3);
+						disableAndMarkColorButton(greenRadioButton3);//green color desapled if player 1 choosed it-Adan
 						if(NumofPlayers==4)
 							disableAndMarkColorButton(greenRadioButton2_1);
 					}
@@ -385,14 +370,14 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						enableColorButton(yRadioButton3);
 						redRadioButton3.setSelected(false);
 						if(NumofPlayers==4) {
-							disableAndMarkColorButton(redRadioButton2_1);
+							disableAndMarkColorButton(redRadioButton2_1);//red color desapled if player 2 choosed it-Adan
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							redRadioButton2_1.setSelected(false);
 						}
 					}else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {
 						if(NumofPlayers==4) {
-							disableAndMarkColorButton(blueRadioButton2_1);
+							disableAndMarkColorButton(blueRadioButton2_1);//blue color desapled if player 2 choosed it-Adan
 							enableColorButton(redRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							blueRadioButton2_1.setSelected(false);
@@ -402,7 +387,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						enableColorButton(yRadioButton3);
 						blueRadioButton3.setSelected(false);
 					}else if(yRadioButton.isSelected()&&NumofPlayers>=3) {
-						if(NumofPlayers==4) {
+						if(NumofPlayers==4) {//yellow color desapled if player 2 choosed it-Adan
 							disableAndMarkColorButton(yRadioButton2_1);
 							enableColorButton(redRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
@@ -425,12 +410,12 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		blueRadioButton2.setActionCommand("Blue");
 		blueRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		blueRadioButton2.setBackground(new Color(173, 216, 230));
-		blueRadioButton2.addActionListener(new ActionListener() {
+		blueRadioButton2.addActionListener(new ActionListener() {//if the cooden color is blue for player 2
 			public void actionPerformed(ActionEvent e) {
 				if (blueRadioButton2.isSelected()) {
 					redRadioButton2.setForeground(Color.BLACK);
 					greenRadioButton2.setForeground(Color.BLACK);
-					blueRadioButton2.setForeground(Color.BLUE);
+					blueRadioButton2.setForeground(Color.BLUE);//make the button blue
 					yRadioButton2.setForeground(Color.BLACK);
 
 					// Disable blue for player 3 and player 4
@@ -448,14 +433,14 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						enableColorButton(yRadioButton3);
 						redRadioButton3.setSelected(false);
 						if (NumofPlayers == 4) {
-							disableAndMarkColorButton(redRadioButton2_1);
+							disableAndMarkColorButton(redRadioButton2_1);//red color desapled if player 1 choosed it-Adan
 							enableColorButton(greenRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							redRadioButton2_1.setSelected(false);
 						}
 					} else if (greenRadioButton.isSelected() && NumofPlayers >= 3) {
 						if (NumofPlayers == 4) {
-							disableAndMarkColorButton(greenRadioButton2_1);
+							disableAndMarkColorButton(greenRadioButton2_1);//green color desapled if player 2 choosed it-Adan
 							enableColorButton(redRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							blueRadioButton2_1.setSelected(false);
@@ -466,7 +451,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						blueRadioButton3.setSelected(false);
 					} else if (yRadioButton.isSelected() && NumofPlayers >= 3) {
 						if (NumofPlayers == 4) {
-							disableAndMarkColorButton(yRadioButton2_1);
+							disableAndMarkColorButton(yRadioButton2_1);//yellow color desapled if player 2 choosed it-Adan
 							enableColorButton(greenRadioButton2_1);
 							enableColorButton(redRadioButton2_1);
 							yRadioButton2_1.setSelected(false);
@@ -489,21 +474,21 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		yRadioButton2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		yRadioButton2.setBackground(new Color(173, 216, 230));
 		yRadioButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {//if the choosen color is yellow-ADAN
 				if (yRadioButton2.isSelected()) {
-					yRadioButton2.setForeground(Color.YELLOW);
+					yRadioButton2.setForeground(Color.YELLOW);//make the color yellow-ADAN
 					greenRadioButton2.setForeground(Color.black);
 					blueRadioButton2.setForeground(Color.black);
 					redRadioButton2.setForeground(Color.black);
 
 					if(NumofPlayers>=3) {
-						disableAndMarkColorButton(yRadioButton3);
+						disableAndMarkColorButton(yRadioButton3);//diable other player from choosing yellow
 						if(NumofPlayers==4) {
 							disableAndMarkColorButton(yRadioButton2_1);
 							System.out.println("yellow");
 						}
 					}
-					if(redRadioButton.isSelected()&&NumofPlayers>=3) {//red
+					if(redRadioButton.isSelected()&&NumofPlayers>=3) {//red color desapled if player 1 choosed it-Adan
 						disableAndMarkColorButton(redRadioButton3);
 						enableColorButton(blueRadioButton3);
 						enableColorButton(greenRadioButton3);
@@ -516,7 +501,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						}
 					}
 
-					if(greenRadioButton.isSelected()&&NumofPlayers>=3) {//green
+					if(greenRadioButton.isSelected()&&NumofPlayers>=3) {//green color desapled if player 1 choosed it-Adan
 						disableAndMarkColorButton(greenRadioButton3);
 						enableColorButton(blueRadioButton3);
 						enableColorButton(redRadioButton3);
@@ -529,7 +514,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						}
 					}
 
-					else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {//yellow
+					else if(blueRadioButton.isSelected()&&NumofPlayers>=3) {//blue color desapled if player 1 choosed it-Adan
 						if(NumofPlayers==4) {
 							disableAndMarkColorButton(blueRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
@@ -552,7 +537,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		lblNewLabel_2 = new JLabel("");
 
 
-		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
+		lblNewLabel_2.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));//setting the panda icon-Adan
 
 		JLabel lblNewLabel_7 = new JLabel("");
 		lblNewLabel_7.setBounds(383, 225, 900, 13);
@@ -564,18 +549,18 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		lblNewLabel_2.setBounds(204, 175, 100, 130);
 		contentPane.add(lblNewLabel_2);
 		//*********************************************player3
-		if(NumofPlayers==3 || NumofPlayers==4) {
+		if(NumofPlayers==3 || NumofPlayers==4) {//check if the number of player are more than 3-Adan
 			JLabel lblNewLabel_3 = new JLabel("player3 nickname:");
 			lblNewLabel_3.setFont(new Font("Tahoma", Font.ITALIC, 20));
 			lblNewLabel_3.setBounds(83, 360, 350, 20);
 			contentPane.add(lblNewLabel_3);
 
-			textField3 = new JTextField();
+			textField3 = new JTextField();//test field for player 3 -ADAN
 			textField3.setBounds(270, 360, 116, 29);
 			contentPane.add(textField3);
 			textField3.setColumns(10);
 
-			JLabel lblNewLabel_1_3 = new JLabel("player3 color:");
+			JLabel lblNewLabel_1_3 = new JLabel("player3 color:");//payer 3 color 
 			lblNewLabel_1_3.setFont(new Font("Tahoma", Font.ITALIC, 20));
 			lblNewLabel_1_3.setBounds(88, 420, 400, 20);
 			contentPane.add(lblNewLabel_1_3);
@@ -585,20 +570,20 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			redRadioButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 			redRadioButton3.setBackground(new Color(173, 216, 230));
 			redRadioButton3.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) {//if player 3 choosed color red then dont allow player 4 to choose it-Adan
 					if (redRadioButton3.isSelected()) {
-						redRadioButton3.setForeground(Color.RED);
+						redRadioButton3.setForeground(Color.RED);//MAKE THE COLOR RED
 						greenRadioButton3.setForeground(Color.black);
 						blueRadioButton3.setForeground(Color.black);
 						yRadioButton3.setForeground(Color.black);
 						
 						System.out.println(NumofPlayers);
-						if(NumofPlayers==4) {
+						if(NumofPlayers==4) {//disaple player 4 from choosing the choosed colors-Adan
 							disableAndMarkColorButton(redRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
-						if (greenRadioButton2.isSelected()) {/*check green*/
+						if (greenRadioButton2.isSelected()) {/*check IF THE green COLOR IS CHOOSEN DISAPLE IT FOR THE LAST PLAYER*/
 							System.out.println("green and red ");
 							disableAndMarkColorButton(greenRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
@@ -606,7 +591,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							greenRadioButton2_1.setSelected(false);
 							if(blueRadioButton.isSelected()) {
 
-								disableAndMarkColorButton(blueRadioButton2_1);
+								disableAndMarkColorButton(blueRadioButton2_1);//DINT ALLAW PLAYER4 FROM CHOOSING WHAT PLAYER1 AND 2 CHOOSED
 								
 								enableColorButton(yRadioButton2_1);
 								blueRadioButton2_1.setSelected(false);
@@ -622,7 +607,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 									
 							}
 						}
-						else if(blueRadioButton2.isSelected()) {
+						else if(blueRadioButton2.isSelected()) {//if blue is choosen by player 3 dont allow player 4 to choose it-Adan
 
 							disableAndMarkColorButton(blueRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
@@ -651,7 +636,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							
 						}
 
-						else if(yRadioButton.isSelected()) {
+						else if(yRadioButton.isSelected()) {//if yellow is choosen by player 3 dont allow player 4 to choose it-Adan
 
 							disableAndMarkColorButton(yRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
@@ -659,7 +644,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							yRadioButton2_1.setSelected(false);
 							 if(greenRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(greenRadioButton2_1);
+									disableAndMarkColorButton(greenRadioButton2_1);//GREEN COLOR DISABLED FOR PLAYER 4
 									
 									enableColorButton(blueRadioButton2_1);
 									blueRadioButton2_1.setSelected(false);
@@ -670,7 +655,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 								else if(blueRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(blueRadioButton2_1);
+									disableAndMarkColorButton(blueRadioButton2_1);//BLUE COLOR DISABLED FOR PLAYER 4
 									
 									enableColorButton(greenRadioButton2_1);
 									yRadioButton2_1.setSelected(false);
@@ -701,24 +686,24 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			greenRadioButton3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (greenRadioButton3.isSelected()) {
-						greenRadioButton3.setForeground((new Color(0, 153, 0)));
+						greenRadioButton3.setForeground((new Color(0, 153, 0)));//GREEN COLOR FOR PLAYER 3
 						redRadioButton3.setForeground(Color.black);
 						blueRadioButton3.setForeground(Color.black);
 						yRadioButton3.setForeground(Color.black);
 						
 						
-						if(NumofPlayers==4) {
+						if(NumofPlayers==4) {//CHECK IF THE PLAYER NUMBER IS 4
 							disableAndMarkColorButton(greenRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							enableColorButton(redRadioButton2_1);
-						if (redRadioButton2.isSelected()) {/*check red*/
+						if (redRadioButton2.isSelected()) {/*check red AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN*/
 							
 							disableAndMarkColorButton(redRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							
-							if(blueRadioButton.isSelected()) {
+							if(blueRadioButton.isSelected()) {/*check BLUE AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN*/
 
 								disableAndMarkColorButton(blueRadioButton2_1);
 								
@@ -727,7 +712,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 											
 						}
 
-							else if(yRadioButton.isSelected()) {
+							else if(yRadioButton.isSelected()) {/*check YELLOW AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN*/
 
 								disableAndMarkColorButton(yRadioButton2_1);
 								
@@ -744,7 +729,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							blueRadioButton2_1.setSelected(false);
 							 if(redRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(redRadioButton2_1);
+									disableAndMarkColorButton(redRadioButton2_1);/*check red AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN-ADAN*/
 									
 									enableColorButton(yRadioButton2_1);
 									blueRadioButton2_1.setSelected(false);
@@ -755,7 +740,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 								else if(yRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(yRadioButton2_1);
+									disableAndMarkColorButton(yRadioButton2_1);/*check YELLOW AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN-ADAN*/
 									
 									enableColorButton(redRadioButton2_1);
 									yRadioButton2_1.setSelected(false);
@@ -767,11 +752,11 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 						else if(yRadioButton.isSelected()) {
 
-							disableAndMarkColorButton(yRadioButton2_1);
+							disableAndMarkColorButton(yRadioButton2_1);/*check YELLOW AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN-ADAN*/
 							yRadioButton2_1.setSelected(false);
 							 if(redRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(redRadioButton2_1);
+									disableAndMarkColorButton(redRadioButton2_1);/*check red AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN-ADAN*/
 									
 									enableColorButton(blueRadioButton2_1);
 									blueRadioButton2_1.setSelected(false);
@@ -780,7 +765,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 									
 								}
 
-								else if(blueRadioButton.isSelected()) {
+								else if(blueRadioButton.isSelected()) {/*check BLUE AND DISAPLE IT FOR PLAYER 4 IF IT WAS CHOOSEN-ADAN*/
 
 									disableAndMarkColorButton(blueRadioButton2_1);
 									
@@ -799,29 +784,29 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					}
 				}
 			});
-			greenRadioButton3.setBounds(162, 470, 102, 23);
+			greenRadioButton3.setBounds(162, 470, 102, 23);//SETTING GREEN BUTTON-ADAN
 			contentPane.add(greenRadioButton3);
 			buttonGroup3.add(greenRadioButton3);
 
-			blueRadioButton3 = new JRadioButton("Blue");
+			blueRadioButton3 = new JRadioButton("Blue");//CREATING BLUE BUTTON FOR PLAYER 3
 			blueRadioButton3.setActionCommand("Blue");
 			blueRadioButton3.setFont(new Font("Tahoma", Font.BOLD, 20));
 			blueRadioButton3.setBackground(new Color(173, 216, 230));
 			blueRadioButton3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (blueRadioButton3.isSelected()) {
-						blueRadioButton3.setForeground(Color.BLUE);
+						blueRadioButton3.setForeground(Color.BLUE);//IF BLUE WAS CHOOSEN BY PLAYER 3 MAKE IT BLUR COLOR
 						greenRadioButton3.setForeground(Color.black);
 						redRadioButton3.setForeground(Color.black);
 						yRadioButton3.setForeground(Color.black);
 
 						
 						if(NumofPlayers==4) {
-							disableAndMarkColorButton(blueRadioButton2_1);
+							disableAndMarkColorButton(blueRadioButton2_1);//DIABLE PLAYER 4 FROM CHOOSING BLUE
 							enableColorButton(redRadioButton2_1);
 							enableColorButton(yRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
-						if (redRadioButton2.isSelected()) {/*check red*/
+						if (redRadioButton2.isSelected()) {/*check IF red WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 							
 							disableAndMarkColorButton(redRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
@@ -829,12 +814,12 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 							redRadioButton2_1.setSelected(false);
 							if(greenRadioButton.isSelected()) {
 
-								disableAndMarkColorButton(greenRadioButton2_1);
+								disableAndMarkColorButton(greenRadioButton2_1);/*check IF GREEN WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 								
 								enableColorButton(yRadioButton2_1);
 								greenRadioButton2_1.setSelected(false);
 											
-						}else if(yRadioButton.isSelected()) {
+						}else if(yRadioButton.isSelected()) {/*check IF YELLOW WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 
 							disableAndMarkColorButton(yRadioButton2_1);
 							
@@ -851,7 +836,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 								greenRadioButton2_1.setSelected(false);
 								if(redRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(redRadioButton2_1);
+									disableAndMarkColorButton(redRadioButton2_1);/*check IF RED WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 									
 									enableColorButton(yRadioButton2_1);
 									blueRadioButton2_1.setSelected(false);
@@ -860,7 +845,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 								else if(yRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(yRadioButton2_1);
+									disableAndMarkColorButton(yRadioButton2_1);/*check IF YELLOW WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 									
 									enableColorButton(redRadioButton2_1);
 									yRadioButton2_1.setSelected(false);
@@ -873,11 +858,11 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 						else if(yRadioButton.isSelected()) {
 
-							disableAndMarkColorButton(yRadioButton2_1);
+							disableAndMarkColorButton(yRadioButton2_1);/*check IF YELLOW WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 							yRadioButton2_1.setSelected(false);
 							 if(redRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(redRadioButton2_1);
+									disableAndMarkColorButton(redRadioButton2_1);/*check IF RED WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 									
 									enableColorButton(greenRadioButton2_1);
 									blueRadioButton2_1.setSelected(false);
@@ -888,7 +873,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 								else if(greenRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(greenRadioButton2_1);
+									disableAndMarkColorButton(greenRadioButton2_1);/*check IF GREEN WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 									
 									enableColorButton(redRadioButton2_1);
 									yRadioButton2_1.setSelected(false);
@@ -917,31 +902,31 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			yRadioButton3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (yRadioButton3.isSelected()) {
-						yRadioButton3.setForeground(Color.YELLOW);
+						yRadioButton3.setForeground(Color.YELLOW);//SET THE BUTTTON IN YELLOW COLOR
 						greenRadioButton3.setForeground(Color.black);
 						blueRadioButton3.setForeground(Color.black);
 						redRadioButton3.setForeground(Color.black);
 						
 						
 						if(NumofPlayers==4) {
-							disableAndMarkColorButton(yRadioButton2_1);
+							disableAndMarkColorButton(yRadioButton2_1);//DISAPLE PLAYER 4 FROM CHOOSING YELLOW-ADAN
 							enableColorButton(blueRadioButton2_1);
 							enableColorButton(redRadioButton2_1);
 							enableColorButton(greenRadioButton2_1);
 						if (redRadioButton2.isSelected()) {/*check red*/
 							
-							disableAndMarkColorButton(redRadioButton2_1);
+							disableAndMarkColorButton(redRadioButton2_1);/*check IF RED WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 							enableColorButton(greenRadioButton2_1);
 							enableColorButton(blueRadioButton2_1);
 							redRadioButton2_1.setSelected(false);
 							if(greenRadioButton.isSelected()) {
 
-								disableAndMarkColorButton(greenRadioButton2_1);
+								disableAndMarkColorButton(greenRadioButton2_1);/*check IF GREEN WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 								
 								enableColorButton(blueRadioButton2_1);
 								greenRadioButton2_1.setSelected(false);
 											
-						}else if(blueRadioButton.isSelected()) {
+						}else if(blueRadioButton.isSelected()) {/*check IF  BLUE WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 
 							disableAndMarkColorButton(blueRadioButton2_1);
 							
@@ -952,13 +937,13 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						}
 							if (greenRadioButton2.isSelected()) {/*check green*/
 								
-								disableAndMarkColorButton(greenRadioButton2_1);
+								disableAndMarkColorButton(greenRadioButton2_1);/*check IF GREEN WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 								enableColorButton(redRadioButton2_1);
 								enableColorButton(blueRadioButton2_1);
 								greenRadioButton2_1.setSelected(false);
 								if(redRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(redRadioButton2_1);
+									disableAndMarkColorButton(redRadioButton2_1);/*check IF RED WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 									
 									enableColorButton(blueRadioButton2_1);
 									redRadioButton2_1.setSelected(false);
@@ -967,7 +952,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 								else if(blueRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(blueRadioButton2_1);
+									disableAndMarkColorButton(blueRadioButton2_1);/*check IF BLUE WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 									
 									enableColorButton(redRadioButton2_1);
 									redRadioButton2_1.setSelected(false);
@@ -978,11 +963,11 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				
 						
 
-						else if(blueRadioButton.isSelected()) {
+						else if(blueRadioButton.isSelected()) {/*check IF BLUE WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 
 							disableAndMarkColorButton(blueRadioButton2_1);
 							blueRadioButton2_1.setSelected(false);
-							 if(redRadioButton.isSelected()) {
+							 if(redRadioButton.isSelected()) {/*check IF RED WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 
 									disableAndMarkColorButton(redRadioButton2_1);
 									
@@ -995,7 +980,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 
 								else if(greenRadioButton.isSelected()) {
 
-									disableAndMarkColorButton(greenRadioButton2_1);
+									disableAndMarkColorButton(greenRadioButton2_1);/*check IF GREEN WAS CHOOSED AND IF YES DISBLE IT FOR PLAYER 4-ADAN*/
 									
 									enableColorButton(redRadioButton2_1);
 									yRadioButton2_1.setSelected(false);
@@ -1011,7 +996,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					
 				}
 			});
-			yRadioButton3.setBounds(383, 470,116, 23);
+			yRadioButton3.setBounds(383, 470,116, 23);//SET YELLOW BUTTON-ADAN
 			contentPane.add(yRadioButton3);
 			buttonGroup2.add(yRadioButton3);
 			buttonGroup3.add(yRadioButton3);
@@ -1023,7 +1008,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		}
 		//******************player4
 		if (NumofPlayers==4 ) {
-			lblNewLabel_9 = new JLabel("player4 nickname:");
+			lblNewLabel_9 = new JLabel("player4 nickname:");//PLAYER4 NICKNAME
 			lblNewLabel_9.setFont(new Font("Tahoma", Font.ITALIC, 20));
 			lblNewLabel_9.setBounds(600, 360, 350, 20);
 			contentPane.add(lblNewLabel_9);
@@ -1031,13 +1016,13 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			textField_1.setColumns(10);
 			textField_1.setBounds(790, 360, 116, 29);
 			contentPane.add(textField_1);
-			lblNewLabel_1_4 = new JLabel("player4 color:");
+			lblNewLabel_1_4 = new JLabel("player4 color:");//PLAYER 4 COLOR
 			lblNewLabel_1_4.setFont(new Font("Tahoma", Font.ITALIC, 20));
 			lblNewLabel_1_4.setBounds(600, 420, 400, 20);
 			contentPane.add(lblNewLabel_1_4);
 			lblNewLabel_10 = new JLabel("");
 			lblNewLabel_10.setBounds(743, 360, 100, 130);
-			lblNewLabel_10.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));;
+			lblNewLabel_10.setIcon(new ImageIcon(getClass().getResource("/View/img/wpanda.png")));//SETTINF PANDA ICON FOR PLAYER 4
 			contentPane.add(lblNewLabel_10);
 			redRadioButton2_1 = new JRadioButton("Red");
 			redRadioButton2_1.setActionCommand("Red");
@@ -1048,7 +1033,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			redRadioButton2_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (redRadioButton2_1.isSelected()) {
-						redRadioButton2_1.setForeground(Color.RED);
+						redRadioButton2_1.setForeground(Color.RED);//MAKE IT RED
 						greenRadioButton2_1.setForeground(Color.black);
 						blueRadioButton2_1.setForeground(Color.black);
 						yRadioButton2_1.setForeground(Color.black);
@@ -1063,7 +1048,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			greenRadioButton2_1.setBounds(680, 470, 105, 23);
 			contentPane.add(greenRadioButton2_1);
 			greenRadioButton2_1.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) {//MAKE IT BLUE
 					if (greenRadioButton2_1.isSelected()) {
 						redRadioButton2_1.setForeground(Color.black);
 						greenRadioButton2_1.setForeground(new Color(0, 153, 0));
@@ -1084,7 +1069,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 					if (blueRadioButton2_1.isSelected()) {
 						redRadioButton2_1.setForeground(Color.black);
 						greenRadioButton2_1.setForeground(Color.black);
-						blueRadioButton2_1.setForeground(Color.blue);
+						blueRadioButton2_1.setForeground(Color.blue);//MAKE IT BLUE
 						yRadioButton2_1.setForeground(Color.black);
 
 					}
@@ -1102,7 +1087,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 						redRadioButton2_1.setForeground(Color.black);
 						greenRadioButton2_1.setForeground(Color.black);
 						blueRadioButton2_1.setForeground(Color.black);
-						yRadioButton2_1.setForeground(Color.YELLOW);
+						yRadioButton2_1.setForeground(Color.YELLOW);//MAKE IT YELLOW
 
 					}
 				}
@@ -1164,7 +1149,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		contentPane.add(lblNewLabel);
 
 	}
-	private void disableAndMarkColorButton(JRadioButton button) {
+	private void disableAndMarkColorButton(JRadioButton button) {//DIABLE THE COLOR AND MAKE IT GRAY-ADAN
 		
 		button.setEnabled(false);
 		System.out.println(button.isSelected());
@@ -1182,14 +1167,14 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 			@Override
 			protected void paintText(Graphics g, JComponent c, Rectangle textRect, String text) {
 				super.paintText(g, c, textRect, text);
-				g.setColor(Color.GRAY);
+				g.setColor(Color.GRAY);//MAKE IT GRAY-ADAN
 				g.drawLine(textRect.x, textRect.y + textRect.height / 2, textRect.x + textRect.width, textRect.y + textRect.height / 2);
 			}
 		});
 	}
 
 	// Method to enable a color button
-	private void enableColorButton(JRadioButton button) {
+	private void enableColorButton(JRadioButton button) {//ENABLE
 		button.setEnabled(true);
 		button.setForeground(Color.BLACK); // Reset color to indicate it's enabled
 		button.setUI(new BasicRadioButtonUI());
@@ -1199,7 +1184,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 		String s=e.getActionCommand();
 		Player p1=null,p2=null,p3=null,p4=null;
 		if(s.equals("next")) {
-			try {
+			try {//CHECK IF THERE IS A NULL FIELD
 				if(textField.getText().equals("")||textField2.getText().equals("")||buttonGroup.getSelection() == null||buttonGroup2.getSelection() == null)
 				{
 					throw new FieldIisNull();

@@ -41,42 +41,24 @@ public class MainFrame extends JFrame implements ActionListener{
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		btnNewButton = new JButton("start");/*adding start button*/
+/********************************Adan***********************************************/
+		/*adding start button to the main frame-Adan*/
+		btnNewButton = new JButton("start");
 		btnNewButton.addActionListener(this);
 		btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/start.png")));
 		btnNewButton.setBackground(Color.CYAN);
 		btnNewButton.setBounds(466, 407, 125, 130);
-		/*btnNewButton.addMouseListener(new MouseListener() {
-	            @Override
-	            public void mouseClicked(MouseEvent e) {}
-
-	            @Override
-	            public void mousePressed(MouseEvent e) {}
-
-	            @Override
-	            public void mouseReleased(MouseEvent e) {}
-
-	            @Override
-	            public void mouseEntered(MouseEvent e) {
-	                // Scale up the button when mouse enters
-	                btnNewButton.setBounds(417, 256, 145, 150);
-	            }
-
-	            @Override
-	            public void mouseExited(MouseEvent e) {
-	                // Scale back to original size when mouse exits
-	                btnNewButton.setBounds(427, 266, 125, 130);
-	            }
-	        });*/
 
 		contentPane.add(btnNewButton);
-		JButton btnNewButton_1 = new JButton("inst");/*adding instructions button*/
+		
+		/*adding instructions button- Adan*/
+		JButton btnNewButton_1 = new JButton("inst");
 
 		btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/View/img/instructions.png")));
 		btnNewButton_1.setBackground(Color.YELLOW);
 		btnNewButton_1.setBounds(634, 407, 125, 130);
 		contentPane.add(btnNewButton_1);
+		//***************Yara***************** Adding Music to the button
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -88,15 +70,15 @@ public class MainFrame extends JFrame implements ActionListener{
 				inst.setVisible(true);
 			}
 		});
-
-		JButton btnNewButton_2 = new JButton("hist");/*adding history button*/
+		/*adding history button-Adan*/
+		JButton btnNewButton_2 = new JButton("hist");
 		btnNewButton_2.setIcon(new ImageIcon(getClass().getResource("/View/img/history.png")));
 		btnNewButton_2.addActionListener(this);
 		btnNewButton_2.setBackground(Color.CYAN);
 		btnNewButton_2.setBounds(634, 561, 125, 130);
 		contentPane.add(btnNewButton_2);
-
-		JButton btnNewButton_3 = new JButton("New button");/*adding q button*/
+		/*adding question managment  button-Adan*/
+		JButton btnNewButton_3 = new JButton("New button");
 
 		btnNewButton_3.setIcon(new ImageIcon(getClass().getResource("/View/img/question.png")));
 		btnNewButton_3.setBackground(Color.CYAN);
@@ -138,20 +120,20 @@ public class MainFrame extends JFrame implements ActionListener{
 		FlatLightLaf.setup();
 		// TODO Auto-generated method stub
 		String s=e.getActionCommand();
-		if(s.equals("start")) {/*start the game and move to levelgame frame*/
+		if(s.equals("start")) {/*start the game and move to levelgame frame-ADAN*/
 			LevelGame lframe=new LevelGame();
 			PlayAudio.hpClip.stop();  // calling the stop function of the home page clip -Yaraorder to Quit the music -Yara
 			PlayAudio.playMenuSound(); // calling the function that play button click audio -Yara
-			this.setVisible(false);
-			lframe.setVisible(true);
+			this.setVisible(false);//Adan
+			lframe.setVisible(true);//Adan
 
 		}
-		if(s.equals("hist")) {/*start the game and move to levelgame frame*/
+		if(s.equals("hist")) {/*start the game and move to levelgame frame-Adan*/
 			History lframe=new History();
 			PlayAudio.hpClip.stop();  // calling the stop function of the home page clip in order to Quit the music -Yara
 			PlayAudio.playMenuSound(); // calling the function that play button click audio -Yara
-			this.setVisible(false);
-			lframe.setVisible(true);
+			this.setVisible(false);//Adan
+			lframe.setVisible(true);//Adan
 
 		}
 	}
