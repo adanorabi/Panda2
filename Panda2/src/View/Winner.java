@@ -56,13 +56,9 @@ public class Winner extends JFrame {
 	 */
 	public Winner(Player p1,Player p2,Player p3,Player p4,int num) {
 		PlayAudio.playVictorySound(); // calling the function that play Winner screen audio-Yara
-	//	int num=4;
-//		Player p1=new Player( PlayerColor.Red, "yara",4, 4,2);//wenner
-//		Player p2=new Player ( PlayerColor.Yellow, "yomna", 4, 4,2);//2nd
-//		Player p3=new Player ( PlayerColor.Green, "ghaidaa", 4, 4,2);//3rd
-//		Player p4=new Player ( PlayerColor.Blue, "adan", 4, 4,2);//4rd
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+/********************************ADAN-CREATING THW WINNER FRAME************************/
 		setBounds(400, 100, 1200, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,61 +67,61 @@ public class Winner extends JFrame {
 		 // Play victory sound
        //yara audio playVictorySound();
 
-		ImageIcon winIcon = new ImageIcon(Winner.class.getResource("/View/img/winframe.png"));
+		ImageIcon winIcon = new ImageIcon(Winner.class.getResource("/View/img/winframe.png"));//ADD ICON OF WINNING
 		int winWidth = 500; // Adjusted width based on grid size
 		int winHeight = 300;//Adjusted height based on grid size
 
-		// Scale down the size of the snake image
+		// Scale down the size of the WINNER image
 		Image scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
 		ImageIcon scaledWinIcon = new ImageIcon(scaledWinImage);
 
-		// Create a JLabel for the scaled snake image
+		// Create a JLabel for the scaled WINNER image
 		JLabel lblNewLabel_3  = new JLabel(scaledWinIcon);
 		lblNewLabel_3.setBounds(320, 260,500,500);//
 
-		// Add the snake label to the content pane
+		// Add the WINNER label to the content pane
 		contentPane.add(lblNewLabel_3);
 		lblNewLabel_3.setVisible(true);
 		contentPane.setComponentZOrder(lblNewLabel_3, 0);    
 
 		
-/*********************************************winner**************************************************************/
+/*********************************************winner-ADAN**************************************************************/
 
 
 		winIcon = new ImageIcon(Winner.class.getResource("/View/img/win.png"));
 		 winWidth = 200; // Adjusted width based on grid size
 		 winHeight = 200;//Adjusted height based on grid size
 
-		// Scale down the size of the snake image
+		// Scale down the size of the WINNER image
 		 scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
 		 scaledWinIcon = new ImageIcon(scaledWinImage);
 
-		// Create a JLabel for the scaled snake image
+		// Create a JLabel for the scaled WINNER image
 		JLabel lblNewLabel_w2  = new JLabel(scaledWinIcon);
 		lblNewLabel_w2.setBounds(470, 180,200,200);//
 
-		// Add the snake label to the content pane
+		// Add the WINNER label to the content pane
 		contentPane.add(lblNewLabel_w2);
 		lblNewLabel_w2.setVisible(true);
 		
-/*********************************w3************************************************************************/	   
+/*********************************w3-ADAN************************************************************************/	   
 
 		winIcon = new ImageIcon(Winner.class.getResource("/View/img/w3.png"));
 		 winWidth = 600; // Adjusted width based on grid size
 		 winHeight = 200;//Adjusted height based on grid size
 
-		// Scale down the size of the snake image
+		// Scale down the size of the WINNER image
 		 scaledWinImage = winIcon.getImage().getScaledInstance(winWidth, winHeight, Image.SCALE_SMOOTH);
 		 scaledWinIcon = new ImageIcon(scaledWinImage);
 
-		// Create a JLabel for the scaled snake image
+		// Create a JLabel for the scaled WINNER image
 		JLabel lblNewLabel_w3  = new JLabel(scaledWinIcon);
 		lblNewLabel_w3.setBounds(300, 20,600,200);//
 
-		// Add the snake label to the content pane
+		// Add the WINNER label to the content pane
 		contentPane.add(lblNewLabel_w3);
 		lblNewLabel_w3.setVisible(true);
-/************************************************************************players*******************************************************/
+/************************************************************************players-ADAN*******************************************************/
 		if(p2.getPlayerColor()==PlayerColor.Red) {
 			p2icon= new ImageIcon(EasyLevel.class.getResource("/View/img/r.png"));
 		}
@@ -273,75 +269,57 @@ public class Winner extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 /******************************move*******************/
-		timer = new Timer(50, new ActionListener() {
-            int y = 20; // Initial Y position of the sprinkle
-            int speed = 5; // Speed at which the sprinkle falls
-            int containerHeight = 250; // Height of the container
+		timer = new Timer(50, new ActionListener() {//MAKE AN ANIMATION-ADAN
+            int y = 20; // Initial Y position of the sprinkle-ADAN
+            int speed = 5; // Speed at which the sprinkle falls-ADAN
+            int containerHeight = 250; // Height of the container-ADAN
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Update position of the sprinkle
-                y += speed; // Move the sprinkle down
-                // If the sprinkle reaches the bottom of the container, reset its position to the top
+                // Update position of the sprinkle-ADAN
+                y += speed; // Move the sprinkle down-ADAN
+                // If the sprinkle reaches the bottom of the container, reset its position to the top-ADAN
                 if (y >= containerHeight) {
-                    y = 20; // Reset position
+                    y = 20; // Reset position-ADAN
                 }
-                lblNewLabel_w3.setLocation(300, y); // Update sprinkle position
+                lblNewLabel_w3.setLocation(300, y); // Update sprinkle position-ADAN
                 // Repaint container
                 contentPane.revalidate();
                 contentPane.repaint();
             }
         });
-        timer.start(); // Start the animation loop
+        timer.start(); // Start the animation loop-ADAN
   
 /****************player movement**************/
      headMove();
 
-		BackButton backButton = new BackButton();
-		backButton.setBounds(20, 600, 100, 40); // Set the bounds of the button
-		backButton.setText("Home"); // Set the text of the button
-		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
-		backButton.setForeground(Color.black); // Set the text color
-		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
-		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				PlayAudio.victoryClip.close(); // closing the winner page audio when the user want to return to home page -Yara
-				MainFrame f=new MainFrame();
-				f.setVisible(true);
-				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-		        frame.dispose();
-			}
-			
-		});
-		contentPane.add(backButton,0);
 
 	}
-	public void headMove() {
+	/**********************************ADAN****************************/
+	public void headMove() {//MOVE THE HEAD RIGH AND LEFT-ADAN
 		Timer playerMoveTimer = new Timer(100, new ActionListener() {
-		    double angle = 0; // Initial angle for tilting
-		    double tiltRange = Math.PI / 18; // Adjust this value to control the tilt range
-		    boolean tiltDirection = true; // Flag to indicate the tilting direction
+		    double angle = 0; // Initial angle for tilting-ADAN
+		    double tiltRange = Math.PI / 18; // Adjust this value to control the tilt range-ADAN
+		    boolean tiltDirection = true; // Flag to indicate the tilting direction-ADAN
 
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        // Update the angle for tilting based on the tilting direction
+		        // Update the angle for tilting based on the tilting direction-ADAN
 		        if (tiltDirection) {
-		            angle += 0.1; // Tilting right
+		            angle += 0.1; // Tilting right-ADAN
 		        } else {
-		            angle -= 0.1; // Tilting left
+		            angle -= 0.1; // Tilting left-ADAN
 		        }
 
-		        // Check if the tilt angle exceeds the tilt range, then change the direction
+		        // Check if the tilt angle exceeds the tilt range, then change the direction-ADAN
 		        if (angle >= tiltRange || angle <= -tiltRange) {
-		            tiltDirection = !tiltDirection; // Change the direction
+		            tiltDirection = !tiltDirection; // Change the direction-ADAN
 		        }
 
-		        // Calculate the tilt angle based on the triangle wave function
+		        // Calculate the tilt angle based on the triangle wave function-ADAN
 		        double tiltAngle = tiltRange * Math.sin(angle);
 
-		        // Apply the tilt transformation to the player icon
+		        // Apply the tilt transformation to the player icon-ADAN
 		        applyTiltTransformation(p1Label, tiltAngle);
 		        // Apply the tilt transformation to other player icons if needed
 		        // applyTiltTransformation(p2Label, tiltAngle);
@@ -368,7 +346,7 @@ public class Winner extends JFrame {
 		    }
 		});
 
-		// Start the player movement timer
+		// Start the player movement timer-ADAN
 		playerMoveTimer.start();
 
 

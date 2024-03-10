@@ -297,25 +297,25 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.add(p2name);
 
 		/******************************p3***************/
-
-		BackButton backButton = new BackButton();
-		backButton.setBounds(600, 900, 100, 40); // Set the bounds of the button
-		backButton.setText("Home"); // Set the text of the button
-		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
-		backButton.setForeground(Color.black); // Set the text color
-		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
-		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				MainFrame f=new MainFrame();
-				f.setVisible(true);
-				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-				frame.dispose();
-			}
-
-		});
-		contentPane.add(backButton,0);
+//
+//		BackButton backButton = new BackButton();
+//		backButton.setBounds(600, 900, 100, 40); // Set the bounds of the button
+//		backButton.setText("Home"); // Set the text of the button
+//		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
+//		backButton.setForeground(Color.black); // Set the text color
+//		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
+//		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
+//		backButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				MainFrame f=new MainFrame();
+//				f.setVisible(true);
+//				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+//				frame.dispose();
+//			}
+//
+//		});
+//		contentPane.add(backButton,0);
 		if(num>2) {
 			ImageIcon p3icon;
 			if(p3.getPlayerColor()==PlayerColor.Red) {
