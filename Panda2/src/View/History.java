@@ -24,7 +24,7 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
 public class History extends javax.swing.JFrame {
-
+/***********************************************************ADAN*************************************************/
 	private static final long serialVersionUID = 1L;
 	private JPanel backgroundPanel;
 	private ImageIcon backgroundImage;
@@ -96,23 +96,23 @@ public class History extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setContentPane(backgroundPanel);
 
-        // Set the custom cell renderer and editor for the "Game ScreenShoot" column
+        // Set the custom cell renderer and editor for the "Game ScreenShoot" column ADAN
         table.getColumnModel().getColumn(4).setCellRenderer(new ViewButtonRenderer());
         table.getColumnModel().getColumn(4).setCellEditor(new ViewButtonEditor(new JCheckBox(), event));
 
         backButton = new JButton("Back"); // Changed to JButton
-        backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener
+        backButton.addActionListener(e -> onBackButtonClick()); // Set the action listener ADAN
 
         // Add BackButton to the frame
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setOpaque(false); // Set panel to be transparent
-        buttonPanel.add(backButton); // Add the backButton to the buttonPanel
+        buttonPanel.setOpaque(false); // Set panel to be transparent ADAN
+        buttonPanel.add(backButton); // Add the backButton to the buttonPanel ADAN
 
         // Add the buttonPanel to the backgroundPanel
-        backgroundPanel.add(buttonPanel, BorderLayout.SOUTH); // Add buttonPanel to the SOUTH of backgroundPanel
+        backgroundPanel.add(buttonPanel, BorderLayout.SOUTH); // Add buttonPanel to the SOUTH of backgroundPanel ADAN
 
-        // Adjust the bounds of the buttonPanel instead of the backButton
-        buttonPanel.setBounds(10, 700, 30, 20); // Adjust x, y, width, and height as needed for the buttonPanel
+        // Adjust the bounds of the buttonPanel instead of the backButton ADAN
+        buttonPanel.setBounds(10, 700, 30, 20); // Adjust x, y, width, and height as needed for the buttonPanel ADAN
 
         // Repaint the frame
         revalidate();
