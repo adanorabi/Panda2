@@ -17,9 +17,9 @@
             "functional properties",
             "the design of the system",
             "a computer or system that provides resources, data, services, or programs",
-            "is the blueprint for a software systemâ\u20ac™s construction and evolution"
+            "is the blueprint for a software systems construction and evolution"
         ],
-        "correct_ans": "is the blueprint for a software systemâ\u20ac™s construction and evolution"
+        "correct_ans": "is the blueprint for a software systems construction and evolution"
     },
     {
         "difficulty": "2",
@@ -36,9 +36,9 @@
         "difficulty": "2",
         "question": "What true about Architectural patterns?",
         "answers": [
-            "include description of patternâ\u20ac™s weakness only",
+            "include description of patterns weakness only",
             "it is a set of architectural design decisions that are applicable to a recurring design problem",
-            "include description of patternâ\u20ac™s strengths only",
+            "include description of patterns strengths only",
             "description of bad practice, which has been tested in different systems"
         ],
         "correct_ans": "it is a set of architectural design decisions that are applicable to a recurring design problem"
@@ -102,7 +102,7 @@
         "difficulty": "2",
         "question": "What is correct about Software maintenance?",
         "answers": [
-            "normally involves major changes to the systemâ\u20ac™s architecture",
+            "normally involves major changes to the systems architecture",
             "Changes are implemented by modifying existing components and adding new components to the system",
             "Modifying a program before using it",
             "The term is used only for Generic software products"
