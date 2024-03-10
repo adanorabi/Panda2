@@ -85,6 +85,8 @@ public class Snake extends MovePlayerTemplate {
 //	SnakeRandom function decides the coordinate of the Head and the Tail of the Snake by taking random number for them
 //	the random has constrains for example: the Snake did not take a place outside the gameboard
 //	and also make the random for the y coordinate so it always be the H"thecolorodthesnake"y-T"thecolorodthesnake"y= the length of the snake
+//	it receive the level of the game so it can decide the number and the types of the snakes
+//	and it receive the snake itself
 	public void SnackRandom (Levels level, Snake snake) {
 
 		if (level.equals(Levels.Easy)) {

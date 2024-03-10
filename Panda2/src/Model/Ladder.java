@@ -85,6 +85,8 @@ public class Ladder extends MovePlayerTemplate {
 //	LadderRandom function decides the coordinate of the start and the end of the ladder by taking random number for them
 //	the random has constrains for example: the ladder did not take a place outside the gameboard
 //	and also make the random for the y coordinate so it always be the yend-ystart= the length of the ladder
+//	it receive the level of the game so it can decide the number and the length of the ladders
+//	and it receive the ladder itself
 	public void LadderRandom (Levels level, Ladder ladder) {
 
 		if (level.equals(Levels.Easy)) {
