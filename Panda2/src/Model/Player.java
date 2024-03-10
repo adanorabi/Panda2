@@ -1,22 +1,22 @@
 package Model;
 
 import Enum.*;
-
+//----------------------Yomna-----------------------
 public class Player {
 
 	private int PlayerID;
 	public static int counter=0;
 	private PlayerColor playerColor ;
 	private String nickName;
-	private int PlayerCol;
-	private int PlayerRow;
+	private int PlayerCol;// player place in the board by the cordinate
+	private int PlayerRow;// player place in the board by the cordinate
 	private int playeringame;
-	private int Position;
+	private int Position;// player palce in the board by the square number
 	
-
+// constructor
 	public Player(PlayerColor playerColor, String nickName, int playerCol, int playerRow,int playeringame) {
 		super();
-		this.PlayerID = this.counter++;
+		this.PlayerID = this.counter++; // id רץ
 		this.playerColor = playerColor;
 		this.nickName = nickName;
 		this.PlayerCol = playerCol;
@@ -24,11 +24,12 @@ public class Player {
 		this.playeringame=playeringame;
 	}
 
+// empty constructor
 	public Player() {
 		super();
 	}
 	
-
+// getters and setters
 	public int getPosition() {
 		return Position;
 	}
