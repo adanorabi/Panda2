@@ -133,6 +133,32 @@ public static void PlayStepsSound() {
 	  }
 	
 }
+public static void PlayBackSound() {
+	 try {
+	      File audioFile = new File("src/Model/Audio/menuButton.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	  Clip back = AudioSystem.getClip();
+	  back.open(audioStream);
+	  back.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	
+}
+public static void PlayGameStartSound() {
+	 try {
+	      File audioFile = new File("src/Model/Audio/gameStart.wav"); // Adjust the file path accordingly
+	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	      
+	  Clip back = AudioSystem.getClip();
+	  back.open(audioStream);
+	  back.start();
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	
+}
 //	 public static void playVictorySound() {
 //	        try {
 //	            File audioFile = new File("src/Model/Audio/winner.wav"); // Adjust the file path accordingly
