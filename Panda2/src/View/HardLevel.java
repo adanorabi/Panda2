@@ -103,7 +103,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		//		setContentPane(contentPane);
 		//		
 
-
+		PlayAudio.playGameSound(); // calling the function to play game background sound-Yara
 		//---------------------yomna----------------------------------		
 		String filePath = "AllGames.csv";
 		System.out.println("test number11111111111111111111111");

@@ -96,6 +96,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	 * Create the frame.
 	 */
 	public EasyLevel(Player p1,Player p2, Player p3,Player p4,int num) {
+		PlayAudio.playGameSound(); // calling the function to play game background sound-Yara
 		String filePath = "AllGames.csv";
 		System.out.println("test number11111111111111111111111");
 		BufferedReader reader = null;

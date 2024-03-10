@@ -12,7 +12,7 @@ public class PlayAudio {
 	public static Clip hpClip ;
 	public static Clip diceClip; 
 	public static Clip victoryClip;
-	public static Clip playinBackGround;
+	public static Clip playingBackGround;
 	public static Clip steps;
 	public static void playHPSound() {
 		try {
@@ -113,9 +113,9 @@ public static void playGameSound() {
 	      File audioFile = new File("src/Model/Audio/playing.wav"); // Adjust the file path accordingly
 	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
 	      
-	    playinBackGround = AudioSystem.getClip();
-	    playinBackGround.open(audioStream);
-	    playinBackGround.start();
+	    playingBackGround = AudioSystem.getClip();
+	    playingBackGround.open(audioStream);
+	    playingBackGround.start();
 	  } catch (Exception e) {
 	      e.printStackTrace();
 	  }

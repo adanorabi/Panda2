@@ -87,6 +87,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public MediumLevel(Player p1,Player p2, Player p3,Player p4,int num) {
+		PlayAudio.playGameSound(); // calling the function to play game background sound-Yara
 
 		//---------------------yomna----------------------------------		
 		String filePath = "AllGames.csv";
