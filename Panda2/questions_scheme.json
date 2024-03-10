@@ -113,10 +113,10 @@
         "difficulty": "3",
         "question": "What are some challenges associated with domain requirements?",
         "answers": [
-            "Lack of stakeholder involvement",
-            "Underestimation and overestimation",
-            "Compliance and adaptability",
-            "Understandability and implicitness"
+            "Project scheduling and time management",
+            "Understandability and implicitness",
+            "Team communication and collaboration",
+            "Quality assurance and testing strategies"
         ],
         "correct_ans": "Understandability and implicitness"
     },
@@ -215,7 +215,7 @@
             "Testing some operations associated with an object",
             "Setting and interrogating all object attributes",
             "Exercising the object in one state",
-            "Testing and exercising  specific functionality"
+            "Testing part of the functionality"
         ],
         "correct_ans": "Setting and interrogating all object attributes"
     },
