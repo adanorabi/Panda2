@@ -479,7 +479,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		startTimer();
 
 
-		ImageIcon winIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/win.png"));
+		ImageIcon winIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/win.png"));//winning icon ADAN
 		int winWidth = 80; // Adjusted width based on grid size
 		int winHeight = 80;//Adjusted height based on grid size
 
@@ -501,25 +501,6 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		lblNewLabel.setBounds(0, 0, 1200, 900);
 		contentPane.add(lblNewLabel);
 
-		/**************************winner**************************/
-//		BackButton backButton = new BackButton();
-//		backButton.setBounds(600, 750, 100, 40); // Set the bounds of the button
-//		backButton.setText("Home"); // Set the text of the button
-//		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
-//		backButton.setForeground(Color.black); // Set the text color
-//		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
-//		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
-//		backButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				MainFrame f=new MainFrame();
-//				f.setVisible(true);
-//				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-//				frame.dispose();
-//			}
-//
-//		});
-//		contentPane.add(backButton,0);
 
 
 		int i, j;
@@ -603,13 +584,13 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				isPaused = !isPaused;
 				if (isPaused) {
 				
-					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/resume.png"));
+					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/resume.png"));//ADAN RESUME ICON
 					pauseButton.setIcon(pauseIcon );
 					
 					timer.stop();
 				} else {	
 				
-				ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));
+				ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));//ADAN PAUSE ICON
 				pauseButton.setIcon(pauseIcon );
 					timer.start();
 				}
@@ -617,7 +598,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		}
 	}
 	// blue snakes function
-	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {
+	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {//ADAN AD GHAIDAA SETTING BLUE SNAKE
 		// Load the snake image
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/bluesnake2.png"));
 
@@ -654,7 +635,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 	}
 	// red snakes function
-	public void setredsnake(int xhead, int yhead) {
+	public void setredsnake(int xhead, int yhead) {//ADAN AND GHAIDAA SETTING RED SNAKE
 		// Load the snake image
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/redsnake.png"));
 
@@ -688,7 +669,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		contentPane.repaint();
 	}
 	// set yellow snakes function
-	public void  setyellowsnake(int xhead, int yhead, int xtail, int ytail) {
+	public void  setyellowsnake(int xhead, int yhead, int xtail, int ytail) {//ADAN AND GHAIDAA SETTING YELLOW SNAKE
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/yellosnake.png"));
 
 		// Calculate the position of the snake head and tail
@@ -720,7 +701,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void setgreensnake(int xhead, int yhead, int xtail, int ytail) {
+	public void setgreensnake(int xhead, int yhead, int xtail, int ytail) {//ADAN AND GHAIDAA SETTING GREEN SNAKE
 		// Load the snake image
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/greensnake.png"));
 
@@ -768,7 +749,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 
 		// Load the ladder image based on the ladder type
-		switch (typeOfLader) {
+		switch (typeOfLader) {//SETTING LADDER ADA AND GHAIDAA
 		case 1:
 			ladderIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/ladder1.png"));
 			break;
@@ -788,7 +769,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		}
 
 		// Scale down the size of the snake image
-		Image scaledLadderImage = ladderIcon.getImage().getScaledInstance(ladderWidth, ladderHeight, Image.SCALE_SMOOTH);
+		Image scaledLadderImage = ladderIcon.getImage().getScaledInstance(ladderWidth, ladderHeight, Image.SCALE_SMOOTH);//ADJUSTING THE ICON
 		ImageIcon scaledLadderIcon = new ImageIcon(scaledLadderImage);
 		// Create a JLabel for the scaled snake image
 		lblLadder = new JLabel(scaledLadderIcon);
@@ -807,7 +788,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void setsurprise(int x, int y) {
+	public void setsurprise(int x, int y) {//SETTING SURPEISE ADAN AND GHAIDAA
 		// Load the surprise image
 		ImageIcon snakeIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/q.png"));
 
@@ -924,7 +905,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 							movePlayer(p, bx, by,ax, ay,g);//moved player once
 
 
-							while( g.UpdatePlayerPlace()!=0) {//
+							while( g.UpdatePlayerPlace()!=0) {//checking id it is ot an empty square
 
 								if (g.checkQuestionSquare2() == true) {
 									Question myQ = g.checkQuestionSquare();
@@ -1063,7 +1044,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 										int awx = p.getPlayerRow();
 										int awy = p.getPlayerCol();
 
-										movePlayer(p, ax, ay, awx, awy,g);
+										movePlayer(p, ax, ay, awx, awy,g);//call on moveplayer
 
 									}
 									if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
@@ -1096,7 +1077,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	}
 
 
-	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery,Game g) {//check
+	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery,Game g) {//adan move player ico
 		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 		System.out.println("("+beforx+","+befory+")"+" to ("+afterx+","+aftery+")");
@@ -1156,7 +1137,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				int newX = (int) (finalBx + deltaX * count[0]);
 				int newY = (int) (finalBy+ deltaY * count[0]);
 				if(player.getPlayeringame()==1)
-					p1OnGame.setLocation(newX, newY);
+					p1OnGame.setLocation(newX, newY);//checking the current player icon ADAN
 				else if(player.getPlayeringame()==2)
 					p2OnGame.setLocation(newX, newY);
 				else if(player.getPlayeringame()==3)
@@ -1168,7 +1149,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			} else {
 
 				timer.stop(); // Stop the timer when the movement is complete
-				PlayAudio.steps.close(); //Yara
+				//PlayAudio.steps.close(); //Yara
 				if(Game.now==true) {//adan1
 					setPlayerText(g.CurrentTurn(), "you have to roll the dice");
 					Game.now=false;
@@ -1191,8 +1172,8 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 					System.out.println("timeeeeeeeeeeeeeeee"+formattedTime);
 					g.setEndTime(formattedTime);
 					SysData.gamesList.add(g);
-					if(g.getPlayersFinalPLaces().size()==2) {
-						SysData.winnerPlayer.add(g.getPlayersFinalPLaces().get(1));
+					if(g.getPlayersFinalPLaces().size()==2) {//check if there is 2 players
+						SysData.winnerPlayer.add(g.getPlayersFinalPLaces().get(1));//send the players and there rate ADAN
 					}else if(g.getPlayersFinalPLaces().size()==3) {
 						SysData.winnerPlayer.add(g.getPlayersFinalPLaces().get(2));
 					}else {
@@ -1207,7 +1188,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 					System.out.println(g.getPlayersFinalPLaces()
 							);
 
-					if(g.getPlayersFinalPLaces().size()==2) {
+					if(g.getPlayersFinalPLaces().size()==2) {//OPEn THE WINNER ADAN
 						Winner w=new Winner(g.getPlayersFinalPLaces().get(1),g.getPlayersFinalPLaces().get(0),null,null,2); 
 						w.setVisible(true);
 						this.setVisible(false);
@@ -1228,18 +1209,18 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		});
 
 	}
-	public void lineMangment(int turn,int num) {
+	public void lineMangment(int turn,int num) {//CHANGE THE CURRENT TORE ADAN 
 		switch(num) {
 		case 2:
 			switch(turn) {/*change the turn alongside the names*/
 			case 1:
-				p1Label.setLocation(35, 80);
-				p1name.setLocation(73,70);
-				p2Label.setLocation(35, 180);
-				p2name.setLocation(73,170);
+				p1Label.setLocation(35, 80);//move icon1 adan
+				p1name.setLocation(73,70);//move name
+				p2Label.setLocation(35, 180);//move icon2 adan
+				p2name.setLocation(73,170);//move icon2 adan
 				break;
 			case 2:
-				p1Label.setLocation(35, 180);
+				p1Label.setLocation(35, 180);//make player 2 on the top ADAN
 				p1name.setLocation(73,170);
 				p2Label.setLocation(35, 80);
 				p2name.setLocation(73,70);
@@ -1248,10 +1229,10 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			break;
 
 
-		case 3:
+		case 3://if there is 3 players
 			switch(turn) {
 			case 1:
-				p1Label.setLocation(35, 80);
+				p1Label.setLocation(35, 80);//make p1 on top ADAN
 				p1name.setLocation(73,70);
 				p2Label.setLocation(35, 180);
 				p2name.setLocation(73,170);
@@ -1260,7 +1241,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				break;
 			case 2:
 
-				p2Label.setLocation(35, 80);
+				p2Label.setLocation(35, 80);//make p2 on top ADAN
 				p2name.setLocation(73,70);
 				p3Label.setLocation(35, 180);
 				p3name.setLocation(73,170);
@@ -1268,7 +1249,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				p1name.setLocation(73,270);
 				break;
 			case 3:
-				p3Label.setLocation(35, 80);
+				p3Label.setLocation(35, 80);//makep3 on top ADAN
 				p3name.setLocation(73,70);
 				p1Label.setLocation(35, 180);
 				p1name.setLocation(73,170);
@@ -1280,7 +1261,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		case 4:
 			switch(turn) {
 			case 1:
-				p1Label.setLocation(35, 80);
+				p1Label.setLocation(35, 80);//makep1 on top ADAN
 				p1name.setLocation(73,70);
 				p2Label.setLocation(35, 180);
 				p2name.setLocation(73,170);
@@ -1290,7 +1271,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				p4name.setLocation(73,370);
 				break;
 			case 2:
-				p2Label.setLocation(35, 80);
+				p2Label.setLocation(35, 80);//makep2 on top ADAN
 				p2name.setLocation(73,70);
 				p3Label.setLocation(35, 180);
 				p3name.setLocation(73,170);
@@ -1301,7 +1282,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 				break;
 			case 3:
-				p3Label.setLocation(35, 80);
+				p3Label.setLocation(35, 80);//makep3 on top ADAN
 				p3name.setLocation(73,70);
 				p4Label.setLocation(35, 180);
 				p4name.setLocation(73,170);
@@ -1311,7 +1292,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 				p2name.setLocation(73,370);
 				break;
 			case 4:
-				p4Label.setLocation(35, 80);
+				p4Label.setLocation(35, 80);//makep4 on top ADAN
 				p4name.setLocation(73,70);
 				p1Label.setLocation(35, 180);
 				p1name.setLocation(73,170);
@@ -1330,7 +1311,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 
 	}
-	public void setPlayer(Player player) {
+	public void setPlayer(Player player) {//setting the players on the square ADAN 
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
@@ -1390,22 +1371,6 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 
 		}
 	}
-	/*private void completeTask() {
-		Timer timer = new Timer(20, null); // Create a timer without ActionListener
-		int steps=3000;
-		timer.start(); // Start the timer
-		final int[] count = {0};
-		timer.addActionListener(e -> {
-			if (count[0] < steps) {
-
-				count[0]++;
-
-			} else {
-				timer.stop(); // Stop the timer when the movement is complete
-			}
-		});
-
-    }*/
 	// Method to check if the condition for stopping the timer is met
 	private boolean conditionMet() {
 
@@ -1429,7 +1394,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	public void stopTimer() {
 		timer.stop();
 	}
-	public void setPlayerText(Player p, String text) {
+	public void setPlayerText(Player p, String text) {//adan set text for player
 		System.out.println(text+"123123123123123123213123");
 		// Get the player's name
 		String playerName = p.getNickName();
@@ -1445,7 +1410,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	}
 
 	// Method to get color code based on PlayerColor
-	private String getColorCode(PlayerColor color) {
+	private String getColorCode(PlayerColor color) {//color it as the player icon color
 		switch (color) {
 		case Red:
 			return "red";
@@ -1461,7 +1426,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 	}
 
 
-	public void landedOn(Game g) {
+	public void landedOn(Game g) {//
 		String s=" ";
 		Player p=g.CurrentTurn();
 
