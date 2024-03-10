@@ -1439,14 +1439,12 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			s="landed on a snake :(";
 			//	PlayAudio.playSnakeSound() // if the player landed on a snake call the snake sound function-Yara
 			setPlayerText(p, s);
-			PlayAudio.playSnakeSound();
 			System.out.println(s);
 
 		}else if(num>=14 && num<=21) {
 			s="landed on a ladder :)";
 			//	PlayAudio.playLadderSound()// if the player landed on a ladder call the ladder sound function-Yara
 			setPlayerText(p, s);
-			PlayAudio.playLadderSound();
 			System.out.println(s);
 		}else if(num==3|| num==4||num==5) {
 
