@@ -1,7 +1,6 @@
 package Model;
-
 import java.util.Random;
-
+//----- A child class of Square class By Yara------------
 public class SurpriseSquare extends Square {
 
 	public static int counter=1;
@@ -13,7 +12,7 @@ public class SurpriseSquare extends Square {
 		this.SurpSquareId=this.counter++;
 	}
 
-
+// getters and setters
 	public int getSurpSquareId() {
 		return SurpSquareId;
 	}
@@ -22,15 +21,14 @@ public class SurpriseSquare extends Square {
 		SurpSquareId = surpSquareId;
 	}
 
-  
 
-	public int RandSurprise(int position) { //should be continued!!!
+	// a function that receive player position and update it after a random surprise-Yara
+
+	public int RandSurprise(int position) { 
 
 		double randomNum = Math.random(); // Generates a random double between 0.0 (inclusive) and 1.0 (exclusive)
-	
 
 		Random random = new Random();
-		
 
 		// Generate a random integer between 0 and 1
 		int randomNumber = random.nextInt(2); // Generates a random integer between 0 (inclusive) and 2 (exclusive)
@@ -45,9 +43,6 @@ public class SurpriseSquare extends Square {
 			return position+10;
 		}
 
-
-
 	}
-
 
 }
