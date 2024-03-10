@@ -27,10 +27,10 @@ import Model.*;
 
 public class SysData {
 	static public  ArrayList<Game> gamesList= new ArrayList<Game>(); // array list that contains the games
-	static public  ArrayList<Question> questionList= new ArrayList<Question>(); //arraylist that contains questions from all levels
-	static public  ArrayList<Question> HardQues= new ArrayList<Question>();
-	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	
-	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
+	static public  ArrayList<Question> questionList= new ArrayList<Question>(); //arraylist that contains questions from all levels-Yara
+	static public  ArrayList<Question> HardQues= new ArrayList<Question>();//arraylist that contains questions hard levels-Yara
+	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	//arraylist that contains questions medium levels-Yara
+	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();//arraylist that contains questions easy levels-Yara
 	static public  ArrayList<Player> winnerPlayer= new ArrayList<Player>();
 	static public int QuestionId=0;
 	public void UploadGames() {}
@@ -40,7 +40,7 @@ public class SysData {
 	ArrayList<String> Answer;
 	String TrueAnswer;
 
-	public static void UploadQuestions() {  //A function that pulling out the questions from json file
+	public static void UploadQuestions() {  //A function that pulling out the questions from json file by reading them and saving them in arraylists-Yara
 
 		try {
 			HardQues.clear();
@@ -101,7 +101,7 @@ public class SysData {
 
 	}
 
-	public static void AddQuestioToJson(Question newQuestion) {
+	public static void AddQuestioToJson(Question newQuestion) { // adding new question to json file -Yara
 		// Print a message indicating successful deletion of a question
 		System.out.println("question added successfully");
 
@@ -147,7 +147,7 @@ public class SysData {
 		UploadQuestions();
 	}
 
-	public static void DeleteQuestioFromJson(String content) {
+	public static void DeleteQuestioFromJson(String content) { //Deleting a question fro json file and updating it -Yara
 		try {
 			JSONObject jsonObject;
 			try (FileReader fileReader = new FileReader("questions_scheme.json")) {
@@ -191,7 +191,7 @@ public class SysData {
 		UploadQuestions();
 	}
 
-	public static void editQuestion(Question questions[]) {
+	public static void editQuestion(Question questions[]) { // function that receive json array of old and new question and update question in json -Yara
 		UploadQuestions();
 		System.out.println("Editing!!!!!!!!!!!!!!!");
 		Question oldQuestion=questions[0];
@@ -229,54 +229,6 @@ public class SysData {
 		}
 
 		UploadQuestions();
-
-	}
-
-
-	public static void AddToJson(ArrayList<Question> newQuestions) {
-		System.out.println("question deleted successfuly");
-		try {
-			// Read existing JSON content from the file
-			JSONObject jsonObject;
-			try (FileReader fileReader = new FileReader("questions_scheme.json")) {
-				jsonObject = new JSONObject(new JSONTokener(fileReader));
-			}
-
-			// Retrieve the "questions" array from the JSON content
-			JSONArray jsonArray;
-			if (jsonObject.has("questions")) {
-				jsonArray = jsonObject.getJSONArray("questions");
-			} else {
-				jsonArray = new JSONArray();
-			}
-
-			// Construct JSON object for the new question
-			for(int i=0;i<newQuestions.size();i++) {
-				JSONObject questionObj = new JSONObject();
-				questionObj.put("question", newQuestions.get(i).getContent());
-				questionObj.put("answers", new JSONArray(newQuestions.get(i).getAnswer()));
-				questionObj.put("correct_ans", newQuestions.get(i).getTrueAnswer());
-
-				// Add the difficulty property to the question object
-				questionObj.put("difficulty", newQuestions.get(i).getQLevel().equals(Levels.Easy) ? "1" : newQuestions.get(i).getQLevel().equals(Levels.Medium) ? "2" : "3");
-
-				// Add the question object to the jsonArray
-				jsonArray.put(questionObj);
-			}
-
-			// Write the updated JSON content back to the file
-			try (FileWriter writer = new FileWriter("questions_scheme.json")) {
-				JSONObject outputObject = new JSONObject();
-				outputObject.put("questions", jsonArray);
-				writer.write(outputObject.toString(4)); // Indent with 4 spaces for readability
-				System.out.println("Question appended to JSON file successfully!");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 
 	}
 

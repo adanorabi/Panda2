@@ -18,7 +18,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		MainFrame mainF= new MainFrame();
 		mainF.setVisible(true);
-		SysData.UploadQuestions(); // uploading questions from json -Yara
+		SysData.UploadQuestions(); // uploading questions from json file -Yara
 
 	}
 }
