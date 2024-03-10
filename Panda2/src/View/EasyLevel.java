@@ -1148,7 +1148,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		if((afterx-beforx==0)&&(aftery-befory==0)) {
 
 		}else {
-			PlayAudio.PlayStepsSound();
+			PlayAudio.PlayStepsSound(); //Yara
 		}
 		timer.addActionListener(e -> {
 			if (count[0] < steps) {
@@ -1168,6 +1168,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			} else {
 
 				timer.stop(); // Stop the timer when the movement is complete
+				PlayAudio.steps.close(); //Yara
 				if(Game.now==true) {//adan1
 					setPlayerText(g.CurrentTurn(), "you have to roll the dice");
 					Game.now=false;
