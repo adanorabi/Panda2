@@ -2,6 +2,9 @@ package FlatLafDesign;
 
 
 import javax.swing.*;
+
+import Model.PlayAudio;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +21,7 @@ public class AudioButton extends JButton {
 
         // Set default icon
         setIcon(defaultIcon);
+    
 
         // Set button shape to circle
         setBorderPainted(false);
@@ -39,10 +43,10 @@ public class AudioButton extends JButton {
 
         // Check if the current icon is the default icon
         if (currentIcon == defaultIcon) {//audio on
-            
+            PlayAudio.playingBackGround.close(); //Yara
             setIcon(clickedIcon);
         } else {//audio off
-            
+        	  PlayAudio.playGameSound(); //Yara
             setIcon(defaultIcon);
         }
     }
