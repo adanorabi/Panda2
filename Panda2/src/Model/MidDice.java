@@ -1,9 +1,8 @@
 package Model;
-
 import Enum.Levels;
-
+//A class that extends from Dice and it suitable for medium level game-Yara
 public class MidDice extends Dice {
-	public MidDice(Levels GameLevel) {
+	public MidDice(Levels GameLevel) {//a constructor of medium level dice -Yara
 
 		super();
 		setNumOfSides(13);
