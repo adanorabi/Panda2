@@ -298,6 +298,11 @@ public void youHaveToRoll(boolean b) {
 	
 	
 //	-----------------------------Yomna----------------------------------
+// PlaceSnakes function that locate	the Snakes on the Places matrix 
+//	where the Head of the Snake located it put the id of the snake so we can now in this place there is a snake head
+//	and in the places that located the tail of the snake it will put the number 50 (there is no element id can be reach this number)
+//	the function check the place in the matrix if it 0 it will add the head or the tail 
+//	if there is another number beside the 0 it will not allow him to put anything in this place
 	public void PlaceSnakes() {
 		if(this.GameLevel.equals(Levels.Easy)) {
 			Snake redsnake=new Snake(SnakeColor.Red); 
@@ -306,7 +311,6 @@ public void youHaveToRoll(boolean b) {
 				redsnake.SnackRandom(Levels.Easy, redsnake);
 			}
 			this.Places[redsnake.getXHeadNum()][redsnake.getYHeadNum()]=redsnake.getSnakeId();
-			//			this.Places[redsnake.getXTailNum()][redsnake.getYTailNum()]=5;
 			Snakes.add(redsnake);
 
 			Snake yellowsnake=new Snake(SnakeColor.Yellow); 
@@ -503,7 +507,7 @@ public void youHaveToRoll(boolean b) {
 //---------------------------------Yara-------------------------------
 	
 //	-------------------------------Yomna--------------------------
-
+// CurrentTurn function that return the player that in the queue an it his turn 
 	public Player CurrentTurn() {
 
 		if(PlayerTurn==this.getPlayers().size()) {
@@ -512,7 +516,10 @@ public void youHaveToRoll(boolean b) {
 		return this.getPlayers().get(PlayerTurn);
 
 	}
-
+// Roll function this function is the connection between rolling the dice in the backend and the frontend
+//	it calles the RollDice function that return an object (integer/question)
+//	 if the the object is an integer so it well update the player place ( his coordinate)
+//	 and after the check it send to the frontend the object 
 	public Object Roll() {
 
 		Object roll=this.gameDice.RollDice();
@@ -533,11 +540,12 @@ public void youHaveToRoll(boolean b) {
 
 		}
 				
-		//		put in levels  Adan!!
 		return roll;
 	}
 
-
+// checkQuestionSquare function that checks if the square in the Place matrix is a questionsquare
+//	(it will be the id of the question square that it will be one of 3/4/5)
+//	if the square is a questionsquare it will call the CallQuestion function and return the question that it CallQuestion returned 
 	public Question checkQuestionSquare() {
 
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
@@ -573,7 +581,11 @@ public void youHaveToRoll(boolean b) {
 	}
 	
 //	-----------------------Yomna------------------------------
-	public boolean updateByQuestion(Question q,boolean Answer) {/*to move the player if he answered right or wrong, send if the player has answered true*/
+//	updateByQuestion function that receive a question and answer
+//	 it will send them and send the position that his turn to answerFeedback function,
+//	answerFeedback will return the new position 
+//	and the function will give it to the current player
+	public boolean updateByQuestion(Question q,boolean Answer) {
 
 		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
 		int y=this.getPlayers().get(this.getPlayerTurn()).getPlayerCol();
@@ -594,7 +606,9 @@ public void youHaveToRoll(boolean b) {
 		this.getPlayers().get(this.getPlayerTurn()).UpdateCol(afterQuestion[1]);
 		System.out.println("updateeeeeeeeeeeeeeeeeeeeeeeeqqqqqq"+x+" "+y);
 		return false;
-
+		
+		
+// getPlayersFinalPLaces function that sort the player by their places 
 	}public ArrayList<Player> getPlayersFinalPLaces(){
 	    ArrayList<Player> winnersQueue = new ArrayList<>();
 	    
@@ -615,6 +629,11 @@ public void youHaveToRoll(boolean b) {
 	    return winnersQueue;
 	}
 
+//	UpdatePlayerPlace function that updates the player coordinate by the item that stand on it 
+//	if it is 0- normal square
+//	1/2- surprisesquare
+//	6-13- snake
+//	14-21- ladder
 	public int UpdatePlayerPlace() {
 
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
@@ -670,6 +689,8 @@ public void youHaveToRoll(boolean b) {
 		}
 		return 0;
 	}
+	
+//	NextPlayer function that take the player in the next turn
 	public int NextPlayer() {
 		return ++this.PlayerTurn;
 	}
