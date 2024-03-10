@@ -2,6 +2,8 @@ package View;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -19,7 +21,7 @@ import javax.swing.border.EmptyBorder;
 import Enum.Levels;
 import Model.Question;
 
-// frame that present question and 4 answers , the user shouls choose one answer
+// frame that present question and 4 answers , the user should choose one answer
 public class QuestionFrame extends JFrame {
 
     private JPanel contentPane;
@@ -36,8 +38,17 @@ public class QuestionFrame extends JFrame {
         this.listener = listener; // Assign the listener
         answer = false;
         answered = false;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
-        setBounds(500, 200, 854, 500);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
+        // Add a window listener to handle the closing action - ghaidaa
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Display a message to the user indicating that they cannot close the frame
+                JOptionPane.showMessageDialog(contentPane, "Please submit your answer");
+            }
+        });
+        setBounds(550, 200, 854, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
