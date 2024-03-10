@@ -12,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Model.PlayAudio;
+
 import javax.swing.JTextField;
 
 public class Instructions extends JFrame implements ActionListener {
@@ -43,6 +46,7 @@ public class Instructions extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				MainFrame frame = new MainFrame();
 				setVisible(false);
+				PlayAudio.PlayBackSound(); // Calling  the function that play back buttons audio -Yara
 				frame.setVisible(true);
 
 			}
