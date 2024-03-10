@@ -13,12 +13,12 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+//-----------------------Yomna-------------------------
 public class Screenshot {
 	
     private static final String SCREENSHOT_FOLDER = "screenshots";
     private static final Map<Integer, String> screenshotMap = new HashMap<>();
-	
+//	loadExistingScreenshots this function laod all the screenshots that in that we save so we can show them in the history
     public static void loadExistingScreenshots() {
         File folder = new File(SCREENSHOT_FOLDER);
         if (!folder.exists()) {
@@ -43,6 +43,9 @@ public class Screenshot {
         }
     }
 
+//    captureScreenshot this function take a screenshot of the game frame
+//    it receive the frame that it will take the screenshot of it, 
+//    and it receive integer that is the id of the game so we can save the capture by the gameid
     public static int captureScreenshot(JFrame frame,int id) {
       
         File screenshot = new File(SCREENSHOT_FOLDER + File.separator + "screenshot_" + id + ".png");
@@ -63,15 +66,11 @@ public class Screenshot {
         return -1;
     }
 
-    private static int getNextScreenshotId() {
-    	int size =screenshotMap.size();
-        return size++; 
-    }
-    
+//   getScreenshotPathById it get the screenshot by the integer(that it is the gameid) that it received 
     private static String getScreenshotPathById(int screenshotId) {
         return screenshotMap.getOrDefault(screenshotId, null);
     }
-
+// showScreenshot this function show the screenshot by the integer that it receive
     public static void showScreenshot(int screenshotId) {
         String screenshotPath = getScreenshotPathById(screenshotId);
         if (screenshotPath != null) {
