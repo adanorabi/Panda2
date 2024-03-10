@@ -29,7 +29,7 @@ public static boolean now;
 	public static int PlayerTurn=0;
 	public static Board GameBoard;  //yara!
 	private String endTime; 
-
+// constructor
 	public Game(int gameid, Levels gameLevel, int rowsNum, int colsNum) {
 		super();
 		this.GameId = gameid;
@@ -45,12 +45,12 @@ public static boolean now;
 		this.gameDice=DiceFactory.createDice(gameLevel);
 		this.GameBoard= new Board(colsNum);  
 	}
-
+// empty constructor
 	public Game() {
 		super();
 	}
 
-
+//getters and setters
 	public int getGameId() {
 		return this.GameId;
 	}
@@ -148,20 +148,21 @@ public static boolean now;
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
-
+//----------------------Yomna------------------------------------
+// createGame function to create the Places[][] that will be have all the elements ids on it
 	public void createGame() {
-
-
-		// Initialize board with empty Places
+	
 		for (int i = 0; i < this.RowsNum; i++) {
 			for (int j = 0; j < this.ColsNum; j++) {
-				this.Places[i][j] = 0; // 0 represents an empty place		
-				//	System.out.println(	this.Places[i][j]);
+//			it fill the Places[][] 0 sp it represent a normal square that did not have anything on it
+				this.Places[i][j] = 0; 	
 			}
 		}
 
 	}
-
+//--------------------------------Yomna-----------------------------
+	
+//	-----------------------------Yara-------------------------
 public void youHaveToRoll(boolean b) {
 	if(b==true) {
 		now=true;
@@ -293,7 +294,10 @@ public void youHaveToRoll(boolean b) {
 		}
 
 	}
-
+//-------------------------------------------Yara--------------------------
+	
+	
+//	-----------------------------Yomna----------------------------------
 	public void PlaceSnakes() {
 		if(this.GameLevel.equals(Levels.Easy)) {
 			Snake redsnake=new Snake(SnakeColor.Red); 
@@ -422,6 +426,9 @@ public void youHaveToRoll(boolean b) {
 		}
 
 	}
+//	------------------------------------Yomna--------------------------
+	
+//	----------------------------------Yara--------------------------------
 
 	public void placeLadders() {
 		Boolean flag=true;
@@ -493,7 +500,9 @@ public void youHaveToRoll(boolean b) {
 		}
 	}
 
-
+//---------------------------------Yara-------------------------------
+	
+//	-------------------------------Yomna--------------------------
 
 	public Player CurrentTurn() {
 
@@ -545,7 +554,10 @@ public void youHaveToRoll(boolean b) {
 		return null;
 
 	}
-
+//--------------------------Yomna--------------------------------
+	
+	
+//	------------------------Adan-------------------------------
 	public Boolean checkQuestionSquare2() {
 
 		int num =this.Places[this.getPlayers().get(this.getPlayerTurn()).getPlayerRow()][this.getPlayers().get(this.getPlayerTurn()).getPlayerCol()];
@@ -559,6 +571,8 @@ public void youHaveToRoll(boolean b) {
 		return false;
 
 	}
+	
+//	-----------------------Yomna------------------------------
 	public boolean updateByQuestion(Question q,boolean Answer) {/*to move the player if he answered right or wrong, send if the player has answered true*/
 
 		int x=this.getPlayers().get(this.getPlayerTurn()).getPlayerRow();
@@ -660,6 +674,6 @@ public void youHaveToRoll(boolean b) {
 		return ++this.PlayerTurn;
 	}
 
-
+//---------------------------------Yomna-----------------------------------
 
 }
