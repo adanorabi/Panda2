@@ -34,6 +34,7 @@ import javax.swing.ButtonModel;
 
 import Model.*;
 public class InterPlayersInfoFrame extends JFrame implements ActionListener{
+	/*********************************************ADAN********************************************************/
 	  private final Map<JRadioButton, ButtonGroup> buttonGroupMap = new HashMap<JRadioButton, ButtonGroup>();
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
