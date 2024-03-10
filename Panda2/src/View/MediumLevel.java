@@ -17,6 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+
 import Controller.Screenshot;
 import Controller.SysData;
 import Model.Game;
@@ -150,7 +151,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		Player proll=g.CurrentTurn();
 		setPlayerText(proll, "you have to roll the dice");
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/mid.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(MediumLevel.class.getResource("/View/img/mid.png")));//DAN SETTING BOARD
 		lblNewLabel_1.setBounds(185, 90, 1005,790);//94,59
 		contentPane.add(lblNewLabel_1);
 
@@ -211,7 +212,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		ImageIcon originalIcon3 = new ImageIcon(getClass().getResource("/View/img/MedD.png"));
 		Image resizedImage3 = originalIcon3.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 		diceIcons[9] = new ImageIcon(resizedImage3);
-
+/***************************************ADAN*SETTING PLAYER ICONS IN QUEUE*************************/
 		ImageIcon p1icon;
 		if(p1.getPlayerColor()==PlayerColor.Red)
 		{
@@ -238,16 +239,16 @@ public class MediumLevel extends JFrame implements ActionListener {
 		img1=imgIcn1.getImage().getScaledInstance(N, N, Image.SCALE_SMOOTH);
 		finalIcon1= new ImageIcon(img1);
 
-		p1OnGame=new JLabel(finalIcon1);//finish putting the icon only setbound and set visible left
+		p1OnGame=new JLabel(finalIcon1);//finish putting the icon only setbound and set visible left ADAN
 
 
 		// Create a JLabel for player p1
 		p1Label = new JLabel(scaledP1Icon);
 
 
-		int p1X = 35; // Adjusted x position based on the board offset and grid size
-		int p1Y = 80; // Adjusted y position based on the board offset and grid size
-		p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label
+		int p1X = 35; // Adjusted x position based on the board offset and grid size ADAN
+		int p1Y = 80; // Adjusted y position based on the board offset and grid size ADAN
+		p1Label.setBounds(p1X, p1Y, 100, 100); // Set bounds for player p1 label ADAN
 
 
 		// Add player p1 label to the content pane
@@ -261,7 +262,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		p1name.setBounds(73, 70, 200, 13);
 		contentPane.add(p1name);
 
-		/******************************p2**********************/
+		/******************************SETTING PLAYER 2 ICON ON QUEUE ADAN**********************/
 		ImageIcon p2icon;
 		if(p2.getPlayerColor()==PlayerColor.Red) {
 			p2icon= new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
@@ -299,7 +300,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 
 
-
+/************************************SWTTING THE NAME***********************************/
 		p2name = new JLabel(p2.getNickName());
 		p2name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		p2name.setBounds(73, 170, 200, 13);
