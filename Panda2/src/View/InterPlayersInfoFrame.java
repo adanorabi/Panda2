@@ -1132,6 +1132,7 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				
 				LevelGame f=new LevelGame();
 				setVisible(false);
+				PlayAudio.PlayBackSound(); // calling the function that play back buttons audio- Yara
 				f.setVisible(true);
 			}
 		});
@@ -1323,19 +1324,23 @@ public class InterPlayersInfoFrame extends JFrame implements ActionListener{
 				{
 					EasyLevel easyBoard= new EasyLevel(p1,p2,p3,p4,Num);
 					setVisible(false);
+					PlayAudio.PlayGameStartSound(); // calling the function to play start game audio-Yara
 					easyBoard.setVisible(true);
 				}
 				else if(Levels.Medium==level)
 				{
 					System.out.println("number"+Num);
 					MediumLevel medBoard= new MediumLevel(p1,p2,p3,p4,Num);
-					setVisible(false);
+				
+					setVisible(false);	
+					PlayAudio.PlayGameStartSound(); // calling the function to play start game audio-Yara
 					medBoard.setVisible(true);
 				}
 				else if(Levels.Hard==level)
 				{
 					HardLevel hardBoard= new HardLevel(p1,p2,p3,p4,Num);
 					setVisible(false);
+					PlayAudio.PlayGameStartSound(); // calling the function to play start game audio-Yara
 					hardBoard.setVisible(true);
 				}
 			}

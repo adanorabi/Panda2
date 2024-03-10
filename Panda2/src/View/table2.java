@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Controller.SysData;
 import FlatLafDesign.TableGradientCell;
+import Model.PlayAudio;
 import Model.Question;
 import sun.util.logging.resources.logging;
 
@@ -198,6 +199,7 @@ public class table2 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainFrame mf=new MainFrame();
+				PlayAudio.PlayBackSound(); // Calling  the function that play back buttons audio -Yara
 				setVisible(false);
 				mf.setVisible(true);
 			}

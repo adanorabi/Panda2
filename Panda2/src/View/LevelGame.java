@@ -173,6 +173,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainFrame frame=new MainFrame(); 
+				PlayAudio.PlayBackSound(); // Calling  the function that play back buttons audio -Yara
 				setVisible(false);
 				frame.setVisible(true);
 

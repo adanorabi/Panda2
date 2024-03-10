@@ -12,6 +12,7 @@ import Enum.Levels;
 import Enum.PlayerColor;
 import FlatLafDesign.*;
 import Model.Game;
+import Model.PlayAudio;
 import Model.Player;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -286,6 +287,7 @@ public class History extends javax.swing.JFrame {
 		// Handle back button click event here, navigate to MainFrame
 		dispose(); // Close the current window
 		MainFrame mainFrame = new MainFrame(); // Create an instance of MainFrame
+		PlayAudio.PlayBackSound(); // Calling  the function that play back buttons audio -Yara
 		mainFrame.setVisible(true); // Make the MainFrame visible
 	}
 }
