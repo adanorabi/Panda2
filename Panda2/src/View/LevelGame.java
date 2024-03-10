@@ -142,6 +142,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 					}
 					// send numofplayer and level game to next frame - ghaidaa
 					InterPlayersInfoFrame frame=new InterPlayersInfoFrame(numOfPlayers,gameLevel); 
+					PlayAudio.PlayBackSound(); // calling the function that play button sound
 					setVisible(false);
 					frame.setVisible(true);
 				}
