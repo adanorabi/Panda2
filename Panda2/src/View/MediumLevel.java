@@ -327,6 +327,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 //		});
 //		contentPane.add(backButton,0);
 		if(num>2) {
+			/**********************************************8SETTING PLAYER 3 IN QUEUE**************/
 			ImageIcon p3icon;
 			if(p3.getPlayerColor()==PlayerColor.Red) {
 				p3icon= new ImageIcon(MediumLevel.class.getResource("/View/img/r.png"));
@@ -366,7 +367,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 			p3name.setBounds(73, 270, 200, 13);
 			contentPane.add(p3name);
 
-
+ /***********************************ADAN setting icon player 4*****************************/ 
 			if(num==4) {
 				ImageIcon p4icon;
 				if(p4.getPlayerColor()==PlayerColor.Red) {
@@ -402,7 +403,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 				p4OnGame=new JLabel(finalIcon4);//finish putting the icon only setbound and set visible left
 
 
-				p4name = new JLabel(p4.getNickName());
+				p4name = new JLabel(p4.getNickName());//name 
 				p4name.setFont(new Font("Times New Roman", Font.BOLD, 16));
 				p4name.setBounds(73, 370, 200, 13);
 				contentPane.add(p4name);
@@ -620,11 +621,11 @@ public class MediumLevel extends JFrame implements ActionListener {
 			if (e.getSource() == pauseButton) {
 				isPaused = !isPaused;
 				if (isPaused) {
-					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/resume.png"));
+					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/resume.png"));//ADAN
 					pauseButton.setIcon(pauseIcon );
 					timer.stop();
 				} else {
-					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));
+					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));//ADAN
 					pauseButton.setIcon(pauseIcon );
 					
 					timer.start();
@@ -633,7 +634,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		}
 	}
 
-	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {
+	public void setbluesnake(int xhead, int yhead, int xtail, int ytail) {//ADAN AND GHAIDAA
 		// Load the snake image
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/bluesnake2.png"));
 
@@ -668,7 +669,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void setgreensnake(int xhead, int yhead, int xtail, int ytail) {
+	public void setgreensnake(int xhead, int yhead, int xtail, int ytail) {//ADAN AND GHAIDAA
 		// Load the snake image
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/greensnake.png"));
 
@@ -703,7 +704,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void setredsnake(int xhead, int yhead) {
+	public void setredsnake(int xhead, int yhead) {//GHAIDAA
 		// Load the snake image
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/redsnake.png"));
 
@@ -736,7 +737,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void  setyellowsnake(int xhead, int yhead, int xtail, int ytail) {
+	public void  setyellowsnake(int xhead, int yhead, int xtail, int ytail) {//GHAIDAA
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/yellosnake.png"));
 
 		// Calculate the position of the snake head and tail
@@ -769,7 +770,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.repaint();
 	}
 
-	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {
+	public void setLadders(int typeOfLader, int xhead, int yhead, int xtail, int ytail) {//ADAN AND GHAIDAA
 		int ladderHeadX = 190 + xhead * 101; // Adjusted x position based on the board offset and grid size
 		int ladderHeadY = 801 - yhead * 79; // Adjusted y position based on the board offset and grid size
 		int ladderTailX = 190 + xtail * 101; // Adjusted x position based on the board offset and grid size
@@ -783,7 +784,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		// Load the ladder image based on the ladder type
 		switch (typeOfLader) {
 		case 1:
-			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder1.png"));
+			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder1.png"));//
 			break;
 		case 2:
 			ladderIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/ladder2.png"));
@@ -825,7 +826,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void setsurprise(int x, int y) {
+	public void setsurprise(int x, int y) {//ADAN
 		// Load the surprise image
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/q.png"));
 
@@ -858,7 +859,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	public void setq(int x, int y) {
+	public void setq(int x, int y) {//ADAN
 		// Load the surprise image
 		ImageIcon snakeIcon = new ImageIcon(MediumLevel.class.getResource("/View/img/surprise.png"));
 
@@ -892,12 +893,12 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.repaint();
 	}
 	// the animation of rolling the dice - ghaidaa
-	private void rollDiceAnimation(Game g,int num) {
+	private void rollDiceAnimation(Game g,int num) {//ADAN
 		System.out.println("im in the roll dice func");
 		final int NUM_FRAMES = 15; // Number of frames for the dice animation
 		final int DELAY = 50; // Delay between each frame in milliseconds
 		Random random = new Random();
-
+/***************************************ADAN***********************/
 		Timer timer = new Timer(DELAY, new ActionListener() {
 			int frameCount = 0;
 
@@ -1109,7 +1110,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	}
 
 
-	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery,Game g) {//check
+	public void movePlayer(Player player,int beforx,int befory,int afterx,int aftery,Game g) {//check ADAN
 		System.out.println("The player is *******"+player.getPlayerColor()+" "+player.getPlayeringame());
 		int pX=0,pY=0,bx=0,by=0;
 		System.out.println("("+beforx+","+befory+")"+" to ("+afterx+","+aftery+")");
@@ -1239,7 +1240,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 
 	}
-	public void lineMangment(int turn,int num) {
+	public void lineMangment(int turn,int num) {//ADAN LINE MANAGEMNT
 		switch(num) {
 		case 2:
 			switch(turn) {
@@ -1341,7 +1342,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 	}
 
-	public void setPlayer(Player player) {
+	public void setPlayer(Player player) {//ADAN SETTING PLAYER ON SQUARE 1
 		int pX,pY;
 		switch(player.getPlayeringame()) {
 		case 1:
@@ -1403,22 +1404,6 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 
 	}
-	/*private void completeTask() {
-		Timer timer = new Timer(20, null); // Create a timer without ActionListener
-		int steps=3000;
-		timer.start(); // Start the timer
-		final int[] count = {0};
-		timer.addActionListener(e -> {
-			if (count[0] < steps) {
-
-				count[0]++;
-
-			} else {
-				timer.stop(); // Stop the timer when the movement is complete
-			}
-		});
-
-    }*/
 	private boolean conditionMet() {
 		// Replace this with your actual condition
 		return secondsElapsed >= 3000; // Stop the timer after 10 seconds for demonstration
@@ -1449,7 +1434,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	}
 
 	// Method to get color code based on PlayerColor
-	private String getColorCode(PlayerColor color) {
+	private String getColorCode(PlayerColor color) {//ADAN NAME COLOR
 		switch (color) {
 		case Red:
 			return "red";
@@ -1465,7 +1450,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 	}
 
 
-	public void landedOn(Game g) {
+	public void landedOn(Game g) {//MASSAGES
 		String s=" ";
 		Player p=g.CurrentTurn();
 
