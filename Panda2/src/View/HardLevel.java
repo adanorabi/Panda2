@@ -17,6 +17,7 @@ import java.util.Random;
 import Enum.*;
 import FlatLafDesign.AudioButton;
 import FlatLafDesign.BackButton;
+import FlatLafDesign.RoundedBorder;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -174,7 +175,10 @@ public class HardLevel extends JFrame implements ActionListener {
 		//-----------------------------------yomna-----------------------------------
 		pauseButton = new JButton("Pause");
 		pauseButton.addActionListener(new PauseButtonListener());
-		pauseButton.setBounds(70, 350, 100, 70);
+		pauseButton.setBorder(new RoundedBorder(10));
+		ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));
+		pauseButton.setIcon(pauseIcon );
+		pauseButton.setBounds(1790,70, 55, 60);
 		contentPane.add(pauseButton);
 		//        -----------------------------------yomna----------------------------
 
@@ -646,10 +650,12 @@ public class HardLevel extends JFrame implements ActionListener {
 			if (e.getSource() == pauseButton) {
 				isPaused = !isPaused;
 				if (isPaused) {
-					pauseButton.setText("Resume");
+					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/resume.png"));
+					pauseButton.setIcon(pauseIcon );
 					timer.stop();
 				} else {
-					pauseButton.setText("Pause");
+					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));
+					pauseButton.setIcon(pauseIcon );
 					timer.start();
 				}
 			}
