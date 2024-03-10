@@ -35,7 +35,7 @@ public class LogIn extends JFrame {
     private ArrayList<Admin> admins;
 
 
-    // log in frame for admins - panda group members
+    // log in frame for admins - panda group members - ghaidaa
     public LogIn() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 70,1200, 900);
@@ -44,14 +44,14 @@ public class LogIn extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        // the information of the admins for the log in 
+        // the information of the admins for the log in  - ghaidaa
         admins=new ArrayList<>();
         admins.add(new Admin("Ghaidaaazzam", "Ghaidaa123"));
         admins.add(new Admin("YaraGh", "Yara123"));
         admins.add(new Admin("YomnaZoabi", "Yomna123"));
         admins.add(new Admin("AdanOrabi", "Adan123"));
 
-        // Username text field
+        // Username text field - ghaidaa
         txtUsername = new JTextField();
         txtUsername.setBackground(new Color(176, 224, 230));
         txtUsername.setFont(new Font("Tahoma", Font.PLAIN, 20)); // Set font size to 20
@@ -69,7 +69,7 @@ public class LogIn extends JFrame {
         txtUsername.setBounds(386, 487, 415, 86);
         contentPane.add(txtUsername);
 
-        // Password field
+        // Password field - ghaidaa
         passwordField_1 = new JPasswordField();
         passwordField_1.setBackground(new Color(176, 224, 230));
         passwordField_1.setFont(new Font("Tahoma", Font.PLAIN, 20)); // Set font size to 20
@@ -87,7 +87,7 @@ public class LogIn extends JFrame {
         passwordField_1.setBounds(386, 641, 415, 86);
         contentPane.add(passwordField_1);
         
-        // home page button , return to the main frame
+        // home page button , return to the main frame - ghaidaa
         JButton btnNewButton = new JButton("<<home page");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -112,7 +112,7 @@ public class LogIn extends JFrame {
         contentPane.add(lblNewLabel_1);
         
 
-        // log in button
+        // log in button - ghaidaa
         JButton btnNewButton_1 = new JButton("Log in");
         btnNewButton_1.setIcon(new ImageIcon(getClass().getResource("/View/img/logInbut.jpg")));
         btnNewButton_1.setBounds(935, 772, 156, 37);
@@ -124,7 +124,7 @@ public class LogIn extends JFrame {
 				// TODO Auto-generated method stub
 				String username=txtUsername.getText();
 				String password=passwordField_1.getText();
-				// cheeck if the user fill all the fields
+				// check if the user fill all the fields - ghaidaa
 				if(username.isEmpty()|| password.isEmpty()) {
 					JOptionPane.showMessageDialog(getContentPane(),"You need to fill both username and password");
 
@@ -140,11 +140,11 @@ public class LogIn extends JFrame {
 						}
 					}
 					if(!check) {
-						// when the user enter false informations
+						// when the user enter false informations - ghaidaa
 						JOptionPane.showMessageDialog(getContentPane(),"We didn't recognize you!");
 					}else
 					{
-						// when the user enter correct informations
+						// when the user enter correct informations - ghaidaa
 						table2 QM=new table2();
 						setVisible(false);
 						QM.setVisible(true);
@@ -153,7 +153,7 @@ public class LogIn extends JFrame {
 				}
 			}
 		});
-        // Background photo
+        // Background photo - ghaidaa
 		ImageIcon icon = new ImageIcon(Winner.class.getResource("/View/img/logIn.jpg"));
 		System.out.println("Image loaded: " + icon.getImageLoadStatus());
 
