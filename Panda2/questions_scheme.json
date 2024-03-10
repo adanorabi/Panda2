@@ -23,7 +23,7 @@
     },
     {
         "difficulty": "2",
-        "question": "Question: In an ideal world scenario, what is the immediate action taken upon fixing every fault?",
+        "question": "In an ideal world scenario, what is the immediate action taken upon fixing every fault?",
         "answers": [
             "We fix every fault immediately",
             "We distribute fault reports to all sites",
@@ -188,7 +188,7 @@
     },
     {
         "difficulty": "3",
-        "question": "What is not considered as system maintenance ?",
+        "question": "What is not considered as system maintenance?",
         "answers": [
             "Changing a system to fix bugs",
             "Maintenance to adapt software to a different operating environment",
@@ -232,7 +232,7 @@
     },
     {
         "difficulty": "2",
-        "question": "Which of the following it is a type of review ?",
+        "question": "Which of the following it is a type of review?",
         "answers": [
             "Inspections for defect removal (product)",
             "Reviews for progress assessment (product and process)",
