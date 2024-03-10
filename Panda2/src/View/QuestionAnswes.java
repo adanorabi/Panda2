@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import Model.Question;
 
-// frame that present question with 4 answers
+// frame that present details for choosen question with 4 answers - ghaidaa
 public class QuestionAnswes extends JFrame {
 
     private JPanel contentPane;
@@ -30,7 +30,7 @@ public class QuestionAnswes extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        // arraylist that contain the false answers
+        // arraylist that contain the false answers - ghaidaa
         ArrayList<String> answers=new ArrayList<String>();
         for(String temp: q.getAnswer())
         {
@@ -40,45 +40,55 @@ public class QuestionAnswes extends JFrame {
         	}
         }
         
-        // set the contant of the question
+        // set the contant of the question - ghaidaa
         JLabel Qu = new JLabel("");
+        Qu.setFont(new Font("Tahoma", Font.PLAIN, 18));
         Qu.setBounds(329, 51, 544, 175);
         contentPane.add(Qu);
-        Qu.setText(q.getContent());
-        adjustFontSize(Qu);
+        String questionText = q.getContent();
+        String formattedQuestionText = insertLineBreaks(questionText);
+        Qu.setText("<html>" + formattedQuestionText + "</html>");
         Qu.setForeground(Color.WHITE);
-
-        // set the true answer
+        
+        // set the true answer - ghaidaa
         JLabel TrueAns = new JLabel("");
+        TrueAns.setFont(new Font("Tahoma", Font.PLAIN, 15));
         TrueAns.setBounds(519, 296, 415, 116);
         contentPane.add(TrueAns);
-        TrueAns.setText(q.getTrueAnswer());
-        adjustFontSize(TrueAns);
+        questionText = q.getTrueAnswer();
+        formattedQuestionText = insertLineBreaks(questionText);
+        TrueAns.setText("<html>" + formattedQuestionText + "</html>");
         TrueAns.setForeground(Color.WHITE);
 
-        // present the false answers
+        // present the false answers - ghaidaa
         JLabel falseAns1 = new JLabel("New label");
+        falseAns1.setFont(new Font("Tahoma", Font.PLAIN, 15));
         falseAns1.setBounds(592, 479, 415, 103);
         contentPane.add(falseAns1);
-        falseAns1.setText(answers.get(0));
-        adjustFontSize(falseAns1);
+        questionText = answers.get(0);
+        formattedQuestionText = insertLineBreaks(questionText);
+        falseAns1.setText("<html>" + formattedQuestionText + "</html>");
         falseAns1.setForeground(Color.WHITE);
 
         JLabel falseAns2 = new JLabel("New label");
+        falseAns2.setFont(new Font("Tahoma", Font.PLAIN, 15));
         falseAns2.setBounds(620, 655, 427, 103);
         contentPane.add(falseAns2);
-        falseAns2.setText(answers.get(1));
-        adjustFontSize(falseAns2);
+        questionText = answers.get(1);
+        formattedQuestionText = insertLineBreaks(questionText);
+        falseAns2.setText("<html>" + formattedQuestionText + "</html>");
         falseAns2.setForeground(Color.WHITE);
 
         JLabel falseAns3 = new JLabel("New label");
+        falseAns3.setFont(new Font("Tahoma", Font.PLAIN, 15));
         falseAns3.setBounds(541, 822, 427, 103);
         contentPane.add(falseAns3);
-        falseAns3.setText(answers.get(2));
-        adjustFontSize(falseAns3);
+        questionText = answers.get(2);
+        formattedQuestionText = insertLineBreaks(questionText);
+        falseAns3.setText("<html>" + formattedQuestionText + "</html>");
         falseAns3.setForeground(Color.WHITE);
         
-        // back button thar return the user to question management
+        // back button that return the user to question management - ghaidaa
         JButton back = new JButton("back button");
         back.setBounds(79, 793, 170, 69);
         ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
@@ -101,17 +111,19 @@ public class QuestionAnswes extends JFrame {
 
     }
 
-    // function that set the size of the texts 
-    private void adjustFontSize(JLabel label) {
-        String text = label.getText();
-        int length = text.length();
-        Font originalFont = label.getFont();
-        int fontSize = originalFont.getSize();
-        if (length > 20) { 
-            fontSize += 10; // Decrease font size if text is long
-        } else {
-            fontSize += 20; // Increase font size if text is short
+    private String insertLineBreaks(String text) {
+        String[] words = text.split("\\s+");
+        StringBuilder result = new StringBuilder();
+        int wordCount = 0;
+        for (String word : words) {
+            result.append(word).append(" ");
+            wordCount++;
+            if (wordCount == 10) {
+                result.append("<br>");
+                wordCount = 0;
+            }
         }
-        label.setFont(new Font(originalFont.getName(), originalFont.getStyle(), fontSize));
+        return result.toString().trim();
     }
+
 }
