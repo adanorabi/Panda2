@@ -173,7 +173,10 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 		//-----------------------------------yomna-----------------------------------
 		pauseButton = new JButton("Pause");
 		pauseButton.addActionListener(new PauseButtonListener());
-		pauseButton.setBounds(70, 350, 100, 70);
+		pauseButton.setBounds(960,20, 55, 60);
+		pauseButton.setBorder(new RoundedBorder(10));
+		ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));
+		pauseButton.setIcon(pauseIcon );
 		contentPane.add(pauseButton);
 		//        -----------------------------------yomna----------------------------
 		diceButton = new JButton("Roll Dice");
@@ -599,10 +602,15 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			if (e.getSource() == pauseButton) {
 				isPaused = !isPaused;
 				if (isPaused) {
-					pauseButton.setText("Resume");
+				
+					ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/resume.png"));
+					pauseButton.setIcon(pauseIcon );
+					
 					timer.stop();
-				} else {
-					pauseButton.setText("Pause");
+				} else {	
+				
+				ImageIcon pauseIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/pause.png"));
+				pauseButton.setIcon(pauseIcon );
 					timer.start();
 				}
 			}
