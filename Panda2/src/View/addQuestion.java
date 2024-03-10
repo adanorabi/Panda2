@@ -32,7 +32,7 @@ import javax.swing.JComboBox;
 public class addQuestion extends JFrame {
 
     private JPanel contentPane;
-	private table2 parentFrame; // Reference to the parent frame (table2)
+	private table2 parentFrame; // Reference to the parent frame (table2)-ghaidaa
     private JLabel questionFrame;
     private JTextField textField;
     private JTextField textField_1;
@@ -43,32 +43,14 @@ public class addQuestion extends JFrame {
     private JButton btnNewButton_1;
     private JLabel lblNewLabel_3;
 
-    /**
-     * Launch the application.
-//     */
-//    public static void main(String[] args) {
-//        EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    addQuestion frame = new addQuestion();
-//                    frame.setVisible(true);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
-
-    /**
-     * Create the frame.
-     */
+    // frame to add question - ghaidaa
     public addQuestion(table2 parentFrame) {
         this.parentFrame = parentFrame;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                setVisible(false); // Hide the addQuestion frame
+                setVisible(false); // Hide the addQuestion frame  - ghaidaa
             }
         });
         setBounds(500, 200, 1000, 700);
@@ -82,17 +64,20 @@ public class addQuestion extends JFrame {
         lblNewLabel.setBounds(258, 72, 300, 38);
         contentPane.add(lblNewLabel);
         
+        // enter content of the new question - ghaidaa
         textField = new JTextField("Question");
         textField.setFont(new Font("Traditional Arabic", Font.PLAIN, 18));
         textField.setBounds(257, 114, 404, 36);
         contentPane.add(textField);
         textField.setColumns(10);
         
+        // enter the right answer of the new question  - ghaidaa
         JLabel lblNewLabel_1 = new JLabel("The right answer :");
         lblNewLabel_1.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
         lblNewLabel_1.setBounds(258, 161, 203, 25);
         contentPane.add(lblNewLabel_1);
         
+        // three false answers  - ghaidaa
         textField_1 = new JTextField("answer 1");
         textField_1.setFont(new Font("Traditional Arabic", Font.PLAIN, 18));
         textField_1.setBounds(257, 196, 404, 38);
@@ -122,7 +107,7 @@ public class addQuestion extends JFrame {
         textField_4.setBounds(256, 412, 404, 38);
         contentPane.add(textField_4);
         
-        // choosing one level of game
+        // choosing one level of game - ghaidaa
         JComboBox comboBox = new JComboBox();
         comboBox.setBounds(318, 471, 119, 25);
         contentPane.add(comboBox);
@@ -134,7 +119,7 @@ public class addQuestion extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	// check if the user enter a content for the question
+            	// check if the user enter a content for the question - ghaidaa
                 if (textField.getText().equals("Question")) {
                     JOptionPane.showMessageDialog(getContentPane(),"Enter content of Question!");
                     // check if the user enter 4 answers
@@ -142,7 +127,7 @@ public class addQuestion extends JFrame {
                         textField_3.getText().equals("answer 3") || textField_4.getText().equals("answer 4")) {
                     JOptionPane.showMessageDialog(getContentPane(),"Enter all the answers!");
                 } else {
-                    // Create a new Question object
+                    // Create a new Question object - ghaidaa
                     String content = textField.getText();
                     String trueAnswer = textField_1.getText();
                     String answer2 = textField_2.getText();
@@ -158,13 +143,13 @@ public class addQuestion extends JFrame {
                     Question newQuestion =new Question(SysData.QuestionId++, level, content, answers, trueAnswer);
                     SysData.AddQuestioToJson(newQuestion); // Adding question to json 
 
-                    // Add the new question to the allQuestions ArrayList
+                    // Add the new question to the allQuestions ArrayList  - ghaidaa
                     parentFrame.getAllQuestions().add(newQuestion);
 
-                    // Update the table directly in the parent frame (table2)
+                    // Update the table directly in the parent frame (table2) - ghaidaa
                     parentFrame.updateTable();
 
-                    // Dispose of the addQuestion frame
+                    // Dispose of the addQuestion frame - ghaidaa
                     dispose();
                 }
             }
@@ -173,6 +158,7 @@ public class addQuestion extends JFrame {
         contentPane.add(btnNewButton);
         btnNewButton.setIcon(new ImageIcon(getClass().getResource("/View/img/submit.jpg")));
 
+        // back to table2 frame that contain all the questions  - ghaidaa
         btnNewButton_1 = new JButton("Back");
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -192,6 +178,7 @@ public class addQuestion extends JFrame {
         questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/sky.png")));
         questionFrame.setBounds(0, -70, 1005, 805);
         contentPane.add(questionFrame);
+        
         // Set border color dynamically
         textField_1.setBorder(new LineBorder(Color.GREEN)); // Set the correct answer border color to green
         textField_2.setBorder(new LineBorder(Color.RED));   // Set other answer border color to red

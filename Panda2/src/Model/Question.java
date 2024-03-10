@@ -1,11 +1,10 @@
 package Model;
-
 import java.util.ArrayList;
 
 import Controller.SysData;
 //import Controller.SysData;
 import Enum.Levels;
-
+//------------------------Question class that contains question metods By Yara--------------------
 public class Question {
 	private int QuestionId;
 
@@ -17,7 +16,6 @@ public class Question {
 	public Question(int questionId, Levels qLevel,String content, ArrayList<String> answer, String trueAnswer ) {
 		super();
 		this.QuestionId = questionId;
-	
 		this.Content = content;
 		this.Answers =  new ArrayList<String>(); 
 		this.TrueAnswer = trueAnswer;
@@ -25,12 +23,11 @@ public class Question {
 		this.QLevel = qLevel;
 	}
 
-
 	public Question() {
 		super();
 	}
 
-
+	//getters and setters
 	public int getQuestionId() {
 		return QuestionId;
 	}
@@ -80,19 +77,18 @@ public class Question {
 	}
 
 
-	public static Question CallQuestion(Levels questionLevel)  {
+	public static Question CallQuestion(Levels questionLevel)  {  // a function that choose a random question according to the level received -Yara
 		// Check if the list corresponding to the question level is empty
 		if (questionLevel.equals(Levels.Easy) && !SysData.EasyQues.isEmpty()) {
 			int index = (int)(Math.random() * SysData.EasyQues.size()); 
-			//System.out.prisntln("Random Question is: " + SysData.EasyQues.get(index));
 			return SysData.EasyQues.get(index); // returning a random easy question
+
 		} else if (questionLevel.equals(Levels.Medium) && !SysData.MidQues.isEmpty()) {
 			int index = (int)(Math.random() * SysData.MidQues.size()); 
-			//System.out.println("Random Question is: " + SysData.MidQues.get(index));
 			return SysData.MidQues.get(index); // returning a random medium question
+
 		} else if (!SysData.HardQues.isEmpty()) {
 			int index = (int)(Math.random() * SysData.HardQues.size()); 
-			//	System.out.println("Random Question is: " + SysData.HardQues.get(index));
 			return SysData.HardQues.get(index); // returning a random Hard question
 		} else {
 			// Throw an exception indicating no questions available
@@ -100,41 +96,31 @@ public class Question {
 		}
 	}
 
-	public static  int answerFeedback(Question question,boolean Answer,int Position ) // Function that decide the player movement according to his answers of questions 
+	public static  int answerFeedback(Question question,boolean Answer,int Position ) // Function that decide the player movement according to his answers of questions-Yara 
 	{
 		int newpos;
 		if(question.getQLevel().equals(Levels.Easy)) {
 			if( Answer== true) {
 				newpos= 0+Position;
-
 				return newpos;
-
 			}
 			else {
 				newpos= Position-1;
-
 				return newpos;
-
-
 			}
 		}
 		else if(question.getQLevel().equals(Levels.Medium)) {
 			if( Answer== true) {
 
 				newpos= Position;
-
 				return newpos;
 			}
 
 			else {
 				newpos= Position-2;
-
 				return newpos;
-
-
 			}
 		}
-
 
 		else {
 			if( Answer== true) {   // true answer for Hard question

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import Controller.JsonObserver;
+
 import Controller.SysData;
 import Enum.Levels;
 import Model.Question;
@@ -26,7 +26,7 @@ public class JsonTest {
 
     @Test
     public void testUploadQuestionsDifficultyLevels() {
-    	JsonObserver.UploadQuestions();
+    	SysData.UploadQuestions();
 
         // Test if questions are uploaded with correct difficulty level
   
@@ -37,7 +37,7 @@ public class JsonTest {
 
     @Test
     public void testUploadQuestionsAnswers() {
-    	JsonObserver.UploadQuestions();
+    	SysData.UploadQuestions();
 
         // Test if questions are uploaded with correct number of answers
   

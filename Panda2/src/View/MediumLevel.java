@@ -169,6 +169,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		g.placeLadders();
 
 		/****************************dice*************************************************************/
+		// roll dice button - ghaidaa
 		diceButton = new JButton("Roll Dice");
 		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.jpg")));
 		diceButton.setBounds(43, 702, 134, 49);
@@ -195,6 +196,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 		diceIcons = new ImageIcon[10];
 
+		// the faces of the dice in array - ghaidaa
 		for (int i = 0; i < 7; i++) {
 			ImageIcon originalIcon = new ImageIcon(getClass().getResource("/View/img/" + i  + ".png"));
 			Image resizedImage = originalIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
@@ -888,6 +890,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
+	// the animation of rolling the dice - ghaidaa
 	private void rollDiceAnimation(Game g,int num) {
 		System.out.println("im in the roll dice func");
 		final int NUM_FRAMES = 15; // Number of frames for the dice animation
@@ -900,11 +903,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!isPaused) {
-					// Change dice image randomly for animation
-
-
+					// Change dice image randomly for animation- ghaidaa
 					// Create a new JLabel with the dice image and add it to the lblEasyTable panel
-					// Change dice image randomly for animation
 					int randomIndex = random.nextInt(diceIcons.length);
 
 					// Create a new JLabel with the dice image and add it to the lblEasyTable panel
@@ -965,7 +965,6 @@ public class MediumLevel extends JFrame implements ActionListener {
 											// This method will be called when the player answers the question
 											g.updateByQuestion(myQ, isCorrect);
 											System.out.println("Answered: " + isCorrect);
-											// Continue with your logic here
 										}
 									});
 									qu.setVisible(true);
@@ -1097,8 +1096,7 @@ public class MediumLevel extends JFrame implements ActionListener {
 
 
 						((Timer) e.getSource()).stop();
-						// Simulate rolling and display the final result
-						//JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
+						// Simulate rolling and display the final result - ghaidaa
 					}
 				}
 			}

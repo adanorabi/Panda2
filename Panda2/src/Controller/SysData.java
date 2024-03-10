@@ -27,20 +27,19 @@ import Model.*;
 
 public class SysData {
 	static public  ArrayList<Game> gamesList= new ArrayList<Game>(); // array list that contains the games
-	static public  ArrayList<Question> questionList= new ArrayList<Question>(); //arraylist that contains questions from all levels
-	static public  ArrayList<Question> HardQues= new ArrayList<Question>();
-	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	
-	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();
+	static public  ArrayList<Question> questionList= new ArrayList<Question>(); //arraylist that contains questions from all levels-Yara
+	static public  ArrayList<Question> HardQues= new ArrayList<Question>();//arraylist that contains questions hard levels-Yara
+	static public  ArrayList<Question> MidQues= new ArrayList<Question>();	//arraylist that contains questions medium levels-Yara
+	static public  ArrayList<Question> EasyQues= new ArrayList<Question>();//arraylist that contains questions easy levels-Yara
 	static public  ArrayList<Player> winnerPlayer= new ArrayList<Player>();
 	static public int QuestionId=0;
-	public void UploadGames() {}
 	Levels QLevel;
 	String Content;
 
 	ArrayList<String> Answer;
 	String TrueAnswer;
 
-	public static void UploadQuestions() {  //A function that pulling out the questions from json file
+	public static void UploadQuestions() {  //A function that pulling out the questions from json file by reading them and saving them in arraylists-Yara
 
 		try {
 			HardQues.clear();
@@ -101,7 +100,7 @@ public class SysData {
 
 	}
 
-	public static void AddQuestioToJson(Question newQuestion) {
+	public static void AddQuestioToJson(Question newQuestion) { // adding new question to json file -Yara
 		// Print a message indicating successful deletion of a question
 		System.out.println("question added successfully");
 
@@ -147,7 +146,7 @@ public class SysData {
 		UploadQuestions();
 	}
 
-	public static void DeleteQuestioFromJson(String content) {
+	public static void DeleteQuestioFromJson(String content) { //Deleting a question fro json file and updating it -Yara
 		try {
 			JSONObject jsonObject;
 			try (FileReader fileReader = new FileReader("questions_scheme.json")) {
@@ -191,7 +190,7 @@ public class SysData {
 		UploadQuestions();
 	}
 
-	public static void editQuestion(Question questions[]) {
+	public static void editQuestion(Question questions[]) { // function that receive json array of old and new question and update question in json -Yara
 		UploadQuestions();
 		System.out.println("Editing!!!!!!!!!!!!!!!");
 		Question oldQuestion=questions[0];
@@ -231,68 +230,23 @@ public class SysData {
 		UploadQuestions();
 
 	}
-
-
-	public static void AddToJson(ArrayList<Question> newQuestions) {
-		System.out.println("question deleted successfuly");
-		try {
-			// Read existing JSON content from the file
-			JSONObject jsonObject;
-			try (FileReader fileReader = new FileReader("questions_scheme.json")) {
-				jsonObject = new JSONObject(new JSONTokener(fileReader));
-			}
-
-			// Retrieve the "questions" array from the JSON content
-			JSONArray jsonArray;
-			if (jsonObject.has("questions")) {
-				jsonArray = jsonObject.getJSONArray("questions");
-			} else {
-				jsonArray = new JSONArray();
-			}
-
-			// Construct JSON object for the new question
-			for(int i=0;i<newQuestions.size();i++) {
-				JSONObject questionObj = new JSONObject();
-				questionObj.put("question", newQuestions.get(i).getContent());
-				questionObj.put("answers", new JSONArray(newQuestions.get(i).getAnswer()));
-				questionObj.put("correct_ans", newQuestions.get(i).getTrueAnswer());
-
-				// Add the difficulty property to the question object
-				questionObj.put("difficulty", newQuestions.get(i).getQLevel().equals(Levels.Easy) ? "1" : newQuestions.get(i).getQLevel().equals(Levels.Medium) ? "2" : "3");
-
-				// Add the question object to the jsonArray
-				jsonArray.put(questionObj);
-			}
-
-			// Write the updated JSON content back to the file
-			try (FileWriter writer = new FileWriter("questions_scheme.json")) {
-				JSONObject outputObject = new JSONObject();
-				outputObject.put("questions", jsonArray);
-				writer.write(outputObject.toString(4)); // Indent with 4 spaces for readability
-				System.out.println("Question appended to JSON file successfully!");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-
-	}
-
+//----------------------------Yomna-----------------------------
+//	AddGame this function receive the game that we want to add to the Exel file that have all the game history
+	
 	public static void AddGame(Game g) {
-
+// read AllGames.csv exel file
 		String filePath = "AllGames.csv";
 
 		System.out.println("starting write user.csv file: " + filePath);
+//		call writeCsv function and send for it the file and the game 
 		writeCsv(filePath,g);
 
 
 	}
 
-	// Define a flag to check if it's the first run
-	//    private static boolean isFirstRun = true;
-
+// writeCsv function receive the filepath of the exel file that have the history of the games
+//	and receive the the game that we need to add it to the file
+//	this function add the history of the game that it received and add it to the exel file
 	public static void writeCsv(String filePath,Game g) {
 
 
@@ -300,28 +254,28 @@ public class SysData {
 		try {
 
 			fileWriter = new FileWriter(filePath,true);
-			//			fileWriter.append("GameId, GameLevel, WinnerNickName,WinnerColor, Time\n");
-
-			//			for(Game g: SysData.gamesList) {
 			System.out.println(g);
+//			add the game id to the file
 			fileWriter.append(String.valueOf(g.getGameId()));
 			fileWriter.append(",");
+//			add the game level to the exel file
 			fileWriter.append(String.valueOf(g.getGameLevel()));
 			fileWriter.append(",");
-			//				fileWriter.append(String.valueOf(g.getWinnerId()));
-
+//			run over the players arraylist that have the game
 			for(Player p: g.getPlayers()) {
+//				checkes if the getWinnerId of the game is the same as the playerid that in the arraylist
 				if(p.getPlayerID()==g.getWinnerId()) {
+//					add the nickname of the winner player to the exel file 
 					fileWriter.append(String.valueOf(p.getNickName()));
 					fileWriter.append(",");
+//					add the playercolor of the winnerplayer to the exel file
 					fileWriter.append(String.valueOf(p.getPlayerColor()));
 					fileWriter.append(",");
 				}
 			}
-			//		    fileWriter.append(",");
+//			add the endtime of the game to the exel file
 			fileWriter.append(String.valueOf(g.getEndTime()));
 			fileWriter.append("\n");
-			//			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -339,80 +293,9 @@ public class SysData {
 
 
 
-	//	public static int readCsv(String filePath) {
-	//		System.out.println("test number11111111111111111111111");
-	//		BufferedReader reader = null;
-	//		int swap=0;
-	//
-	//		try {
-	//			String line = "";
-	//			reader = new BufferedReader(new FileReader(filePath));
-	//			reader.readLine();
-	//
-	//			while((line = reader.readLine()) != null) {
-	//				String[] fields = line.split(",");
-	//				System.out.println("test number222222222222222222222222222");
-	//				
-	//
-	//				if(fields.length > 0) {
-	//					System.out.println("test number333333333333333333333333333");
-	//					Game game = new Game();
-	//					Player player = new Player();
-	//					if(swap<Integer.parseInt(fields[0])) {
-	//						swap=Integer.parseInt(fields[0]);
-	//					}
-	//					System.out.println("swap in sysy data "+swap);
-	//					game.setGameId(swap);
-	//					
-	//					if(fields[1].equals("Easy")) {
-	//						game.setGameLevel(Levels.Easy);
-	//					}else if(fields[1].equals("Medium")) {
-	//						game.setGameLevel(Levels.Medium);
-	//					}else if(fields[1].equals("Hard")) {
-	//						game.setGameLevel(Levels.Hard);
-	//					}
-	//					player.setNickName(fields[2]);
-	//					if(fields[3].equals(PlayerColor.Red)) {
-	//						player.setPlayerColor(PlayerColor.Red);
-	//					}else if(fields[3].equals(PlayerColor.Blue)) {
-	//						player.setPlayerColor(PlayerColor.Blue);
-	//					}else if(fields[3].equals(PlayerColor.Green)) {
-	//						player.setPlayerColor(PlayerColor.Green);
-	//					}else if(fields[3].equals(PlayerColor.Yellow)) {
-	//						player.setPlayerColor(PlayerColor.Yellow);
-	//					}
-	//					
-	//					
-	//
-	//					//		        game.setWinnerId(Integer.parseInt(fields[2]));
-	//
-	//					game.setEndTime(fields[4]);//adan
-	//					System.out.println(swap+ " ghdurtjrydtffhtfythg");
-	//					gamesList.add(game);
-	//					System.out.println(game.getGameLevel());
-	//					System.out.println(game.getGameId());
-	//					winnerPlayer.add(player);
-	//				}
-	//
-	//			}
-	//			return swap;
-	//
-	//		} catch (Exception ex) {
-	//			ex.printStackTrace();
-	//		} finally {
-	//			try {
-	//				reader.close();
-	//			} catch (Exception e) {
-	//				e.printStackTrace();
-	//			}
-	//		}
-	//		return 0;
-	//
-	//	}
-
-
+// readCsv function receive the filepath of the exel that we are saving the history of the games 
+//	the function read the exel file so we can take the history data from it
 	public static int readCsv(String filePath) {
-		System.out.println("test number11111111111111111111111");
 		BufferedReader reader = null;
 		int swap = 0;
 
@@ -425,18 +308,19 @@ public class SysData {
 				// Start reading the file
 				while ((line = reader.readLine()) != null) {
 					String[] fields = line.split(",");
-					System.out.println("test number222222222222222222222222222");
+//					check if the file is not empty
 					if(!fields[0].isEmpty()) {
 						if (fields.length > 0) {
-							System.out.println("test number333333333333333333333333333");
+//							build new game and new player so we can give them the data from the exel
 							Game game = new Game();
 							Player player = new Player();
+//							get the game id from the exel file
 							if (swap < Integer.parseInt(fields[0])) {
 								swap = Integer.parseInt(fields[0]);
 							}
 							System.out.println("swap in sysy data " + swap);
 							game.setGameId(swap);
-
+//							get the level of the game from the exel file
 							if (fields[1].equals("Easy")) {
 								game.setGameLevel(Levels.Easy);
 							} else if (fields[1].equals("Medium")) {
@@ -444,7 +328,9 @@ public class SysData {
 							} else if (fields[1].equals("Hard")) {
 								game.setGameLevel(Levels.Hard);
 							}
+//							get the player nickname from the exel file
 							player.setNickName(fields[2]);
+//							get the player color from the exel file
 							if (fields[3].equals(PlayerColor.Red)) {
 								player.setPlayerColor(PlayerColor.Red);
 							} else if (fields[3].equals(PlayerColor.Blue)) {
@@ -454,17 +340,17 @@ public class SysData {
 							} else if (fields[3].equals(PlayerColor.Yellow)) {
 								player.setPlayerColor(PlayerColor.Yellow);
 							}
-
-							// game.setWinnerId(Integer.parseInt(fields[2]));
-
-							game.setEndTime(fields[4]);//adan
-							System.out.println(swap + " ghdurtjrydtffhtfythg");
+//							get the endtime of the game from the exel file
+							game.setEndTime(fields[4]);
+//							add the new game to the arraylist of the games gamesList
 							gamesList.add(game);
 							System.out.println(game.getGameLevel());
 							System.out.println(game.getGameId());
+//							add the new player to the arraylist of the winnerplayers winnerPlayer
 							winnerPlayer.add(player);
 						}
 					}else {
+//						print if the file is empty, so it will not read  it
 						System.out.println("the file is empty");
 					}
 				}

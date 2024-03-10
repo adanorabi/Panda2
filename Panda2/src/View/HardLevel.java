@@ -200,6 +200,7 @@ public class HardLevel extends JFrame implements ActionListener {
 		g.placeLadders();
 
 		/****************************dice*************************************************************/
+		// roll dice button to start the rolling- ghaidaa
 		diceButton = new JButton("Roll Dice");
 		diceButton.setIcon(new ImageIcon(getClass().getResource("/View/img/roll.jpg")));
 		diceButton.setBounds(43, 902, 134, 49);
@@ -209,9 +210,9 @@ public class HardLevel extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!isPaused) {
-				System.out.println("in dice btn");
-				PlayAudio.playDiceSound(); // calling the function that play the sound of RollDice -Yara
-				rollDiceAnimation(g,num);
+					System.out.println("in dice btn");
+					PlayAudio.playDiceSound(); // calling the function that play the sound of RollDice -Yara
+					rollDiceAnimation(g,num);
 				}
 
 			}});
@@ -223,7 +224,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 		contentPane.add(diceLabel); // Add the dice label to lblEasyTable panel
 		diceLabel.setVisible(true);
-
+		// the faces of the dice in hard level , to use it in the annimation - ghaidaa
 		diceIcons = new ImageIcon[10];
 
 		for (int i = 0; i < 7; i++) {
@@ -482,25 +483,25 @@ public class HardLevel extends JFrame implements ActionListener {
 			}
 		});
 		startTimer();
-//
-//		BackButton backButton = new BackButton();
-//		backButton.setBounds(800, 950, 100, 40); // Set the bounds of the button
-//		backButton.setText("Home"); // Set the text of the button
-//		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
-//		backButton.setForeground(Color.black); // Set the text color
-//		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
-//		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
-//		backButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				MainFrame f=new MainFrame();
-//				f.setVisible(true);
-//				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
-//				frame.dispose();
-//			}
-//
-//		});
-//		contentPane.add(backButton,0);
+		//
+		//		BackButton backButton = new BackButton();
+		//		backButton.setBounds(800, 950, 100, 40); // Set the bounds of the button
+		//		backButton.setText("Home"); // Set the text of the button
+		//		backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set the font of the button text
+		//		backButton.setForeground(Color.black); // Set the text color
+		//		backButton.setHoverBackgroundColor(Color.white); // Set the background color when hovered
+		//		backButton.setPressedBackgroundColor(Color.decode("#7f7f7f")); // Set the background color when pressed
+		//		backButton.addActionListener(new ActionListener() {
+		//			public void actionPerformed(ActionEvent e) {
+		//				// TODO Auto-generated method stub
+		//				MainFrame f=new MainFrame();
+		//				f.setVisible(true);
+		//				JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(backButton);
+		//				frame.dispose();
+		//			}
+		//
+		//		});
+		//		contentPane.add(backButton,0);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(null); // set audio
 		ImageIcon defaultIcon = new ImageIcon(EasyLevel.class.getResource("/View/img/audioOn.png"));
@@ -939,11 +940,8 @@ public class HardLevel extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!isPaused) {
-					// Change dice image randomly for animation
-
-
+					// Change dice image randomly for animation- ghaidaa
 					// Create a new JLabel with the dice image and add it to the lblEasyTable panel
-					// Change dice image randomly for animation
 					int randomIndex = random.nextInt(diceIcons.length);
 
 					// Create a new JLabel with the dice image and add it to the lblEasyTable panel
@@ -997,14 +995,13 @@ public class HardLevel extends JFrame implements ActionListener {
 									}
 									System.out.println("questionnnn frame");
 
-									// Create the QuestionFrame
+									// Create the QuestionFrame- ghaidaa
 									QuestionFrame qu = new QuestionFrame(myQ, new QuestionFrame.QuestionAnsweredListener() {
 										@Override
 										public void onQuestionAnswered(boolean isCorrect) {
-											// This method will be called when the player answers the question
+											// This method will be called when the player answers the question- ghaidaa
 											g.updateByQuestion(myQ, isCorrect);
 											System.out.println("Answered: " + isCorrect);
-											// Continue with your logic here
 										}
 									});
 									qu.setVisible(true);
@@ -1025,7 +1022,7 @@ public class HardLevel extends JFrame implements ActionListener {
 								landedOn(g);
 							}
 
-							
+
 							if(g.GameBoard.getPosition(p.getPlayerRow(), p.getPlayerCol())==X*Y) {
 								s= "IS THE WINNER!!!!! ";
 								setPlayerText(p, s);
@@ -1134,8 +1131,7 @@ public class HardLevel extends JFrame implements ActionListener {
 
 
 						((Timer) e.getSource()).stop();
-						// Simulate rolling and display the final result
-						//JOptionPane.showMessageDialog(null, "You rolled: " + answer, "Dice Roll Result", JOptionPane.INFORMATION_MESSAGE);
+						// Simulate rolling and display the final result- ghaidaa
 					}
 				}
 			}

@@ -23,7 +23,7 @@
     },
     {
         "difficulty": "2",
-        "question": "Question: In an ideal world scenario, what is the immediate action taken upon fixing every fault?",
+        "question": "In an ideal world scenario, what is the immediate action taken upon fixing every fault?",
         "answers": [
             "We fix every fault immediately",
             "We distribute fault reports to all sites",
@@ -113,10 +113,10 @@
         "difficulty": "3",
         "question": "What are some challenges associated with domain requirements?",
         "answers": [
-            "Lack of stakeholder involvement",
-            "Underestimation and overestimation",
-            "Compliance and adaptability",
-            "Understandability and implicitness"
+            "Project scheduling and time management",
+            "Understandability and implicitness",
+            "Team communication and collaboration",
+            "Quality assurance and testing strategies"
         ],
         "correct_ans": "Understandability and implicitness"
     },
@@ -188,7 +188,7 @@
     },
     {
         "difficulty": "3",
-        "question": "What is not considered as system maintenance ?",
+        "question": "What is not considered as system maintenance?",
         "answers": [
             "Changing a system to fix bugs",
             "Maintenance to adapt software to a different operating environment",
@@ -215,7 +215,7 @@
             "Testing some operations associated with an object",
             "Setting and interrogating all object attributes",
             "Exercising the object in one state",
-            "Testing and exercising  specific functionality"
+            "Testing part of the functionality"
         ],
         "correct_ans": "Setting and interrogating all object attributes"
     },
@@ -232,7 +232,7 @@
     },
     {
         "difficulty": "2",
-        "question": "Which of the following it is a type of review ?",
+        "question": "Which of the following it is a type of review?",
         "answers": [
             "Inspections for defect removal (product)",
             "Reviews for progress assessment (product and process)",

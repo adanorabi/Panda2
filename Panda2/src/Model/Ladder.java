@@ -4,25 +4,26 @@ import java.util.Random;
 
 import Enum.Levels;
 
+//-----------------------------Yomna--------------------------------
 public class Ladder extends MovePlayerTemplate {
 
 
 	private int Length;
-	private int XStart;
-	private int YStart;
-	private int XEnd;
-	private int YEnd;
+	private int XStart; // the x coordinate for the ladder start
+	private int YStart;// the y coordinate for the ladder start
+	private int XEnd;// the x coordinate for the ladder end
+	private int YEnd;// the x coordinate for the ladder end
 	Random rand = new Random();
-	public static int counter=14;
+	public static int counter=14; // the ladders id start from number 14 so we can recognize that the item in the board is a ladder
 	private int LadderId;
-
+// consturctor
 	public Ladder(int length) {
 		super();
 		Length = length;
 		this.LadderId=this.counter++;
 	}
 
-	
+//	getters and setters
 	public int getLadderId() {
 		return LadderId;
 	}
@@ -81,6 +82,11 @@ public class Ladder extends MovePlayerTemplate {
 		this.rand = rand;
 	}
 	
+//	LadderRandom function decides the coordinate of the start and the end of the ladder by taking random number for them
+//	the random has constrains for example: the ladder did not take a place outside the gameboard
+//	and also make the random for the y coordinate so it always be the yend-ystart= the length of the ladder
+//	it receive the level of the game so it can decide the number and the length of the ladders
+//	and it receive the ladder itself
 	public void LadderRandom (Levels level, Ladder ladder) {
 
 		if (level.equals(Levels.Easy)) {
@@ -423,7 +429,8 @@ public class Ladder extends MovePlayerTemplate {
 	}
 	
 	
-	
+//	MovePlayer function in this function it takes the coordinate of the player and checks if he stand on ladder start,
+//	then he move him up to the ladder end (change his coordinate to be the same as the ladder end)
 	@Override 
 	public int[] MovePlayer (int playerX, int playerY){
 		

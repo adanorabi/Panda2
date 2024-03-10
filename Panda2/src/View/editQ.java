@@ -40,8 +40,9 @@ public class editQ extends JFrame {
 	private JButton btnNewButton;
 	private JButton Submit;
 
+	// frame that edit question deatils for choosen question - ghaidaa
 	public editQ(table2 parent, Question q, int modelRow) {
-		// the question that the user want to edit 
+		// the question that the user want to edit - ghaidaa
 		Question oldQuestion=new Question(SysData.QuestionId++,q.getQLevel(),q.getContent(), q.getAnswer(), q.getTrueAnswer());
 
 		this.parentFrame = parent;
@@ -65,7 +66,7 @@ public class editQ extends JFrame {
 			}
 		}
 
-		// present the content of the question 
+		// present the content of the choosen question - ghaidaa
 		JLabel lblNewLabel = new JLabel("the content of the new question:");
 		lblNewLabel.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
 		lblNewLabel.setBounds(258, 72, 300, 38);
@@ -78,7 +79,7 @@ public class editQ extends JFrame {
 		textField.setColumns(10);
 		textField.setText(q.getContent());
 
-		// present the correct answer of the question 
+		// present the correct answer of the choosen question - ghaidaa
 		JLabel lblNewLabel_1 = new JLabel("The right answer :");
 		lblNewLabel_1.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(258, 161, 203, 25);
@@ -91,7 +92,7 @@ public class editQ extends JFrame {
 		textField_1.setColumns(10);
 		textField_1.setText(q.getTrueAnswer());
 
-		// present the other answers of the question 
+		// present the other answers of the choosen question - ghaidaa 
 		JLabel lblNewLabel_2 = new JLabel("Other answers : ");
 		lblNewLabel_2.setFont(new Font("Traditional Arabic", Font.BOLD, 18));
 		lblNewLabel_2.setBounds(257, 242, 250, 25);
@@ -130,10 +131,10 @@ public class editQ extends JFrame {
 		comboBox.addItem(Levels.Easy);
 		comboBox.addItem(Levels.Medium);
 		comboBox.addItem(Levels.Hard);
-		//  the level of the question is the default value
+		//  the level of the question is the default value - ghaidaa
 		comboBox.setSelectedItem(q.getQLevel()); 
 
-		// close the window
+		// close the window and return to table2 frame
 		JButton back = new JButton("back button");
 		back.setBounds(79, 553, 130, 46);
 		ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
@@ -157,7 +158,7 @@ public class editQ extends JFrame {
 		Image resizedImg2 = Submitimg.getScaledInstance(140, 46, Image.SCALE_SMOOTH);
 		Submit.setIcon(new ImageIcon(resizedImg2));
 		contentPane.add(Submit);
-		// edit the question
+		// edit the question  - ghaidaa
 		Submit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -177,7 +178,7 @@ public class editQ extends JFrame {
 				q.setAnswer(otherAnswers);
 				q.setQLevel(editedLevel);
 
-				// Update the question in the allQuestions ArrayList
+				// Update the question in the allQuestions ArrayList - ghaidaa
 				int index = parentFrame.getAllQuestions().indexOf(q);
 				parentFrame.getAllQuestions().set(index, q);
 				Question [] questions= new Question[2];
@@ -187,14 +188,14 @@ public class editQ extends JFrame {
 				System.out.println("This is new question"+q);
 				SysData.editQuestion(questions); // editing the question in json file
 
-				// Update the table directly in the parent frame (table2)
+				// Update the table directly in the parent frame (table2) - ghaidaa
 				parentFrame.updateTable();
 
-				// Dispose of the editQ frame
+				// Dispose of the editQ frame - ghaidaa
 				dispose();
 			}
 		});
-		// background
+		// background - ghaidaa
 		questionFrame = new JLabel("");
 		questionFrame.setIcon(new ImageIcon(QuestionFrame.class.getResource("/View/img/sky.png")));
 		questionFrame.setBounds(0, -70, 1005, 805);

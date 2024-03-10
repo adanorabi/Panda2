@@ -1,11 +1,10 @@
 package Model;
-
 import Enum.Levels;
+
 public class DiceFactory {
-
-
-	public static Dice createDice(Levels diceLevel) {  // a factory that create a dice
-
+	
+	public static Dice createDice(Levels diceLevel) {  // a factory that create a dice according to the level sent by the executer -Yara
+		
 		switch(diceLevel) {
 		case Easy:
 			return new EasyDice(diceLevel);
@@ -17,6 +16,5 @@ public class DiceFactory {
 			return null;
 
 		}
-
 	}
 }
