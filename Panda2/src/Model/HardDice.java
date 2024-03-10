@@ -1,9 +1,9 @@
 package Model;
-
 import Enum.Levels;
+//A class that extends from Dice and it suitable for hard level game-Yara
 
 public class HardDice extends Dice{
-	public HardDice(Levels GameLevel) {
+	public HardDice(Levels GameLevel) {//a constructor of hard level dice -Yara
 
 		super();
 		setNumOfSides(15);
@@ -11,7 +11,6 @@ public class HardDice extends Dice{
 
 		for(int i=0; i<7;i++) {
 			getDiceOptions()[i]=i;
-
 		}
 		getDiceOptions()[7]=7;; //filling the option of easy question
 		getDiceOptions()[8]=7;; //filling the option of easy question
