@@ -108,18 +108,33 @@ public static void playBoxSound() { // -Yara
 	      e.printStackTrace();
 	  }
 	}
+//public static void playGameSound() {
+//	 try {
+//	      File audioFile = new File("src/Model/Audio/playing.wav"); // Adjust the file path accordingly
+//	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+//	      
+//	    playingBackGround = AudioSystem.getClip();
+//	    playingBackGround.open(audioStream);
+//	    playingBackGround.start();
+//	  } catch (Exception e) {
+//	      e.printStackTrace();
+//	  }
+//}
 public static void playGameSound() {
-	 try {
-	      File audioFile = new File("src/Model/Audio/playing.wav"); // Adjust the file path accordingly
-	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-	      
-	    playingBackGround = AudioSystem.getClip();
-	    playingBackGround.open(audioStream);
-	    playingBackGround.start();
-	  } catch (Exception e) {
-	      e.printStackTrace();
-	  }
+    try {
+        File audioFile = new File("src/Model/Audio/playing.wav"); // Adjust the file path accordingly
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+        
+        playingBackGround = AudioSystem.getClip();
+        playingBackGround.open(audioStream);
+        
+        // Loop the background music continuously
+        playingBackGround.loop(Clip.LOOP_CONTINUOUSLY);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
+
 public static void PlayStepsSound() {
 	 try {
 	      File audioFile = new File("src/Model/Audio/steps.wav"); // Adjust the file path accordingly
