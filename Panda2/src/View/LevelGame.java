@@ -30,7 +30,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 	private JRadioButton MeduimRadioButton;
 	private JRadioButton HardRadioButton;
 
-	// frame to choose level game, and number of players
+	// frame to choose level game, and number of players - ghaidaa
 	public LevelGame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 70,1200, 900);
@@ -47,7 +47,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.ITALIC, 24));
 		lblNewLabel_2.setBounds(351, 255, 300, 41);
 		contentPane.add(lblNewLabel_2);
-		// combobox for choosing number of players between 2-4
+		// combobox for choosing number of players between 2-4 - ghaidaa
 		final JComboBox comboBox = new JComboBox();
 		for(int i=2;i<=4;i++)
 		{
@@ -58,7 +58,6 @@ public class LevelGame extends JFrame  implements ActionListener {
 		comboBox.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        PlayAudio.playBoxSound();//Yara
-		        // Any additional actions you want to perform when EasyRadioButton is selected
 		    }
 		});
 
@@ -82,7 +81,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 		HardRadioButton.setFont(new Font("Trebuchet MS", Font.ITALIC, 20));
 		HardRadioButton.setBackground(new Color(204, 102, 0));
 
-		// choosing just one radio button , no more!
+		// choosing just one radio button , no more! - ghaidaa
 		ButtonGroup G = new ButtonGroup();
 		G.add(EasyRadioButton);
 		G.add(MeduimRadioButton);
@@ -92,7 +91,6 @@ public class LevelGame extends JFrame  implements ActionListener {
 				EasyRadioButton.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				        PlayAudio.playRadioSound();
-				        // Any additional actions you want to perform when EasyRadioButton is selected
 				    }
 				});
 
@@ -100,7 +98,6 @@ public class LevelGame extends JFrame  implements ActionListener {
 				MeduimRadioButton.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				        PlayAudio.playRadioSound();
-				        // Any additional actions you want to perform when MeduimRadioButton is selected
 				    }
 				});
 
@@ -108,10 +105,9 @@ public class LevelGame extends JFrame  implements ActionListener {
 				HardRadioButton.addActionListener(new ActionListener() {
 				    public void actionPerformed(ActionEvent e) {
 				        PlayAudio.playRadioSound();
-				        // Any additional actions you want to perform when HardRadioButton is selected
 				    }
 				});
-		// next button and send information to next frame
+		// next button and send information to next frame - ghaidaa
 		JButton btnNewButton = new JButton("Next>>");
 
 		ImageIcon winIcon2 = new ImageIcon(LevelGame.class.getResource("/View/img/next.png"));
@@ -144,12 +140,12 @@ public class LevelGame extends JFrame  implements ActionListener {
 					else {
 						gameLevel=Levels.Hard;
 					}
-					// send numofplayer and level game to next frame
+					// send numofplayer and level game to next frame - ghaidaa
 					InterPlayersInfoFrame frame=new InterPlayersInfoFrame(numOfPlayers,gameLevel); 
 					setVisible(false);
 					frame.setVisible(true);
 				}
-				// when the user doesnt choose a level
+				// when the user doesnt choose a level - ghaidaa
 				else {
 					JOptionPane.showMessageDialog(getContentPane(),"You need to choice game Level");
 
@@ -158,7 +154,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 			}
 		});
 
-		// home page icon for the button
+		// home page icon for the button - ghaidaa
 		ImageIcon winIcon1 = new ImageIcon(LevelGame.class.getResource("/View/img/hp.png"));
 		winWidth = 170; // Adjusted width based on grid size
 		winHeight = 45;//Adjusted height based on grid size
@@ -168,7 +164,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 		ImageIcon scaledWinIcon1 = new ImageIcon(scaledWinImage1);
 		JButton btnNewButton_1 = new JButton(scaledWinIcon1);
 		btnNewButton_1.setBounds(138, 786, 170, 49);
-		// return to home page frame
+		// return to home page frame - ghaidaa
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -181,7 +177,7 @@ public class LevelGame extends JFrame  implements ActionListener {
 		});
 
 
-		// icon for level game
+		// icon for level game - ghaidaa
 		ImageIcon winIcon = new ImageIcon(Winner.class.getResource("/View/img/level.png"));
 		winWidth = 350; // Adjusted width based on grid size
 		winHeight = 250;//Adjusted height based on grid size
