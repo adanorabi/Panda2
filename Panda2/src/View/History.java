@@ -243,7 +243,7 @@ public class History extends javax.swing.JFrame {
         }
 
         @Override
-        public Object getCellEditorValue() {
+        public Object getCellEditorValue() {//ADAN 
             if (isClicked) {
                 event.onView(table.getSelectedRow());
             }
@@ -252,7 +252,7 @@ public class History extends javax.swing.JFrame {
         }
 
         @Override
-        public boolean stopCellEditing() {
+        public boolean stopCellEditing() {//ADAN
             isClicked = false;
             return super.stopCellEditing();
         }
@@ -269,7 +269,7 @@ public class History extends javax.swing.JFrame {
 		dialog.setLocationRelativeTo(parent);
 
 		// Load an image from file or resource
-		ImageIcon icon = new ImageIcon(History.class.getResource("/View/img/winnerbg.png"));
+		ImageIcon icon = new ImageIcon(History.class.getResource("/View/img/winnerbg.png"));//ADAN
 		Image scaledImg = icon.getImage().getScaledInstance(700, 500, Image.SCALE_SMOOTH);
 		ImageIcon scaledIcon = new ImageIcon(scaledImg);	
 		// Create a JLabel to display the image
@@ -284,9 +284,9 @@ public class History extends javax.swing.JFrame {
 		dialog.setVisible(true);
 	}
 	private void onBackButtonClick() {
-		// Handle back button click event here, navigate to MainFrame
-		dispose(); // Close the current window
-		MainFrame mainFrame = new MainFrame(); // Create an instance of MainFrame
+		// Handle back button click event here, navigate to MainFrame ADAN
+		dispose(); // Close the current window ADAN 
+		MainFrame mainFrame = new MainFrame(); // Create an instance of MainFrame ADAN
 		PlayAudio.PlayBackSound(); // Calling  the function that play back buttons audio -Yara
 		mainFrame.setVisible(true); // Make the MainFrame visible
 	}
