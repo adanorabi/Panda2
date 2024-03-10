@@ -1,5 +1,4 @@
 package Model;
-
 import java.io.File;
 
 import javax.sound.sampled.AudioInputStream;
@@ -7,7 +6,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
-
+//--------------Class that contains all the method that play Audio Clips by Yara----------------
 public class PlayAudio {
 	public static Clip hpClip ;
 	public static Clip diceClip; 
