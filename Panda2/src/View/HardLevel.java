@@ -205,6 +205,7 @@ public class HardLevel extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("in dice btn");
+				PlayAudio.playDiceSound(); // calling the function that play the sound of RollDice -Yara
 				rollDiceAnimation(g,num);
 
 

@@ -185,7 +185,7 @@ public class EasyLevel extends JFrame implements QuestionFrame.QuestionAnsweredL
 			public void actionPerformed(ActionEvent e) {
 				if (!isPaused) {
 
-					PlayAudio.playDiceSound(); // calling the functio that play the sound of RollDice -Yara
+					PlayAudio.playDiceSound(); // calling the function that play the sound of RollDice -Yara
 					System.out.println("in dice btn");
 					rollDiceAnimation(g,num);
 				}
