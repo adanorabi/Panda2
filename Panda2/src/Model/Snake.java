@@ -4,19 +4,19 @@ import java.util.Random;
 
 import Enum.Levels;
 import Enum.SnakeColor;
-
+//-------------------------------------Yomna-----------------------------------
 public class Snake extends MovePlayerTemplate {
 
 	private SnakeColor Color;
 
-	private int XHeadNum;
-	private int YHeadNum;
-	private int XTailNum;
-	private int YTailNum;
+	private int XHeadNum;// the x coordinate for the Snake Head
+	private int YHeadNum;// the y coordinate for the Snake Tail
+	private int XTailNum;// the x coordinate for the Snake Head
+	private int YTailNum;// the y coordinate for the Sanke Tail
 	Random rand = new Random();
-	public static int counter=6;
+	public static int counter=6;// the ladders id start from number 6 so we can recognize that the item in the board is a ladder
 	private int SnakeId;
-
+// constructor
 	public Snake(SnakeColor color) {
 		super();
 		Color = color;
@@ -24,18 +24,14 @@ public class Snake extends MovePlayerTemplate {
 	}
 
 	
-	
+//getters and setters	
 	public int getSnakeId() {
 		return SnakeId;
 	}
 
-
-
 	public void setSnakeId(int snakeId) {
 		SnakeId = snakeId;
 	}
-
-
 
 	public SnakeColor getColor() {
 		return Color;
@@ -85,6 +81,10 @@ public class Snake extends MovePlayerTemplate {
 		this.rand = rand;
 	}
 
+	
+//	SnakeRandom function decides the coordinate of the Head and the Tail of the Snake by taking random number for them
+//	the random has constrains for example: the Snake did not take a place outside the gameboard
+//	and also make the random for the y coordinate so it always be the H"thecolorodthesnake"y-T"thecolorodthesnake"y= the length of the snake
 	public void SnackRandom (Levels level, Snake snake) {
 
 		if (level.equals(Levels.Easy)) {
@@ -297,6 +297,9 @@ public class Snake extends MovePlayerTemplate {
 			}
 		}
 	}
+	
+//	MovePlayer function in this function it takes the coordinate of the player and checks if he stand on Snake head,
+//	then he move him down to the Snake tail (change his coordinate to be the same as the Snake tail)
 	 @Override
 	 public int[] MovePlayer (int playerX, int playerY) {
 		 int XYTail[]=new int[2];
