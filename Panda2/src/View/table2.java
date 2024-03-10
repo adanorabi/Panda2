@@ -43,9 +43,7 @@ public class table2 extends JFrame {
 	private JButton addQ;
 	private JButton btnNewButton;
 
-	/**
-	 * Create the frame.
-	 */
+// frame that present all the question from the json in one table - ghaidaa
 	public table2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 30, 1500, 1000);
@@ -53,14 +51,13 @@ public class table2 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		// all the question from the json file in one arraylist
+		// all the question from the json file in one arraylist- ghaidaa
 		allQuestions = new ArrayList<>();
 		allQuestions.addAll(SysData.EasyQues);
 		allQuestions.addAll(SysData.MidQues);
 		allQuestions.addAll(SysData.HardQues);
 
 		Object[][] data = new Object[allQuestions.size()][3];
-		// the column on th =e table
 		String[] columnNames = {"Num of Row", "Content of Question", "Level"};
 		for (int i = 0; i < allQuestions.size(); i++) {
 			Question question = allQuestions.get(i);
@@ -75,7 +72,7 @@ public class table2 extends JFrame {
 			}
 		};
 		table = new JTable(model);
-		// Expand cells
+		// Expand cells- ghaidaa
 		table.getColumnModel().getColumn(0).setPreferredWidth(100);
 		table.getColumnModel().getColumn(1).setPreferredWidth(300);
 		table.getColumnModel().getColumn(2).setPreferredWidth(200);
@@ -90,7 +87,7 @@ public class table2 extends JFrame {
 		scrollPane.setBounds(240, 170, 1000, 700);
 		contentPane.add(scrollPane);
 
-		// delete button that delete question immediatly from the table and the json file
+		// delete button that delete question immediatly from the table and the json file- ghaidaa
 		delete = new JButton("delete");
 		delete.setContentAreaFilled(false); // Remove background
 		delete.setBorderPainted(false); // Remove border
@@ -107,10 +104,10 @@ public class table2 extends JFrame {
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					int modelRow = table.convertRowIndexToModel(selectedRow);
 					Question selectedQuestion = allQuestions.get(modelRow);
-					model.removeRow(modelRow); // Remove row from table
+					model.removeRow(modelRow); // Remove row from table- ghaidaa
 					SysData.DeleteQuestioFromJson(selectedQuestion.getContent());  // deleting from json
 
-					// Remove corresponding question from the list
+					// Remove corresponding question from the list- ghaidaa
 					allQuestions.remove(modelRow);
 
 				} else {
@@ -119,7 +116,7 @@ public class table2 extends JFrame {
 			}
 		});
 
-		// edit button that openn edit window for the selected question, and edit the question immediatly from the table and the json file
+		// edit button that openn edit window for the selected question, and edit the question immediatly from the table and the json file- ghaidaa
 		edit = new JButton("edit");
 		edit.setBounds(988, 116, 82, 44);
 		ImageIcon editIcon = new ImageIcon(getClass().getResource("/View/img/edit.jpg"));
@@ -130,10 +127,10 @@ public class table2 extends JFrame {
 		edit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selectedRow = table.getSelectedRow();
-				if (selectedRow != -1) { // If a row is selected
+				if (selectedRow != -1) { // If a row is selected- ghaidaa
 					int modelRow = table.convertRowIndexToModel(selectedRow);
 					Question selectedQuestion = allQuestions.get(modelRow);
-					// Open the EditQ frame and pass the selected question and modelRow
+					// Open the EditQ frame and pass the selected question and modelRow- ghaidaa
 					editQ editFrame = new editQ(table2.this, selectedQuestion, modelRow);
 					editFrame.setVisible(true);
 				} else {
@@ -167,7 +164,7 @@ public class table2 extends JFrame {
 				}
 			}
 		});
-		// add question button ,that openrd add new question frame
+		// add question button ,that opened add new question frame- ghaidaa
 		addQ = new JButton("add question");
 		addQ.setBounds(240, 81, 234, 62);
 		ImageIcon addIcon = new ImageIcon(getClass().getResource("/View/img/addq.jpg"));
@@ -186,7 +183,7 @@ public class table2 extends JFrame {
 		});
 		contentPane.add(addQ);
 
-		// return to main frame 
+		// return to main frame - ghaidaa
 		JButton back = new JButton("back button");
 		back.setBounds(74, 850, 153, 56);
 		ImageIcon backIcon = new ImageIcon(getClass().getResource("/View/img/back.jpg"));
@@ -223,10 +220,10 @@ public class table2 extends JFrame {
 		contentPane.add(lblNewLabel);
 	}
 	public void updateEditedQuestion(int rowIndex, Question editedQuestion) {
-		// Update the question in the ArrayList
+		// Update the question in the ArrayList- ghaidaa
 		allQuestions.set(rowIndex, editedQuestion);
 
-		// Update the table with the edited values
+		// Update the table with the edited values- ghaidaa
 		table.getModel().setValueAt(editedQuestion.getContent(), rowIndex, 1); // Update content column
 		table.getModel().setValueAt(editedQuestion.getQLevel(), rowIndex, 2); // Update level column
 

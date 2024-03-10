@@ -14,11 +14,10 @@ import Model.QuestionSquare;
 import Model.Square;
 import Model.SurpriseSquare;
 
+// test the num of the object (sankes, ladders , special squeares) in easy level if valid- ghaidaa
 public class ObjectsInBoardTest {
 
 	private Game easy;
-	private Game medium;
-	private Game hard;
 
 	@Test
 	public void testEasyLevelObjects() {
