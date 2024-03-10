@@ -46,31 +46,7 @@ public class PlayAudio {
 			e.printStackTrace();
 		}
 	}
-	public static void playSnakeSound() { // function that play sound when movin down throgh a sasake -Yara
-		try {
-			//  File audioFile = new File("src/Model/Audio/snake.wav") snake.wav // Adjust the file path accordingly
-			File audioFile = new File("src/Model/Audio/down.wav");  // Adjust the file path accordingly
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
 
-			Clip snakeClip = AudioSystem.getClip();
-			snakeClip.open(audioStream);
-			snakeClip.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public static void playLadderSound() { // function that play sound when movin down throgh a sasake -Yara
-		try {
-			File audioFile = new File("src/Model/Audio/ladder.wav"); // Adjust the file path accordingly
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-
-			Clip ladderClip = AudioSystem.getClip();
-			ladderClip.open(audioStream);
-			ladderClip.start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	public static void playMenuSound() { // function that play sound when choosing button in menu -Yara
 		try {
 			File audioFile = new File("src/Model/Audio/menuButton.wav"); // Adjust the file path accordingly
