@@ -40,7 +40,6 @@ public class Instructions extends JFrame implements ActionListener {
 				setVisible(false);
 				PlayAudio.PlayBackSound(); // Calling  the function that play back buttons audio -Yara
 				frame.setVisible(true);
-
 			}
 		});
 
