@@ -107,18 +107,7 @@ public class PlayAudio {
 			e.printStackTrace();
 		}
 	}
-	//public static void playGameSound() {
-	//	 try {
-	//	      File audioFile = new File("src/Model/Audio/playing.wav"); // Adjust the file path accordingly
-	//	      AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-	//	      
-	//	    playingBackGround = AudioSystem.getClip();
-	//	    playingBackGround.open(audioStream);
-	//	    playingBackGround.start();
-	//	  } catch (Exception e) {
-	//	      e.printStackTrace();
-	//	  }
-	//}
+
 	public static void playGameSound() {
 		try {
 			File audioFile = new File("src/Model/Audio/playing.wav"); // Adjust the file path accordingly

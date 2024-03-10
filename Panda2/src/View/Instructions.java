@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 import Model.PlayAudio;
 
 import javax.swing.JTextField;
-
+// ------------Instructions Frame BY Yara-------------
 public class Instructions extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -28,18 +28,10 @@ public class Instructions extends JFrame implements ActionListener {
 		setBounds(110, 100, 1314, 816); // Set frame size here
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		// choosing just one radio button , no more!
-
-
 		JButton backButton = new JButton("<<home page");
 		backButton.setIcon(new ImageIcon(Instructions.class.getResource("/View/img/InstructionsHP.jpg")));
-		// backButton.setIcon(new ImageIcon("C:\\Users\\97250\\Documents\\GitHub\\Panda2\\Panda2\\src\\View\\img\\InstructionsHP.png"));
-
-		//backButton.setIcon(new ImageIcon("/View/img/InstructionsHP.jbg"));
 		backButton.setBounds(47, 725, 255, 44);
 		contentPane.add(backButton);
 		backButton.addActionListener(new ActionListener() {
