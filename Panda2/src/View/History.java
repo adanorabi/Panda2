@@ -123,7 +123,7 @@ public class History extends javax.swing.JFrame {
 
 	private void initComponents( ) {
 		Screenshot.loadExistingScreenshots();
-		String filePath = "AllGames.csv";
+		String filePath = "AllGames.csv";//read the csv 
 		SysData.gamesList.clear();
 		SysData.winnerPlayer.clear();
 		SysData.readCsv(filePath);
@@ -137,7 +137,7 @@ public class History extends javax.swing.JFrame {
 		// Assuming SysData.gamesList is a list of Game objects
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0); // Removes all rows from the table
-		Object[][] data = new Object[SysData.gamesList.size()][5]; // Assuming there are 5 columns in your table
+		Object[][] data = new Object[SysData.gamesList.size()][5]; // 5 COLUMN
 		System.out.println("game list in history"+SysData.gamesList.size());
 		int gid=0;
 		for (int i = 0; i < SysData.gamesList.size(); i++) {
@@ -196,7 +196,7 @@ public class History extends javax.swing.JFrame {
 		setLocationRelativeTo(null);
 	}
 
-    private class ViewButtonRenderer extends JButton implements TableCellRenderer {
+    private class ViewButtonRenderer extends JButton implements TableCellRenderer {//
         public ViewButtonRenderer() {
             setOpaque(true);
         }
