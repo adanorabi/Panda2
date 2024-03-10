@@ -1131,8 +1131,8 @@ public class MediumLevel extends JFrame implements ActionListener {
 		case 4://+N
 			pY =801+N-aftery*79;
 			by=801+N-befory*79;
-			pX = 790+N + afterx * 101; // Adjusted x position based on the board offset and grid size//170
-			bx= 790 +N+beforx * 101;
+			pX = 185+N + afterx * 101; // Adjusted x position based on the board offset and grid size//170
+			bx= 185 +N+beforx * 101;
 			break;
 
 		}
