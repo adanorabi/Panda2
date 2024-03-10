@@ -20,6 +20,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import Model.Admin;
+import Model.PlayAudio;
 
 import javax.swing.UIManager;
 import javax.swing.JButton;
@@ -91,6 +92,7 @@ public class LogIn extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		MainFrame mf=new MainFrame();
+        		PlayAudio.PlayBackSound(); // Calling  the function that play back buttons audio -Yara
         		setVisible(false);
         		mf.setVisible(true);
         
