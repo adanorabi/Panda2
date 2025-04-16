@@ -85,6 +85,7 @@ The game is built with **Java Swing** for GUI and supports 2 to 4 players. A bui
 ---
 
 ## 🗂️ src/ Project Structure
+```bash
 src/
 ├── Controller/
 │   ├── FieldIsNull.java
@@ -148,6 +149,8 @@ src/
     ├── QuestionFrame.java
     ├── Winner.java
     └── addQuestion.java
+```
+
 
 
 
@@ -164,7 +167,7 @@ src/
 
 ## 🙌 Credits
 
-- Developed by Team Panda  
+- Developed by Team Panda  (our team)
 - Graphics & UI Styling: [FlatLaf](https://www.formdev.com/flatlaf/)  
 - All logic and backend implemented from scratch  
 - Questions and history stored and managed with JSON & CSV
