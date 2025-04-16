@@ -1,4 +1,7 @@
 # 🐍🎲 Snakes and Ladders – Java Game
+<div align="center">
+  <img src="Docs/imgs/gamehome.png" width="45%"/>
+</div>
 
 ## 📄 Description
 
@@ -150,7 +153,51 @@ src/
     ├── Winner.java
     └── addQuestion.java
 ```
+## 🖼️ Screenshots
 
+### 🏠 Game Home & Level Selection
+<div>
+  <img src="Docs/imgs/gamehome.png" height="250px"/>
+  <img src="Docs/imgs/gamelevel.png" height="250px"/>
+</div>
+
+---
+
+### 🧍‍♂️ Player Setup
+<div>
+  <img src="Docs/imgs/players.png" height="250px"/>
+</div>
+
+---
+
+### 🎲 Game Board & In-Game Instructions
+<div>
+  <img src="Docs/imgs/gameboard.png" height="250px"/>
+  <img src="Docs/imgs/game instructions.png" height="250px"/>
+</div>
+
+---
+
+### ❓ Question Popup & Info
+<div>
+  <img src="Docs/imgs/question info.png" height="250px"/>
+  <img src="Docs/imgs/manage questions.png" height="250px"/>
+</div>
+
+---
+
+### 🛠️ Admin Panel & Add Question
+<div >
+  <img src="Docs/imgs/admin login.png" height="250px"/>
+  <img src="Docs/imgs/add question.png" height="250px"/>
+</div>
+
+---
+
+### 🏁 Game Winner Screen
+<div >
+  <img src="Docs/imgs/game winner.png" height="250px"/>
+</div>
 
 
 
@@ -171,10 +218,3 @@ src/
 - Graphics & UI Styling: [FlatLaf](https://www.formdev.com/flatlaf/)  
 - All logic and backend implemented from scratch  
 - Questions and history stored and managed with JSON & CSV
-
----
-
-Let me know if you'd like me to:
-- Insert your actual screenshot filenames
-- Add Hebrew translation for documentation  
-- Create a downloadable `.md` file  
